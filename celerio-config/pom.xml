@@ -23,7 +23,10 @@
 	</parent>
 	<artifactId>celerio-config</artifactId>
 	<packaging>jar</packaging>
-    <url>http://www.jaxio.com/documentation/celerio</url>
+
+	<name>celerio-config</name>
+	<description>Celerio Configuration Module reads celerio-maven-plugin.xml configuration files.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

@@ -23,8 +23,10 @@
 	</parent>
 	<artifactId>celerio-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
+
 	<name>celerio-maven-plugin</name>
-    <url>http://www.jaxio.com/documentation/celerio</url>
+	<description>The Celerio Maven plugin is responsible for code generation</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.jaxio.celerio</groupId>

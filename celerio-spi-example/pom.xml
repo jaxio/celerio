@@ -22,9 +22,12 @@
 		<artifactId>celerio-parent</artifactId>
 		<version>4.0.1-SNAPSHOT</version>
 	</parent>
+
 	<artifactId>celerio-spi-example</artifactId>
 	<packaging>jar</packaging>
+
 	<name>celerio-spi-example</name>
+	<description>A example illustrating how to extends Celerio via SPI</description>
 
 	<dependencies>
 		<dependency>
