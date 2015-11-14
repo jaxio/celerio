@@ -1,0 +1,9 @@
+
+TODO before Celerio 4.0.1 release:
+
+* adapt all poms so we can deploy on maven central
+* in bootstrap-maven-plugin/pom.xml, enable matrix IT, make it skippable easily
+* migrate more ITs from our private repository
+* replace the test CelerioLoaderTest (currently ignored) by another one
+* change branding code (no longer need to accept the license)
+
