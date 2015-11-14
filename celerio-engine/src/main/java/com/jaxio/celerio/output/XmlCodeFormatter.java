@@ -39,9 +39,9 @@ import java.io.Writer;
 
 /**
  * Pretty-prints xml, supplied as a string.
- * <p/>
+ * <p>
  * eg. <code>
- * String formattedXml = new XmlFormatter().format("<tag><nested>hello</nested></tag>");
+ * String formattedXml = new XmlFormatter().format("&lt;tag&gt;&lt;nested&gt;hello&lt;/nested&gt;&lt;/tag&gt;");
  * </code> http://stackoverflow.com/questions/139076/how-to-pretty-print-xml-from-java
  */
 @SuppressWarnings("deprecation")

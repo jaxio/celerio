@@ -96,8 +96,8 @@ public abstract class AbstractNamer implements Namer {
     /**
      * Get node of the package name.
      * 
-     * Ex: Assuming the package name is<code>com.jaxio.toto.tutu</code> you get <br/>
-     * <code>getPackageNode(0) -> tutu</code> <br/>
+     * Ex: Assuming the package name is<code>com.jaxio.toto.tutu</code> you get <br>
+     * <code>getPackageNode(0) -&gt; tutu</code> <br>
      * <code>getPackageNode(1) = toto</code> etc.
      */
     public String getPackageNode(int index) {

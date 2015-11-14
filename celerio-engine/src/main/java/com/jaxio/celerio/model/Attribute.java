@@ -897,7 +897,7 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
 
     /**
      * Whether this attribute has a non null {@link IndexedField} configuration element. 
-     * @see ColumnConfig#getIndexedField();
+     * @see ColumnConfig#getIndexedField
      */
     public boolean isIndexed() {
         return getColumnConfig().getIndexedField() != null;

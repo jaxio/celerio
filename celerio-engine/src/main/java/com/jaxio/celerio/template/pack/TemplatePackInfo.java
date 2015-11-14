@@ -73,7 +73,7 @@ public class TemplatePackInfo {
      * Used to create an invoker.properties file in bootstrap integration test.
      * 
      * Input:<br>
-     * <code>packCommand=mvn -Ph2,db,metadata,gen test<code>
+     * <code>packCommand=mvn -Ph2,db,metadata,gen test</code>
      * <p>
      * Ouput:<br>
      * <code>h2,db,metadata,gen</code>

@@ -206,7 +206,7 @@ public abstract class MiscUtil {
     /**
      * Does the given column name equals ignore case with one of pattern given in parameter
      * 
-     * @param c
+     * @param name
      *            the column
      * @param patterns
      *            table of patterns as strings

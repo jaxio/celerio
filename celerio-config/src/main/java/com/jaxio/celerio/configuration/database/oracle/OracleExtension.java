@@ -25,7 +25,7 @@ public class OracleExtension implements Extension {
     private static final String ORACLE_DATABASE = "oracle";
 
     /**
-     * @See com.jaxio.celerio.configuration.database.h2.H2Extension
+     * @see com.jaxio.celerio.configuration.database.h2.H2Extension
      */
     @Override
     public void apply(Connection connection, Metadata metadata) {

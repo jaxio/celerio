@@ -70,8 +70,8 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
     }
 
     /**
-     * Specifies the ordering of the elements. If not null, the JPA <code>@OrderBy</code> annotation is used. Example: orderBy="birthdate DESC" will generate
-     * @OrderBy("birthdate DESC")
+     * Specifies the ordering of the elements. If not null, the JPA <code>@OrderBy</code> annotation is used.
+     * Example: orderBy="birthdate DESC" will generate <code>@OrderBy("birthdate DESC")</code>.
      */
     public String getOrderBy() {
         return orderBy;

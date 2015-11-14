@@ -65,8 +65,8 @@ public class EnumConfig {
     }
 
     /**
-     * When you define a sub-package, the resulting enum's package becomes "<rootPackage>.domain.<subPackage>" instead of "<rootPackage>.domain". Same applies
-     * for other enum related classes. There is no sub-package by default.
+     * When you define a sub-package, the resulting enum's package becomes <code>rootPackage.domain.subPackage</code> instead of <code>rootPackage.domain</code>.
+     * Same applies for other enum related classes. There is no sub-package by default.
      */
     public String getSubPackage() {
         return subPackage;
@@ -126,8 +126,8 @@ public class EnumConfig {
     }
 
     /**
-     * Specifiy the user type implementation to use to be given to hibernate <br/>
-     * Example: name="com.youcompany.hibernate.support.CustomDateUserType"
+     * Specify the user type implementation to use to be given to hibernate <br>
+     * Example: name="com.yourcompany.hibernate.support.CustomDateUserType"
      */
     public String getUserType() {
         return userType;

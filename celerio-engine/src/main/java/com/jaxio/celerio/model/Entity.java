@@ -881,7 +881,7 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     }
 
     /**
-     * @returns true when this entity can be edited directly, false when it should be edited after navigating through it from another entity.
+     * @return true when this entity can be edited directly, false when it should be edited after navigating through it from another entity.
      */
     public boolean isDrivesAllRelations() {
         for (Relation r : getRelations().getFlatUp().getList()) {

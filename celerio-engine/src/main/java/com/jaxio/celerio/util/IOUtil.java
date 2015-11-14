@@ -68,7 +68,7 @@ public class IOUtil {
      * 
      * @param content
      *            the string to be written to file
-     * @param filen
+     * @param file
      *            fhe file object
      */
     public void stringToFile(String content, File file) throws IOException {
@@ -92,8 +92,6 @@ public class IOUtil {
      * 
      * @param content
      *            the string to be written to file
-     * @param filename
-     *            the full or relative path to the file.
      */
     public void stringToOutputStream(String content, OutputStream out) throws IOException {
         out.write(content.getBytes());
@@ -183,7 +181,7 @@ public class IOUtil {
     /**
      * Determine if the directory where the passed file resides is empty.
      * 
-     * @param targetFile
+     * @param file
      *            the folder to remove
      * @return true if the parent folder is empty, false otherwise
      */

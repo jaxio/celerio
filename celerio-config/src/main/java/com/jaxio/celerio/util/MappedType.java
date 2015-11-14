@@ -128,7 +128,6 @@ public enum MappedType {
     /**
      * is Eligible for Version column Version numbers may be of Hibernate type long, integer, short, timestamp or calendar.
      * 
-     * @param mappedType
      * @return true if numeric, false otherwise
      */
     public boolean isEligibleForVersion() {

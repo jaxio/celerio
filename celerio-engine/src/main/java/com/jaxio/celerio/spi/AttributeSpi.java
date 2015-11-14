@@ -33,7 +33,7 @@ public interface AttributeSpi {
     void init(Attribute attribute);
 
     /**
-     * The var name under which this AttributeSpi is available during template evaluation.<br/> 
+     * The var name under which this AttributeSpi is available during template evaluation.<br>
      * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, 
      * the corresponding AttributeSpi implementation instance is given by <code>$attribute.myextension</code>. 
      */

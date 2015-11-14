@@ -25,6 +25,12 @@ git clone git@github.com:jaxio/celerio.git
 
 ### Releasing
 
+**Make sure JavaDoc is OK**
+
+Until it works, run:
+
+    mvn javadoc:javadoc
+
 **Make sure all is committed**
 
 Then execute:

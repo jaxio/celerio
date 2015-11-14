@@ -33,7 +33,7 @@ public interface ProjectSpi {
     void init(Project project);
 
     /**
-     * The var name under which this ProjectSpi is available during template evaluation.<br/> 
+     * The var name under which this ProjectSpi is available during template evaluation.<br>
      * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, 
      * the corresponding ProjectSpi implementation instance is given by <code>$project.myextension</code>. 
      */

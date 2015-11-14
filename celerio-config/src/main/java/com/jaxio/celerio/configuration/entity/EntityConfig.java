@@ -204,8 +204,8 @@ public class EntityConfig implements CacheConfigGetter {
     }
 
     /**
-     * When you define a sub-package, the resulting entity's package becomes "<rootPackage>.domain.<subPackage>" instead of "<rootPackage>.domain". There is no
-     * sub-package by default.
+     * When you define a sub-package, the resulting entity's package becomes <code>rootPackage.domain.subPackage</code>
+     * instead of <code>rootPackage.domain</code>. There is no sub-package by default.
      */
     public String getSubPackage() {
         return subPackage;
@@ -219,8 +219,8 @@ public class EntityConfig implements CacheConfigGetter {
     }
 
     /**
-     * It is pertinent only if this entity's table plays the role of a middle table in a many-to-many association. In that case you can use this parameter to
-     * set the many-to-many association direction.
+     * It is pertinent only if this entity's table plays the role of a middle table in a many-to-many association.
+     * In that case you can use this parameter to set the many-to-many association direction.
      */
     public AssociationDirection getAssociationDirection() {
         return associationDirection;

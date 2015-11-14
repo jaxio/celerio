@@ -347,7 +347,7 @@ public class RelationFactory {
      * For non intermediate relation, inverse association should be created if either the associationDirection attribute of the columnConfig is set to BIDIRECTIONAL or if the expected inverse
      * association config is found. For example, if the forward relation is a many to one and if oneToManyConfig is found, then we create the inverse
      * association.
-     * <br/> <br/>
+     * <br> <br>
      * For intermediate relation, inverse association should be created if either the associationDirection attribute of the parent entityConfig is set to BIDIRECTIONAL or if the expected
      * inverse association config is found on the 'left-side' columnConfig. For example, if the forward relation is a many to one and if oneToManyConfig is
      * found, then we create the inverse association.

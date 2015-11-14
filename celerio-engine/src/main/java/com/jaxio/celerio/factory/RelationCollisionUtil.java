@@ -51,7 +51,7 @@ public class RelationCollisionUtil {
     /**
      * Compute the appropriate namer for the Java field marked by @ManyToOne
      * 
-     * @param columnConfig
+     * @param fromAttribute
      *            the column that is the foreign key.
      * @param targetEntityNamer
      *            the default namer for the entity on the other side of the relation.
@@ -71,7 +71,7 @@ public class RelationCollisionUtil {
     /**
      * Compute the appropriate namer for the Java field marked by @OneToMany
      * 
-     * @param columnConfig
+     * @param fromAttributeColumnConfig
      *            the column that is the foreign key
      * @param fromEntityNamer
      *            the default namer for the entity contained in the collection.
