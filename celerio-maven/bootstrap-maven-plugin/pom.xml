@@ -1,0 +1,110 @@
+<!--
+  ~ Copyright 2015 JAXIO http://www.jaxio.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jaxio.celerio</groupId>
+		<artifactId>celerio-maven</artifactId>
+		<version>4.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>bootstrap-maven-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<name>bootstrap-maven-lugin</name>
+    <url>http://www.jaxio.com/documentation/celerio</url>
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jaxio.celerio</groupId>
+			<artifactId>celerio-engine</artifactId>
+		</dependency>
+		<!-- current packs -->
+		<dependency>
+			<groupId>com.jaxio.celerio.packs</groupId>
+			<artifactId>pack-jsf2-spring-conversation</artifactId>
+            <version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jaxio.celerio.packs</groupId>
+			<artifactId>pack-backend-jpa</artifactId>
+            <version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-compiler-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+		</dependency>
+	</dependencies>
+	<!-- uncomment to activate IT matrix -->
+	<!-- TODO
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-invoker-plugin</artifactId>
+				<version>2.0.0</version>
+				<executions>
+					<execution>
+						<id>run the bootstraps</id>
+						<configuration>
+							<projectsDirectory>src/test/bootstrap-it</projectsDirectory>
+							<cloneProjectsTo>${project.build.directory}/bootstrap-it</cloneProjectsTo>
+							<pomIncludes>
+								<pomInclude>pom.xml</pomInclude>
+							</pomIncludes>
+							<showErrors>true</showErrors>
+							<streamLogs>true</streamLogs>
+							<properties>
+								<invoker.version-to-test>${project.version}</invoker.version-to-test>
+							</properties>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test the projects produced by the bootstraps</id>
+						<configuration>
+							<projectsDirectory>${project.build.directory}/bootstrap-it</projectsDirectory>
+							<pomIncludes>
+								<pomInclude>app_*/pom.xml</pomInclude>
+							</pomIncludes>
+							<showErrors>true</showErrors>
+							<goals>
+								<goal>verify</goal>
+							</goals>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	-->
+</project>

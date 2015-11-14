@@ -1,0 +1,13 @@
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../../../../../../../configuration/target/jibx/celerio.xsd">
+	<configuration>
+		<headerComment showTemplateName="true" />
+	</configuration>
+	<entityConfigs>
+		<entityConfig tableName="ACCOUNT">
+			<inheritance strategy="JOINED" />
+		</entityConfig>
+		<entityConfig tableName="ADMINISTRATIVE_ACCOUNT">
+			<inheritance parentEntityName="ACCOUNT" />
+		</entityConfig>
+	</entityConfigs>
+</celerio>

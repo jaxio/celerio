@@ -1,0 +1,2 @@
+$output.file("cp1252.txt")##
+été hivers

@@ -1,0 +1,3 @@
+name=books
+description=Original sample schema, no real business, but cover various cases
+description2=Tables: Account, Book, Document, etc...

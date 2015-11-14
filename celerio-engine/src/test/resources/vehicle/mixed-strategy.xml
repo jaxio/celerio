@@ -1,0 +1,59 @@
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
+	<entityConfigs>
+		<entityConfig name="vehicle" technicalName="vehicle">
+			<inheritance discriminator="discriminator"/>
+			<columnFullNames>
+				<columnFullName>vehicle.name</columnFullName>
+				<columnFullName>vehicle.vehicleId</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="air">
+			<inheritance discriminator="discriminator" discriminatorValue="air" entity="vehicle"/>
+			<columnFullNames>
+				<columnFullName>vehicle.airSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="plane">
+			<inheritance discriminator="discriminator" discriminatorValue="plane" entity="air"/>
+			<columnFullNames>
+				<columnFullName>plane.planeSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="road">
+			<inheritance discriminator="discriminator" discriminatorValue="road" entity="vehicle"/>
+			<columnFullNames>
+				<columnFullName>vehicle.roadSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="twotires">
+			<inheritance discriminator="discriminator" discriminatorValue="twotires" entity="road"/>
+			<columnFullNames>
+				<columnFullName>twoTires.twotiresSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="moto">
+			<inheritance discriminator="discriminator" discriminatorValue="moto" entity="twotires"/>
+			<columnFullNames>
+				<columnFullName>moto.motoSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="fourtires">
+			<inheritance discriminator="discriminator" discriminatorValue="fourtires" entity="road"/>
+			<columnFullNames>
+				<columnFullName>fourTires.fourTiresSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="car">
+			<inheritance discriminator="discriminator" discriminatorValue="car" entity="fourtires"/>
+			<columnFullNames>
+				<columnFullName>car.carSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+		<entityConfig name="truck">
+			<inheritance discriminator="discriminator" discriminatorValue="truck" entity="fourtires"/>
+			<columnFullNames>
+				<columnFullName>truck.truckSpecific</columnFullName>
+			</columnFullNames>
+		</entityConfig>
+	</entityConfigs>
+</celerio>	

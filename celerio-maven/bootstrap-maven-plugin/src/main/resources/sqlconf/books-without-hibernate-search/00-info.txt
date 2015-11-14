@@ -1,0 +1,3 @@
+name=books-without-hibernate-search
+description=Original sample schema, no real business, but cover various cases, without hibernate search
+description2=Tables: Account, Book, Document, etc...

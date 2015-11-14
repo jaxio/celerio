@@ -1,0 +1,2 @@
+name=empty
+description=A minimal configuration, with only a User table.

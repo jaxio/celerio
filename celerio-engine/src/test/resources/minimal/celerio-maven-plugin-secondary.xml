@@ -1,0 +1,25 @@
+<celerio xmlns="http://www.jaxio.com/schema/celerio" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
+	<entityConfigs>
+		<entityConfig tableName="ACCOUNT">
+			<columnConfigs>
+				<columnConfig columnName="login" fieldName="username" />
+				<columnConfig columnName="email" searchResult="true" />
+				<columnConfig columnName="first_name" searchResult="true" ignore="true"/>
+				<columnConfig columnName="last_name" searchResult="true" />
+				<columnConfig columnName="civility" fieldName="civility_status" searchResult="true">
+					<!--
+						mixup names on purpose for test
+					-->
+					<enumConfig type="STRING" name="CivilityEnum">
+						<enumValues>
+                            <enumValue value="MR" label="Mister"/>
+                            <enumValue value="MS" label="Miss"/>
+						</enumValues>
+					</enumConfig>
+				</columnConfig>
+			</columnConfigs>
+		</entityConfig>
+	</entityConfigs>
+</celerio>

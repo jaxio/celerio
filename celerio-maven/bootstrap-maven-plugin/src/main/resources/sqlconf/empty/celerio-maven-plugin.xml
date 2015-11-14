@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ./celerio.xsd">
+	<configuration rootPackage="${groupId}" applicationName="${artifactId}">
+		<!-- Which tables are used for generation -->
+		<tables>
+			<!-- <table include="false" pattern="*_AUDIT"/> -->
+			<table include="true" pattern="*" />
+		</tables>
+
+		<!-- global number mapping (optional) -->
+		<numberMappings>
+			<numberMapping mappedType="M_BOOLEAN" columnSizeMin="1" columnSizeMax="2" columnDecimalDigitsMin="0" columnDecimalDigitsMax="0" />
+			<!-- <numberMapping mappedType="M_BIGDECIMAL" columnSizeMin="10" columnDecimalDigitsMin="4"/> -->
+		</numberMappings>
+
+		<!-- global date mapping (optional) -->
+		<dateMappings>
+			<!-- <dateMapping columnNameRegExp="VERSION" mappedType="M_UTILDATE"/> -->
+			<!-- <dateMapping columnJdbcType="TIMESTAMP" mappedType="M_LOCALDATETIME"/> -->
+			<!-- <dateMapping columnJdbcType="DATE" mappedType="M_LOCALDATE"/> -->
+		</dateMappings>
+
+		<!-- default configuration for fetch type / cascades / 2d level cache -->
+		<defaultEntityCacheConfig usage="NONE" />
+
+		<defaultManyToOneConfig fetch="LAZY">
+			<cascades>
+				<cascade type="PERSIST" />
+				<cascade type="MERGE" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="true" edit="true" view="true" select="true" autoComplete="true" remove="false" />
+		</defaultManyToOneConfig>
+
+		<defaultOneToManyConfig orphanRemoval="true">
+			<cascades>
+				<cascade type="ALL" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="true" edit="true" view="true" select="true" autoComplete="true" remove="true" />
+		</defaultOneToManyConfig>
+
+		<defaultOneToOneConfig fetch="LAZY">
+			<cascades>
+				<cascade type="NONE" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="true" edit="true" view="true" select="false" autoComplete="true" remove="false" />
+		</defaultOneToOneConfig>
+
+		<defaultInverseOneToOneConfig fetch="LAZY">
+			<cascades>
+				<cascade type="ALL" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="false" edit="false" view="true" select="false" autoComplete="false" remove="false" />
+		</defaultInverseOneToOneConfig>
+
+		<defaultManyToManyConfig>
+			<cascades>
+				<cascade type="PERSIST" />
+				<cascade type="MERGE" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="true" edit="true" view="true" select="true" autoComplete="false" remove="true" />
+		</defaultManyToManyConfig>
+
+		<defaultInverseManyToManyConfig>
+			<cascades>
+				<cascade type="ALL" />
+			</cascades>
+			<cacheConfig usage="NONE" />
+			<associationAction create="false" edit="true" view="true" select="false" autoComplete="false" remove="false" />
+		</defaultInverseManyToManyConfig>
+
+		<conventions identifiableProperty="id">
+			<!-- <columnRenamers>
+				<columnRenamer regexp="^.{3}_" replace="" />
+			</columnRenamers> -->
+		</conventions>
+	</configuration>
+
+	<entityConfigs>
+	</entityConfigs>
+
+	<!-- Generate enums used by the entities above -->
+	<sharedEnumConfigs>
+	</sharedEnumConfigs>
+</celerio>

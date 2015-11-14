@@ -1,0 +1,49 @@
+/*
+ * Copyright 2015 JAXIO http://www.jaxio.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.jaxio.celerio.metadata;
+
+import static com.google.common.collect.Lists.newArrayList;
+
+import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
+
+@Service
+@Slf4j
+public class MetaDataValidator {
+
+    @Autowired
+    private List<MetaDataRule<Table>> rules = newArrayList();
+
+    public void validate(Metadata meta) {
+        RuleReport report = new RuleReport();
+        for (MetaDataRule<Table> rule : rules) {
+            for (Table table : meta.getTables()) {
+                rule.validate(table, report);
+            }
+        }
+
+        if (report.hasErrors()) {
+            log.warn("errors !");
+        }
+    }
+}

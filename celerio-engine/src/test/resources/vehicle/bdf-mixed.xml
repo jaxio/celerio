@@ -1,0 +1,47 @@
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
+
+	<configuration rootPackage="fr.bdf" associationDirection="FORWARD_ONLY">
+		<conventions>
+			<classTypes>
+				<classType classType="model" suffix="" />
+			</classTypes>
+		</conventions>
+	</configuration>
+
+	<entityConfigs>
+		<entityConfig tableName="operation">
+			<inheritance discriminatorColumn="discriminator" strategy="SINGLE_TABLE" />
+			<columnConfigs>
+				<columnConfig tableName="operation" columnName="operation_id" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="operationJaja">
+			<inheritance parentEntityName="operation" discriminatorValue="a" />
+			<columnConfigs>
+				<columnConfig tableName="operation" columnName="jaja" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="operationJeje">
+			<inheritance parentEntityName="operationJaja" discriminatorValue="e" />
+			<columnConfigs>
+				<columnConfig tableName="operation" columnName="jeje" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig secondaryTableName="extra_operation" entityName="operationJojo">
+			<inheritance parentEntityName="operationJeje" discriminatorValue="o" />
+			<columnConfigs>
+				<columnConfig tableName="extra_operation" columnName="jojo" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="operationJuju">
+			<inheritance parentEntityName="operationJojo" discriminatorValue="u" />
+			<columnConfigs>
+				<columnConfig tableName="extra_operation" columnName="juju" />
+			</columnConfigs>
+		</entityConfig>
+	</entityConfigs>
+</celerio>

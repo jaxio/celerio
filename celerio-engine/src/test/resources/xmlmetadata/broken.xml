@@ -1,0 +1,1140 @@
+<?xml version="1.0"?>
+<ns0:metadata xmlns:ns0="http://jaxio.com/celerio/configuration/database">
+  <ns0:configuration tableNamePattern="%" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="false">
+    <ns0:tableTypes/>
+  </ns0:configuration>
+  <ns0:database databaseMajorVersion="-1" databaseMinorVersion="-1" databaseProductName="Oracle" databaseProductVersion="Oracle9i Enterprise Edition Release 9.2.0.7.0 - 64bit Production
+With the Partitioning option
+JServer Release 9.2.0.7.0 - Production" driverMajorVersion="9" driverMinorVersion="2" driverName="" driverVersion="9.2.0.1.0" extraInfo=""/>
+  <ns0:tables>
+    <ns0:table name="AFN_AFNEMER" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NAAM" nullable="false" ordinalPosition="2" remarks="" size="200" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD_HOGER" nullable="true" ordinalPosition="3" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_VIP" nullable="false" ordinalPosition="4" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_BSN_ONBEP" nullable="false" ordinalPosition="5" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_LHNR_ONBEP" nullable="false" ordinalPosition="6" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_FIAT_NODIG" nullable="false" ordinalPosition="7" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_AUTO_ADMIN" nullable="false" ordinalPosition="8" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'N'" decimalDigits="0" name="IND_IKV_ONBEP" nullable="false" ordinalPosition="9" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="NULL" decimalDigits="0" name="PREFIX_ANTW" nullable="true" ordinalPosition="10" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="NULL" decimalDigits="0" name="PREFIX_VRAAG" nullable="true" ordinalPosition="11" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="KLANT_NR" nullable="true" ordinalPosition="12" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AANSLUITINGSNUMMER" nullable="true" ordinalPosition="13" remarks="" size="15" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LHNR" nullable="true" ordinalPosition="14" remarks="" size="12" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="KVKNR" nullable="true" ordinalPosition="15" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="UGC_ID" nullable="true" ordinalPosition="16" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'J'" decimalDigits="0" name="IND_AFNEMER" nullable="false" ordinalPosition="17" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="NULL" decimalDigits="0" name="IND_LEVERANCIER" nullable="false" ordinalPosition="18" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="AFN_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD_HOGER" indexName="AFN_AFN" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD_HOGER" fkName="AFN_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMERINDICATIE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IKV_ID" nullable="true" ordinalPosition="2" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SOFINR" nullable="true" ordinalPosition="3" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LHNR" nullable="true" ordinalPosition="4" remarks="" size="12" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_NEG" nullable="false" ordinalPosition="5" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_GEN" nullable="false" ordinalPosition="6" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="20060101" decimalDigits="0" name="HIS_DAT_IN" nullable="false" ordinalPosition="7" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="99991231" decimalDigits="0" name="HIS_DAT_END" nullable="false" ordinalPosition="8" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="FIAT_STATUS" nullable="true" ordinalPosition="9" remarks="" size="4" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="SYSTIMESTAMP" decimalDigits="6" name="HIS_TS_IN" nullable="false" ordinalPosition="10" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'31-DEC-9999'" decimalDigits="6" name="HIS_TS_END" nullable="false" ordinalPosition="11" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFNI_ID" nullable="false" ordinalPosition="12" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="13" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="MUT_TS_IN" nullable="true" ordinalPosition="14" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="MUT_TS_END" nullable="true" ordinalPosition="15" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="INDIENER" nullable="true" ordinalPosition="16" remarks="" size="40" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="HIS_TS_SYNC" nullable="true" ordinalPosition="17" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="SOFINR" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="LHNR" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="IKV_ID" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="HIS_DAT_IN" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="HIS_TS_IN" indexName="AFN1_AK" nonUnique="false"/>
+        <ns0:index columnName="AFNI_ID" indexName="AFN1_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AFN1_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AFN1_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFNI_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_ENV" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFNE_ID" nullable="false" ordinalPosition="1" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NAAM" nullable="false" ordinalPosition="2" remarks="" size="50" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="OMS" nullable="true" ordinalPosition="3" remarks="" size="2000" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="4" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFNE_ID" indexName="AFNE_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="AFNE_AFN" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AFNE_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFNE_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_ENV_IP" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFNE_ID" nullable="false" ordinalPosition="1" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IP4" nullable="false" ordinalPosition="2" remarks="" size="15" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFNE_ID" indexName="AFEI_PK" nonUnique="false"/>
+        <ns0:index columnName="IP4" indexName="AFEI_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFNE_ID" fkName="AFEI_AFNEN" pkColumnName="AFNE_ID" pkTableName="AFN_AFNEMER_ENV"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFNE_ID</ns0:primaryKey>
+        <ns0:primaryKey>IP4</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_GEBRUIKER" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="USER_NM" nullable="false" ordinalPosition="2" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'FAA'" decimalDigits="0" name="SYS_NM" nullable="false" ordinalPosition="3" remarks="" size="15" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="USER_NM" indexName="AFNG_AK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="AFNG_PK" nonUnique="false"/>
+        <ns0:index columnName="SYS_NM" indexName="AFNG_PK" nonUnique="false"/>
+        <ns0:index columnName="USER_NM" indexName="AFNG_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AFNG_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="SYS_NM" fkName="AFNG_USER" pkColumnName="SYS_NM" pkTableName="USERX"/>
+        <ns0:importedKey fkColumnName="USER_NM" fkName="AFNG_USER" pkColumnName="USER_NM" pkTableName="USERX"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>SYS_NM</ns0:primaryKey>
+        <ns0:primaryKey>USER_NM</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_LEVERING" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_AKTIEF" nullable="true" ordinalPosition="3" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="AFNL_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="AFNL_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="AFNL_LEVT" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AFNL_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AFNL_LEVT" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_LEVT_COL" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'FAA'" decimalDigits="0" name="SYS_NM" nullable="false" ordinalPosition="3" remarks="" size="15" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RT_NM" nullable="false" ordinalPosition="4" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="COL_NM" nullable="false" ordinalPosition="5" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="COL_ALIAS" nullable="true" ordinalPosition="6" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="VOLGNR" nullable="true" ordinalPosition="7" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="GROEP" nullable="true" ordinalPosition="8" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="TAG" nullable="true" ordinalPosition="9" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="FORMAAT" nullable="true" ordinalPosition="10" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="CONVERSIE" nullable="true" ordinalPosition="11" remarks="" size="255" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="FORMAAT_LEV" nullable="true" ordinalPosition="12" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NS_ID" nullable="true" ordinalPosition="13" remarks="" size="3" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="LEAC_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="LEAC_PK" nonUnique="false"/>
+        <ns0:index columnName="SYS_NM" indexName="LEAC_PK" nonUnique="false"/>
+        <ns0:index columnName="RT_NM" indexName="LEAC_PK" nonUnique="false"/>
+        <ns0:index columnName="COL_NM" indexName="LEAC_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="LEAC_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEAC_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEAC_LEVC" pkColumnName="LEV_CD" pkTableName="AFN_LEVT_COL"/>
+        <ns0:importedKey fkColumnName="SYS_NM" fkName="LEAC_LEVC" pkColumnName="SYS_NM" pkTableName="AFN_LEVT_COL"/>
+        <ns0:importedKey fkColumnName="RT_NM" fkName="LEAC_LEVC" pkColumnName="RT_NM" pkTableName="AFN_LEVT_COL"/>
+        <ns0:importedKey fkColumnName="COL_NM" fkName="LEAC_LEVC" pkColumnName="COL_NM" pkTableName="AFN_LEVT_COL"/>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="LEAC_ALCG" pkColumnName="AFN_CD" pkTableName="AFN_LEVT_COL_GROEP"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEAC_ALCG" pkColumnName="LEV_CD" pkTableName="AFN_LEVT_COL_GROEP"/>
+        <ns0:importedKey fkColumnName="GROEP" fkName="LEAC_ALCG" pkColumnName="GROEP" pkTableName="AFN_LEVT_COL_GROEP"/>
+        <ns0:importedKey fkColumnName="NS_ID" fkName="LEAC_NS" pkColumnName="NS_ID" pkTableName="AFN_NAMESPACE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>COL_NM</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RT_NM</ns0:primaryKey>
+        <ns0:primaryKey>SYS_NM</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_MUT_ABO" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="ABO_ID" nullable="false" ordinalPosition="2" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HIS_DAT_IN" nullable="true" ordinalPosition="3" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HIS_DAT_END" nullable="true" ordinalPosition="4" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="HIS_TS_IN" nullable="true" ordinalPosition="5" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="HIS_TS_END" nullable="true" ordinalPosition="6" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="HIS_TS_SYNC" nullable="true" ordinalPosition="7" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_GEN" nullable="true" ordinalPosition="8" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="9" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ABO_ID" indexName="AMA_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="AMA_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="AMA_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="AMA_AFNL" nonUnique="true"/>
+        <ns0:index columnName="LEV_CD" indexName="AMA_AFNL" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AMA_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AMA_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AMA_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="ABO_ID" fkName="AMA_ABO" pkColumnName="ABO_ID" pkTableName="AFN_MUT_ABO"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ABO_ID</ns0:primaryKey>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="RULE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="RULE_ID" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+          </ns0:column>
+      </ns0:columns>
+            <ns0:index>
+      </ns0:index>
+      <ns0:importedKeys>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+      </ns0:primaryKeys>
+
+    </ns0:table>
+    
+    <ns0:table name="AFN_AFNEMER_RULE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RULE_ID" nullable="false" ordinalPosition="2" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_FILTER" nullable="false" ordinalPosition="3" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SIGNALERING_METHODE" nullable="false" ordinalPosition="4" remarks="" size="2" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="AFNR_PK" nonUnique="false"/>
+        <ns0:index columnName="RULE_ID" indexName="AFNR_PK" nonUnique="false"/>
+        <ns0:index columnName="RULE_ID" indexName="AFNR_RULE" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="AFNR_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="RULE_ID" fkName="AFNR_RULE" pkColumnName="RULE_ID" pkTableName="RULE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>RULE_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_AFNEMER_RULE_LEVT" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RULE_ID" nullable="false" ordinalPosition="2" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="3" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_FILTER" nullable="false" ordinalPosition="4" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SIGNALERING_METHODE" nullable="false" ordinalPosition="5" remarks="" size="2" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="RULE_ID" indexName="ARLT_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD" indexName="ARLT_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="ARLT_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="ARLT_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="ARLT_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="ARLT_RULE" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_RULE"/>
+        <ns0:importedKey fkColumnName="RULE_ID" fkName="ARLT_RULE" pkColumnName="RULE_ID" pkTableName="AFN_AFNEMER_RULE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RULE_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_CONTRACT" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="CONTRACT_ID" nullable="false" ordinalPosition="1" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD_AFNEMER" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HIS_DAT_IN" nullable="false" ordinalPosition="3" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'99991231' " decimalDigits="0" name="HIS_DAT_END" nullable="false" ordinalPosition="4" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="5" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="NULL" decimalDigits="0" name="STATUS" nullable="false" ordinalPosition="6" remarks="" size="2" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD_LEVERANCIER" nullable="true" ordinalPosition="7" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="CONTRACT_ID" indexName="AFN2_PK" nonUnique="false"/>
+        <ns0:index columnName="HIS_DAT_IN" indexName="AFN2_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CD_AFNEMER" indexName="AFN2_AFN" nonUnique="true"/>
+        <ns0:index columnName="AFN_CD_LEVERANCIER" indexName="AFN2_AFN_LCI" nonUnique="true"/>
+        <ns0:index columnName="LEV_CD" indexName="AFN2_LEV" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD_AFNEMER" fkName="AFN2_AFN" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="AFN_CD_LEVERANCIER" fkName="AFN2_AFN_LCI" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AFN2_LEV" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>CONTRACT_ID</ns0:primaryKey>
+        <ns0:primaryKey>HIS_DAT_IN</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_ENV_LEVERING" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFNE_ID" nullable="false" ordinalPosition="1" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFNE_ID" indexName="AFEL_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="AFEL_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFNE_ID" fkName="AFEL_AFEI" pkColumnName="AFNE_ID" pkTableName="AFN_AFNEMER_ENV"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AFEL_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFNE_ID</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_LEVERING" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="RUN_TS" nullable="false" ordinalPosition="3" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="TS_GELEVERD" nullable="true" ordinalPosition="4" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="OMS" nullable="true" ordinalPosition="5" remarks="" size="255" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="VOLGNR" nullable="true" ordinalPosition="6" remarks="" size="6" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="BESTANDSNAAM" nullable="true" ordinalPosition="7" remarks="" size="255" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="STATUS" nullable="true" ordinalPosition="8" remarks="" size="6" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_AKTIEF" nullable="true" ordinalPosition="9" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="LEV_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="LEV_PK" nonUnique="false"/>
+        <ns0:index columnName="RUN_TS" indexName="LEV_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="LEV_LEVR" nonUnique="true"/>
+        <ns0:index columnName="RUN_TS" indexName="LEV_LEVR" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="LEV_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEV_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEV_LEVR" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_RUN"/>
+        <ns0:importedKey fkColumnName="RUN_TS" fkName="LEV_LEVR" pkColumnName="RUN_TS" pkTableName="AFN_LEVERING_RUN"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RUN_TS</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_LEVERING_RUN" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="RUN_TS" nullable="false" ordinalPosition="2" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="BATC_ID" nullable="true" ordinalPosition="3" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PARAMETERS" nullable="true" ordinalPosition="4" remarks="" size="4000" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="BESTANDSNAAM" nullable="true" ordinalPosition="5" remarks="" size="255" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LEV_CD" indexName="LEVR_PK" nonUnique="false"/>
+        <ns0:index columnName="RUN_TS" indexName="LEVR_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEVR_LEVT" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+        <ns0:importedKey fkColumnName="BATC_ID" fkName="LEVR_BATC" pkColumnName="ID" pkTableName="BATCH_STATUS"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RUN_TS</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="BATCH_STATUS" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ID" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+          </ns0:column>
+      </ns0:columns>
+            <ns0:index>
+      </ns0:index>
+      <ns0:importedKeys>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+      </ns0:primaryKeys>
+
+    </ns0:table>
+    
+    <ns0:table name="AFN_LEVERING_TYPE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NAAM" nullable="false" ordinalPosition="2" remarks="" size="200" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HIS_DAT_IN" nullable="true" ordinalPosition="3" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HIS_DAT_END" nullable="true" ordinalPosition="4" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'O'" decimalDigits="0" name="SOORT" nullable="false" ordinalPosition="5" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PERIODE" nullable="true" ordinalPosition="6" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="STANDVW_TEMPLATE" nullable="true" ordinalPosition="7" remarks="" size="4000" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="MUTVW_TEMPLATE" nullable="true" ordinalPosition="8" remarks="" size="4000" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="IND_AKTIEF" nullable="true" ordinalPosition="9" remarks="" size="1" type="CHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="APP_ROLE" nullable="false" ordinalPosition="10" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LEV_CD" indexName="LEVT_PK" nonUnique="false"/>
+        <ns0:index columnName="APP_ROLE" indexName="LEV_AK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_LEVER_KALENDER" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="6" name="RUN_TS" nullable="false" ordinalPosition="2" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LEV_CD" indexName="AFNK_PK" nonUnique="false"/>
+        <ns0:index columnName="RUN_TS" indexName="AFNK_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="AFNK_LEVT" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RUN_TS</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_LEVT_COL" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="'FAA'" decimalDigits="0" name="SYS_NM" nullable="false" ordinalPosition="2" remarks="" size="15" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RT_NM" nullable="false" ordinalPosition="3" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="COL_NM" nullable="false" ordinalPosition="4" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="VOLGNR" nullable="true" ordinalPosition="5" remarks="" size="9" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LEV_CD" indexName="LEVC_PK" nonUnique="false"/>
+        <ns0:index columnName="SYS_NM" indexName="LEVC_PK" nonUnique="false"/>
+        <ns0:index columnName="RT_NM" indexName="LEVC_PK" nonUnique="false"/>
+        <ns0:index columnName="COL_NM" indexName="LEVC_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="LEVC_LEVT" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+        <ns0:importedKey fkColumnName="SYS_NM" fkName="LEVC_COL" pkColumnName="SYS_NM" pkTableName="COLUMNX"/>
+        <ns0:importedKey fkColumnName="RT_NM" fkName="LEVC_COL" pkColumnName="RT_NM" pkTableName="COLUMNX"/>
+        <ns0:importedKey fkColumnName="COL_NM" fkName="LEVC_COL" pkColumnName="COL_NM" pkTableName="COLUMNX"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>COL_NM</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+        <ns0:primaryKey>RT_NM</ns0:primaryKey>
+        <ns0:primaryKey>SYS_NM</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_LEVT_COL_GROEP" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CD" nullable="false" ordinalPosition="1" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="false" ordinalPosition="2" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="GROEP" nullable="false" ordinalPosition="3" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="TAG" nullable="true" ordinalPosition="4" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NS_ID" nullable="true" ordinalPosition="5" remarks="" size="3" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="GROEP_HOGER" nullable="true" ordinalPosition="6" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="VOLGNR" nullable="true" ordinalPosition="7" remarks="" size="6" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="CONDITION" nullable="true" ordinalPosition="8" remarks="" size="2000" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="AFN_CD" indexName="ALCG_PK" nonUnique="false"/>
+        <ns0:index columnName="LEV_CD" indexName="ALCG_PK" nonUnique="false"/>
+        <ns0:index columnName="GROEP" indexName="ALCG_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="ALCG_AFNL" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="ALCG_AFNL" pkColumnName="LEV_CD" pkTableName="AFN_AFNEMER_LEVERING"/>
+        <ns0:importedKey fkColumnName="AFN_CD" fkName="ALCG_ALCG" pkColumnName="AFN_CD" pkTableName="AFN_LEVT_COL_GROEP"/>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="ALCG_ALCG" pkColumnName="LEV_CD" pkTableName="AFN_LEVT_COL_GROEP"/>
+        <ns0:importedKey fkColumnName="GROEP_HOGER" fkName="ALCG_ALCG" pkColumnName="GROEP" pkTableName="AFN_LEVT_COL_GROEP"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>AFN_CD</ns0:primaryKey>
+        <ns0:primaryKey>GROEP</ns0:primaryKey>
+        <ns0:primaryKey>LEV_CD</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_MUT_ABO" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ABO_ID" nullable="false" ordinalPosition="1" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="DESCR" nullable="false" ordinalPosition="2" remarks="" size="80" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LEV_CD" nullable="true" ordinalPosition="3" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ABO_ID" indexName="ABO_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="LEV_CD" fkName="ABO_LEVT" pkColumnName="LEV_CD" pkTableName="AFN_LEVERING_TYPE"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ABO_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_MUT_ABO_COL" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ABO_ID" nullable="false" ordinalPosition="1" remarks="" size="12" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SYS_NM" nullable="false" ordinalPosition="2" remarks="" size="15" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RT_NM" nullable="false" ordinalPosition="3" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="COL_NM" nullable="false" ordinalPosition="4" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ABO_ID" indexName="ABOC_PK" nonUnique="false"/>
+        <ns0:index columnName="SYS_NM" indexName="ABOC_PK" nonUnique="false"/>
+        <ns0:index columnName="RT_NM" indexName="ABOC_PK" nonUnique="false"/>
+        <ns0:index columnName="COL_NM" indexName="ABOC_PK" nonUnique="false"/>
+        <ns0:index columnName="SYS_NM" indexName="ABOC_COL" nonUnique="true"/>
+        <ns0:index columnName="RT_NM" indexName="ABOC_COL" nonUnique="true"/>
+        <ns0:index columnName="COL_NM" indexName="ABOC_COL" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="ABO_ID" fkName="ABOC_ABO" pkColumnName="ABO_ID" pkTableName="AFN_MUT_ABO"/>
+        <ns0:importedKey fkColumnName="SYS_NM" fkName="ABOC_COL" pkColumnName="SYS_NM" pkTableName="COLUMNX"/>
+        <ns0:importedKey fkColumnName="RT_NM" fkName="ABOC_COL" pkColumnName="RT_NM" pkTableName="COLUMNX"/>
+        <ns0:importedKey fkColumnName="COL_NM" fkName="ABOC_COL" pkColumnName="COL_NM" pkTableName="COLUMNX"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ABO_ID</ns0:primaryKey>
+        <ns0:primaryKey>COL_NM</ns0:primaryKey>
+        <ns0:primaryKey>RT_NM</ns0:primaryKey>
+        <ns0:primaryKey>SYS_NM</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="AFN_NAMESPACE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="NS_ID" nullable="false" ordinalPosition="1" remarks="" size="3" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="URI" nullable="false" ordinalPosition="2" remarks="" size="255" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="DEFAULT_PREFIX" nullable="false" ordinalPosition="3" remarks="" size="20" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="NS_ID" indexName="NS_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>NS_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="GSDIB_BULK_HEADER" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ID" nullable="false" ordinalPosition="1" remarks="" size="22" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFZENDER" nullable="false" ordinalPosition="2" remarks="" size="4" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="GEADRESSEERD" nullable="false" ordinalPosition="3" remarks="" size="4" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="BER_REF" nullable="false" ordinalPosition="4" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="CD_TYPE" nullable="false" ordinalPosition="5" remarks="" size="4" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="MAJOR" nullable="false" ordinalPosition="6" remarks="" size="4" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="MINOR" nullable="false" ordinalPosition="7" remarks="" size="4" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="DAT_AANMAAK" nullable="true" ordinalPosition="8" remarks="" size="7" type="TIMESTAMP">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="STATUS" nullable="true" ordinalPosition="9" remarks="" size="10" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="systimestamp " decimalDigits="6" name="TS_IN" nullable="false" ordinalPosition="10" remarks="" size="11" type="OTHER">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ID" indexName="SYS_C0016738" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="GSDIB_BULK_NPN" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ID" nullable="false" ordinalPosition="1" remarks="" size="22" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="GBH_ID" nullable="false" ordinalPosition="2" remarks="" size="22" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="BSN" nullable="false" ordinalPosition="3" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="DATAANV" nullable="true" ordinalPosition="4" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="DATEIND" nullable="true" ordinalPosition="5" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ID" indexName="SYS_C0016741" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="GBH_ID" fkName="GSDIB_BULK_NPN_FK1" pkColumnName="ID" pkTableName="GSDIB_BULK_HEADER"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="GSDIB_JOIN" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="ID" nullable="false" ordinalPosition="1" remarks="" size="22" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SOFINR" nullable="true" ordinalPosition="2" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="USER_NAME" nullable="false" ordinalPosition="3" remarks="" size="30" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="START_DATE" nullable="true" ordinalPosition="4" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="END_DATE" nullable="true" ordinalPosition="5" remarks="" size="8" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="ID" indexName="SYS_C0011629" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="GSD_IB_AEH_BULK_TB" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LOONBELASTINGNUMMER" nullable="false" ordinalPosition="1" remarks="" size="48" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AEH_NAAM" nullable="true" ordinalPosition="2" remarks="" size="872" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AEH_DATA" nullable="false" ordinalPosition="3" remarks="" size="7" type="TIMESTAMP">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AEH_DATE" nullable="true" ordinalPosition="4" remarks="" size="7" type="TIMESTAMP">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="ADR_DATA" nullable="true" ordinalPosition="5" remarks="" size="7" type="TIMESTAMP">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="ADR_DATE" nullable="true" ordinalPosition="6" remarks="" size="7" type="TIMESTAMP">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="ADR_TYPE" nullable="true" ordinalPosition="7" remarks="" size="40" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="ADRES_ROL" nullable="true" ordinalPosition="8" remarks="" size="4" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_STRAATNAAM" nullable="true" ordinalPosition="9" remarks="" size="96" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_HUISNUMMER" nullable="true" ordinalPosition="10" remarks="" size="5" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_HUISNUMMER_TOEVOEGING" nullable="true" ordinalPosition="11" remarks="" size="16" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_POSTCODE" nullable="true" ordinalPosition="12" remarks="" size="24" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_WOONPLAATSNAAM" nullable="true" ordinalPosition="13" remarks="" size="96" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_GEMEENTENAAM" nullable="true" ordinalPosition="14" remarks="" size="96" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_LOCATIE_OMSCHRIJVING" nullable="true" ordinalPosition="15" remarks="" size="280" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_WOONWAGENVERWIJZING" nullable="true" ordinalPosition="16" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SAN_WOONBOOTVERWIJZING" nullable="true" ordinalPosition="17" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PAN_POSTBUSNUMMER" nullable="true" ordinalPosition="18" remarks="" size="5" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PAN_POSTCODE" nullable="true" ordinalPosition="19" remarks="" size="24" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PAN_WOONPLAATSNAAM" nullable="true" ordinalPosition="20" remarks="" size="96" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PAN_GEMEENTENAAM" nullable="true" ordinalPosition="21" remarks="" size="96" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PAN_LOCATIE_OMSCHRIJVING" nullable="true" ordinalPosition="22" remarks="" size="280" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="RANG" nullable="true" ordinalPosition="23" remarks="" size="22" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LOONBELASTINGNUMMER" indexName="QQQ" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>LOONBELASTINGNUMMER</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="PC_RANGE" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="VEST_ID" nullable="false" ordinalPosition="1" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PROD_ID" nullable="false" ordinalPosition="2" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PC_BEGIN" nullable="false" ordinalPosition="3" remarks="" size="6" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PC_EIND" nullable="false" ordinalPosition="4" remarks="" size="6" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="PROD_ID" indexName="PCRANG_PK" nonUnique="false"/>
+        <ns0:index columnName="VEST_ID" indexName="PCRANG_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="VEST_ID" fkName="PCRAN_VP_FK" pkColumnName="VEST_ID" pkTableName="VEST_PROD"/>
+        <ns0:importedKey fkColumnName="PROD_ID" fkName="PCRAN_VP_FK" pkColumnName="PROD_ID" pkTableName="VEST_PROD"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>PROD_ID</ns0:primaryKey>
+        <ns0:primaryKey>VEST_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="PRODUCT" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="PROD_ID" nullable="false" ordinalPosition="1" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="NAAM" nullable="false" ordinalPosition="2" remarks="" size="200" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="SRTIV" nullable="false" ordinalPosition="3" remarks="" size="2" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="PROD_ID" indexName="PROD_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>PROD_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="SNG_LHNR_SPECIAL" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="LHNR" nullable="false" ordinalPosition="1" remarks="" size="12" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="LHNR" indexName="SNG_LHNR_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys/>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>LHNR</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="VESTIGING" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="VEST_ID" nullable="false" ordinalPosition="1" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="STRAAT" nullable="true" ordinalPosition="2" remarks="" size="24" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HUISNR" nullable="true" ordinalPosition="3" remarks="" size="12" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="HUISNR_TOEV" nullable="true" ordinalPosition="4" remarks="" size="4" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="POSTCODE" nullable="false" ordinalPosition="5" remarks="" size="6" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="OMSCHRIJVING" nullable="true" ordinalPosition="6" remarks="" size="400" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PANDCODE" nullable="true" ordinalPosition="7" remarks="" size="6" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CODE" nullable="true" ordinalPosition="8" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PANDNUMMER" nullable="false" ordinalPosition="9" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="LOCATIE_NUMMER" nullable="false" ordinalPosition="10" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PLAATS" nullable="false" ordinalPosition="11" remarks="" size="60" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="VEST_ID" indexName="VEST_PK" nonUnique="false"/>
+        <ns0:index columnName="AFN_CODE" indexName="VESTAFN_FK" nonUnique="true"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="AFN_CODE" fkName="VESTAFN_FK" pkColumnName="AFN_CD" pkTableName="AFN_AFNEMER"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>VEST_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+    <ns0:table name="VEST_PROD" remarks="" type="TABLE">
+      <ns0:columns>
+        <ns0:column columnDef="" decimalDigits="0" name="VEST_ID" nullable="false" ordinalPosition="1" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="PROD_ID" nullable="false" ordinalPosition="2" remarks="" size="10" type="DECIMAL">
+          <ns0:enumValues/>
+        </ns0:column>
+        <ns0:column columnDef="" decimalDigits="0" name="AFN_CODE" nullable="false" ordinalPosition="3" remarks="" size="8" type="VARCHAR">
+          <ns0:enumValues/>
+        </ns0:column>
+      </ns0:columns>
+      <ns0:index>
+        <ns0:index columnName="VEST_ID" indexName="VESTPROD_PK" nonUnique="false"/>
+        <ns0:index columnName="PROD_ID" indexName="VESTPROD_PK" nonUnique="false"/>
+      </ns0:index>
+      <ns0:importedKeys>
+        <ns0:importedKey fkColumnName="VEST_ID" fkName="VP_VEST_FK" pkColumnName="VEST_ID" pkTableName="VESTIGING"/>
+      </ns0:importedKeys>
+      <ns0:primaryKeys>
+        <ns0:primaryKey>PROD_ID</ns0:primaryKey>
+        <ns0:primaryKey>VEST_ID</ns0:primaryKey>
+      </ns0:primaryKeys>
+    </ns0:table>
+  </ns0:tables>
+</ns0:metadata>

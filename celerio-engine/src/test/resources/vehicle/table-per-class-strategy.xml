@@ -1,0 +1,47 @@
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
+
+	<configuration rootPackage="coooo" associationDirection="FORWARD_ONLY">
+		<conventions>
+			<classTypes>
+				<classType classType="model" suffix="" />
+			</classTypes>
+		</conventions>
+	</configuration>
+	
+	<entityConfigs>
+		<entityConfig tableName="vehicle">
+			<inheritance discriminatorColumn="discriminator" strategy="SINGLE_TABLE" />
+			<columnConfigs>
+				<columnConfig tableName="vehicle" columnName="vehicle_id" />
+				<columnConfig tableName="vehicle" columnName="name" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="air">
+			<inheritance parentEntityName="vehicle" discriminatorValue="air" />
+			<columnConfigs>
+				<columnConfig tableName="vehicle" columnName="air_specific" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="road">
+			<inheritance parentEntityName="vehicle" discriminatorValue="road" />
+			<columnConfigs>
+				<columnConfig tableName="vehicle" columnName="road_specific" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig entityName="twotires">
+			<inheritance parentEntityName="road" discriminatorValue="twotires" />
+			<columnConfigs>
+				<columnConfig tableName="vehicle" columnName="twotires_specific" />
+			</columnConfigs>
+		</entityConfig>
+
+		<entityConfig tableName="car_driver">
+			<columnConfigs>
+				<columnConfig tableName="car_driver" columnName="favorite_car_id" targetEntityName="road" associationDirection="BIDIRECTIONAL" />
+			</columnConfigs>
+		</entityConfig>
+	</entityConfigs>
+</celerio>

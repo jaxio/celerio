@@ -1,0 +1,3 @@
+name=inheritance
+description=A sample schema and conf with JPA inheritance
+description2=illustrate SINGLE_TABLE, JOINED strategy. 
