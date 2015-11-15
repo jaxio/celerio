@@ -24,6 +24,9 @@ import com.jaxio.celerio.configuration.support.MetadataLoader;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -41,121 +44,103 @@ import static org.apache.commons.io.FilenameUtils.normalize;
  * information returned by the JDBC driver into an XML file (see the documentation of the <a
  * href="http://java.sun.com/j2se/1.4.2/docs/api/java/sql/DatabaseMetaData.html">java.sql.DatabaseMetaData</a> for more information).
  * <p>
- * The <code>metadata.xml</code> file produced by this plugin is used by Celerio's generate goal. Please refer to the <div class="xref"
- * linkend="celerio.generate">celerio.generate</div>.
+ * The <code>metadata.xml</code> file produced by this plugin is used by Celerio's generate goal. Please refer to the celerio.generate.
  *
- * @goal extract-metadata
- * @phase generate-sources
- * @requiresProject false
  * @since 3.0.0
  */
+@Mojo(name = "extract-metadata", defaultPhase = LifecyclePhase.GENERATE_RESOURCES, requiresProject = false)
 public class DbMetadataMojo extends AbstractMojo {
 
     /**
      * Maven project, this is by default the current Maven project.
-     *
-     * @parameter property="project"
-     * @readonly
      */
+    @Parameter(property = "project", readonly = true)
     protected MavenProject project;
 
     /**
      * Should the database meta data extraction be skipped ?
      * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
-     *
-     * @parameter property="celerio-maven-plugin.skip" default-value="false"
      */
+    @Parameter(property = "celerio-maven-plugin.skip", defaultValue = "false")
     protected boolean skip;
 
     /**
      * Specify the JDBC driver class.
      * <p>
      * Example: <code>org.postgresql.Driver</code>
-     *
-     * @parameter property="jdbc.driver"
      */
+    @Parameter(property = "jdbc.driver")
     protected String jdbcDriver;
 
     /**
      * Specify the JDBC url to connect to your database. Make sure that you connect with enough privileges to access the meta data information.
      * <p>
      * Example: <code>jdbc:h2:~/.h2/sampledatabase</code>
-     *
-     * @parameter property="jdbc.url"
      */
+    @Parameter(property = "jdbc.url")
     protected String jdbcUrl;
 
     /**
      * Specify the JDBC user, this user needs to have the privilege to access the database metadata.
-     *
-     * @parameter property="jdbc.user"
      */
+    @Parameter(property = "jdbc.user")
     protected String jdbcUser;
 
     /**
      * Specify the JDBC password.
-     *
-     * @parameter property="jdbc.password"
      */
+    @Parameter(property = "jdbc.password")
     protected String jdbcPassword;
 
     /**
      * Specify the JDBC catalog.
-     *
-     * @parameter property="jdbc.catalog"
      */
+    @Parameter(property = "jdbc.catalog")
     protected String jdbcCatalog;
 
     /**
      * Should the Oracle remarks be retrieved ? Please note that this will impact the speed of the reverse engineering of your database.
-     *
-     * @parameter property="jdbc.oracleRetrieveRemarks" default-value="false"
      */
+    @Parameter(property = "jdbc.oracleRetrieveRemarks", defaultValue = "false")
     protected boolean jdbcOracleRetrieveRemarks;
 
     /**
      * Should the synonyms be retrieved ?
-     *
-     * @parameter property="jdbc.oracleRetrieveSynonyms" default-value="true"
      */
+    @Parameter(property = "jdbc.oracleRetrieveSynonyms", defaultValue = "true")
     protected boolean jdbcOracleRetrieveSynonyms;
 
     /**
      * When false, disable completely reverse of indexes.
      * Can be useful when reversing large database full of data as reversing indexes can be slow.
-     *
-     * @parameter property="jdbc.reverseIndexes" default-value="true"
      */
+    @Parameter(property = "jdbc.reverseIndexes", defaultValue = "true")
     protected boolean reverseIndexes;
 
     /**
      * When true, reverse only indexes for unique values; when false, reverse indexes regardless of whether unique or not.
      * Can be useful when reversing large database full of data as reversing indexes can be slow.
-     *
-     * @parameter property="jdbc.reverseOnlyUniqueIndexes" default-value="true"
      */
+    @Parameter(property = "jdbc.reverseOnlyUniqueIndexes", defaultValue = "true")
     protected boolean reverseOnlyUniqueIndexes;
 
     /**
      * Should we also reverse VIEWS?
-     *
-     * @parameter property="jdbc.reverseViews" default-value="false"
      */
+    @Parameter(property = "jdbc.reverseViews", defaultValue = "false")
     protected boolean jdbcReverseViews;
 
     /**
      * Specify the JDBC schema.
-     *
-     * @parameter property="jdbc.schema"
      */
+    @Parameter(property = "jdbc.schema")
     protected String jdbcSchema;
 
     /**
      * The fully qualified name of the XML file created by this plugin.
-     *
-     * @parameter property="maven-metadata-plugin.targetFilename" default-value="${basedir}/src/main/config/celerio-maven-plugin/metadata.xml"
      */
+    @Parameter(property = "maven-metadata-plugin.targetFilename", defaultValue = "${basedir}/src/main/config/celerio-maven-plugin/metadata.xml")
     protected String targetFilename;
 
     protected ApplicationContext context;
