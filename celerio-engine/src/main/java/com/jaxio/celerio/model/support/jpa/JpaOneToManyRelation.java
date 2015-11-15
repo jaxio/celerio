@@ -16,18 +16,14 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.hasTrueOrphanRemoval;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaCascade;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaFetch;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.orderByAnnotation;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.orphanRemoval;
-
-import java.util.List;
-
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.spi.support.AbstractRelationSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
+
+import java.util.List;
+
+import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.*;
 
 public class JpaOneToManyRelation extends AbstractRelationSpi {
 
@@ -66,7 +62,7 @@ public class JpaOneToManyRelation extends AbstractRelationSpi {
         ab.add(getOneToManyCascade());
         return ab.bindAttributesTo("@OneToMany");
     }
-    
+
     public String getOrderByAnnotation() {
         return orderByAnnotation(this, //
                 relation.getInverse().getFromAttribute().getColumnConfig().getOneToManyConfig(), //
@@ -78,7 +74,7 @@ public class JpaOneToManyRelation extends AbstractRelationSpi {
                 relation.getFromAttribute().getColumnConfig().getOneToManyConfig(), relation.getFromEntity().getConfig().getCelerio().getConfiguration()
                         .getDefaultOneToManyConfig());
     }
-    
+
     public boolean getHasTrueOrphanRemoval() {
         return hasTrueOrphanRemoval( //
                 relation.getInverse().getFromAttribute().getColumnConfig().getOneToManyConfig(), //

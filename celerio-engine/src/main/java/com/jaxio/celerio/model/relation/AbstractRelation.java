@@ -16,20 +16,6 @@
 
 package com.jaxio.celerio.model.relation;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import lombok.Getter;
-import lombok.Setter;
-
-import org.apache.commons.lang.NotImplementedException;
-
 import com.google.common.base.Preconditions;
 import com.jaxio.celerio.configuration.entity.CascadeGetter;
 import com.jaxio.celerio.configuration.entity.FetchTypeGetter;
@@ -39,6 +25,14 @@ import com.jaxio.celerio.model.AttributePair;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.util.Labels;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang.NotImplementedException;
+
+import java.util.*;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
 
 public abstract class AbstractRelation implements Relation, Map<String, Object> {
     @Getter
@@ -148,7 +142,7 @@ public abstract class AbstractRelation implements Relation, Map<String, Object> 
     public boolean isIntermediate() {
         return false;
     }
-    
+
     @Override
     public boolean isComposite() {
         return false;
@@ -161,19 +155,19 @@ public abstract class AbstractRelation implements Relation, Map<String, Object> 
 
     @Override
     public Entity getMiddleEntity() {
-        throw new IllegalStateException("Only intermediate Relation provide this method.");        
+        throw new IllegalStateException("Only intermediate Relation provide this method.");
     }
 
     @Override
     public Relation getMiddleToLeft() {
-        throw new IllegalStateException("Only intermediate Relation provide this method.");        
+        throw new IllegalStateException("Only intermediate Relation provide this method.");
     }
 
     @Override
     public Relation getMiddleToRight() {
-        throw new IllegalStateException("Only intermediate Relation provide this method.");        
+        throw new IllegalStateException("Only intermediate Relation provide this method.");
     }
-    
+
     @Override
     public boolean isCollection() {
         return false;
@@ -323,8 +317,8 @@ public abstract class AbstractRelation implements Relation, Map<String, Object> 
     @Setter
     @Getter
     private boolean genRemove = true;
-    
-    
+
+
     // ------------------------------------
     // SPI are put in a Map so we can access
     // from velocity templates as if we had getter.

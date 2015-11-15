@@ -23,23 +23,23 @@ import com.jaxio.celerio.template.ImportsContext;
 
 public abstract class AbstractEntitySpi implements EntitySpi, PackageImportAdder {
     protected Entity entity;
-    
+
     @Override
     public void init(Entity entity) {
         this.entity = entity;
     }
-    
+
     @Override
     public void addImport(String fullType) {
         if (!ImportsContext.isExtendedByUser()) {
             ImportsContext.addImport(fullType);
         }
     }
-    
+
     protected String appendComment(String annotation) {
         if (ImportsContext.isExtendedByUser()) {
             return "// (uncomment it in subclass) " + annotation;
         }
         return annotation;
-    }   
+    }
 }

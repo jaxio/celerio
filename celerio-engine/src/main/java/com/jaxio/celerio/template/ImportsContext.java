@@ -17,7 +17,7 @@
 package com.jaxio.celerio.template;
 
 /**
- * Holds the {@link ImportsHolder} and the <code>isExtendedByUser</code> boolean that are used 
+ * Holds the {@link ImportsHolder} and the <code>isExtendedByUser</code> boolean that are used
  * during a Java template evaluation.
  */
 public class ImportsContext {
@@ -46,14 +46,14 @@ public class ImportsContext {
     public static void setIsExtendedByUser(boolean value) {
         isExtendedByUser.set(value);
     }
-    
+
     /**
      * @see ImportsHolder#add(String)
      */
     public static void addImport(String fullType) {
         getCurrentImportsHolder().add(fullType);
     }
-    
+
 
     /**
      * Whether the current generated java class is taken over by the end developer.

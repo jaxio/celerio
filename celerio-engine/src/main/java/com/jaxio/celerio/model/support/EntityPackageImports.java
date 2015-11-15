@@ -24,7 +24,7 @@ import com.jaxio.celerio.util.support.ListGetter;
 /**
  * Enable you to retrieve {@link PackageImport} required by the entity's ancestors,
  * the entity's descendants or simply the whole entity's family tree.
- *
+ * <p>
  * Note that this class is just a strongly typed {@link CurrentAndFlatListHolder}.
  * It is intended to reduce the definition of {@link PackageImport} lists in the entity object.
  */

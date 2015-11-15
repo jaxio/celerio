@@ -16,10 +16,10 @@
 
 package com.jaxio.celerio.maven.plugin.celerio;
 
+import org.junit.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.junit.Test;
 
 public class ExpirationTest {
 

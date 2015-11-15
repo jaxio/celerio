@@ -16,9 +16,8 @@
 
 package com.jaxio.celerio.model.support;
 
-import lombok.Data;
-
 import com.jaxio.celerio.model.Attribute;
+import lombok.Data;
 
 @Data
 public class AuditEntityAttribute {

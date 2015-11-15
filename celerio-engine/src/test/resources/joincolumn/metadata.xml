@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns="http://www.jaxio.com/schema/celerio">
-  <jdbcConnectivity driver="org.h2.Driver" password="appName" url="jdbc:h2:~/.h2/appName" user="appName" tableNamePattern="%" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="true">
-    <tableTypes>
-      <tableType>TABLE</tableType>
-    </tableTypes>
-  </jdbcConnectivity>
-  <databaseInfo databaseMajorVersion="1" databaseMinorVersion="2" databaseProductName="H2" databaseProductVersion="1.2.125 (2009-12-06)" driverMajorVersion="1" driverMinorVersion="2" driverName="H2 JDBC Driver" driverVersion="1.2.125 (2009-12-06)" extraInfo=""/>
-  <tables>
-    <table name="ACCOUNT" type="TABLE">
-      <columns>
-        <column decimalDigits="0" name="ACCOUNT_ID" nullable="false" ordinalPosition="1" size="32" type="CHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="LOGIN" nullable="false" ordinalPosition="2" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="PASSWORD" nullable="false" ordinalPosition="3" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="EMAIL" nullable="false" ordinalPosition="4" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="IS_ENABLED" nullable="true" ordinalPosition="5" size="1" type="BOOLEAN">
-          <enumValues/>
-        </column>
-        <column decimalDigits="10" name="BIRTH_DATE" nullable="true" ordinalPosition="6" size="23" type="TIMESTAMP">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="CIVILITY" nullable="true" ordinalPosition="7" size="2" type="CHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="FIRST_NAME" nullable="true" ordinalPosition="8" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="LAST_NAME" nullable="true" ordinalPosition="9" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-        <column columnDef="0" decimalDigits="0" name="VERSION" nullable="true" ordinalPosition="10" size="5" type="SMALLINT">
-          <enumValues/>
-        </column>
-      </columns>
-      <indexes>
-        <indexe columnName="LOGIN" indexName="ACCOUNT_UNIQUE_1_INDEX_E" nonUnique="false"/>
-        <indexe columnName="EMAIL" indexName="ACCOUNT_UNIQUE_2_INDEX_E" nonUnique="false"/>
-        <indexe columnName="ACCOUNT_ID" indexName="PRIMARY_KEY_E" nonUnique="false"/>
-      </indexes>
-      <importedKeys/>
-      <primaryKeys>
-        <primaryKey>ACCOUNT_ID</primaryKey>
-      </primaryKeys>
-    </table>
-    <table name="ADMINISTRATIVE_ACCOUNT" type="TABLE">
-      <columns>
-        <column decimalDigits="0" name="ADMINISTRATIVE_ACCOUNT_ID" nullable="false" ordinalPosition="1" size="32" type="CHAR">
-          <enumValues/>
-        </column>
-        <column decimalDigits="0" name="LOGIN" nullable="false" ordinalPosition="2" size="255" type="VARCHAR">
-          <enumValues/>
-        </column>
-      </columns>
-      <indexes>
-        <indexe columnName="ADMINISTRATIVE_ACCOUNT_ID" indexName="PRIMARY_KEY_B" nonUnique="false"/>
-      </indexes>
-      <importedKeys/>
-      <primaryKeys>
-        <primaryKey>ADMINISTRATIVE_ACCOUNT_ID</primaryKey>
-      </primaryKeys>
-    </table>
-  </tables>
+    <jdbcConnectivity driver="org.h2.Driver" password="appName" url="jdbc:h2:~/.h2/appName" user="appName"
+                      tableNamePattern="%" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="true">
+        <tableTypes>
+            <tableType>TABLE</tableType>
+        </tableTypes>
+    </jdbcConnectivity>
+    <databaseInfo databaseMajorVersion="1" databaseMinorVersion="2" databaseProductName="H2"
+                  databaseProductVersion="1.2.125 (2009-12-06)" driverMajorVersion="1" driverMinorVersion="2"
+                  driverName="H2 JDBC Driver" driverVersion="1.2.125 (2009-12-06)" extraInfo=""/>
+    <tables>
+        <table name="ACCOUNT" type="TABLE">
+            <columns>
+                <column decimalDigits="0" name="ACCOUNT_ID" nullable="false" ordinalPosition="1" size="32" type="CHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="LOGIN" nullable="false" ordinalPosition="2" size="255" type="VARCHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="PASSWORD" nullable="false" ordinalPosition="3" size="255"
+                        type="VARCHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="EMAIL" nullable="false" ordinalPosition="4" size="255" type="VARCHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="IS_ENABLED" nullable="true" ordinalPosition="5" size="1" type="BOOLEAN">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="10" name="BIRTH_DATE" nullable="true" ordinalPosition="6" size="23"
+                        type="TIMESTAMP">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="CIVILITY" nullable="true" ordinalPosition="7" size="2" type="CHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="FIRST_NAME" nullable="true" ordinalPosition="8" size="255"
+                        type="VARCHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="LAST_NAME" nullable="true" ordinalPosition="9" size="255"
+                        type="VARCHAR">
+                    <enumValues/>
+                </column>
+                <column columnDef="0" decimalDigits="0" name="VERSION" nullable="true" ordinalPosition="10" size="5"
+                        type="SMALLINT">
+                    <enumValues/>
+                </column>
+            </columns>
+            <indexes>
+                <indexe columnName="LOGIN" indexName="ACCOUNT_UNIQUE_1_INDEX_E" nonUnique="false"/>
+                <indexe columnName="EMAIL" indexName="ACCOUNT_UNIQUE_2_INDEX_E" nonUnique="false"/>
+                <indexe columnName="ACCOUNT_ID" indexName="PRIMARY_KEY_E" nonUnique="false"/>
+            </indexes>
+            <importedKeys/>
+            <primaryKeys>
+                <primaryKey>ACCOUNT_ID</primaryKey>
+            </primaryKeys>
+        </table>
+        <table name="ADMINISTRATIVE_ACCOUNT" type="TABLE">
+            <columns>
+                <column decimalDigits="0" name="ADMINISTRATIVE_ACCOUNT_ID" nullable="false" ordinalPosition="1"
+                        size="32" type="CHAR">
+                    <enumValues/>
+                </column>
+                <column decimalDigits="0" name="LOGIN" nullable="false" ordinalPosition="2" size="255" type="VARCHAR">
+                    <enumValues/>
+                </column>
+            </columns>
+            <indexes>
+                <indexe columnName="ADMINISTRATIVE_ACCOUNT_ID" indexName="PRIMARY_KEY_B" nonUnique="false"/>
+            </indexes>
+            <importedKeys/>
+            <primaryKeys>
+                <primaryKey>ADMINISTRATIVE_ACCOUNT_ID</primaryKey>
+            </primaryKeys>
+        </table>
+    </tables>
 </metadata>

@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.jaxio.celerio.configuration.Util.nonNull;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Map;
 
-import lombok.Setter;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 public class Metadata {
     @Setter

@@ -16,8 +16,9 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.springframework.util.StringUtils.hasLength;
 import lombok.Setter;
+
+import static org.springframework.util.StringUtils.hasLength;
 
 public class ImplementsInterface {
 

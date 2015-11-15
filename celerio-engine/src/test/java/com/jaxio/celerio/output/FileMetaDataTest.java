@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.output;
 
-import static org.fest.assertions.Assertions.assertThat;
+import com.jaxio.celerio.util.IOUtil;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Test;
-
-import com.jaxio.celerio.util.IOUtil;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class FileMetaDataTest {
 

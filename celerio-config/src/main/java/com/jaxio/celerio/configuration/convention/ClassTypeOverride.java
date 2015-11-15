@@ -16,10 +16,9 @@
 
 package com.jaxio.celerio.configuration.convention;
 
-import lombok.Setter;
-
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.convention.GeneratedPackage;
+import lombok.Setter;
 
 /*
  * Override the class conventions such as GeneratedPackage, suffix and prefixes

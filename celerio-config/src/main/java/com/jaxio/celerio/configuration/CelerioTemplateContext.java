@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.configuration;
 
-import static com.google.common.collect.Lists.newArrayList;
+import lombok.Data;
 
 import java.util.List;
 
-import lombok.Data;
+import static com.google.common.collect.Lists.newArrayList;
 
 @Data
 public class CelerioTemplateContext {

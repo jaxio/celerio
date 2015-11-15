@@ -16,16 +16,6 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaCascade;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaFetch;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.orphanRemoval;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.util.Assert;
-
 import com.google.common.collect.Iterables;
 import com.jaxio.celerio.configuration.entity.CacheConfigGetter;
 import com.jaxio.celerio.model.Attribute;
@@ -34,6 +24,13 @@ import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.spi.support.AbstractRelationSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
+import org.springframework.util.Assert;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.*;
 
 public class JpaToOneRelation extends AbstractRelationSpi {
 
@@ -46,7 +43,7 @@ public class JpaToOneRelation extends AbstractRelationSpi {
     public String velocityVar() {
         return "jpa";
     }
-    
+
     public List<String> getAnnotations() {
         if (relation.isComposite() && !relation.isManyToOne()) {
             return Arrays.asList("// TODO: composite one to one");
@@ -214,7 +211,7 @@ public class JpaToOneRelation extends AbstractRelationSpi {
 
         return JpaConfigHelper.getCacheAnnotation(this, localConf, globalConf);
     }
-    
+
     private String getOrphanRemoval() {
         return orphanRemoval( //
                 relation.getInverse().getFromAttribute().getColumnConfig().getInverseOneToOneConfig(), //

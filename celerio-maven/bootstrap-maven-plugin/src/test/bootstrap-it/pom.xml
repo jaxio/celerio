@@ -1,18 +1,18 @@
 <project>
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jaxio.celerio</groupId>
-	<artifactId>jsf-bootstrap</artifactId>
-	<packaging>pom</packaging>
-	<name>${project.artifactId}</name>
-	<version>4.0.1-SNAPSHOT</version>
-	<build>
-		<defaultGoal>bootstrap:bootstrap-it</defaultGoal>
-		<plugins>
-			<plugin>
-				<groupId>com.jaxio.celerio</groupId>
-				<artifactId>bootstrap-maven-plugin</artifactId>
-				<version>${project.version}</version>
-			</plugin>
-		</plugins>
-	</build>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jaxio.celerio</groupId>
+    <artifactId>jsf-bootstrap</artifactId>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+    <version>4.0.1-SNAPSHOT</version>
+    <build>
+        <defaultGoal>bootstrap:bootstrap-it</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>com.jaxio.celerio</groupId>
+                <artifactId>bootstrap-maven-plugin</artifactId>
+                <version>${project.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

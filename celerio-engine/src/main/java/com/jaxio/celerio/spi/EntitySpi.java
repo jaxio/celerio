@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.spi;
 
-import java.util.ServiceLoader;
-
 import com.jaxio.celerio.model.Entity;
+
+import java.util.ServiceLoader;
 
 /**
  * The EntitySpi interface allows Celerio template developers to plug new {@link Entity} helpers.
- *
+ * <p>
  * The implementations are loaded by the java's {@link ServiceLoader}.
  */
 public interface EntitySpi {
@@ -34,8 +34,8 @@ public interface EntitySpi {
 
     /**
      * The var name under which this EntitySpi is available during template evaluation.<br>
-     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, 
-     * the corresponding EntitySpi implementation instance is given by <code>$entity.myextension</code>. 
+     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>,
+     * the corresponding EntitySpi implementation instance is given by <code>$entity.myextension</code>.
      */
     String velocityVar();
 }

@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.database.h2;
 
-import java.util.List;
-
 import com.jaxio.celerio.configuration.database.support.EnumExtractor;
+
+import java.util.List;
 
 public class H2EnumValuesExtractor {
     private static final String H2_ENUM_VALUES = "^\\(\\p{Graph}*\\p{Blank}*IN\\((.*)\\)\\)$";

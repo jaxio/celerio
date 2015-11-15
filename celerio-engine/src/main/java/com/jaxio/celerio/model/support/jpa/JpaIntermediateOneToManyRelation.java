@@ -16,13 +16,6 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaCascade;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.jpaFetch;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.orderByAnnotation;
-import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.orphanRemoval;
-
-import java.util.List;
-
 import com.jaxio.celerio.configuration.entity.CacheConfigGetter;
 import com.jaxio.celerio.configuration.entity.OneToManyConfig;
 import com.jaxio.celerio.model.PackageImportAdder;
@@ -32,6 +25,10 @@ import com.jaxio.celerio.template.ImportsContext;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
 
+import java.util.List;
+
+import static com.jaxio.celerio.model.support.jpa.JpaConfigHelper.*;
+
 public class JpaIntermediateOneToManyRelation implements RelationSpi, PackageImportAdder {
     private Relation relation;
     private OneToManyConfig oneToManyDefaultConf;
@@ -40,12 +37,12 @@ public class JpaIntermediateOneToManyRelation implements RelationSpi, PackageImp
     public boolean compatibleWith(Relation relation) {
         return relation.isIntermediate() && relation.isOneToMany();
     }
-    
+
     @Override
     public String velocityVar() {
         return "jpa";
     }
-    
+
     @Override
     public void init(Relation relation) {
         this.relation = relation;
@@ -89,6 +86,6 @@ public class JpaIntermediateOneToManyRelation implements RelationSpi, PackageImp
 
     @Override
     public void addImport(String fullType) {
-        ImportsContext.getCurrentImportsHolder().add(fullType);        
+        ImportsContext.getCurrentImportsHolder().add(fullType);
     }
 }

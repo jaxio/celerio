@@ -16,9 +16,10 @@
 
 package com.jaxio.celerio.convention;
 
-import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
 import lombok.Getter;
 import lombok.Setter;
+
+import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
 
 /*
  * Commonly used package names.

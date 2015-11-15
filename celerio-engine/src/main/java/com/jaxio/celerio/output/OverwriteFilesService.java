@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.output;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.convention.WellKnownFolder.JAVA;
-import static com.jaxio.celerio.convention.WellKnownFolder.JAVA_TEST;
+import com.jaxio.celerio.convention.WellKnownFolder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.jaxio.celerio.convention.WellKnownFolder;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.convention.WellKnownFolder.JAVA;
+import static com.jaxio.celerio.convention.WellKnownFolder.JAVA_TEST;
 
 @Service
 public class OverwriteFilesService {

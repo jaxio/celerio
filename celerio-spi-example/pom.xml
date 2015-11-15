@@ -14,25 +14,26 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jaxio.celerio</groupId>
-		<artifactId>celerio-parent</artifactId>
-		<version>4.0.2-SNAPSHOT</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jaxio.celerio</groupId>
+        <artifactId>celerio-parent</artifactId>
+        <version>4.0.2-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>celerio-spi-example</artifactId>
-	<packaging>jar</packaging>
+    <artifactId>celerio-spi-example</artifactId>
+    <packaging>jar</packaging>
 
-	<name>celerio-spi-example</name>
-	<description>A example illustrating how to extends Celerio via SPI</description>
+    <name>celerio-spi-example</name>
+    <description>A example illustrating how to extends Celerio via SPI</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.jaxio.celerio</groupId>
-			<artifactId>celerio-engine</artifactId>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.jaxio.celerio</groupId>
+            <artifactId>celerio-engine</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

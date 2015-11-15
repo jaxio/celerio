@@ -16,12 +16,12 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Setter
 public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchTypeGetter, AssociationActionGetter, LabelGetter, TargetEntityNameGetter {

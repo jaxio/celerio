@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util" xmlns:security="http://www.springframework.org/schema/security" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="
-            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+
             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
-            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd
-            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+
+
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-	<aop:aspectj-autoproxy proxy-target-class="true" />
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-	<!-- injected into packLoader thanks to @Autowired -->
-	<util:list id="localPacks" list-class="java.util.List" value-type="com.jaxio.celerio.template.pack.TemplatePack">
-		<!-- <ref local="localTestPack" /> -->
-		<ref local="backendPack" />
-	</util:list>
+    <!-- injected into packLoader thanks to @Autowired -->
+    <util:list id="localPacks" list-class="java.util.List" value-type="com.jaxio.celerio.template.pack.TemplatePack">
+        <!-- <ref local="localTestPack" /> -->
+        <ref local="backendPack"/>
+    </util:list>
 
-	<!--<bean id="localTestPack" class="com.jaxio.celerio.template.pack.LocalResourcePackFile">
-		<constructor-arg value="#{systemProperties['user.dir']}/src/test/resources/localpack" />
-	</bean>
+    <!--<bean id="localTestPack" class="com.jaxio.celerio.template.pack.LocalResourcePackFile">
+        <constructor-arg value="#{systemProperties['user.dir']}/src/test/resources/localpack" />
+    </bean>
 
-	--><bean id="backendPack" class="com.jaxio.celerio.template.pack.LocalResourcePackFile">
- 		<constructor-arg value="#{systemProperties['user.dir']}/../packs/pack-backend-jpa/src/main/resources/celerio/pack-backend-jpa" />
-	</bean>
+    -->
+    <bean id="backendPack" class="com.jaxio.celerio.template.pack.LocalResourcePackFile">
+        <constructor-arg
+                value="#{systemProperties['user.dir']}/../packs/pack-backend-jpa/src/main/resources/celerio/pack-backend-jpa"/>
+    </bean>
 </beans>

@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.support.AbstractNamer;
 import com.jaxio.celerio.util.MiscUtil;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Getter
 public class AttributeBundle extends AbstractNamer {

@@ -22,7 +22,7 @@ import com.jaxio.celerio.spi.EntitySpi;
 public class ExampleEntity implements EntitySpi {
 
     private Entity entity;
-    
+
     public void init(Entity entity) {
         this.entity = entity;
     }

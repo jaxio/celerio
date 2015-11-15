@@ -34,7 +34,7 @@ public class AttributeSetup {
     private Attribute attribute;
     /**
      * example on oracle : should Number(1,0) be treated as a boolean ?
-     * <p/>
+     * <p>
      * Technically oracle maps this type to a numeric ranging from 0 to 9.
      */
     private boolean applyDecimalWithSizeOneAndNoDigitsAreBooleanConventionEnabled = true;

@@ -16,19 +16,17 @@
 
 package com.jaxio.celerio.model.primarykey;
 
-import static java.util.Collections.unmodifiableList;
-
-import java.util.List;
-
-import lombok.Getter;
-
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.PrimaryKey;
 import com.jaxio.celerio.model.support.ClassNamer;
+import lombok.Getter;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+import static java.util.Collections.unmodifiableList;
 
 @Getter
 public class CompositePrimaryKey extends ClassNamer implements PrimaryKey {

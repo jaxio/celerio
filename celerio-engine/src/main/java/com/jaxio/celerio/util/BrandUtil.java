@@ -28,8 +28,6 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.io.IOUtils.toByteArray;
-import static org.apache.commons.lang.StringUtils.containsIgnoreCase;
-import static org.apache.commons.lang.StringUtils.startsWith;
 
 public class BrandUtil {
     private Brand brand = new Brand();

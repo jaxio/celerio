@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.spi;
 
-import java.util.ServiceLoader;
-
 import com.jaxio.celerio.model.Project;
+
+import java.util.ServiceLoader;
 
 /**
  * The ProjectSpi interface allows Celerio template developers to plug new {@link Project} helpers.
- *
+ * <p>
  * The implementations are loaded by the java's {@link ServiceLoader}.
  */
 public interface ProjectSpi {
@@ -34,8 +34,8 @@ public interface ProjectSpi {
 
     /**
      * The var name under which this ProjectSpi is available during template evaluation.<br>
-     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, 
-     * the corresponding ProjectSpi implementation instance is given by <code>$project.myextension</code>. 
+     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>,
+     * the corresponding ProjectSpi implementation instance is given by <code>$project.myextension</code>.
      */
     String velocityVar();
 }

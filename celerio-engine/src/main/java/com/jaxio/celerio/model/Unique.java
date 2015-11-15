@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.model;
 
-import java.util.List;
-
 import com.jaxio.celerio.util.Named;
+
+import java.util.List;
 
 /**
  * Represents a Unique constraints.

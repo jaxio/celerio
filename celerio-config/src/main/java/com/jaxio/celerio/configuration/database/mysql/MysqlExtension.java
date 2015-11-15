@@ -16,15 +16,13 @@
 
 package com.jaxio.celerio.configuration.database.mysql;
 
-import java.sql.Connection;
-
-import javax.sql.DataSource;
-
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.support.Extension;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.support.Extension;
+import javax.sql.DataSource;
+import java.sql.Connection;
 
 public abstract class MysqlExtension implements Extension {
     private static final String MYSQL_DATABASE = "mysql";

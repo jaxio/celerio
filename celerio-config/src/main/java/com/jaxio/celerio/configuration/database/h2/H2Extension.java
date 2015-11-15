@@ -16,22 +16,20 @@
 
 package com.jaxio.celerio.configuration.database.h2;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
-import javax.sql.DataSource;
-
+import com.jaxio.celerio.configuration.database.Column;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
+import com.jaxio.celerio.configuration.database.support.Extension;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.stereotype.Service;
 
-import com.jaxio.celerio.configuration.database.Column;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
-import com.jaxio.celerio.configuration.database.support.Extension;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class H2Extension implements Extension {
@@ -83,7 +81,7 @@ public class H2Extension implements Extension {
 
         List<Constraint> constraints = jdbcTemplate.query(
                 "SELECT table_name, column_name, check_constraint FROM information_schema.columns WHERE table_schema = ? AND LENGTH(check_constraint) > 0",
-                new Object[] { schemaName }, new RowMapper<Constraint>() {
+                new Object[]{schemaName}, new RowMapper<Constraint>() {
                     @Override
                     public Constraint mapRow(ResultSet rs, int rowNum) throws SQLException {
                         Constraint constraint = new Constraint();

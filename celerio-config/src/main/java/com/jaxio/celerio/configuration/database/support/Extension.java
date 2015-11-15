@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.database.support;
 
-import java.sql.Connection;
-
 import com.jaxio.celerio.configuration.database.Metadata;
+
+import java.sql.Connection;
 
 public interface Extension {
     boolean applyable(Metadata metadata);

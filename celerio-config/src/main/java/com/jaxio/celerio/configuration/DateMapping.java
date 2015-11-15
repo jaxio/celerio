@@ -16,10 +16,9 @@
 
 package com.jaxio.celerio.configuration;
 
-import lombok.Setter;
-
 import com.jaxio.celerio.configuration.database.JdbcType;
 import com.jaxio.celerio.util.MappedType;
+import lombok.Setter;
 
 /*
  * Global rule to map columns whose JDBC TYPE is DATE, TIME or TIMESTAMP to a Java type.

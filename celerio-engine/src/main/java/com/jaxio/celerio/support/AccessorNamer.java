@@ -16,9 +16,8 @@
 
 package com.jaxio.celerio.support;
 
-import lombok.Getter;
-
 import com.jaxio.celerio.util.StringUtil;
+import lombok.Getter;
 
 @Getter
 public class AccessorNamer extends AbstractNamer {

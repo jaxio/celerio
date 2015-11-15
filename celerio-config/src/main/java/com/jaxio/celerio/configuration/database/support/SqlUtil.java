@@ -16,12 +16,12 @@
 
 package com.jaxio.celerio.configuration.database.support;
 
+import java.util.List;
+import java.util.Set;
+
 import static com.google.common.collect.Iterables.concat;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Sets.newHashSet;
-
-import java.util.List;
-import java.util.Set;
 
 public class SqlUtil {
     /*

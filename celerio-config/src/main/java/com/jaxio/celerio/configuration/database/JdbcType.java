@@ -16,13 +16,15 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import java.sql.Types;
-
 import lombok.extern.slf4j.Slf4j;
+
+import java.sql.Types;
 
 @Slf4j
 public enum JdbcType {
-    /** Not supported */
+    /**
+     * Not supported
+     */
     ARRAY(Types.ARRAY), //
     BIGINT(Types.BIGINT), //
     BINARY(Types.BINARY), //
@@ -31,11 +33,15 @@ public enum JdbcType {
     BOOLEAN(Types.BOOLEAN), //
     CHAR(Types.CHAR), //
     CLOB(Types.CLOB),
-    /** Not supported */
+    /**
+     * Not supported
+     */
     DATALINK(Types.DATALINK), //
     DATE(Types.DATE), //
     DECIMAL(Types.DECIMAL),
-    /** Not supported */
+    /**
+     * Not supported
+     */
     DISTINCT(Types.DISTINCT), //
     DOUBLE(Types.DOUBLE), //
     FLOAT(Types.FLOAT), //
@@ -44,12 +50,16 @@ public enum JdbcType {
     LONGVARBINARY(Types.LONGVARBINARY), //
     LONGVARCHAR(Types.LONGVARCHAR), //
     NUMERIC(Types.NUMERIC),
-    /** Not supported */
+    /**
+     * Not supported
+     */
     OTHER(Types.OTHER), //
     REAL(Types.REAL), //
     REF(Types.REF), //
     SMALLINT(Types.SMALLINT),
-    /** Not supported */
+    /**
+     * Not supported
+     */
     STRUCT(Types.STRUCT), //
     TIME(Types.TIME), //
     TIMESTAMP(Types.TIMESTAMP), //
@@ -61,7 +71,9 @@ public enum JdbcType {
     NCHAR(Types.NCHAR), //
     NCLOB(Types.NCLOB), //
     NVARCHAR(Types.NVARCHAR),
-    /** Not supported */
+    /**
+     * Not supported
+     */
     NULL(Types.NULL), //
     SQLXML(Types.SQLXML);
 
@@ -107,17 +119,17 @@ public enum JdbcType {
 
     public boolean isString() {
         switch (jdbcType) {
-        case Types.VARCHAR:
-        case Types.LONGVARCHAR:
-        case Types.CLOB:
-        case Types.LONGNVARCHAR:
-        case Types.NCHAR:
-        case Types.NCLOB:
-        case Types.NVARCHAR:
-        case Types.SQLXML:
-            return true;
-        default:
-            return false;
+            case Types.VARCHAR:
+            case Types.LONGVARCHAR:
+            case Types.CLOB:
+            case Types.LONGNVARCHAR:
+            case Types.NCHAR:
+            case Types.NCLOB:
+            case Types.NVARCHAR:
+            case Types.SQLXML:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -129,39 +141,39 @@ public enum JdbcType {
 
     private boolean isChar() {
         switch (jdbcType) {
-        case Types.CHAR:
-            return true;
-        default:
-            return false;
+            case Types.CHAR:
+                return true;
+            default:
+                return false;
         }
     }
 
     public boolean isNumeric() {
         switch (jdbcType) {
-        case Types.BIGINT:
-        case Types.DECIMAL:
-        case Types.DOUBLE:
-        case Types.FLOAT:
-        case Types.INTEGER:
-        case Types.NUMERIC:
-        case Types.REAL:
-        case Types.SMALLINT:
-        case Types.TINYINT:
-        case Types.ROWID:
-            return true;
-        default:
-            return false;
+            case Types.BIGINT:
+            case Types.DECIMAL:
+            case Types.DOUBLE:
+            case Types.FLOAT:
+            case Types.INTEGER:
+            case Types.NUMERIC:
+            case Types.REAL:
+            case Types.SMALLINT:
+            case Types.TINYINT:
+            case Types.ROWID:
+                return true;
+            default:
+                return false;
         }
     }
 
     public boolean isTemporal() {
         switch (jdbcType) {
-        case Types.DATE:
-        case Types.TIMESTAMP:
-        case Types.TIME:
-            return true;
-        default:
-            return false;
+            case Types.DATE:
+            case Types.TIMESTAMP:
+            case Types.TIME:
+                return true;
+            default:
+                return false;
         }
     }
 }

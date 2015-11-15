@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.database.mysql;
 
-import java.util.List;
-
 import com.jaxio.celerio.configuration.database.support.EnumExtractor;
+
+import java.util.List;
 
 public class MysqlEnumValuesExtractor {
     private static final String MYSQL_ENUM_VALUES = "[e|E][n|N][u|U][m|M]\\((.*)\\)$";

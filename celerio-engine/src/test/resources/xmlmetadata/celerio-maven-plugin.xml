@@ -1,6 +1,7 @@
-<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
-	<entityConfigs>
-		<entityConfig tableName="ACCOUNT" subPackage="subpackage"/>
-		<entityConfig tableName="ROLE" subPackage="other"/>
-	</entityConfigs>
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
+    <entityConfigs>
+        <entityConfig tableName="ACCOUNT" subPackage="subpackage"/>
+        <entityConfig tableName="ROLE" subPackage="other"/>
+    </entityConfigs>
 </celerio>

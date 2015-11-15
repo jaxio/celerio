@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.model.support.search;
 
-import java.util.List;
-
+import com.jaxio.celerio.configuration.entity.IndexedField;
+import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
+import com.jaxio.celerio.util.AnnotationBuilder;
+import com.jaxio.celerio.util.AttributeBuilder;
 import org.apache.commons.lang.StringUtils;
 import repackaged.org.hibernate.search.annotations.Analyze;
 import repackaged.org.hibernate.search.annotations.Norms;
 import repackaged.org.hibernate.search.annotations.Store;
 import repackaged.org.hibernate.search.annotations.TermVector;
 
-import com.jaxio.celerio.configuration.entity.IndexedField;
-import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
-import com.jaxio.celerio.util.AnnotationBuilder;
-import com.jaxio.celerio.util.AttributeBuilder;
+import java.util.List;
 
 public class SearchAttribute extends AbstractAttributeSpi {
 
@@ -42,7 +41,7 @@ public class SearchAttribute extends AbstractAttributeSpi {
     public boolean isIndexed() {
         return attribute.isIndexed();
     }
-    
+
     // --------------------------------------------
     // Search Annotations, used from templates
     // --------------------------------------------
@@ -65,7 +64,7 @@ public class SearchAttribute extends AbstractAttributeSpi {
         if (field == null) {
             return "";
         }
-        
+
         AttributeBuilder attributes = new AttributeBuilder();
         // name
         String name = field.getName();
@@ -124,7 +123,7 @@ public class SearchAttribute extends AbstractAttributeSpi {
         if (field == null || !field.hasBridgeImpl()) {
             return "";
         }
-        
+
         addImport("org.hibernate.search.annotations.FieldBridge");
         addImport(field.getBridgeImpl());
         String type = StringUtils.substringAfterLast(field.getBridgeImpl(), ".");

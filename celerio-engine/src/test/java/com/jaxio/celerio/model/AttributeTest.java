@@ -16,12 +16,11 @@
 
 package com.jaxio.celerio.model;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import org.junit.Test;
-
 import com.jaxio.celerio.configuration.database.JdbcType;
 import com.jaxio.celerio.configuration.entity.ColumnConfig;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class AttributeTest {
 

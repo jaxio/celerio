@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.nonNull;
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.nonNull;
+import static org.springframework.util.StringUtils.hasLength;
 
 public class JdbcConnectivity {
     @Setter
@@ -180,24 +180,24 @@ public class JdbcConnectivity {
     public Boolean getReverseIndexes() {
         return reverseIndexes;
     }
-    
+
     public boolean shouldReverseIndexes() {
         // we assume null is by default TRUE.        
         return reverseIndexes == null || reverseIndexes;
     }
-    
+
     /*
      * when true, reverse only indexes for unique values; when false, reverse indexes regardless of whether unique or not.
      */
     public Boolean getReverseOnlyUniqueIndexes() {
         return reverseOnlyUniqueIndexes;
     }
-    
+
     public boolean shouldReverseOnlyUniqueIndexes() {
         // we assume null is by default TRUE.
         return shouldReverseIndexes() && (reverseOnlyUniqueIndexes == null || reverseOnlyUniqueIndexes);
     }
-    
+
     /*
      * Catalog name; must match the catalog name as it is stored in the database.<br>
      * "" retrieves those without a catalog<br>

@@ -16,17 +16,15 @@
 
 package com.jaxio.celerio.factory;
 
-import javax.persistence.InheritanceType;
-
+import com.jaxio.celerio.Config;
+import com.jaxio.celerio.configuration.entity.EntityConfig;
+import com.jaxio.celerio.model.Entity;
 import lombok.extern.java.Log;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.jaxio.celerio.Config;
-import com.jaxio.celerio.configuration.entity.EntityConfig;
-import com.jaxio.celerio.model.Entity;
+import javax.persistence.InheritanceType;
 
 @Log
 @Service

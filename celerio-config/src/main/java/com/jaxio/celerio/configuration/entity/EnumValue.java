@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.convention.CommentStyle.JAVA;
-import static org.springframework.util.StringUtils.hasLength;
+import com.jaxio.celerio.configuration.Util;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
-
-import com.jaxio.celerio.configuration.Util;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.convention.CommentStyle.JAVA;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Setter
 public class EnumValue {

@@ -16,18 +16,16 @@
 
 package com.jaxio.celerio.model.primarykey;
 
-import static java.util.Collections.unmodifiableList;
+import com.jaxio.celerio.model.Attribute;
+import com.jaxio.celerio.model.Entity;
+import com.jaxio.celerio.model.PrimaryKey;
+import lombok.Getter;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Getter;
-
-import org.springframework.util.Assert;
-
-import com.jaxio.celerio.model.Attribute;
-import com.jaxio.celerio.model.Entity;
-import com.jaxio.celerio.model.PrimaryKey;
+import static java.util.Collections.unmodifiableList;
 
 @Getter
 public class NoPrimaryKey implements PrimaryKey {

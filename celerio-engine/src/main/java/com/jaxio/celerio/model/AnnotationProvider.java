@@ -16,10 +16,10 @@
 
 package com.jaxio.celerio.model;
 
+import com.jaxio.celerio.model.support.PackageImport;
+
 import java.util.List;
 import java.util.Set;
-
-import com.jaxio.celerio.model.support.PackageImport;
 
 /**
  * Provides formatted annotations and their associated Java imports.

@@ -19,7 +19,7 @@ package com.jaxio.celerio.model.support.jsf;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.spi.AttributeSpi;
 
-public class JsfAttribute  implements AttributeSpi {
+public class JsfAttribute implements AttributeSpi {
     private static final int SIZE_FOR_SIGN_AND_COMMA = "+,".length();
     private static final int SIZE_MAXIMAL_LENGTH = 20;
     private Attribute attribute;
@@ -36,7 +36,7 @@ public class JsfAttribute  implements AttributeSpi {
     public String velocityVar() {
         return "jsf";
     }
-    
+
     private String getRequired() {
         return !attribute.isRequired() ? "" : "required=\"true\" ";
     }

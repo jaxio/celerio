@@ -25,7 +25,7 @@ public class AttributeBuilder {
     public AttributeBuilder(boolean commentMode) {
         this.commentMode = commentMode;
     }
-    
+
     public AttributeBuilder(String... attributes) {
         for (String attribute : attributes) {
             add(attribute);
@@ -48,8 +48,8 @@ public class AttributeBuilder {
     public void addString(String name, String value) {
         add(name + " = \"" + value + "\"");
     }
-    
-    
+
+
     public void addInt(String name, int value) {
         add(name + " = " + value);
     }

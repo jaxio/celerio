@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.output;
 
-import java.io.File;
-import java.io.Serializable;
-
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.template.TemplateEngine;
 import com.jaxio.celerio.template.pack.Template;
 import com.jaxio.celerio.template.pack.TemplatePack;
+import org.springframework.util.Assert;
+
+import java.io.File;
+import java.io.Serializable;
 
 public class FileMetaData implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -35,11 +34,9 @@ public class FileMetaData implements Serializable {
     private long lastMod;
 
     /**
-     * 
      * @param pack
      * @param template
-     * @param fileRelativePath
-     *            relative to the project dir. That is the dir containing ".celerio/generated.xml"
+     * @param fileRelativePath relative to the project dir. That is the dir containing ".celerio/generated.xml"
      * @param file
      */
     public FileMetaData(TemplatePack pack, Template template, String fileRelativePath, File file) {

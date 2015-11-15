@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.support.search;
 
-import static com.google.common.collect.Lists.newArrayList;
+import com.jaxio.celerio.spi.support.AbstractEntitySpi;
 
 import java.util.List;
 
-import com.jaxio.celerio.spi.support.AbstractEntitySpi;
+import static com.google.common.collect.Lists.newArrayList;
 
 public class SearchEntity extends AbstractEntitySpi {
 
@@ -31,11 +31,11 @@ public class SearchEntity extends AbstractEntitySpi {
     public String velocityVar() {
         return "search";
     }
-    
+
     public List<String> getAnnotations() {
         return newArrayList(getIndexedAnnotation());
     }
-    
+
     public String getIndexedAnnotation() {
         if (!entity.hasChildren() && entity.isIndexed()) {
             addImport("org.hibernate.search.annotations.Indexed");

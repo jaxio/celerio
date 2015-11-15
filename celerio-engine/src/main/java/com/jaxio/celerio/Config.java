@@ -16,16 +16,14 @@
 
 package com.jaxio.celerio;
 
-import lombok.Data;
-
-import org.springframework.stereotype.Service;
-
 import com.jaxio.celerio.configuration.Celerio;
 import com.jaxio.celerio.configuration.database.Metadata;
 import com.jaxio.celerio.convention.WellKnownFolder;
 import com.jaxio.celerio.model.Project;
 import com.jaxio.celerio.output.OutputResult;
 import com.thoughtworks.xstream.XStream;
+import lombok.Data;
+import org.springframework.stereotype.Service;
 
 @Data
 @Service

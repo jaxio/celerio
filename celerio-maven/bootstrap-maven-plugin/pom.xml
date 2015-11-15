@@ -14,99 +14,101 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jaxio.celerio</groupId>
-		<artifactId>celerio-maven</artifactId>
-		<version>4.0.2-SNAPSHOT</version>
-	</parent>
-	<artifactId>bootstrap-maven-plugin</artifactId>
-	<packaging>maven-plugin</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jaxio.celerio</groupId>
+        <artifactId>celerio-maven</artifactId>
+        <version>4.0.2-SNAPSHOT</version>
+    </parent>
+    <artifactId>bootstrap-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
 
-	<name>bootstrap-maven-lugin</name>
-	<description>The Bootstrap Maven plugin is responsible for bootstrapping a project out of template packs</description>
+    <name>bootstrap-maven-lugin</name>
+    <description>The Bootstrap Maven plugin is responsible for bootstrapping a project out of template packs
+    </description>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jaxio.celerio</groupId>
-			<artifactId>celerio-engine</artifactId>
-		</dependency>
-		<!-- current packs -->
-		<dependency>
-			<groupId>com.jaxio.celerio.packs</groupId>
-			<artifactId>pack-jsf2-spring-conversation</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jaxio.celerio</groupId>
+            <artifactId>celerio-engine</artifactId>
+        </dependency>
+        <!-- current packs -->
+        <dependency>
+            <groupId>com.jaxio.celerio.packs</groupId>
+            <artifactId>pack-jsf2-spring-conversation</artifactId>
             <version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jaxio.celerio.packs</groupId>
-			<artifactId>pack-backend-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jaxio.celerio.packs</groupId>
+            <artifactId>pack-backend-jpa</artifactId>
             <version>1.0.1</version>
-		</dependency>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-compiler-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-		</dependency>
-	</dependencies>
-	<!-- uncomment to activate IT matrix -->
-	<!-- TODO
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-invoker-plugin</artifactId>
-				<version>2.0.0</version>
-				<executions>
-					<execution>
-						<id>run the bootstraps</id>
-						<configuration>
-							<projectsDirectory>src/test/bootstrap-it</projectsDirectory>
-							<cloneProjectsTo>${project.build.directory}/bootstrap-it</cloneProjectsTo>
-							<pomIncludes>
-								<pomInclude>pom.xml</pomInclude>
-							</pomIncludes>
-							<showErrors>true</showErrors>
-							<streamLogs>true</streamLogs>
-							<properties>
-								<invoker.version-to-test>${project.version}</invoker.version-to-test>
-							</properties>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>test the projects produced by the bootstraps</id>
-						<configuration>
-							<projectsDirectory>${project.build.directory}/bootstrap-it</projectsDirectory>
-							<pomIncludes>
-								<pomInclude>app_*/pom.xml</pomInclude>
-							</pomIncludes>
-							<showErrors>true</showErrors>
-							<goals>
-								<goal>verify</goal>
-							</goals>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-	-->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-project</artifactId>
+        </dependency>
+    </dependencies>
+    <!-- uncomment to activate IT matrix -->
+    <!-- TODO
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-invoker-plugin</artifactId>
+                <version>2.0.0</version>
+                <executions>
+                    <execution>
+                        <id>run the bootstraps</id>
+                        <configuration>
+                            <projectsDirectory>src/test/bootstrap-it</projectsDirectory>
+                            <cloneProjectsTo>${project.build.directory}/bootstrap-it</cloneProjectsTo>
+                            <pomIncludes>
+                                <pomInclude>pom.xml</pomInclude>
+                            </pomIncludes>
+                            <showErrors>true</showErrors>
+                            <streamLogs>true</streamLogs>
+                            <properties>
+                                <invoker.version-to-test>${project.version}</invoker.version-to-test>
+                            </properties>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test the projects produced by the bootstraps</id>
+                        <configuration>
+                            <projectsDirectory>${project.build.directory}/bootstrap-it</projectsDirectory>
+                            <pomIncludes>
+                                <pomInclude>app_*/pom.xml</pomInclude>
+                            </pomIncludes>
+                            <showErrors>true</showErrors>
+                            <goals>
+                                <goal>verify</goal>
+                            </goals>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    -->
 </project>

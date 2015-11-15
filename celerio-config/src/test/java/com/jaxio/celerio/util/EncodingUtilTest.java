@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.util;
 
-import java.io.UnsupportedEncodingException;
-
 import org.junit.Test;
+
+import java.io.UnsupportedEncodingException;
 
 public class EncodingUtilTest {
     @Test

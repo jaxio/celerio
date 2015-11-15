@@ -16,14 +16,11 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_BINARY_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_CONTENT_TYPE_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_FILE_NAME_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_FILE_SIZE_SUFFIX;
-
 import com.google.common.base.Predicate;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
+
+import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.*;
 
 public class EntityPredicates {
     public static Predicate<Entity> VIEW = new Predicate<Entity>() {

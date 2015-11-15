@@ -23,9 +23,8 @@ public class StringUtil {
 
     /**
      * Is the given string not empty ?
-     * 
-     * @param s
-     *            the string to check
+     *
+     * @param s the string to check
      * @return true if not empty, false otherwise
      */
     public static boolean hasLength(String s) {
@@ -34,9 +33,8 @@ public class StringUtil {
 
     /**
      * If the given value collides with java reserved words, modify accordingly the value
-     * 
-     * @param s
-     *            the value to escape
+     *
+     * @param s the value to escape
      * @return a string that is saved to be used in a java program
      */
     public static String escape(String s) {

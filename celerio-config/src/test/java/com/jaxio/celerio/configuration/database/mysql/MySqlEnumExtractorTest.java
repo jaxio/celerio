@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.configuration.database.mysql;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class MySqlEnumExtractorTest {
     private JdbcTemplate jdbcTemplate() {

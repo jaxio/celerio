@@ -16,16 +16,15 @@
 
 package com.jaxio.celerio.metadata;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
-
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Service
 @Slf4j

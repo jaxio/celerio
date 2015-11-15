@@ -16,23 +16,21 @@
 
 package com.jaxio.celerio.configuration.database.support;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import java.io.IOException;
-import java.util.List;
-
+import com.jaxio.celerio.configuration.database.IndexHolder;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
+import com.jaxio.celerio.configuration.support.MetadataLoader;
 import org.junit.Ignore;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.XmlMappingException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jaxio.celerio.configuration.database.IndexHolder;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
-import com.jaxio.celerio.configuration.support.MetadataLoader;
+import java.io.IOException;
+import java.util.List;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @Ignore
 @ContextConfiguration("classpath:applicationContext-configuration.xml")

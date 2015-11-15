@@ -16,27 +16,15 @@
 
 package com.jaxio.celerio.support;
 
-import static com.jaxio.celerio.convention.MethodConvention.ADD;
-import static com.jaxio.celerio.convention.MethodConvention.CONTAINS;
-import static com.jaxio.celerio.convention.MethodConvention.DELETE_BY;
-import static com.jaxio.celerio.convention.MethodConvention.EDIT;
-import static com.jaxio.celerio.convention.MethodConvention.GET;
-import static com.jaxio.celerio.convention.MethodConvention.GET_BY;
-import static com.jaxio.celerio.convention.MethodConvention.GET_LOCALIZED;
-import static com.jaxio.celerio.convention.MethodConvention.HAS;
-import static com.jaxio.celerio.convention.MethodConvention.RANDOM_GETTER;
-import static com.jaxio.celerio.convention.MethodConvention.REMOVE;
-import static com.jaxio.celerio.convention.MethodConvention.SET;
-import static com.jaxio.celerio.convention.MethodConvention.WITH;
-import static com.jaxio.celerio.util.StringUtil.getFirstCharacterUppered;
-import static com.jaxio.celerio.util.StringUtil.getPlural;
+import com.jaxio.celerio.aspects.ForbiddenWhenBuilding;
+import com.jaxio.celerio.util.StringUtil;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.jaxio.celerio.aspects.ForbiddenWhenBuilding;
-import com.jaxio.celerio.util.StringUtil;
+import static com.jaxio.celerio.convention.MethodConvention.*;
+import static com.jaxio.celerio.util.StringUtil.getFirstCharacterUppered;
+import static com.jaxio.celerio.util.StringUtil.getPlural;
 
 public abstract class AbstractNamer implements Namer {
 
@@ -95,7 +83,7 @@ public abstract class AbstractNamer implements Namer {
 
     /**
      * Get node of the package name.
-     * 
+     * <p>
      * Ex: Assuming the package name is<code>com.jaxio.toto.tutu</code> you get <br>
      * <code>getPackageNode(0) -&gt; tutu</code> <br>
      * <code>getPackageNode(1) = toto</code> etc.

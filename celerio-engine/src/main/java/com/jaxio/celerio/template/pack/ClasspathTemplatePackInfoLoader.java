@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.template.pack;
 
-import static com.google.common.collect.Lists.newArrayList;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.stereotype.Service;
+import static com.google.common.collect.Lists.newArrayList;
 
 @Service
 public class ClasspathTemplatePackInfoLoader {

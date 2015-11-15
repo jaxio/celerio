@@ -16,16 +16,15 @@
 
 package com.jaxio.celerio.convention;
 
-import static com.google.common.collect.Iterables.isEmpty;
-import static com.google.common.collect.Lists.newArrayList;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
+import static com.google.common.collect.Iterables.isEmpty;
+import static com.google.common.collect.Lists.newArrayList;
 
 public enum CommentStyle {
     JAVA("/*", " *", " */", "java", "css"), //

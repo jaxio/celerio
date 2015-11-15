@@ -16,14 +16,12 @@
 
 package com.jaxio.celerio.maven.plugin.bootstrap;
 
+import lombok.Getter;
+import org.springframework.core.io.Resource;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Comparator;
 import java.util.Properties;
-
-import lombok.Getter;
-
-import org.springframework.core.io.Resource;
 
 /**
  * Holds the information found in sqlconf info file.

@@ -16,9 +16,8 @@
 
 package com.jaxio.celerio.configuration.convention;
 
-import lombok.Setter;
-
 import com.jaxio.celerio.convention.WellKnownFolder;
+import lombok.Setter;
 
 /*
  * change the convention for a given well known folder

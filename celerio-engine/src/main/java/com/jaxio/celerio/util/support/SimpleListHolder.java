@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.util.support;
 
-import static com.google.common.collect.Iterables.filter;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.jaxio.celerio.util.Named;
+
+import static com.google.common.collect.Iterables.filter;
 
 /**
  * A list holder whose underlying List is built out of an Iterable and a predicate.
@@ -32,7 +32,7 @@ public class SimpleListHolder<T extends Named> extends AbstractListHolder<T> {
     public SimpleListHolder(Iterable<T> original) {
         assert original != null;
         this.original = original;
-        this.filter = Predicates.<T> alwaysTrue(); // using static import breaks compilation
+        this.filter = Predicates.<T>alwaysTrue(); // using static import breaks compilation
     }
 
     public SimpleListHolder(Iterable<T> original, Predicate<T> filter) {

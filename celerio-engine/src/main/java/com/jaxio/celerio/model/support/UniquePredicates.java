@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.google.common.base.Predicates.and;
-import static com.google.common.base.Predicates.not;
-
 import com.google.common.base.Predicate;
 import com.jaxio.celerio.model.Unique;
+
+import static com.google.common.base.Predicates.and;
+import static com.google.common.base.Predicates.not;
 
 public class UniquePredicates {
     public static Predicate<Unique> COMPOSITE_UNIQUE = new Predicate<Unique>() {

@@ -38,7 +38,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import java.io.*;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.util.PackageUtil.isPackageNameValid;
@@ -48,9 +51,9 @@ import static org.apache.commons.lang.StringUtils.substringAfter;
 
 /**
  * This plugin creates a default project folder layout following Maven conventions.
- * <p/>
+ * <p>
  * A Maven <div class="filename">pom.xml</div> is generated as well as default files to help you start from scratch a project.
- * <p/>
+ * <p>
  * These files represent the minimum required files to produce a project using Celerio.
  *
  * @goal bootstrap
@@ -113,11 +116,11 @@ public class BootstrapMojo extends AbstractMojo {
     private final String paramJdbcCatalog = "jdbcCatalog";
     private final String paramJdbcSchema = "jdbcSchema";
 
-    private final String[] params = new String[] {
+    private final String[] params = new String[]{
             paramCelerioPack, paramAppName, paramAppRootPackage,
             paramJdbcGroupId, paramJdbcArtifactId, paramJdbcVersion, paramJdbcDriver,
             paramHibernateDialect, paramJdbcUser, paramJdbcPassword,
-            paramJdbcUrl, paramJdbcCatalog, paramJdbcSchema };
+            paramJdbcUrl, paramJdbcCatalog, paramJdbcSchema};
 
 
     // ------------------------------

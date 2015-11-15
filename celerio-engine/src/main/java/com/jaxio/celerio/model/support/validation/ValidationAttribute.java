@@ -16,15 +16,15 @@
 
 package com.jaxio.celerio.model.support.validation;
 
-import static com.jaxio.celerio.configuration.Module.CHAR_PADDING;
-import static com.jaxio.celerio.convention.GeneratedPackage.Validation;
-
-import java.util.List;
-
 import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
 import repackaged.org.hibernate.validator.constraints.SafeHtml.WhiteListType;
+
+import java.util.List;
+
+import static com.jaxio.celerio.configuration.Module.CHAR_PADDING;
+import static com.jaxio.celerio.convention.GeneratedPackage.Validation;
 
 /**
  * Default SPI for the "validation" velocity var. Developer may override it.<br>
@@ -171,7 +171,7 @@ public class ValidationAttribute extends AbstractAttributeSpi {
     /**
      * Tells if the annotations should not be applied to the attribute.<br>
      * By default, annotation are not applied if one of the following case is true:
-     * 
+     * <p>
      * <ul>
      * <li>The attribute is a simple PK and is automatically assigned
      * <li>The attribute is a part of an FK

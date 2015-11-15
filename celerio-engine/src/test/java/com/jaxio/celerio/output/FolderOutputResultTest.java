@@ -16,12 +16,11 @@
 
 package com.jaxio.celerio.output;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+import com.jaxio.celerio.convention.WellKnownFolder;
 import org.junit.Test;
 
-import com.jaxio.celerio.convention.WellKnownFolder;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class FolderOutputResultTest {
 

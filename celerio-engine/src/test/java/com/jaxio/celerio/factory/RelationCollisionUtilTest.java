@@ -16,13 +16,12 @@
 
 package com.jaxio.celerio.factory;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import org.junit.Test;
-
 import com.jaxio.celerio.configuration.entity.OneToManyConfig;
 import com.jaxio.celerio.support.AccessorNamer;
 import com.jaxio.celerio.support.Namer;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class RelationCollisionUtilTest {
 

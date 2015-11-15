@@ -16,13 +16,11 @@
 
 package com.jaxio.celerio.maven.plugin.dbmetadata;
 
-import static org.apache.commons.io.FilenameUtils.normalize;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.SQLException;
-
+import com.jaxio.celerio.configuration.database.JdbcConnectivity;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.TableType;
+import com.jaxio.celerio.configuration.database.support.MetadataExtractor;
+import com.jaxio.celerio.configuration.support.MetadataLoader;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -31,20 +29,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.oxm.XmlMappingException;
 
-import com.jaxio.celerio.configuration.database.JdbcConnectivity;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.TableType;
-import com.jaxio.celerio.configuration.database.support.MetadataExtractor;
-import com.jaxio.celerio.configuration.support.MetadataLoader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import static org.apache.commons.io.FilenameUtils.normalize;
 
 /**
  * This plugin connects to a relational database using JDBC and reverses the database schema meta data. The reverse engineering consists in serializing the
  * information returned by the JDBC driver into an XML file (see the documentation of the <a
  * href="http://java.sun.com/j2se/1.4.2/docs/api/java/sql/DatabaseMetaData.html">java.sql.DatabaseMetaData</a> for more information).
- * 
+ * <p>
  * The <code>metadata.xml</code> file produced by this plugin is used by Celerio's generate goal. Please refer to the <div class="xref"
  * linkend="celerio.generate">celerio.generate</div>.
- * 
+ *
  * @goal extract-metadata
  * @phase generate-sources
  * @requiresProject false
@@ -54,7 +53,7 @@ public class DbMetadataMojo extends AbstractMojo {
 
     /**
      * Maven project, this is by default the current Maven project.
-     * 
+     *
      * @parameter property="project"
      * @readonly
      */
@@ -64,7 +63,7 @@ public class DbMetadataMojo extends AbstractMojo {
      * Should the database meta data extraction be skipped ?
      * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
-     * 
+     *
      * @parameter property="celerio-maven-plugin.skip" default-value="false"
      */
     protected boolean skip;
@@ -73,7 +72,7 @@ public class DbMetadataMojo extends AbstractMojo {
      * Specify the JDBC driver class.
      * <p>
      * Example: <code>org.postgresql.Driver</code>
-     * 
+     *
      * @parameter property="jdbc.driver"
      */
     protected String jdbcDriver;
@@ -82,42 +81,42 @@ public class DbMetadataMojo extends AbstractMojo {
      * Specify the JDBC url to connect to your database. Make sure that you connect with enough privileges to access the meta data information.
      * <p>
      * Example: <code>jdbc:h2:~/.h2/sampledatabase</code>
-     * 
+     *
      * @parameter property="jdbc.url"
      */
     protected String jdbcUrl;
 
     /**
      * Specify the JDBC user, this user needs to have the privilege to access the database metadata.
-     * 
+     *
      * @parameter property="jdbc.user"
      */
     protected String jdbcUser;
 
     /**
      * Specify the JDBC password.
-     * 
+     *
      * @parameter property="jdbc.password"
      */
     protected String jdbcPassword;
 
     /**
      * Specify the JDBC catalog.
-     * 
+     *
      * @parameter property="jdbc.catalog"
      */
     protected String jdbcCatalog;
 
     /**
      * Should the Oracle remarks be retrieved ? Please note that this will impact the speed of the reverse engineering of your database.
-     * 
+     *
      * @parameter property="jdbc.oracleRetrieveRemarks" default-value="false"
      */
     protected boolean jdbcOracleRetrieveRemarks;
 
     /**
      * Should the synonyms be retrieved ?
-     * 
+     *
      * @parameter property="jdbc.oracleRetrieveSynonyms" default-value="true"
      */
     protected boolean jdbcOracleRetrieveSynonyms;
@@ -125,13 +124,13 @@ public class DbMetadataMojo extends AbstractMojo {
     /**
      * When false, disable completely reverse of indexes.
      * Can be useful when reversing large database full of data as reversing indexes can be slow.
-     * 
+     *
      * @parameter property="jdbc.reverseIndexes" default-value="true"
      */
     protected boolean reverseIndexes;
 
     /**
-     * When true, reverse only indexes for unique values; when false, reverse indexes regardless of whether unique or not. 
+     * When true, reverse only indexes for unique values; when false, reverse indexes regardless of whether unique or not.
      * Can be useful when reversing large database full of data as reversing indexes can be slow.
      *
      * @parameter property="jdbc.reverseOnlyUniqueIndexes" default-value="true"
@@ -140,21 +139,21 @@ public class DbMetadataMojo extends AbstractMojo {
 
     /**
      * Should we also reverse VIEWS?
-     * 
+     *
      * @parameter property="jdbc.reverseViews" default-value="false"
      */
     protected boolean jdbcReverseViews;
 
     /**
      * Specify the JDBC schema.
-     * 
+     *
      * @parameter property="jdbc.schema"
      */
     protected String jdbcSchema;
 
     /**
      * The fully qualified name of the XML file created by this plugin.
-     * 
+     *
      * @parameter property="maven-metadata-plugin.targetFilename" default-value="${basedir}/src/main/config/celerio-maven-plugin/metadata.xml"
      */
     protected String targetFilename;
@@ -232,7 +231,7 @@ public class DbMetadataMojo extends AbstractMojo {
         jdbcConnectivity.setUrl(jdbcUrl);
         jdbcConnectivity.setOracleRetrieveSynonyms(jdbcOracleRetrieveSynonyms);
         jdbcConnectivity.setOracleRetrieveRemarks(jdbcOracleRetrieveRemarks);
-        jdbcConnectivity.setReverseIndexes(reverseIndexes);        
+        jdbcConnectivity.setReverseIndexes(reverseIndexes);
         jdbcConnectivity.setReverseOnlyUniqueIndexes(reverseOnlyUniqueIndexes);
         jdbcConnectivity.add(TableType.TABLE);
         if (jdbcReverseViews) {

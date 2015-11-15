@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.model.relation;
 
-import lombok.Getter;
-
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.support.Namer;
+import lombok.Getter;
 
 @Getter
 public class IntermediateManyToOne extends AbstractIntermediateRelation {

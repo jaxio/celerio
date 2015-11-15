@@ -16,17 +16,14 @@
 
 package com.jaxio.celerio.configuration.convention;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.firstNonNull;
-import static com.jaxio.celerio.configuration.Util.firstNotEmpty;
-import static com.jaxio.celerio.configuration.Util.nonNull;
+import com.jaxio.celerio.configuration.EclipseFormatter;
+import com.jaxio.celerio.configuration.TrueFalse;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
-
-import com.jaxio.celerio.configuration.EclipseFormatter;
-import com.jaxio.celerio.configuration.TrueFalse;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.*;
 
 /*
  * Change the default Celerio conventions to your own needs.

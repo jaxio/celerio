@@ -16,12 +16,13 @@
 
 package com.jaxio.celerio.factory.conventions;
 
-import static com.google.common.collect.Lists.newArrayList;
-import lombok.Getter;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.support.AuditEntityAttribute;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Slf4j
 public class AuditEntityConvention {

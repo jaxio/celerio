@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.model.support;
 
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.configuration.entity.EnumConfig;
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.support.AbstractNamer;
+import org.springframework.util.Assert;
 
 public class EnumNamer extends AbstractNamer {
     private final EnumConfig enumConfig;

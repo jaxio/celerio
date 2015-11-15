@@ -1,55 +1,55 @@
 <celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../../../../../../../configuration/target/jibx/celerio.xsd">
-	<configuration rootPackage="fr.jaxio.partialjoined" />
-	<entityConfigs>
+         xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../../../../../../../configuration/target/jibx/celerio.xsd">
+    <configuration rootPackage="fr.jaxio.partialjoined"/>
+    <entityConfigs>
 
-		<!-- ========================================= -->	
-		<!--  SINGLE_TABLE strategy                    --> 
-		<!-- ========================================= -->	
+        <!-- ========================================= -->
+        <!--  SINGLE_TABLE strategy                    -->
+        <!-- ========================================= -->
 
-		<entityConfig tableName="ROCKET" subPackage="rocket">
-			<inheritance strategy="SINGLE_TABLE" discriminatorColumn="discriminator" discriminatorValue="ROCK" />
-			<columnConfigs>
-				<columnConfig columnName="id" />
-				<columnConfig columnName="name" />
-				<columnConfig columnName="weight" />
-			</columnConfigs>
-		</entityConfig>
-	
-		<entityConfig entityName="SpaceShip" subPackage="rocket">
-			<inheritance parentEntityName="Rocket" discriminatorValue="SPAC" />
-			<columnConfigs>
-				<columnConfig columnName="seats_count" />
-			</columnConfigs>
-		</entityConfig>
+        <entityConfig tableName="ROCKET" subPackage="rocket">
+            <inheritance strategy="SINGLE_TABLE" discriminatorColumn="discriminator" discriminatorValue="ROCK"/>
+            <columnConfigs>
+                <columnConfig columnName="id"/>
+                <columnConfig columnName="name"/>
+                <columnConfig columnName="weight"/>
+            </columnConfigs>
+        </entityConfig>
 
-		<!-- ========================================= -->	
-		<!--  JOINED strategy                    --> 
-		<!-- ========================================= -->	
+        <entityConfig entityName="SpaceShip" subPackage="rocket">
+            <inheritance parentEntityName="Rocket" discriminatorValue="SPAC"/>
+            <columnConfigs>
+                <columnConfig columnName="seats_count"/>
+            </columnConfigs>
+        </entityConfig>
 
-		<entityConfig tableName="ACCOUNT" subPackage="account">
-			<inheritance strategy="JOINED" />
-			<columnConfigs>
-				<!-- We do not mention all columns on purpose, we expect Celerio to add 
-					missing columns... -->
-				<columnConfig columnName="account_num" fieldName="accountNumber" />
-			</columnConfigs>
-		</entityConfig>
+        <!-- ========================================= -->
+        <!--  JOINED strategy                    -->
+        <!-- ========================================= -->
 
-		<entityConfig tableName="ADMINISTRATIVE_ACCOUNT" entityName="AdminAccount" subPackage="account">
-			<inheritance parentEntityName="Account" />
-			<columnConfigs>
-				<!-- We do not mention columns on purpose, we expect Celerio to add 
-					missing columns... -->
-			</columnConfigs>
-		</entityConfig>
+        <entityConfig tableName="ACCOUNT" subPackage="account">
+            <inheritance strategy="JOINED"/>
+            <columnConfigs>
+                <!-- We do not mention all columns on purpose, we expect Celerio to add
+                    missing columns... -->
+                <columnConfig columnName="account_num" fieldName="accountNumber"/>
+            </columnConfigs>
+        </entityConfig>
 
-		<entityConfig tableName="ENTERPRISE_ACCOUNT" subPackage="account">
-			<inheritance parentEntityName="AdminAccount" subPackage="account" />
-			<columnConfigs>
-				<!-- We do not mention all columns on purpose, we expect Celerio to add 
-					missing columns... -->
-			</columnConfigs>
-		</entityConfig>
-	</entityConfigs>
+        <entityConfig tableName="ADMINISTRATIVE_ACCOUNT" entityName="AdminAccount" subPackage="account">
+            <inheritance parentEntityName="Account"/>
+            <columnConfigs>
+                <!-- We do not mention columns on purpose, we expect Celerio to add
+                    missing columns... -->
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="ENTERPRISE_ACCOUNT" subPackage="account">
+            <inheritance parentEntityName="AdminAccount" subPackage="account"/>
+            <columnConfigs>
+                <!-- We do not mention all columns on purpose, we expect Celerio to add
+                    missing columns... -->
+            </columnConfigs>
+        </entityConfig>
+    </entityConfigs>
 </celerio>

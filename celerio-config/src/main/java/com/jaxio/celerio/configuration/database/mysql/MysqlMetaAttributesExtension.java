@@ -16,21 +16,20 @@
 
 package com.jaxio.celerio.configuration.database.mysql;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.apache.commons.lang.StringUtils.trim;
+import com.jaxio.celerio.configuration.MetaAttribute;
+import com.jaxio.celerio.configuration.database.Column;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Service;
-
-import com.jaxio.celerio.configuration.MetaAttribute;
-import com.jaxio.celerio.configuration.database.Column;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.trim;
 
 @Service
 public class MysqlMetaAttributesExtension extends MysqlExtension {

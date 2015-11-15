@@ -30,7 +30,7 @@ public interface Namer {
     /**
      * The java Type name in lower case, without any package information.
      * Used in general to construct sub package.  Ex: bankaccount.
-     */    
+     */
     String getTypeLow();
 
     /**
@@ -52,7 +52,7 @@ public interface Namer {
      * The var for the current type. Starts with a lower case. Ex: parentBankAccount.
      */
     String getVar();
-    
+
     /**
      * Same as {@link #getVar} but starts with an upper case. Ex: ParentBankAccount.
      * Used to construct derived method.

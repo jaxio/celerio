@@ -16,10 +16,9 @@
 
 package com.jaxio.celerio.model.support.account;
 
-import lombok.Data;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Relation;
+import lombok.Data;
 
 @Data
 public class AccountAttributes {

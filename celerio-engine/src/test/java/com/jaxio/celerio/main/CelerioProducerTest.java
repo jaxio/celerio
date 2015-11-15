@@ -16,19 +16,6 @@
 
 package com.jaxio.celerio.main;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.jaxio.celerio.configuration.Celerio;
 import com.jaxio.celerio.configuration.convention.ClassTypeOverride;
 import com.jaxio.celerio.configuration.convention.Conventions;
@@ -42,10 +29,22 @@ import com.jaxio.celerio.configuration.support.MetadataLoader;
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.convention.MethodConvention;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 @Ignore
-@ContextConfiguration({ "classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:CelerioProducerTest-applicationContext.xml" })
+@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
+        "classpath*:CelerioProducerTest-applicationContext.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CelerioProducerTest {
 

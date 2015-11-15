@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.aspects;
 
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
-
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+
+import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
 @Service
 @Scope(SCOPE_PROTOTYPE)

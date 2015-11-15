@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.model.support.springmvc;
 
-import static com.jaxio.celerio.convention.ClassType.webConverter;
-import lombok.Getter;
-
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.support.ClassNamer;
 import com.jaxio.celerio.spi.EntitySpi;
 import com.jaxio.celerio.support.Namer;
+import lombok.Getter;
+
+import static com.jaxio.celerio.convention.ClassType.webConverter;
 
 @Getter
 public class SpringMVCEntity implements EntitySpi {
@@ -41,7 +41,7 @@ public class SpringMVCEntity implements EntitySpi {
         return "springMvc";
     }
 
-    @Override    
+    @Override
     public void init(Entity entity) {
         this.entity = entity;
         this.formatter = new ClassNamer(entity, ClassType.formatter);

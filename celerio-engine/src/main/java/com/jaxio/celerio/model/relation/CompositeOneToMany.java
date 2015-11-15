@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.relation;
 
-import java.util.List;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.support.Namer;
+
+import java.util.List;
 
 public class CompositeOneToMany extends CompositeRelation {
 

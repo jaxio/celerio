@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.InheritanceType;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import org.springframework.util.StringUtils;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Getter
 @Setter

@@ -17,7 +17,6 @@
 package com.jaxio.celerio.configuration.entity;
 
 import lombok.Setter;
-
 import org.springframework.util.StringUtils;
 
 public class CustomAnnotation {

@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.metadata.rule;
 
-import org.springframework.stereotype.Service;
-
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.metadata.AbstractMetaDataRule;
 import com.jaxio.celerio.metadata.RuleReport;
+import org.springframework.stereotype.Service;
 
 @Service
 public class NoPkRule extends AbstractMetaDataRule<Table> {

@@ -16,22 +16,6 @@
 
 package com.jaxio.celerio.factory;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.jaxio.celerio.configuration.entity.AssociationDirection.UNIDIRECTIONAL;
-import static com.jaxio.celerio.factory.ProjectFactory.DEFAULT_ENTITY_ROOTPACKAGE;
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
-import static com.jaxio.celerio.util.MiscUtil.toName;
-
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.InheritanceType;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.Config;
 import com.jaxio.celerio.configuration.Configuration;
 import com.jaxio.celerio.configuration.SequencePattern;
@@ -40,6 +24,20 @@ import com.jaxio.celerio.configuration.convention.Renamer;
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.AssociationDirection;
 import com.jaxio.celerio.configuration.entity.EntityConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import javax.persistence.InheritanceType;
+import java.util.List;
+import java.util.Map;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.jaxio.celerio.configuration.entity.AssociationDirection.UNIDIRECTIONAL;
+import static com.jaxio.celerio.factory.ProjectFactory.DEFAULT_ENTITY_ROOTPACKAGE;
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static com.jaxio.celerio.util.MiscUtil.toName;
 
 @Service
 public class EntityConfigFactory {

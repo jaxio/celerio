@@ -16,16 +16,18 @@
 
 package com.jaxio.celerio.maven.plugin.celerio;
 
-import static org.apache.commons.io.FilenameUtils.normalize;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
-
+import com.jaxio.celerio.Config;
+import com.jaxio.celerio.configuration.*;
+import com.jaxio.celerio.configuration.database.JdbcConnectivity;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.TableType;
+import com.jaxio.celerio.configuration.database.support.MetadataExtractor;
+import com.jaxio.celerio.configuration.support.CelerioLoader;
+import com.jaxio.celerio.configuration.support.MetadataLoader;
+import com.jaxio.celerio.main.CelerioProducer;
+import com.jaxio.celerio.output.OutputResult;
+import com.jaxio.celerio.output.OutputResultFactory;
+import com.jaxio.celerio.template.pack.PackLoader;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
@@ -37,27 +39,20 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.oxm.XmlMappingException;
 
-import com.jaxio.celerio.Config;
-import com.jaxio.celerio.configuration.Celerio;
-import com.jaxio.celerio.configuration.CelerioTemplateContext;
-import com.jaxio.celerio.configuration.Configuration;
-import com.jaxio.celerio.configuration.Module;
-import com.jaxio.celerio.configuration.Pack;
-import com.jaxio.celerio.configuration.database.JdbcConnectivity;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.TableType;
-import com.jaxio.celerio.configuration.database.support.MetadataExtractor;
-import com.jaxio.celerio.configuration.support.CelerioLoader;
-import com.jaxio.celerio.configuration.support.MetadataLoader;
-import com.jaxio.celerio.main.CelerioProducer;
-import com.jaxio.celerio.output.OutputResult;
-import com.jaxio.celerio.output.OutputResultFactory;
-import com.jaxio.celerio.template.pack.PackLoader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.apache.commons.io.FilenameUtils.normalize;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * The core Celerio Engine is invoked by this plugin. This plugin can either connect directly to a database and extract the metadata information or use the
  * metadata.xml file produced by the dbmetadata-maven-plugin:extract-metadata goal. Please refer to <div class="xref" linkend="dbmetadata.extract-metadata"/>.
- * 
+ *
  * @goal generate
  * @phase generate-sources
  * @requiresProject false
@@ -67,10 +62,10 @@ public class GenerateMojo extends AbstractMojo {
     private static String DEFAULT_XML_CONFIGURATION = normalize("src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml");
     private static String DEFAULT_XML_METADATA = normalize("src/main/config/celerio-maven-plugin/metadata.xml");
     private ClassPathXmlApplicationContext context;
-    
+
     /**
      * Maven project, this is by default the current maven project.
-     * 
+     *
      * @parameter property="project"
      * @parameter required
      */
@@ -78,14 +73,14 @@ public class GenerateMojo extends AbstractMojo {
 
     /**
      * The current folder
-     * 
+     *
      * @parameter property="basedir"
      */
     protected String baseDir;
 
     /**
      * The output folder.
-     * 
+     *
      * @parameter property="celerio-maven-plugin.outputDir" default-value="${basedir}"
      */
     protected String outputDirectory;
@@ -94,7 +89,7 @@ public class GenerateMojo extends AbstractMojo {
      * The relative path to the Maven Celerio configuration file.
      * <p>
      * The default value is <div class="filename">src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml</div>
-     * 
+     *
      * @parameter property="celerio-maven-plugin.configuration" default-value="${basedir}/src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml"
      */
     protected String xmlConfiguration;
@@ -105,9 +100,9 @@ public class GenerateMojo extends AbstractMojo {
      * used. Keep in mind that only the template packs definition will be extracted from this file.
      * <p>
      * The default value is <div class="filename">src/main/config/celerio-maven-plugin/celerio-template-packs.xml</div>
-     * 
+     *
      * @parameter property="celerio-maven-plugin.packs.configuration"
-     *            default-value="${basedir}/src/main/config/celerio-maven-plugin/celerio-template-packs.xml"
+     * default-value="${basedir}/src/main/config/celerio-maven-plugin/celerio-template-packs.xml"
      */
     protected String xmlTemplatePacksOverride;
 
@@ -118,7 +113,7 @@ public class GenerateMojo extends AbstractMojo {
      * <p>
      * The main purpose of this file is to speed-up the generation process, as for large database schema the reverse engineering takes time. An other very
      * important benefit of this feature is to store the file in your source control, thus having a reproducible build.
-     * 
+     *
      * @parameter property=celerio-maven-plugin.xml.metadata" default-value="${basedir}/src/main/config/celerio-maven-plugin/metadata.xml"
      */
     protected String xmlMetadata;
@@ -127,7 +122,7 @@ public class GenerateMojo extends AbstractMojo {
      * Should the source code generation be skipped ?
      * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
-     * 
+     *
      * @parameter property="celerio-maven-plugin.skip" default-value="false"
      */
     protected boolean skip;
@@ -136,7 +131,7 @@ public class GenerateMojo extends AbstractMojo {
      * Specify the JDBC driver.
      * <p>
      * Example: <code>org.postgresql.Driver</code>
-     * 
+     *
      * @parameter property="jdbc.driver"
      */
     protected String jdbcDriver;
@@ -145,56 +140,56 @@ public class GenerateMojo extends AbstractMojo {
      * Specify the JDBC url.
      * <p>
      * Example: <code>jdbc:h2:~/.h2/sampledatabase</code>
-     * 
+     *
      * @parameter property="jdbc.url"
      */
     protected String jdbcUrl;
 
     /**
      * Specify the JDBC user, this user needs to have the privilege to access the database metadata.
-     * 
+     *
      * @parameter property="jdbc.user"
      */
     protected String jdbcUser;
 
     /**
      * Specify the JDBC password.
-     * 
+     *
      * @parameter property="jdbc.password"
      */
     protected String jdbcPassword;
 
     /**
      * Specify the JDBC catalog.
-     * 
+     *
      * @parameter property="jdbc.catalog"
      */
     protected String jdbcCatalog;
 
     /**
      * Should the Oracle remarks be retrieved ? Please note that this will impact the speed of the reverse engineering of your database.
-     * 
+     *
      * @parameter property="jdbc.oracleRetrieveRemarks" default-value="false"
      */
     protected boolean jdbcOracleRetrieveRemarks;
 
     /**
      * Should the synonyms be retrieved ?
-     * 
+     *
      * @parameter property="jdbc.oracleRetrieveSynonyms" default-value="true"
      */
     protected boolean jdbcOracleRetrieveSynonyms;
 
     /**
      * Specify the JDBC schema.
-     * 
+     *
      * @parameter property="jdbc.schema"
      */
     protected String jdbcSchema;
-    
+
     /**
      * Run celerio in 'springfuse' mode.
-     * 
+     *
      * @parameter property="springfuseMode" default-value="false"
      */
     protected boolean springfuseMode;
@@ -349,7 +344,7 @@ public class GenerateMojo extends AbstractMojo {
 
     /**
      * For convenience (multi module, springfuse, etc...) template packs and modules may be in a separate file... we process this file if it exists.
-     * 
+     *
      * @param celerio
      */
     private void overridePacksAndModules(Celerio celerio) {
@@ -445,7 +440,7 @@ public class GenerateMojo extends AbstractMojo {
 
     private Plugin lookupPlugin(String key) {
         List<?> plugins = project.getBuildPlugins();
-        for (Iterator<?> iterator = plugins.iterator(); iterator.hasNext();) {
+        for (Iterator<?> iterator = plugins.iterator(); iterator.hasNext(); ) {
             Plugin plugin = (Plugin) iterator.next();
             if (key.equalsIgnoreCase(plugin.getKey())) {
                 return plugin;

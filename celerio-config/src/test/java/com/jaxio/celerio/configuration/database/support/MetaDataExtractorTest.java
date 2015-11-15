@@ -16,14 +16,10 @@
 
 package com.jaxio.celerio.configuration.database.support;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.xml.bind.JAXBException;
-
+import com.jaxio.celerio.configuration.database.Column;
+import com.jaxio.celerio.configuration.database.Metadata;
+import com.jaxio.celerio.configuration.database.Table;
+import com.jaxio.celerio.configuration.support.MetadataLoader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +30,12 @@ import org.springframework.oxm.XmlMappingException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jaxio.celerio.configuration.database.Column;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
-import com.jaxio.celerio.configuration.support.MetadataLoader;
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration("classpath:applicationContext-configuration.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -90,7 +88,7 @@ public class MetaDataExtractorTest {
 
         Metadata meta = extractor.extract(embeddedDatabase.getConnection());
 
-        
+
         assertThat(countTables(meta)).isEqualTo(18);
         assertThat(countColumns(meta)).isEqualTo(49);
         assertThat(countPrimaryKeys(meta)).isEqualTo(18);

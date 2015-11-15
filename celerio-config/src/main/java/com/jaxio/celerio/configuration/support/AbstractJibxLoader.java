@@ -16,20 +16,13 @@
 
 package com.jaxio.celerio.configuration.support;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
-
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.oxm.XmlMappingException;
 import org.springframework.oxm.jibx.JibxMarshaller;
+
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.*;
 
 public abstract class AbstractJibxLoader<T> {
 

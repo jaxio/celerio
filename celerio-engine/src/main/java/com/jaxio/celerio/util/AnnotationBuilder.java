@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.util;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newTreeSet;
-
 import java.util.List;
 import java.util.Set;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newTreeSet;
 
 public class AnnotationBuilder {
     private Set<String> annotations = newTreeSet();

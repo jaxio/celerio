@@ -1,26 +1,27 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jaxio.prototype</groupId>
-	<artifactId>celerio-dbmaven-metadata-test</artifactId>
-	<packaging>jar</packaging>
-	<version>3.0.46-SNAPSHOT-SNAPSHOT</version>
-	<name>celerio-maven-dbmetadata-test</name>
-	<build>
-		<defaultGoal>generate-sources</defaultGoal>
-		<plugins>
-			<plugin>
-				<groupId>com.jaxio.prototype</groupId>
-				<artifactId>dbmetadata-maven-plugin</artifactId>
-				<version>0.0.1</version>
-				<executions>
-					<execution>
-						<id>extract metadata from given database.</id>
-						<goals>
-							<goal>extract-metadata</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jaxio.prototype</groupId>
+    <artifactId>celerio-dbmaven-metadata-test</artifactId>
+    <packaging>jar</packaging>
+    <version>3.0.46-SNAPSHOT-SNAPSHOT</version>
+    <name>celerio-maven-dbmetadata-test</name>
+    <build>
+        <defaultGoal>generate-sources</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>com.jaxio.prototype</groupId>
+                <artifactId>dbmetadata-maven-plugin</artifactId>
+                <version>0.0.1</version>
+                <executions>
+                    <execution>
+                        <id>extract metadata from given database.</id>
+                        <goals>
+                            <goal>extract-metadata</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

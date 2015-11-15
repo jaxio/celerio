@@ -22,7 +22,7 @@ import java.sql.SQLException;
 /**
  * A simple wrapper introduced to cope with DB2 on Z/OS. In this conf, apparently the column 'label' are not supported. To prevent regression, we continue to
  * use label for other systems.
- * 
+ * <p>
  * Once we know it works without label (it should), we can remove this code and use col number directly.
  */
 public abstract class ResultSetWrapper {

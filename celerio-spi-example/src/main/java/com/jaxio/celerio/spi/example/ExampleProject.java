@@ -22,7 +22,7 @@ import com.jaxio.celerio.spi.ProjectSpi;
 public class ExampleProject implements ProjectSpi {
 
     private Project project;
-    
+
     public void init(Project attribute) {
         this.project = attribute;
     }

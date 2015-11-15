@@ -16,10 +16,10 @@
 
 package com.jaxio.celerio.configuration.database.support;
 
-import static com.google.common.collect.Maps.newHashMap;
-
 import java.sql.ResultSet;
 import java.util.Map;
+
+import static com.google.common.collect.Maps.newHashMap;
 
 public class ResultSetColumns extends ResultSetWrapper {
 

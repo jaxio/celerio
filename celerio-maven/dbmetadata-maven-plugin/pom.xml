@@ -14,37 +14,38 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jaxio.celerio</groupId>
-		<artifactId>celerio-maven</artifactId>
-		<version>4.0.2-SNAPSHOT</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jaxio.celerio</groupId>
+        <artifactId>celerio-maven</artifactId>
+        <version>4.0.2-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>dbmetadata-maven-plugin</artifactId>
-	<packaging>maven-plugin</packaging>
+    <artifactId>dbmetadata-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
 
-	<name>dbmetadata-maven-plugin</name>
-	<description>Celerio Maven plugin is responsible for Database Reverse</description>
+    <name>dbmetadata-maven-plugin</name>
+    <description>Celerio Maven plugin is responsible for Database Reverse</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.jaxio.celerio</groupId>
-			<artifactId>celerio-config</artifactId>
-		</dependency>
-		<!-- mojos -->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-compiler-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.jaxio.celerio</groupId>
+            <artifactId>celerio-config</artifactId>
+        </dependency>
+        <!-- mojos -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-project</artifactId>
+        </dependency>
+    </dependencies>
 </project>

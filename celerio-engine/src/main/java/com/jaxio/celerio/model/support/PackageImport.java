@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.support;
 
-import static org.apache.commons.lang.StringUtils.removeStart;
-import lombok.Getter;
-
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.util.Named;
+import lombok.Getter;
+
+import static org.apache.commons.lang.StringUtils.removeStart;
 
 public class PackageImport implements Named, Comparable<PackageImport> {
 
@@ -42,7 +42,7 @@ public class PackageImport implements Named, Comparable<PackageImport> {
             // chop off the annotation... "e.g x.y.z.Named("sthg")" => e.g x.y.z.Named
             fullType = fullType.substring(0, fullType.indexOf("("));
         }
-        
+
         this.packageName = fullType;
         initForComparison();
 
@@ -115,6 +115,6 @@ public class PackageImport implements Named, Comparable<PackageImport> {
      * no need to import simple types like java.lang.Integer
      */
     public boolean isImportNeeded() {
-        return !packageName.matches("java\\.lang\\.\\w+"); 
+        return !packageName.matches("java\\.lang\\.\\w+");
     }
 }

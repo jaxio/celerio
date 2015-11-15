@@ -24,7 +24,7 @@ import com.jaxio.celerio.util.support.ListGetter;
 /**
  * Enable you to retrieve the list of {@link Entity} related to the entity's ancestors,
  * the entity's descendants or simply the whole entity's family tree.
- *
+ * <p>
  * Note that this class is just strongly typed {@link CurrentAndFlatListHolder}.
  * It is intended to reduce the definition of related {@link Entity} lists in the entity object.
  */

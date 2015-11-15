@@ -16,12 +16,12 @@
 
 package com.jaxio.celerio.model.support.validation;
 
-import java.util.List;
-
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.spi.RelationSpi;
 import com.jaxio.celerio.template.ImportsContext;
 import com.jaxio.celerio.util.AnnotationBuilder;
+
+import java.util.List;
 
 public class ValidationRelation implements RelationSpi {
     private Relation relation;
@@ -62,7 +62,7 @@ public class ValidationRelation implements RelationSpi {
      * However, in test (XxxGenerator), we must take mandatory into account...
      */
     public String getNotNullAnnotation() {
-        if(!relation.isManyToOne() && !relation.isOneToOne()) {
+        if (!relation.isManyToOne() && !relation.isOneToOne()) {
             return "";
         }
 

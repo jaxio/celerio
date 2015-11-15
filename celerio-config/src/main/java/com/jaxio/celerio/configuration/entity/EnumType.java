@@ -17,10 +17,16 @@
 package com.jaxio.celerio.configuration.entity;
 
 public enum EnumType {
-    /** Persist enumerated type property or field as an integer */
+    /**
+     * Persist enumerated type property or field as an integer
+     */
     ORDINAL,
-    /** Persist enumerated type property or field as a string */
+    /**
+     * Persist enumerated type property or field as a string
+     */
     STRING,
-    /** Persisted via a custom user type */
+    /**
+     * Persisted via a custom user type
+     */
     CUSTOM
 }

@@ -16,18 +16,16 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.google.common.base.Predicates.and;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.model.support.AttributePredicates.BLOB;
-import static com.jaxio.celerio.model.support.AttributePredicates.NUMERIC;
-import static com.jaxio.celerio.model.support.AttributePredicates.STRING;
+import com.google.common.base.Predicate;
+import com.jaxio.celerio.model.Attribute;
+import com.jaxio.celerio.util.MiscUtil;
 
 import java.util.List;
 import java.util.Locale;
 
-import com.google.common.base.Predicate;
-import com.jaxio.celerio.model.Attribute;
-import com.jaxio.celerio.util.MiscUtil;
+import static com.google.common.base.Predicates.and;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.model.support.AttributePredicates.*;
 
 public class SuffixPrefixPredicates {
 

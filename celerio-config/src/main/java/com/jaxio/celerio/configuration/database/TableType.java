@@ -18,8 +18,12 @@ package com.jaxio.celerio.configuration.database;
 
 public enum TableType {
     TABLE, VIEW,
-    /** not supported */
+    /**
+     * not supported
+     */
     ALIAS,
-    /** not supported */
+    /**
+     * not supported
+     */
     SYNONYM;
 }

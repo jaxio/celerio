@@ -16,19 +16,6 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newHashSet;
-import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
-import static javax.persistence.InheritanceType.JOINED;
-import static javax.persistence.InheritanceType.SINGLE_TABLE;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.util.List;
-import java.util.Set;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.CacheConfig;
 import com.jaxio.celerio.configuration.entity.CacheConfigGetter;
@@ -39,6 +26,18 @@ import com.jaxio.celerio.model.unique.CompositeUnique;
 import com.jaxio.celerio.spi.support.AbstractEntitySpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.util.Assert;
+
+import java.util.List;
+import java.util.Set;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newHashSet;
+import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
+import static javax.persistence.InheritanceType.JOINED;
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * Helper to write non trivial JPA annotations that may be applied to the generated entity class.
@@ -57,7 +56,7 @@ public class JpaEntity extends AbstractEntitySpi {
         ab.add(getHibernateCacheAnnotation()); // TODO: move to cache entity spi ?
         ab.add(getTableAnnotation());
         ab.add(getInheritanceAnnotations());
-        ab.add(getDiscriminatorColumnAnnotation());       
+        ab.add(getDiscriminatorColumnAnnotation());
         ab.add(getDiscriminatorValueAnnotation());
         ab.add(getSecondaryTableAnnotations());
         ab.add(getPrimaryKeyJoinColumnAnnotation());
@@ -110,7 +109,7 @@ public class JpaEntity extends AbstractEntitySpi {
         if (!entityPkColumnName.equalsIgnoreCase(rootPkColumnName)) {
             return appendComment(getPrimaryKeyJoinColumnAnnotation(entityPkColumnName));
         }
-        
+
         return "";
     }
 
@@ -167,7 +166,7 @@ public class JpaEntity extends AbstractEntitySpi {
             addImport("javax.persistence.DiscriminatorColumn");
             return appendComment("@DiscriminatorColumn(name = \"" + entity.getInheritance().getDiscriminatorColumn() + "\")");
         }
-        
+
         return "";
     }
 
@@ -231,7 +230,7 @@ public class JpaEntity extends AbstractEntitySpi {
         if (!entity.isRoot()) {
             return "";
         }
-        
+
         String cacheAnnotation = JpaConfigHelper.getCacheAnnotation(this, //
                 entity.getEntityConfig(), //
                 new CacheConfigGetter() {
@@ -249,7 +248,7 @@ public class JpaEntity extends AbstractEntitySpi {
     }
 
     public String getTableAnnotation() {
-        if (entity.isRoot() || (entity.hasInheritance() && entity.getParent().is(JOINED))) {        
+        if (entity.isRoot() || (entity.hasInheritance() && entity.getParent().is(JOINED))) {
             StringBuffer annotation = new StringBuffer("");
             appendAttribute(annotation, getName());
             appendAttribute(annotation, getUniqueConstraints());

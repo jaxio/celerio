@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.model.primarykey;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.unmodifiableList;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.PrimaryKey;
 import com.jaxio.celerio.support.AbstractNamer;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.unmodifiableList;
 
 @Getter
 public class SimplePrimaryKey extends AbstractNamer implements PrimaryKey {

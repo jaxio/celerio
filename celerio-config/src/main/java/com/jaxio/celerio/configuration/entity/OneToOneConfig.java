@@ -16,17 +16,17 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Setter
 public class OneToOneConfig implements CascadeGetter, CacheConfigGetter, FetchTypeGetter, AssociationActionGetter, LabelGetter, TargetEntityNameGetter {
     private String var;
-    private Boolean orphanRemoval;    
+    private Boolean orphanRemoval;
     private FetchType fetch;
     private String targetEntityName;
     private List<Label> labels;
@@ -50,7 +50,7 @@ public class OneToOneConfig implements CascadeGetter, CacheConfigGetter, FetchTy
      */
     public Boolean getOrphanRemoval() {
         return orphanRemoval;
-    }    
+    }
 
     /*
      * The JPA fetch type for this association. Use NONE if you do not want any fetchType to be set.

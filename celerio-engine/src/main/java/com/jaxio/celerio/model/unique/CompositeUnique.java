@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.model.unique;
 
-import static java.util.Collections.unmodifiableList;
-import static org.apache.commons.lang.StringUtils.removeEnd;
+import com.jaxio.celerio.model.Attribute;
+import com.jaxio.celerio.model.Unique;
+import lombok.Getter;
 
 import java.util.List;
 
-import lombok.Getter;
-
-import com.jaxio.celerio.model.Attribute;
-import com.jaxio.celerio.model.Unique;
+import static java.util.Collections.unmodifiableList;
+import static org.apache.commons.lang.StringUtils.removeEnd;
 
 @Getter
 public class CompositeUnique implements Unique {

@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.model;
 
-import java.util.List;
-
 import com.jaxio.celerio.support.Namer;
+
+import java.util.List;
 
 public interface PrimaryKey extends Namer {
 

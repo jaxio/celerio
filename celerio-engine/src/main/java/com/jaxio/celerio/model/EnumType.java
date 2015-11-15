@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.model;
 
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
-import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
-
 import com.jaxio.celerio.configuration.entity.EnumConfig;
 import com.jaxio.celerio.configuration.entity.EnumValue;
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.model.support.EnumNamer;
 import com.jaxio.celerio.util.Labels;
+
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
 
 /**
  * EnumType is for an enum what {@link Entity} is for an entity.

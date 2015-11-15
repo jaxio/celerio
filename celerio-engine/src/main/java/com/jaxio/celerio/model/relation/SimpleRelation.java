@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.model.relation;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.unmodifiableList;
-
-import java.util.List;
-
-import lombok.Getter;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.support.Namer;
+import lombok.Getter;
+
+import java.util.List;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.unmodifiableList;
 
 @Getter
 public abstract class SimpleRelation extends AbstractRelation {

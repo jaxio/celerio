@@ -16,19 +16,19 @@
 
 package com.jaxio.celerio.template.pack;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static org.apache.commons.io.FilenameUtils.normalize;
-import static org.apache.commons.io.IOUtils.toByteArray;
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
+import org.springframework.context.annotation.Scope;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.core.io.Resource;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static org.apache.commons.io.FilenameUtils.normalize;
+import static org.apache.commons.io.IOUtils.toByteArray;
+import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
 @Scope(SCOPE_PROTOTYPE)
 public class ClasspathResourceUncryptedPack implements TemplatePack {

@@ -16,13 +16,12 @@
 
 package com.jaxio.celerio.util;
 
+import com.jaxio.celerio.configuration.entity.Label;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import lombok.Setter;
-
-import com.jaxio.celerio.configuration.entity.Label;
 
 public class Labels {
 

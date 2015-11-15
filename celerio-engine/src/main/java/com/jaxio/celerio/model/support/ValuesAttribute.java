@@ -110,7 +110,7 @@ public class ValuesAttribute implements AttributeSpi {
     public String getUnique() {
         // limit to avoid memory errors
         int size = Math.min(attribute.getColumnConfig().getSize(), 255);
-        
+
         if (attribute.isEnum()) {
             return getDefaultEnum();
         } else if (attribute.isBoolean()) {
@@ -120,7 +120,7 @@ public class ValuesAttribute implements AttributeSpi {
 
         // hack
         ImportsContext.addImport(GeneratedPackage.Util.getPackageName() + ".ValueGenerator");
-        
+
         if (attribute.isDate()) {
             return "ValueGenerator.getUniqueDate()";
         } else if (attribute.isEmail()) {

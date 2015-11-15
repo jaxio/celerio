@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.model.unique;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.unmodifiableList;
+import com.jaxio.celerio.model.Attribute;
+import com.jaxio.celerio.model.Unique;
+import lombok.Getter;
 
 import java.util.List;
 
-import lombok.Getter;
-
-import com.jaxio.celerio.model.Attribute;
-import com.jaxio.celerio.model.Unique;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.unmodifiableList;
 
 @Getter
 public class SimpleUnique implements Unique {

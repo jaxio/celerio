@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.template.pack;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class LocalResourcePackFileTest {
 

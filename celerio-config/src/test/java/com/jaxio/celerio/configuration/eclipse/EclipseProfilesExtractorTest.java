@@ -16,13 +16,7 @@
 
 package com.jaxio.celerio.configuration.eclipse;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.xml.bind.JAXBException;
-
+import com.jaxio.celerio.configuration.support.EclipseProfilesLoader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +24,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jaxio.celerio.configuration.support.EclipseProfilesLoader;
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 @ContextConfiguration("classpath:applicationContext-configuration.xml")
 @RunWith(SpringJUnit4ClassRunner.class)

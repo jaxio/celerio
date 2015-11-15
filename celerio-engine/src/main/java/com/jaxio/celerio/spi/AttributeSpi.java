@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.spi;
 
-import java.util.ServiceLoader;
-
 import com.jaxio.celerio.model.Attribute;
+
+import java.util.ServiceLoader;
 
 /**
  * The AttributeSpi interface allows Celerio template developers to plug new {@link Attribute} helpers.
- *
+ * <p>
  * The implementations are loaded by the java's {@link ServiceLoader}.
  */
 public interface AttributeSpi {
@@ -34,8 +34,8 @@ public interface AttributeSpi {
 
     /**
      * The var name under which this AttributeSpi is available during template evaluation.<br>
-     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, 
-     * the corresponding AttributeSpi implementation instance is given by <code>$attribute.myextension</code>. 
+     * For example if <code>velocityVar()</code> methods returns <code>myextension</code>,
+     * the corresponding AttributeSpi implementation instance is given by <code>$attribute.myextension</code>.
      */
     String velocityVar();
 }

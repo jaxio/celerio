@@ -23,7 +23,7 @@ import com.jaxio.celerio.support.Namer;
 /**
  * A one-to-virtual-one relation is using a one-to-many mapping but set the various collection getters/setters to protected and exposes instead some helper
  * setter/getter to set the entity as if it was mapped as a real one to one.
- * 
+ * <p>
  * The main benefit of this technique is to leverage the lazy loading of the collection holding the entity.
  */
 public class SimpleOneToVirtualOne extends SimpleRelation {

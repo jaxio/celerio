@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.convention;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class CommentStyleTest {
     @Test

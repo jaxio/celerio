@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.metadata;
 
-import static com.google.common.collect.Maps.newHashMap;
+import com.jaxio.celerio.configuration.database.Column;
+import com.jaxio.celerio.configuration.database.Table;
+import lombok.Getter;
 
 import java.util.Map;
 
-import lombok.Getter;
-
-import com.jaxio.celerio.configuration.database.Column;
-import com.jaxio.celerio.configuration.database.Table;
+import static com.google.common.collect.Maps.newHashMap;
 
 @Getter
 public class RuleReport {

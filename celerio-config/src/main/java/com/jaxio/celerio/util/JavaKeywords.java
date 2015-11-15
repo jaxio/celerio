@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.util;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @SuppressWarnings("unchecked")
 public class JavaKeywords {

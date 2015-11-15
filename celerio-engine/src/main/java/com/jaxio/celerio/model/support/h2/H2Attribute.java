@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.support.h2;
 
-import java.sql.Types;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.spi.AttributeSpi;
 import com.jaxio.celerio.util.MappedType;
+
+import java.sql.Types;
 
 public class H2Attribute implements AttributeSpi {
     private Attribute attribute;
@@ -56,14 +56,14 @@ public class H2Attribute implements AttributeSpi {
             return "boolean";
         } else if (type.isDate()) {
             switch (attribute.getJdbcType().getJdbcType()) {
-            case Types.TIME:
-                return "time";
-            case Types.DATE:
-                return "date";
-            case Types.TIMESTAMP:
-                return "timestamp";
-            default:
-                return "unsupported type";
+                case Types.TIME:
+                    return "time";
+                case Types.DATE:
+                    return "date";
+                case Types.TIMESTAMP:
+                    return "timestamp";
+                default:
+                    return "unsupported type";
             }
         } else if (type.isString()) {
             return "varchar(" + attribute.getColumnConfig().getSize() + ")";

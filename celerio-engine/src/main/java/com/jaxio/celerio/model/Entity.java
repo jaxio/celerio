@@ -16,107 +16,6 @@
 
 package com.jaxio.celerio.model;
 
-import static com.google.common.base.Predicates.and;
-import static com.google.common.collect.Iterables.any;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.google.common.collect.Sets.newTreeSet;
-import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
-import static com.jaxio.celerio.model.support.AttributePredicates.BIG_INTEGER;
-import static com.jaxio.celerio.model.support.AttributePredicates.BUSINESS_KEY_BY_CONFIGURATION;
-import static com.jaxio.celerio.model.support.AttributePredicates.DATE;
-import static com.jaxio.celerio.model.support.AttributePredicates.DEFAULT_SORT;
-import static com.jaxio.celerio.model.support.AttributePredicates.ENUM;
-import static com.jaxio.celerio.model.support.AttributePredicates.FILE;
-import static com.jaxio.celerio.model.support.AttributePredicates.FORM_FIELD;
-import static com.jaxio.celerio.model.support.AttributePredicates.HAS_PERTINENT_DEFAULT_VALUE;
-import static com.jaxio.celerio.model.support.AttributePredicates.HIBERNATE_SEARCH_FIELD;
-import static com.jaxio.celerio.model.support.AttributePredicates.HIDDEN;
-import static com.jaxio.celerio.model.support.AttributePredicates.IN_FK;
-import static com.jaxio.celerio.model.support.AttributePredicates.IN_PK;
-import static com.jaxio.celerio.model.support.AttributePredicates.IS_CPK_PATTERN_SEARCHABLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.IS_LABEL;
-import static com.jaxio.celerio.model.support.AttributePredicates.IS_PATTERN_SEARCHABLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.IS_UNIQUE;
-import static com.jaxio.celerio.model.support.AttributePredicates.LOCALE_KEY;
-import static com.jaxio.celerio.model.support.AttributePredicates.LOCALIZABLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.MULTI_SELECTABLE_FIELD;
-import static com.jaxio.celerio.model.support.AttributePredicates.NOT_IN_COMPOSITE_PK;
-import static com.jaxio.celerio.model.support.AttributePredicates.NOT_IN_PK;
-import static com.jaxio.celerio.model.support.AttributePredicates.NOT_SIMPLE_PK;
-import static com.jaxio.celerio.model.support.AttributePredicates.NOT_VERSION;
-import static com.jaxio.celerio.model.support.AttributePredicates.NUMERIC;
-import static com.jaxio.celerio.model.support.AttributePredicates.RANGEABLE_FIELD;
-import static com.jaxio.celerio.model.support.AttributePredicates.SEARCH_FIELD;
-import static com.jaxio.celerio.model.support.AttributePredicates.SEARCH_RESULT_CONVENTION;
-import static com.jaxio.celerio.model.support.AttributePredicates.SEARCH_RESULT_FIELD_DEFINED_MANUALLY;
-import static com.jaxio.celerio.model.support.AttributePredicates.SIMPLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.SIMPLE_FK;
-import static com.jaxio.celerio.model.support.AttributePredicates.SIMPLE_PK;
-import static com.jaxio.celerio.model.support.AttributePredicates.SORTABLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.STRING;
-import static com.jaxio.celerio.model.support.AttributePredicates.VERSION;
-import static com.jaxio.celerio.model.support.AttributePredicates.VISIBLE;
-import static com.jaxio.celerio.model.support.AttributePredicates.WITH_PUBLIC_SETTER_ACCESSIBILITY;
-import static com.jaxio.celerio.model.support.EntityListGetters.ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.ATTRIBUTES_AND_PK_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.CPK_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.HIERARCHY_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.INDEXED_PRINTER_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.LOCALIZABLE_TO_DISPLAY_STRING_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.PK_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.PRINTER_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.RELATED_ENTITIES;
-import static com.jaxio.celerio.model.support.EntityListGetters.RELATIONS;
-import static com.jaxio.celerio.model.support.EntityListGetters.SEARCH_RESULTS;
-import static com.jaxio.celerio.model.support.EntityListGetters.STRING_PRINTER_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.EntityListGetters.UNIQUES;
-import static com.jaxio.celerio.model.support.EntityPredicates.HAS_FILE_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.RelationPredicates.BIDIRECTIONAL_MANY_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.BIDIRECTIONAL_X_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.COLLECTION;
-import static com.jaxio.celerio.model.support.RelationPredicates.COMPOSITE;
-import static com.jaxio.celerio.model.support.RelationPredicates.COMPOSITE_X_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.FORM_INPUT_FIELD_RELATION;
-import static com.jaxio.celerio.model.support.RelationPredicates.INTERMEDIATE_X_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.MANY_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.MANY_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.NON_SIMPLE_X_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.NOT_MANY_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.ONE_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.ONE_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.ONE_TO_VIRTUAL_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.RELATION_IS_INVERSE;
-import static com.jaxio.celerio.model.support.RelationPredicates.SIMPLE_INVERSE_ONE_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.UNIDIRECTIONAL_MANY_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.UNIDIRECTIONAL_X_TO_ONE;
-import static com.jaxio.celerio.model.support.RelationPredicates.X_TO_MANY;
-import static com.jaxio.celerio.model.support.RelationPredicates.X_TO_ONE;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_BINARY_SUFFIX;
-import static com.jaxio.celerio.model.support.UniquePredicates.COMPOSITE_UNIQUE;
-import static com.jaxio.celerio.model.support.UniquePredicates.SIMPLE_UNIQUE;
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
-import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
-import static java.util.Collections.unmodifiableList;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.persistence.InheritanceType;
-
-import lombok.Getter;
-import lombok.Setter;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -131,17 +30,8 @@ import com.jaxio.celerio.factory.RelationCollisionUtil;
 import com.jaxio.celerio.factory.conventions.AuditEntityConvention;
 import com.jaxio.celerio.factory.conventions.AuditLogConvention;
 import com.jaxio.celerio.factory.conventions.SavedSearchConvention;
-import com.jaxio.celerio.model.support.AttributeBundle;
-import com.jaxio.celerio.model.support.AuditEntityAttribute;
-import com.jaxio.celerio.model.support.AuditLogAttribute;
-import com.jaxio.celerio.model.support.ClassNamer;
-import com.jaxio.celerio.model.support.DomainSubpackageClassNamer;
-import com.jaxio.celerio.model.support.EntityAttributes;
-import com.jaxio.celerio.model.support.EntityEntity;
+import com.jaxio.celerio.model.support.*;
 import com.jaxio.celerio.model.support.EntityPredicates.ExcludeEntity;
-import com.jaxio.celerio.model.support.EntityRelations;
-import com.jaxio.celerio.model.support.EntityUniques;
-import com.jaxio.celerio.model.support.RelationPredicates;
 import com.jaxio.celerio.model.support.account.AccountAttributes;
 import com.jaxio.celerio.model.support.account.RoleAttributes;
 import com.jaxio.celerio.model.support.account.SavedSearchAttributes;
@@ -152,6 +42,39 @@ import com.jaxio.celerio.util.Named;
 import com.jaxio.celerio.util.support.CurrentAndFlatListHolder;
 import com.jaxio.celerio.util.support.HierarchicalSupport;
 import com.jaxio.celerio.util.support.ListGetter;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+
+import javax.persistence.InheritanceType;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static com.google.common.base.Predicates.and;
+import static com.google.common.collect.Iterables.any;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newTreeSet;
+import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
+import static com.jaxio.celerio.model.support.AttributePredicates.*;
+import static com.jaxio.celerio.model.support.AttributePredicates.SIMPLE;
+import static com.jaxio.celerio.model.support.EntityListGetters.*;
+import static com.jaxio.celerio.model.support.EntityPredicates.HAS_FILE_ATTRIBUTES;
+import static com.jaxio.celerio.model.support.RelationPredicates.*;
+import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_BINARY_SUFFIX;
+import static com.jaxio.celerio.model.support.UniquePredicates.COMPOSITE_UNIQUE;
+import static com.jaxio.celerio.model.support.UniquePredicates.SIMPLE_UNIQUE;
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
+import static java.util.Collections.unmodifiableList;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
 /**
  * JPA Entity meta information.
@@ -173,17 +96,17 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     private boolean manyToManyJoinEntity;
     private Entity parent;
     private EntityConfig entityConfig;
-    
+
     // account / role support for spring security
     @Setter
     private AccountAttributes accountAttributes;
     @Setter
     private RoleAttributes roleAttributes;
-    
+
     // -----------------------------------
     // Namers
     // -----------------------------------
-    
+
     // Used from velocity templates
     private Namer model = newClassNamer(ClassType.model);
     private Namer controllerWithPathVariable = newClassNamer(ClassType.controllerWithPathVariable);
@@ -402,12 +325,12 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     public Entity getRoot() {
         return hierarchicalSupport.getRoot();
     }
-    
+
     @Override
     public boolean isRoot() {
         return hierarchicalSupport.isRoot();
     }
-    
+
     @Override
     public List<Entity> getParents() {
         List<Entity> result = newArrayList();
@@ -419,7 +342,7 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
 
         return result;
     }
-    
+
     @Override
     public List<Entity> getChildren() {
         return unmodifiableList(children);
@@ -986,12 +909,12 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     }
 
     private EntityAttributes newEntityAttributes(Predicate<Attribute> p1, Predicate<Attribute> p2) {
-        return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute> and(p1, p2)); // using static import breaks compilation
+        return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute>and(p1, p2)); // using static import breaks compilation
     }
 
     @SuppressWarnings("unchecked")
     private EntityAttributes newEntityAttributes(Predicate<Attribute> p1, Predicate<Attribute> p2, Predicate<Attribute> p3) {
-        return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute> and(p1, p2, p3)); // using static import breaks compilation
+        return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute>and(p1, p2, p3)); // using static import breaks compilation
     }
 
 //    private EntityPackageImports newEntityPackageImports(ListGetter<PackageImport, Entity> listGetter) {

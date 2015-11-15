@@ -16,10 +16,10 @@
 
 package com.jaxio.celerio.util;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class EncodingUtil {
     private static List<String> isoAccents = newArrayList("¡", "¢", "£", "¤", "¥", "¦", "§", "¨", "©", "ª", "«", "¬", "&", "®", ",", "¯", "°", "±", "²", "³",

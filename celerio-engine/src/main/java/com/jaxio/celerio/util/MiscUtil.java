@@ -36,11 +36,9 @@ public abstract class MiscUtil {
      * <p>
      * It is your responsibility to use this method appropriately, if you are calling this method to create a method like getColumn, if you give get_column or
      * get_Column it will break your java code.
-     * 
-     * @param name
-     *            the field name to convert into a name
-     * @param wimpyCaps
-     *            if false, upper case the first letter
+     *
+     * @param name      the field name to convert into a name
+     * @param wimpyCaps if false, upper case the first letter
      * @return the converted name
      */
     private static String convertName(String name, boolean wimpyCaps) {
@@ -109,7 +107,7 @@ public abstract class MiscUtil {
 
     /**
      * Helper method, do the same as convertName with wimpsy caps as false
-     * 
+     *
      * @see #convertName(String, boolean)
      */
     public static String toName(String name) {
@@ -205,11 +203,9 @@ public abstract class MiscUtil {
 
     /**
      * Does the given column name equals ignore case with one of pattern given in parameter
-     * 
-     * @param name
-     *            the column
-     * @param patterns
-     *            table of patterns as strings
+     *
+     * @param name     the column
+     * @param patterns table of patterns as strings
      * @return true if the column name equals ignore case with one of the given patterns, false otherwise
      */
     public static boolean equalsIgnoreCase(String name, Iterable<String> patterns) {

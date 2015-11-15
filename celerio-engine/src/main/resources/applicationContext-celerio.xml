@@ -18,38 +18,42 @@
 <beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="
+       xsi:schemaLocation="
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-	<context:component-scan base-package="com/jaxio/celerio">
-		<context:exclude-filter type="regex" expression="com/jaxio/celerio/configuration.*" />
-	</context:component-scan>
+    <context:component-scan base-package="com/jaxio/celerio">
+        <context:exclude-filter type="regex" expression="com/jaxio/celerio/configuration.*"/>
+    </context:component-scan>
 
-	<bean class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-		<description>
-			See http://velocity.apache.org/engine/releases/velocity-1.6.2/developer-guide.html#Configuring_Resource_Loaders
-			Load from file then fallback to classpath
-		</description>
-		<property name="velocityProperties">
-			<props>
-				<prop key="runtime.references.strict">true</prop>
-				<prop key="runtime.log.invalid.references">true</prop>
+    <bean class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <description>
+            See
+            http://velocity.apache.org/engine/releases/velocity-1.6.2/developer-guide.html#Configuring_Resource_Loaders
+            Load from file then fallback to classpath
+        </description>
+        <property name="velocityProperties">
+            <props>
+                <prop key="runtime.references.strict">true</prop>
+                <prop key="runtime.log.invalid.references">true</prop>
 
-				<prop key="runtime.log.logsystem.class">org.apache.velocity.runtime.log.Log4JLogChute</prop>
-				<prop key="runtime.log.logsystem.log4j.logger">com.jaxio.celerio.VelocityGenerator</prop>
+                <prop key="runtime.log.logsystem.class">org.apache.velocity.runtime.log.Log4JLogChute</prop>
+                <prop key="runtime.log.logsystem.log4j.logger">com.jaxio.celerio.VelocityGenerator</prop>
 
-				<prop key="resource.loader">file, class</prop>
+                <prop key="resource.loader">file, class</prop>
 
-				<prop key="file.resource.loader.description">Velocity File Resource Loader</prop>
-				<prop key="file.resource.loader.class">org.apache.velocity.runtime.resource.loader.FileResourceLoader</prop>
-				<prop key="file.resource.loader.path">., src/main/velocity</prop>
-				<prop key="file.resource.loader.cache">true</prop>
-				<prop key="file.resource.loader.modificationCheckInterval">-1</prop>
+                <prop key="file.resource.loader.description">Velocity File Resource Loader</prop>
+                <prop key="file.resource.loader.class">org.apache.velocity.runtime.resource.loader.FileResourceLoader
+                </prop>
+                <prop key="file.resource.loader.path">., src/main/velocity</prop>
+                <prop key="file.resource.loader.cache">true</prop>
+                <prop key="file.resource.loader.modificationCheckInterval">-1</prop>
 
-				<prop key="class.resource.loader.description">Velocity Classpath Resource Loader</prop>
-				<prop key="class.resource.loader.class">org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
-			</props>
-		</property>
-	</bean>
+                <prop key="class.resource.loader.description">Velocity Classpath Resource Loader</prop>
+                <prop key="class.resource.loader.class">
+                    org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+                </prop>
+            </props>
+        </property>
+    </bean>
 </beans>

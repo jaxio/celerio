@@ -16,9 +16,8 @@
 
 package com.jaxio.celerio.model.support.account;
 
-import lombok.Data;
-
 import com.jaxio.celerio.model.Attribute;
+import lombok.Data;
 
 @Data
 public class SavedSearchAttributes {

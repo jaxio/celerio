@@ -16,16 +16,16 @@
 
 package com.jaxio.celerio.spi.support;
 
-import static java.lang.Boolean.TRUE;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.PackageImportAdder;
 import com.jaxio.celerio.spi.AttributeSpi;
 import com.jaxio.celerio.template.ImportsContext;
 
+import static java.lang.Boolean.TRUE;
+
 public abstract class AbstractAttributeSpi implements AttributeSpi, PackageImportAdder {
     protected Attribute attribute;
-    
+
     @Override
     public void init(Attribute attribute) {
         this.attribute = attribute;
@@ -36,20 +36,20 @@ public abstract class AbstractAttributeSpi implements AttributeSpi, PackageImpor
         if (!isCommentMode()) {
             ImportsContext.addImport(fullType);
         }
-    } 
+    }
 
     /**
-     * Determines if the annotation should be commented.<br> 
+     * Determines if the annotation should be commented.<br>
      * By default annotation are commented if the attribute is set as transient in the configuration.
      */
     protected boolean isCommentMode() {
         return attribute.getColumnConfig() != null && attribute.getColumnConfig().getAsTransient() == TRUE;
     }
-    
+
     protected String appendComment(String annotation) {
         if (isCommentMode()) {
             return "// (uncomment it in subclass) " + annotation;
         }
         return annotation;
-    }   
+    }
 }

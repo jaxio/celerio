@@ -17,7 +17,9 @@
 package com.jaxio.celerio.configuration.entity;
 
 public enum CacheConcurrencyStrategy {
-    /** Use NONE if you do not want any Cache annotation to be set */
+    /**
+     * Use NONE if you do not want any Cache annotation to be set
+     */
     NONE, //
     READ_ONLY, //
     NONSTRICT_READ_WRITE, //

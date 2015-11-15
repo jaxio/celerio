@@ -16,10 +16,10 @@
 
 package com.jaxio.celerio.configuration.database.oracle;
 
-import java.sql.Connection;
-
 import com.jaxio.celerio.configuration.database.Metadata;
 import com.jaxio.celerio.configuration.database.support.Extension;
+
+import java.sql.Connection;
 
 public class OracleExtension implements Extension {
     private static final String ORACLE_DATABASE = "oracle";

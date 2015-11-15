@@ -17,13 +17,19 @@
 package com.jaxio.celerio.configuration.entity;
 
 public enum FetchType {
-    /** Do not set any fetch type, let JPA default applies */
+    /**
+     * Do not set any fetch type, let JPA default applies
+     */
     NONE,
 
-    /** Defines that data can be lazily fetched */
+    /**
+     * Defines that data can be lazily fetched
+     */
     LAZY,
 
-    /** Defines that data must be eagerly fetched */
+    /**
+     * Defines that data must be eagerly fetched
+     */
     EAGER;
 
     public boolean isJpaType() {

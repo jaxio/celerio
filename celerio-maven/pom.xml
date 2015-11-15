@@ -14,22 +14,23 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.jaxio.celerio</groupId>
-		<artifactId>celerio-parent</artifactId>
-		<version>4.0.2-SNAPSHOT</version>
-	</parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.jaxio.celerio</groupId>
+        <artifactId>celerio-parent</artifactId>
+        <version>4.0.2-SNAPSHOT</version>
+    </parent>
 
-	<artifactId>celerio-maven</artifactId>
-	<packaging>pom</packaging>
+    <artifactId>celerio-maven</artifactId>
+    <packaging>pom</packaging>
 
-	<name>Parent Pom For Celerio Maven Plugins</name>
+    <name>Parent Pom For Celerio Maven Plugins</name>
 
-	<modules>
-		<module>dbmetadata-maven-plugin</module>
-		<module>bootstrap-maven-plugin</module>
-		<module>celerio-maven-plugin</module>
-	</modules>
+    <modules>
+        <module>dbmetadata-maven-plugin</module>
+        <module>bootstrap-maven-plugin</module>
+        <module>celerio-maven-plugin</module>
+    </modules>
 </project>

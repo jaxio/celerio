@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.jaxio.celerio.configuration.Util.firstNonNull;
-import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
-import lombok.Getter;
-
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.support.AbstractNamer;
+import lombok.Getter;
+import org.springframework.util.Assert;
+
+import static com.jaxio.celerio.configuration.Util.firstNonNull;
+import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
 
 public class ClassNamer extends AbstractNamer {
     private Entity entity;

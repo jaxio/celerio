@@ -16,15 +16,6 @@
 
 package com.jaxio.celerio.factory;
 
-import static javax.persistence.InheritanceType.JOINED;
-import static javax.persistence.InheritanceType.SINGLE_TABLE;
-import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.Config;
 import com.jaxio.celerio.configuration.CelerioTemplateContext;
 import com.jaxio.celerio.configuration.Configuration;
@@ -36,6 +27,12 @@ import com.jaxio.celerio.configuration.entity.EntityConfig;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.support.ClassNamer2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import static javax.persistence.InheritanceType.*;
 
 @Service
 public class EntityFactory {
@@ -235,7 +232,7 @@ public class EntityFactory {
 
     /**
      * Namers declared here can be overridden easily through configuration.
-     * 
+     *
      * @param entity
      */
     private void namerDefault(Entity entity) {

@@ -18,22 +18,34 @@ package com.jaxio.celerio.configuration.entity;
 
 public enum CascadeType {
 
-    /** Do not set any Cascade, let JPA default applies */
+    /**
+     * Do not set any Cascade, let JPA default applies
+     */
     NONE,
 
-    /** Cascade all operations */
+    /**
+     * Cascade all operations
+     */
     ALL,
 
-    /** Cascade persist operation */
+    /**
+     * Cascade persist operation
+     */
     PERSIST,
 
-    /** Cascade merge operation */
+    /**
+     * Cascade merge operation
+     */
     MERGE,
 
-    /** Cascade remove operation */
+    /**
+     * Cascade remove operation
+     */
     REMOVE,
 
-    /** Cascade refresh operation */
+    /**
+     * Cascade refresh operation
+     */
     REFRESH;
 
     public boolean isJpaType() {
@@ -42,18 +54,18 @@ public enum CascadeType {
 
     public javax.persistence.CascadeType asJpaType() {
         switch (this) {
-        case ALL:
-            return javax.persistence.CascadeType.ALL;
-        case PERSIST:
-            return javax.persistence.CascadeType.PERSIST;
-        case MERGE:
-            return javax.persistence.CascadeType.MERGE;
-        case REMOVE:
-            return javax.persistence.CascadeType.REMOVE;
-        case REFRESH:
-            return javax.persistence.CascadeType.REFRESH;
-        default:
-            throw new IllegalStateException("There is no JPA equivalent");
+            case ALL:
+                return javax.persistence.CascadeType.ALL;
+            case PERSIST:
+                return javax.persistence.CascadeType.PERSIST;
+            case MERGE:
+                return javax.persistence.CascadeType.MERGE;
+            case REMOVE:
+                return javax.persistence.CascadeType.REMOVE;
+            case REFRESH:
+                return javax.persistence.CascadeType.REFRESH;
+            default:
+                throw new IllegalStateException("There is no JPA equivalent");
         }
     }
 }

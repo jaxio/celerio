@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.eclipse;
 
-import java.util.List;
-
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Profile {

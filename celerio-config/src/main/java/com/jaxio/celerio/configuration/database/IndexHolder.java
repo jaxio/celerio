@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.nonNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-import org.springframework.util.Assert;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 @Getter
 @NoArgsConstructor

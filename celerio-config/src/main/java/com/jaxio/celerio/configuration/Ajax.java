@@ -16,8 +16,9 @@
 
 package com.jaxio.celerio.configuration;
 
-import static com.jaxio.celerio.configuration.Util.firstNonNull;
 import lombok.Data;
+
+import static com.jaxio.celerio.configuration.Util.firstNonNull;
 
 @Data
 public class Ajax {

@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.model.support.formatter;
 
-import static com.jaxio.celerio.configuration.Module.SPRING_MVC_3;
-
-import java.util.List;
-
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
+
+import java.util.List;
+
+import static com.jaxio.celerio.configuration.Module.SPRING_MVC_3;
 
 public class FormatterAttribute extends AbstractAttributeSpi {
 

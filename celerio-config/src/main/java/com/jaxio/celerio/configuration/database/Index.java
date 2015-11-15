@@ -16,10 +16,9 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import lombok.Setter;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import lombok.Setter;
 
 /*
  * Description of the given table's indices and statistics

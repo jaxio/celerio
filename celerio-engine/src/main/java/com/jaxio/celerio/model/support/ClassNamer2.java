@@ -16,21 +16,20 @@
 
 package com.jaxio.celerio.model.support;
 
+import com.jaxio.celerio.model.Entity;
+import com.jaxio.celerio.support.AbstractNamer;
+import org.springframework.util.Assert;
+
 import static com.jaxio.celerio.configuration.Util.firstNonNull;
 import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.WordUtils.capitalize;
 
-import org.springframework.util.Assert;
-
-import com.jaxio.celerio.model.Entity;
-import com.jaxio.celerio.support.AbstractNamer;
-
 
 /**
  * ClassNamer2 are constructed using <code>entityContextProperty</code> declared in the configuration.
- * 
- * Note: ideally this should replace {@link ClassNamer} with ClassNamer2, 
+ * <p>
+ * Note: ideally this should replace {@link ClassNamer} with ClassNamer2,
  * but it implies a non trivial refactoring (ClassType, GeneratedPackage etc...)
  */
 public class ClassNamer2 extends AbstractNamer {

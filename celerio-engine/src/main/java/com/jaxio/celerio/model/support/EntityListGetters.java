@@ -16,17 +16,17 @@
 
 package com.jaxio.celerio.model.support;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.emptyList;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.model.Unique;
 import com.jaxio.celerio.util.support.ListGetter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.emptyList;
 
 public class EntityListGetters {
 

@@ -16,15 +16,6 @@
 
 package com.jaxio.celerio.main;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.jaxio.celerio.Config;
 import com.jaxio.celerio.configuration.Celerio;
 import com.jaxio.celerio.configuration.database.Metadata;
@@ -33,9 +24,17 @@ import com.jaxio.celerio.configuration.support.MetadataLoader;
 import com.jaxio.celerio.factory.ProjectFactory;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.output.OutputResultFactory;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration({ "classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:CelerioProducerTest-applicationContext.xml" })
+import static org.fest.assertions.Assertions.assertThat;
+
+@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
+        "classpath*:CelerioProducerTest-applicationContext.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @Ignore
 public class NoPkOnlyIndexesTest {

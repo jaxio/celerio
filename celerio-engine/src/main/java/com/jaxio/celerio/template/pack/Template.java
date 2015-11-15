@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.template.pack;
 
-import java.io.UnsupportedEncodingException;
-
+import com.glaforge.i18n.io.CharsetToolkit;
 import lombok.Getter;
 
-import com.glaforge.i18n.io.CharsetToolkit;
+import java.io.UnsupportedEncodingException;
 
 @Getter
 public class Template {

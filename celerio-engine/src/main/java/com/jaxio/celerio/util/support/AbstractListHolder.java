@@ -16,22 +16,21 @@
 
 package com.jaxio.celerio.util.support;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.google.common.collect.Sets.newHashSet;
-import static java.util.Collections.unmodifiableList;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.jaxio.celerio.util.ListHolder;
+import com.jaxio.celerio.util.Named;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.jaxio.celerio.util.ListHolder;
-import com.jaxio.celerio.util.Named;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.google.common.collect.Sets.newHashSet;
+import static java.util.Collections.unmodifiableList;
 
 /**
  * A list holder whose list comes from Iterable. The list may be forked thanks to the except() to exclude some elements based on their name. 'except' feature is
@@ -170,9 +169,8 @@ public abstract class AbstractListHolder<T extends Named> implements ListHolder<
 
     /**
      * Fork this list with extra predicates.
-     * 
-     * @param namesToExclude
-     *            the name of the elements to exclude from the list.
+     *
+     * @param namesToExclude the name of the elements to exclude from the list.
      */
     public SimpleListHolder<T> except(String... namesToExclude) {
         String key = "current" + getCacheKey(namesToExclude);
@@ -192,7 +190,7 @@ public abstract class AbstractListHolder<T extends Named> implements ListHolder<
         for (String name : namesToExclude) {
             result.add(new NameNotEqualsToPredicate<T>(name));
         }
-        return Predicates.<T> and(result);// using static import breaks compilation
+        return Predicates.<T>and(result);// using static import breaks compilation
     }
 
     private String getCacheKey(String... namesToExclude) {

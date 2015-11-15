@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.template.pack;
 
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
-import static org.apache.commons.lang.StringUtils.substringAfterLast;
-import static org.apache.commons.lang.StringUtils.substringBeforeLast;
+import com.jaxio.celerio.util.StringUtil;
+import lombok.Getter;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-import com.jaxio.celerio.util.StringUtil;
-import lombok.Getter;
-
-import org.springframework.core.io.Resource;
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static org.apache.commons.lang.StringUtils.substringAfterLast;
+import static org.apache.commons.lang.StringUtils.substringBeforeLast;
 
 @Getter
 public class TemplatePackInfo {
@@ -71,7 +70,7 @@ public class TemplatePackInfo {
 
     /**
      * Used to create an invoker.properties file in bootstrap integration test.
-     * 
+     * <p>
      * Input:<br>
      * <code>packCommand=mvn -Ph2,db,metadata,gen test</code>
      * <p>

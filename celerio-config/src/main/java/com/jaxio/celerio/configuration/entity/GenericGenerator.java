@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.nonNull;
-
-import java.util.List;
-
+import com.jaxio.celerio.configuration.MetaAttribute;
 import lombok.Getter;
 import lombok.Setter;
 
-import com.jaxio.celerio.configuration.MetaAttribute;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 @Setter
 @Getter

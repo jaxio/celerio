@@ -16,13 +16,12 @@
 
 package com.jaxio.celerio.output;
 
-import static org.fest.assertions.Assertions.assertThat;
+import com.jaxio.celerio.Config;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
-
-import com.jaxio.celerio.Config;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class XmlFormatterTest {
 

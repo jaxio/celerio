@@ -16,20 +16,19 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.jaxio.celerio.configuration.Util.nonNull;
-import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.Assert;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import lombok.Setter;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.Assert;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.jaxio.celerio.configuration.Util.nonNull;
+import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
+import static org.springframework.util.StringUtils.hasLength;
 
 /*
  * Describes all the metadata for a given table

@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.output;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import com.jaxio.celerio.template.pack.Template;
 import com.jaxio.celerio.template.pack.TemplatePack;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public interface OutputResult {
     void open() throws IOException;

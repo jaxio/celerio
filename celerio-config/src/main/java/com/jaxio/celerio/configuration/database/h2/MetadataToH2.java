@@ -16,16 +16,10 @@
 
 package com.jaxio.celerio.configuration.database.h2;
 
+import com.jaxio.celerio.configuration.database.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.jaxio.celerio.configuration.database.Column;
-import com.jaxio.celerio.configuration.database.ForeignKey;
-import com.jaxio.celerio.configuration.database.ImportedKey;
-import com.jaxio.celerio.configuration.database.Index;
-import com.jaxio.celerio.configuration.database.IndexHolder;
-import com.jaxio.celerio.configuration.database.Metadata;
-import com.jaxio.celerio.configuration.database.Table;
 
 /**
  * Creates a H2 script from Metadata. Bypasses Celerio to ease its usage.
@@ -88,7 +82,7 @@ public class MetadataToH2 {
         }
     }
 
-    private void createIndex(Table table, IndexHolder indexHolder) {        
+    private void createIndex(Table table, IndexHolder indexHolder) {
         if (table.hasSimplePrimaryKey() && indexHolder.isSimple()) {
             if (indexHolder.getIndex().getColumnName().equalsIgnoreCase(table.getPrimaryKey())) {
                 // skip simple pk (ie mysql)

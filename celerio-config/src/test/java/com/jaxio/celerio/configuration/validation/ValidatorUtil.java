@@ -16,15 +16,10 @@
 
 package com.jaxio.celerio.configuration.validation;
 
-import java.lang.annotation.ElementType;
-
-import javax.validation.Configuration;
-import javax.validation.Path;
-import javax.validation.TraversableResolver;
-import javax.validation.Validation;
-import javax.validation.Validator;
-
 import org.hibernate.validator.HibernateValidator;
+
+import javax.validation.*;
+import java.lang.annotation.ElementType;
 
 public class ValidatorUtil {
     public static Validator getValidator() {
@@ -35,12 +30,12 @@ public class ValidatorUtil {
 
     public static class DummyTraversableResolver implements TraversableResolver {
         public boolean isReachable(Object traversableObject, Path.Node traversableProperty, Class<?> rootBeanType, Path pathToTraversableObject,
-                ElementType elementType) {
+                                   ElementType elementType) {
             return true;
         }
 
         public boolean isCascadable(Object traversableObject, Path.Node traversableProperty, Class<?> rootBeanType, Path pathToTraversableObject,
-                ElementType elementType) {
+                                    ElementType elementType) {
             return true;
         }
     }

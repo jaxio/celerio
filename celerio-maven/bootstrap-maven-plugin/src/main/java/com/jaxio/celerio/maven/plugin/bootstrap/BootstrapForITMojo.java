@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.maven.plugin.bootstrap;
 
-import static org.apache.commons.io.FileUtils.writeStringToFile;
+import com.jaxio.celerio.template.pack.TemplatePackInfo;
+import org.apache.maven.plugin.MojoExecutionException;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.maven.plugin.MojoExecutionException;
-
-import com.jaxio.celerio.template.pack.TemplatePackInfo;
+import static org.apache.commons.io.FileUtils.writeStringToFile;
 
 /**
  * This plugin creates several project folder layout following Maven conventions.
@@ -31,7 +30,7 @@ import com.jaxio.celerio.template.pack.TemplatePackInfo;
  * A Maven <div class="filename">pom.xml</div> is generated as well as default files to help you start from scratch a project.
  * <p>
  * These files represent the minimum required files to produce a project using Celerio.
- * 
+ *
  * @goal bootstrap-it
  * @phase initialize
  * @requiresProject false
@@ -45,7 +44,7 @@ public class BootstrapForITMojo extends BootstrapMojo {
 
     /**
      * The current folder
-     * 
+     *
      * @parameter property="basedir"
      */
     protected String baseDir;

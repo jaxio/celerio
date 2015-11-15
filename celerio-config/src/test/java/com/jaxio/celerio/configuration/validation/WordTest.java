@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.configuration.validation;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import java.util.Set;
+import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.Set;
 
-import org.junit.Test;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class WordTest {
 

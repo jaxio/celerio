@@ -16,11 +16,9 @@
 
 package com.jaxio.celerio.maven.plugin.generate;
 
-import junit.framework.Assert;
-
-import org.junit.Test;
-
 import com.jaxio.celerio.maven.plugin.celerio.CelerioConfigurationExtractor;
+import junit.framework.Assert;
+import org.junit.Test;
 
 public class CelerioConfigurationExtractorTest {
 

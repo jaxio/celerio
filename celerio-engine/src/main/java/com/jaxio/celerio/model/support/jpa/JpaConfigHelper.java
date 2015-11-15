@@ -16,32 +16,23 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
+import com.jaxio.celerio.configuration.entity.*;
+import com.jaxio.celerio.model.PackageImportAdder;
+import com.jaxio.celerio.util.AttributeBuilder;
+import org.springframework.util.Assert;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import java.util.List;
 
-import org.springframework.util.Assert;
-
-import com.jaxio.celerio.configuration.entity.CacheConfig;
-import com.jaxio.celerio.configuration.entity.CacheConfigGetter;
-import com.jaxio.celerio.configuration.entity.Cascade;
-import com.jaxio.celerio.configuration.entity.CascadeGetter;
-import com.jaxio.celerio.configuration.entity.FetchTypeGetter;
-import com.jaxio.celerio.configuration.entity.OneToManyConfig;
-import com.jaxio.celerio.configuration.entity.OneToOneConfig;
-import com.jaxio.celerio.configuration.entity.OrderByGetter;
-import com.jaxio.celerio.model.PackageImportAdder;
-import com.jaxio.celerio.util.AttributeBuilder;
+import static com.google.common.collect.Lists.newArrayList;
 
 public class JpaConfigHelper {
 
     // ------------------------------------------
     // OneToXConfig orphanRemoval
     // ------------------------------------------
-    
+
     public static String orphanRemoval(OneToManyConfig... oneToManyConfigs) {
         return hasTrueOrphanRemoval(oneToManyConfigs) ? "orphanRemoval = true" : "";
     }
@@ -59,7 +50,7 @@ public class JpaConfigHelper {
 
         return false; // false is the jpa default
     }
-    
+
     public static String orphanRemoval(OneToOneConfig... oneToOneConfigs) {
         return hasTrueOrphanRemoval(oneToOneConfigs) ? "orphanRemoval = true" : "";
     }
@@ -77,7 +68,7 @@ public class JpaConfigHelper {
 
         return false; // let jpa default applies
     }
-    
+
     // ------------------------------------------
     // CASCADE
     // ------------------------------------------

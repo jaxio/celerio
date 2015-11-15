@@ -16,13 +16,13 @@
 
 package com.jaxio.celerio.model.support.custom;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
-
 import com.jaxio.celerio.configuration.entity.CustomAnnotation;
 import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
+
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class CustomAttribute extends AbstractAttributeSpi {
     /**

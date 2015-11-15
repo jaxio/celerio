@@ -16,23 +16,6 @@
 
 package com.jaxio.celerio.util;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newTreeSet;
-import static org.apache.commons.io.IOUtils.closeQuietly;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.util.Collection;
-import java.util.Set;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -40,13 +23,21 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.OrFileFilter;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+import java.util.Collection;
+import java.util.Set;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newTreeSet;
+import static org.apache.commons.io.IOUtils.closeQuietly;
+
 @Service
 public class IOUtil {
 
     /**
      * comes from org.codehaus.plexus.util.DirectoryScanner
      */
-    public static final String[] DEFAULT_EXCLUDES_SUFFIXES = { "~", "bak", "old" };
+    public static final String[] DEFAULT_EXCLUDES_SUFFIXES = {"~", "bak", "old"};
 
     /**
      * Write to the outputstream the bytes read from the input stream.
@@ -65,11 +56,9 @@ public class IOUtil {
 
     /**
      * Save a string to a file.
-     * 
-     * @param content
-     *            the string to be written to file
-     * @param file
-     *            fhe file object
+     *
+     * @param content the string to be written to file
+     * @param file    fhe file object
      */
     public void stringToFile(String content, File file) throws IOException {
         stringToOutputStream(content, new FileOutputStream(file));
@@ -77,11 +66,9 @@ public class IOUtil {
 
     /**
      * Save a string to a file.
-     * 
-     * @param content
-     *            the string to be written to file
-     * @param filename
-     *            the full or relative path to the file.
+     *
+     * @param content  the string to be written to file
+     * @param filename the full or relative path to the file.
      */
     public void stringToFile(String content, String filename) throws IOException {
         stringToOutputStream(content, new FileOutputStream(filename));
@@ -89,9 +76,8 @@ public class IOUtil {
 
     /**
      * Save a string to a file.
-     * 
-     * @param content
-     *            the string to be written to file
+     *
+     * @param content the string to be written to file
      */
     public void stringToOutputStream(String content, OutputStream out) throws IOException {
         out.write(content.getBytes());
@@ -100,9 +86,8 @@ public class IOUtil {
 
     /**
      * Write to a file the bytes read from an input stream.
-     * 
-     * @param filename
-     *            the full or relative path to the file.
+     *
+     * @param filename the full or relative path to the file.
      */
     public void inputStreamToFile(InputStream is, String filename) throws IOException {
         FileOutputStream fos = new FileOutputStream(filename);
@@ -112,9 +97,8 @@ public class IOUtil {
 
     /**
      * Write to a string the bytes read from a file
-     * 
-     * @param fileName
-     *            the file name
+     *
+     * @param fileName the file name
      * @return the file as a string
      */
     public String fileToString(String fileName) throws IOException {
@@ -123,9 +107,8 @@ public class IOUtil {
 
     /**
      * Write to a string the bytes read from a file
-     * 
-     * @param file
-     *            the file
+     *
+     * @param file the file
      * @return the file as a string
      */
     public String fileToString(File file) throws IOException {
@@ -134,9 +117,8 @@ public class IOUtil {
 
     /**
      * Write to a string the bytes read from an input stream.
-     * 
-     * @param charset
-     *            the charset used to read the input stream
+     *
+     * @param charset the charset used to read the input stream
      * @return the inputstream as a string
      */
     public String inputStreamToString(InputStream is, String charset) throws IOException {
@@ -180,9 +162,8 @@ public class IOUtil {
 
     /**
      * Determine if the directory where the passed file resides is empty.
-     * 
-     * @param file
-     *            the folder to remove
+     *
+     * @param file the folder to remove
      * @return true if the parent folder is empty, false otherwise
      */
     public boolean isParentAnEmptyDirectory(File file) {
@@ -197,9 +178,8 @@ public class IOUtil {
 
     /**
      * prune empty dir
-     * 
-     * @param targetFile
-     *            the folder to remove
+     *
+     * @param targetFile the folder to remove
      */
     public void pruneEmptyDirs(String targetFile) {
         pruneEmptyDirs(new File(targetFile));
@@ -207,9 +187,8 @@ public class IOUtil {
 
     /**
      * prune empty dir
-     * 
-     * @param targetFile
-     *            the folder to remove
+     *
+     * @param targetFile the folder to remove
      */
     public void pruneEmptyDirs(File targetFile) {
         while (isParentAnEmptyDirectory(targetFile)) {
@@ -224,9 +203,8 @@ public class IOUtil {
 
     /**
      * Recurse in the folder to get the list all files and folders of all non svn files
-     * 
-     * @param folder
-     *            the folder to parse
+     *
+     * @param folder the folder to parse
      */
     public Collection<String> listFiles(File folder) {
         return listFiles(folder, null);
@@ -240,11 +218,9 @@ public class IOUtil {
      * <li>do not match .bak files</li>
      * <li>do not match .old files</li>
      * </ul>
-     * 
-     * @param folder
-     *            the folder to parse
-     * @param ioFileFilter
-     *            additionnal IOFilter
+     *
+     * @param folder       the folder to parse
+     * @param ioFileFilter additionnal IOFilter
      */
     @SuppressWarnings("unchecked")
     public Collection<String> listFiles(File folder, IOFileFilter ioFileFilter) {
@@ -268,9 +244,8 @@ public class IOUtil {
 
     /**
      * Recurse in the folder to get the list all files and folders of all non svn files
-     * 
-     * @param folder
-     *            the folder to parse
+     *
+     * @param folder the folder to parse
      */
     @SuppressWarnings("unchecked")
     public Collection<String> listFolders(File folder) {

@@ -16,20 +16,19 @@
 
 package com.jaxio.celerio.factory;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.util.Set;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
 import com.jaxio.celerio.configuration.entity.ColumnConfig;
 import com.jaxio.celerio.configuration.entity.ManyToManyConfig;
 import com.jaxio.celerio.configuration.entity.OneToManyConfig;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.support.AccessorNamer;
 import com.jaxio.celerio.support.Namer;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.util.Set;
+
+import static com.google.common.collect.Sets.newHashSet;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 @Service
 @Slf4j
@@ -50,11 +49,9 @@ public class RelationCollisionUtil {
 
     /**
      * Compute the appropriate namer for the Java field marked by @ManyToOne
-     * 
-     * @param fromAttribute
-     *            the column that is the foreign key.
-     * @param targetEntityNamer
-     *            the default namer for the entity on the other side of the relation.
+     *
+     * @param fromAttribute     the column that is the foreign key.
+     * @param targetEntityNamer the default namer for the entity on the other side of the relation.
      */
     public Namer getManyToOneNamer(Attribute fromAttribute, Namer targetEntityNamer) {
         // configuration
@@ -70,11 +67,9 @@ public class RelationCollisionUtil {
 
     /**
      * Compute the appropriate namer for the Java field marked by @OneToMany
-     * 
-     * @param fromAttributeColumnConfig
-     *            the column that is the foreign key
-     * @param fromEntityNamer
-     *            the default namer for the entity contained in the collection.
+     *
+     * @param fromAttributeColumnConfig the column that is the foreign key
+     * @param fromEntityNamer           the default namer for the entity contained in the collection.
      */
     public Namer getOneToManyNamer(ColumnConfig fromAttributeColumnConfig, Namer fromEntityNamer) {
         // configuration
@@ -139,9 +134,8 @@ public class RelationCollisionUtil {
 
     /**
      * Compute the namer for the Java field marked by @OneToOne
-     * 
-     * @param fromAttribute
-     *            the fk column config
+     *
+     * @param fromAttribute     the fk column config
      * @param targetEntityNamer
      */
     public Namer getOneToOneNamer(Attribute fromAttribute, Namer targetEntityNamer) {
@@ -158,9 +152,8 @@ public class RelationCollisionUtil {
 
     /**
      * Compute the namer for the Java field marked by @OneToOne (inverse side of the relation)
-     * 
-     * @param fromAttribute
-     *            the fk column config
+     *
+     * @param fromAttribute   the fk column config
      * @param fromEntityNamer
      */
     public Namer getInverseOneToOneNamer(Attribute fromAttribute, Namer fromEntityNamer) {

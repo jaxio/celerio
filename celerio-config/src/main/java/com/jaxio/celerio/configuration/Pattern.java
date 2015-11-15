@@ -16,12 +16,11 @@
 
 package com.jaxio.celerio.configuration;
 
+import lombok.Setter;
+import org.springframework.util.AntPathMatcher;
+
 import java.io.File;
 import java.util.List;
-
-import lombok.Setter;
-
-import org.springframework.util.AntPathMatcher;
 
 /*
  * A pattern is a structure to help handling inclusion and exclusion of resources

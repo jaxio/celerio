@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.model.support;
 
-import static org.apache.commons.lang.StringUtils.stripToNull;
-
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.support.AbstractNamer;
+
+import static org.apache.commons.lang.StringUtils.stripToNull;
 
 public class ArbitraryClassNamer extends AbstractNamer {
     private Entity entity;

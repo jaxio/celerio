@@ -1,37 +1,37 @@
-<celerio xmlns="http://www.jaxio.com/schema/celerio" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
-	 
-	<includes>
-		<include filename="celerio-maven-plugin-secondary.xml"/>
-	</includes>
-	
-	<configuration rootPackage="com.minijax" associationDirection="UNIDIRECTIONAL">
-		<conventions>
-			<classTypes>
-				<classType classType="model" suffix="" />
-			</classTypes>
-			<generatedPackages>
-				<generatedPackage generatedPackage="Model" subPackage="glou" />
-				<generatedPackage generatedPackage="WebController" subPackage="moncontroller" />
-				<generatedPackage generatedPackage="Dao" rootPackage="totally.otherpackage" />
-			</generatedPackages>
-			<methodConventions>
-			 	<methodConvention methodConvention="CONTAINS" prefix="do" suffix="ReallyContains" />
-			</methodConventions>
-		</conventions>
-	</configuration>
-	<entityConfigs>
-		<entityConfig tableName="BOOK" subPackage="toto">
-			<columnConfigs>
-				<columnConfig columnName="account_id" associationDirection="BIDIRECTIONAL" />
-			</columnConfigs>
-		</entityConfig>
+<celerio xmlns="http://www.jaxio.com/schema/celerio"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.jaxio.com/schema/celerio ../../../../../celerio-config/target/jibx/celerio.xsd">
 
-		<entityConfig tableName="ACCOUNT_ROLE" associationDirection="UNIDIRECTIONAL">
-			<columnConfigs>
-				<columnConfig columnName="role_id" inverse="true" />
-			</columnConfigs>
-		</entityConfig>
-	</entityConfigs>
+    <includes>
+        <include filename="celerio-maven-plugin-secondary.xml"/>
+    </includes>
+
+    <configuration rootPackage="com.minijax" associationDirection="UNIDIRECTIONAL">
+        <conventions>
+            <classTypes>
+                <classType classType="model" suffix=""/>
+            </classTypes>
+            <generatedPackages>
+                <generatedPackage generatedPackage="Model" subPackage="glou"/>
+                <generatedPackage generatedPackage="WebController" subPackage="moncontroller"/>
+                <generatedPackage generatedPackage="Dao" rootPackage="totally.otherpackage"/>
+            </generatedPackages>
+            <methodConventions>
+                <methodConvention methodConvention="CONTAINS" prefix="do" suffix="ReallyContains"/>
+            </methodConventions>
+        </conventions>
+    </configuration>
+    <entityConfigs>
+        <entityConfig tableName="BOOK" subPackage="toto">
+            <columnConfigs>
+                <columnConfig columnName="account_id" associationDirection="BIDIRECTIONAL"/>
+            </columnConfigs>
+        </entityConfig>
+
+        <entityConfig tableName="ACCOUNT_ROLE" associationDirection="UNIDIRECTIONAL">
+            <columnConfigs>
+                <columnConfig columnName="role_id" inverse="true"/>
+            </columnConfigs>
+        </entityConfig>
+    </entityConfigs>
 </celerio>

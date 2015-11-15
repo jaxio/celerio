@@ -16,28 +16,25 @@
 
 package com.jaxio.celerio.util.support;
 
-import static com.google.common.collect.Iterables.filter;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newHashSet;
-import static com.jaxio.celerio.util.support.Flatten.above;
-import static com.jaxio.celerio.util.support.Flatten.all;
-import static com.jaxio.celerio.util.support.Flatten.down_to_leave;
-import static com.jaxio.celerio.util.support.Flatten.up_to_root;
-import static org.springframework.util.Assert.notNull;
-
-import java.util.List;
-import java.util.Set;
-
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.jaxio.celerio.util.Hierarchical;
 import com.jaxio.celerio.util.ListHolder;
 import com.jaxio.celerio.util.Named;
 
+import java.util.List;
+import java.util.Set;
+
+import static com.google.common.collect.Iterables.filter;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newHashSet;
+import static com.jaxio.celerio.util.support.Flatten.*;
+import static org.springframework.util.Assert.notNull;
+
 
 /**
  * Mix {@link ListHolder} and {@link Hierarchical}.
- *
+ * <p>
  * When a node is part of a hierarchy exposing a list of elements (example: an entity exposing a list of attributes),
  * this class enable you to retrieve in one single {@link ListHolder} the elements that are scattered in the node's family tree.
  *
@@ -66,7 +63,7 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
         notNull(listGetter, "the listGetter must not be null");
         this.node = node;
         this.listGetter = listGetter;
-        this.predicate = Predicates.<T> alwaysTrue();
+        this.predicate = Predicates.<T>alwaysTrue();
     }
 
     public CurrentAndFlatListHolder(H node, ListGetter<T, H> listGetter, Predicate<T> predicate) {
@@ -84,7 +81,7 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements that are present in the
-     * current node and its ancestors, up to the root node. 
+     * current node and its ancestors, up to the root node.
      */
     public SimpleListHolder<T> getFlatUp() {
         if (flatUp == null) {
@@ -95,7 +92,7 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements that are present in the
-     * current node's ancestors, up to the root node. 
+     * current node's ancestors, up to the root node.
      */
     public SimpleListHolder<T> getFlatAbove() {
         if (flatAbove == null) {
@@ -106,8 +103,8 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements that are present in the
-     * current node and all its descendants. 
-     */    
+     * current node and all its descendants.
+     */
     public SimpleListHolder<T> getFlatDown() {
         if (flatDown == null) {
             flatDown = newSimpleListHolder(down_to_leave, getSortProperty());
@@ -117,8 +114,8 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements that are present in the
-     * current node's root and all its descendants. 
-     */    
+     * current node's root and all its descendants.
+     */
     public SimpleListHolder<T> getFlatFull() {
         if (flatFull == null) {
             flatFull = newSimpleListHolder(all, getSortProperty());
@@ -128,7 +125,7 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements (without duplicate) that are present in the
-     * current node and its ancestors, up to the root node. 
+     * current node and its ancestors, up to the root node.
      */
     public SimpleListHolder<T> getUniqueFlatUp() {
         if (uniqueUp == null) {
@@ -139,8 +136,8 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements (without duplicates) that are present in the
-     * current node and all its descendants. 
-     */    
+     * current node and all its descendants.
+     */
     public SimpleListHolder<T> getUniqueFlatDown() {
         if (uniqueDown == null) {
             uniqueDown = newUniqueSimpleListHolder(down_to_leave, getSortProperty());
@@ -151,7 +148,7 @@ public class CurrentAndFlatListHolder<T extends Named, H extends Hierarchical<H>
 
     /**
      * Returns in a {@link ListHolder} all the T elements (without duplicate) that are present in the
-     * current node's root and all its descendants. 
+     * current node's root and all its descendants.
      */
     public SimpleListHolder<T> getUniqueFlatFull() {
         if (uniqueFull == null) {

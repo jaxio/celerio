@@ -16,18 +16,8 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static org.apache.commons.lang.StringUtils.isBlank;
-
-import java.util.Iterator;
-import java.util.List;
-
-import org.springframework.util.Assert;
-
 import com.jaxio.celerio.configuration.MetaAttribute;
 import com.jaxio.celerio.configuration.SequencePattern;
-import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.EnumConfig;
 import com.jaxio.celerio.configuration.entity.GeneratedValue;
 import com.jaxio.celerio.configuration.entity.GenericGenerator;
@@ -35,14 +25,21 @@ import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.spi.support.AbstractAttributeSpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
-import com.jaxio.celerio.util.MappedType;
+import org.springframework.util.Assert;
+
+import java.util.Iterator;
+import java.util.List;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static org.apache.commons.lang.StringUtils.isBlank;
 
 public class JpaAttribute extends AbstractAttributeSpi {
 
     public JpaAttribute(Attribute attribute) {
         init(attribute);
     }
-    
+
     @Override
     public String velocityVar() {
         return "jpa--NOT-YET-USED"; // TODO: use it
@@ -50,19 +47,19 @@ public class JpaAttribute extends AbstractAttributeSpi {
 
     public List<String> getAnnotations() {
         AnnotationBuilder ab = new AnnotationBuilder();
-            ab.add(
-                    getTransientAnnotation(), //
-                    getIdAnnotation(), //
-                    getLobAnnotation(), //
-                    getEnumAnnotation(), //
-                    getBasicAnnotation(), //
-                    getColumnAnnotation(), //
-                    getVersionAnnotation(), //
-                    getTemporalAnnotation(), //
-                    getHibernateTypeAnnotation(), //
-                    getGeneratedValueAnnotation(), //
-                    getSequenceGeneratorAnnotation(), //
-                    getGenericGeneratorAnnotation());
+        ab.add(
+                getTransientAnnotation(), //
+                getIdAnnotation(), //
+                getLobAnnotation(), //
+                getEnumAnnotation(), //
+                getBasicAnnotation(), //
+                getColumnAnnotation(), //
+                getVersionAnnotation(), //
+                getTemporalAnnotation(), //
+                getHibernateTypeAnnotation(), //
+                getGeneratedValueAnnotation(), //
+                getSequenceGeneratorAnnotation(), //
+                getGenericGeneratorAnnotation());
         return ab.getAnnotations();
     }
 
@@ -388,7 +385,7 @@ public class JpaAttribute extends AbstractAttributeSpi {
             return "";
         }
     }
-    
+
     private String getGeneratedValueAnnotationByConvention() {
         if (hasIdGeneratorByConvention()) {
             String strategy = getGenericGeneratorStrategy();
@@ -439,18 +436,18 @@ public class JpaAttribute extends AbstractAttributeSpi {
         }
     }
 
-    
+
     //-----------------------------------------
     // @SequenceGenerator
     //-----------------------------------------
-    
+
     public String getSequenceGeneratorAnnotation() {
         if (useSequenceNameShortcut()) {
             return getSequenceGeneratorAnnotationByConfiguration();
         }
         return "";
     }
-    
+
     private boolean useSequenceNameShortcut() {
         return attribute.isSimplePk()  //
                 && attribute.getEntity().isRoot() //
@@ -467,7 +464,7 @@ public class JpaAttribute extends AbstractAttributeSpi {
         // It may seems clumsy but our promise is to keep it simple for the user, we do not want to introduce
         // a SequenceGenerator config under columnConfig as it would have no added value compare to working 
         // directly in Java. Here it is a bit transparent and the configuration is rather simple for the user.
-        
+
         SequencePattern sequencePattern = null;
         List<SequencePattern> sequences = attribute.getConfig().getCelerio().getConfiguration().getSequences();
         if (sequences != null) {
@@ -478,13 +475,13 @@ public class JpaAttribute extends AbstractAttributeSpi {
                 }
             }
         }
-        
+
         AttributeBuilder ab = new AttributeBuilder();
         // Attention: the sequencePattern does not contain the sequenceName, it contains a pattern...
         ab.addString("name", attribute.getEntity().getEntityConfig().getSequenceName());
         ab.addString("sequenceName", attribute.getEntity().getEntityConfig().getSequenceName());
 
-        if (sequencePattern != null) {            
+        if (sequencePattern != null) {
             if (sequencePattern.hasNonDefaultInitialValue()) {
                 ab.addInt("initialValue", sequencePattern.getInitialValue());
             }
@@ -496,7 +493,7 @@ public class JpaAttribute extends AbstractAttributeSpi {
 
         return ab.bindAttributesTo("@SequenceGenerator");
     }
-    
+
     //-----------------------------------------
     // @GenericGenerator
     //-----------------------------------------
@@ -520,14 +517,14 @@ public class JpaAttribute extends AbstractAttributeSpi {
             AttributeBuilder ggab = new AttributeBuilder();
             ggab.addString("name", gg.getName());
             ggab.addString("strategy", gg.getStrategy());
-            
+
             if (gg.getParameters().size() > 0) {
                 addImport("org.hibernate.annotations.Parameter");
 
-                String [] parameters = new String[gg.getParameters().size()];
+                String[] parameters = new String[gg.getParameters().size()];
                 Iterator<MetaAttribute> iter = gg.getParameters().iterator();
 
-                for (int i=0; i < parameters.length; i++) {
+                for (int i = 0; i < parameters.length; i++) {
                     MetaAttribute metaAttribute = iter.next();
                     AttributeBuilder pab = new AttributeBuilder();
                     pab.addString("name", metaAttribute.getName());
@@ -536,7 +533,7 @@ public class JpaAttribute extends AbstractAttributeSpi {
                 }
                 ggab.add("parameters", parameters);
             }
-            
+
             return ggab.bindAttributesTo("@GenericGenerator");
         } else {
             return "";

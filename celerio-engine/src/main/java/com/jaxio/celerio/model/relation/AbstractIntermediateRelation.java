@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.model.relation;
 
-import lombok.Getter;
-
 import com.jaxio.celerio.configuration.entity.AssociationDirection;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.support.AccessorNamer;
 import com.jaxio.celerio.support.Namer;
+import lombok.Getter;
 
 @Getter
 public abstract class AbstractIntermediateRelation extends AbstractRelation {

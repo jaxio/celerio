@@ -16,23 +16,24 @@
 
 package com.jaxio.celerio.spi;
 
-import java.util.ServiceLoader;
-
 import com.jaxio.celerio.model.Relation;
+
+import java.util.ServiceLoader;
 
 /**
  * The RelationSpi interface allows Celerio template developers to plug new {@link Relation} helpers.
- * 
+ * <p>
  * The implementations are loaded by the java's {@link ServiceLoader}.
  */
 public interface RelationSpi {
 
     /**
      * Whether the SPI is compatible with the passed relation.
-     * @return true if this SPI must be binded on the passed relation, false otherwise. 
+     *
+     * @return true if this SPI must be binded on the passed relation, false otherwise.
      */
     boolean compatibleWith(Relation relation);
-    
+
     /**
      * Invoked by Celerio, when this RelationSpi is binded on a {@link Relation} instance.
      */

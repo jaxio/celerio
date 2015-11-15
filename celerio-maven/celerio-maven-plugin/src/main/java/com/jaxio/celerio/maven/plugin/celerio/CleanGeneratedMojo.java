@@ -54,7 +54,7 @@ public class CleanGeneratedMojo extends AbstractMojo {
     protected String baseDir;
     /**
      * Should the clean goal be skipped ?
-     * <p/>
+     * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
      *
      * @parameter property="celerio-maven-plugin.cleanGenerated.skip" default-value="false"
@@ -64,7 +64,7 @@ public class CleanGeneratedMojo extends AbstractMojo {
     /**
      * Generated files' relative path that MUST NOT be deleted.
      * The path separator must be '/'.
-     * <p/>
+     * <p>
      * You may use the following wildcards:
      * <ul>
      * <li>? matches one character</li>

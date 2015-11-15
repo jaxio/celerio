@@ -16,20 +16,19 @@
 
 package com.jaxio.celerio.configuration.entity;
 
+import com.google.common.base.Predicate;
+import com.jaxio.celerio.configuration.database.JdbcType;
+import com.jaxio.celerio.util.MappedType;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
 import static java.lang.Boolean.TRUE;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.util.List;
-
-import lombok.Getter;
-import lombok.Setter;
-
-import com.google.common.base.Predicate;
-import com.jaxio.celerio.configuration.database.JdbcType;
-import com.jaxio.celerio.util.MappedType;
 
 @Setter
 public class ColumnConfig {
@@ -537,23 +536,23 @@ public class ColumnConfig {
         int confCounter = 0;
 
         if (getManyToOneConfig() != null) {
-            confCounter ++;
+            confCounter++;
         }
 
         if (getOneToOneConfig() != null) {
-            confCounter ++;            
+            confCounter++;
         }
 
         if (getManyToManyConfig() != null) {
-            confCounter ++;
+            confCounter++;
         }
-        
+
         if (confCounter > 1) {
             throw new IllegalStateException("You cannot have more than one association config on columnConfig " + getColumnName());
         }
 
-        return (getManyToOneConfig() != null && getManyToOneConfig().hasTargetEntityName()) || 
-                (getOneToOneConfig() != null && getOneToOneConfig().hasTargetEntityName()) || 
+        return (getManyToOneConfig() != null && getManyToOneConfig().hasTargetEntityName()) ||
+                (getOneToOneConfig() != null && getOneToOneConfig().hasTargetEntityName()) ||
                 (getManyToManyConfig() != null && getManyToManyConfig().hasTargetEntityName());
     }
 

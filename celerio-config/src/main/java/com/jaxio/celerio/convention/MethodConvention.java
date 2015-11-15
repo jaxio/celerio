@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.convention;
 
-import static org.apache.commons.lang.StringUtils.isEmpty;
-import static org.apache.commons.lang.StringUtils.stripToEmpty;
-import static org.apache.commons.lang.StringUtils.stripToNull;
-import static org.apache.commons.lang.WordUtils.capitalize;
 import lombok.Getter;
+
+import static org.apache.commons.lang.StringUtils.*;
+import static org.apache.commons.lang.WordUtils.capitalize;
 
 public enum MethodConvention {
     GET("get"), //

@@ -16,14 +16,13 @@
 
 package com.jaxio.celerio.configuration.database;
 
-import static com.google.common.collect.Sets.newHashSet;
-import static com.jaxio.celerio.configuration.Util.nonNull;
+import com.jaxio.celerio.configuration.MetaAttribute;
+import lombok.Setter;
 
 import java.util.Set;
 
-import lombok.Setter;
-
-import com.jaxio.celerio.configuration.MetaAttribute;
+import static com.google.common.collect.Sets.newHashSet;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 /*
  * Configuration of a column, the data reflect the jdbc metadata

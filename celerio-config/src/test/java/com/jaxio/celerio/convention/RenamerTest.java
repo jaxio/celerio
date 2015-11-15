@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.convention;
 
-import static org.fest.assertions.Assertions.assertThat;
-
+import com.jaxio.celerio.configuration.convention.Renamer;
 import org.junit.Test;
 
-import com.jaxio.celerio.configuration.convention.Renamer;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class RenamerTest {
 

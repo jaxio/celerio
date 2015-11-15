@@ -16,9 +16,7 @@
 
 package com.jaxio.celerio.util;
 
-import static com.jaxio.celerio.convention.MethodConvention.GET;
-import static com.jaxio.celerio.convention.MethodConvention.HAS;
-import static com.jaxio.celerio.convention.MethodConvention.SET;
+import static com.jaxio.celerio.convention.MethodConvention.*;
 import static org.apache.commons.lang.WordUtils.capitalize;
 
 /**

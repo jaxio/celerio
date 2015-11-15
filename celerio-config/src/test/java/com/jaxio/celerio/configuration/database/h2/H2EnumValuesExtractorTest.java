@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.database.h2;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class H2EnumValuesExtractorTest {
     @Test

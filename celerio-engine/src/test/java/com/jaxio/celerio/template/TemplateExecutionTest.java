@@ -20,20 +20,20 @@ import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 public class TemplateExecutionTest {
-    
-    
+
+
     @Test
     public void dynamicAnnotationSupport() {
         TemplateExecution te = new TemplateExecution();
-        
+
         String result = te.dynamicAnnotationSupport("com.test.Toto(\"abc\")", false, false);
         Assertions.assertThat(result).isEqualTo("@Toto(\"abc\")");
-        
+
         result = te.dynamicAnnotationSupport("com.test.Toto", false, false);
-        Assertions.assertThat(result).isEqualTo("@Toto");        
+        Assertions.assertThat(result).isEqualTo("@Toto");
 
         result = te.dynamicAnnotationSupport("Toto", false, false);
-        Assertions.assertThat(result).isEqualTo("@Toto");        
+        Assertions.assertThat(result).isEqualTo("@Toto");
     }
 
 }

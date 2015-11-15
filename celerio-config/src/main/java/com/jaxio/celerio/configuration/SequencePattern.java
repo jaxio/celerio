@@ -17,7 +17,6 @@
 package com.jaxio.celerio.configuration;
 
 import lombok.Setter;
-
 import org.springframework.util.AntPathMatcher;
 
 /*
@@ -31,7 +30,7 @@ public class SequencePattern {
     @Setter
     private Integer initialValue;
     @Setter
-    private Integer allocationSize;    
+    private Integer allocationSize;
     private transient AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     public SequencePattern() {
@@ -73,7 +72,7 @@ public class SequencePattern {
     public Integer getInitialValue() {
         return initialValue;
     }
-    
+
     public boolean hasNonDefaultInitialValue() {
         return initialValue != null && initialValue != 1;
     }
@@ -85,7 +84,7 @@ public class SequencePattern {
     public Integer getAllocationSize() {
         return allocationSize;
     }
-    
+
     public boolean hasNonDefaultAllocationSize() {
         return allocationSize != null && allocationSize != 1;
     }

@@ -16,16 +16,9 @@
 
 package com.jaxio.celerio.template;
 
-import static org.apache.commons.io.IOUtils.contentEquals;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.FileReader;
-import java.io.StringReader;
-import java.util.Scanner;
-import java.util.regex.MatchResult;
-
-import org.fest.assertions.Assertions;
+import com.jaxio.celerio.Config;
+import com.jaxio.celerio.main.CelerioProducer;
+import com.jaxio.celerio.output.OutputResultFactory;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,12 +26,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.jaxio.celerio.Config;
-import com.jaxio.celerio.main.CelerioProducer;
-import com.jaxio.celerio.output.OutputResultFactory;
+import java.io.FileReader;
+import java.io.StringReader;
+import java.util.Scanner;
+import java.util.regex.MatchResult;
 
-@ContextConfiguration({ "classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:VelocityGeneratorTest-applicationContext.xml" })
+import static org.apache.commons.io.IOUtils.contentEquals;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
+
+@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
+        "classpath*:VelocityGeneratorTest-applicationContext.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class VelocityGeneratorTest {
     @Autowired

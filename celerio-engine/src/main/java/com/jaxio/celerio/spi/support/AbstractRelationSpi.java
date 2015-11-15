@@ -21,9 +21,9 @@ import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.spi.RelationSpi;
 import com.jaxio.celerio.template.ImportsContext;
 
-public abstract class AbstractRelationSpi implements RelationSpi, PackageImportAdder {    
+public abstract class AbstractRelationSpi implements RelationSpi, PackageImportAdder {
     protected Relation relation;
-    
+
     @Override
     public void init(Relation relation) {
         this.relation = relation;

@@ -16,13 +16,10 @@
 
 package com.jaxio.celerio.util;
 
-import static com.jaxio.celerio.util.MiscUtil.toName;
-import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
-import static com.jaxio.celerio.util.MiscUtil.toReadablePluralLabel;
-import static com.jaxio.celerio.util.MiscUtil.toVar;
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.junit.Test;
+
+import static com.jaxio.celerio.util.MiscUtil.*;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class MiscUtilTest {
 

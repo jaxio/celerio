@@ -16,12 +16,12 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.springframework.util.StringUtils.hasLength;
 
 /*
  * The ManyToManyConfig allows you to fine tune your @ManyToMany association. The ManyToManyConfig element must be a child of a columnConfig element referencing
@@ -83,7 +83,7 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
     public String getTargetEntityName() {
         return targetEntityName;
     }
-    
+
     public boolean hasTargetEntityName() {
         return isNotBlank(targetEntityName);
     }

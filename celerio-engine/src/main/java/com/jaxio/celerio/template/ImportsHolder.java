@@ -16,17 +16,17 @@
 
 package com.jaxio.celerio.template;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newTreeSet;
+import com.jaxio.celerio.model.support.PackageImport;
 
 import java.util.List;
 import java.util.Set;
 
-import com.jaxio.celerio.model.support.PackageImport;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newTreeSet;
 
 /**
  * The ImportsHolder accumulates imports needed by the generated java files.
- * It handles duplicate entries, ignores well know imports such as import java.lang.* or 
+ * It handles duplicate entries, ignores well know imports such as import java.lang.* or
  * imports from the current package.
  */
 public class ImportsHolder {
@@ -34,7 +34,7 @@ public class ImportsHolder {
     private Set<PackageImport> imports = newTreeSet();
     private Set<PackageImport> samePackageImports = newTreeSet();
 
-    public ImportsHolder(String currentPackage) {        
+    public ImportsHolder(String currentPackage) {
         this.currentPackage = currentPackage.replace("/", ".");
     }
 
@@ -57,7 +57,7 @@ public class ImportsHolder {
         // however, in order to support TemplateExcution.requireFirstTime
         // we must track the import and return true if it is
         // imported for the first time/.
-        if (packageImport.samePackageAs(currentPackage)) {            
+        if (packageImport.samePackageAs(currentPackage)) {
             return samePackageImports.add(packageImport);
         }
 

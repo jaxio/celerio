@@ -16,15 +16,14 @@
 
 package com.jaxio.celerio.factory;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
-
 import com.jaxio.celerio.configuration.database.Column;
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.ColumnConfig;
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
 
 @Service
 /**

@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import java.util.List;
 
-import lombok.Setter;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Setter
 public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchTypeGetter, OrderByGetter, AssociationActionGetter, LabelGetter {

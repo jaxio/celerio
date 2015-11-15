@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.configuration;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.firstNonNull;
-import static com.jaxio.celerio.configuration.Util.nonNull;
+import com.jaxio.celerio.configuration.entity.EntityConfig;
+import com.jaxio.celerio.configuration.entity.EnumConfig;
 
 import java.util.List;
 
-import com.jaxio.celerio.configuration.entity.EntityConfig;
-import com.jaxio.celerio.configuration.entity.EnumConfig;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.firstNonNull;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 public class Celerio {
     private List<Include> includes = newArrayList();

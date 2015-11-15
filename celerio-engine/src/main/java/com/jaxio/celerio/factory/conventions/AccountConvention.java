@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.factory.conventions;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.model.support.account.AccountAttributes;
 import com.jaxio.celerio.model.support.account.RoleAttributes;
 import lombok.extern.slf4j.Slf4j;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * When no account entity is present, this class can be used to auto discover and setup an account entity.

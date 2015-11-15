@@ -16,13 +16,12 @@
 
 package com.jaxio.celerio.configuration.util;
 
-import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
-import static org.fest.assertions.Assertions.assertThat;
-
+import com.jaxio.celerio.util.PackageUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.jaxio.celerio.util.PackageUtil;
+import static com.jaxio.celerio.util.PackageUtil.assemblePackage;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class PackageUtilTest {
 

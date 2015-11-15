@@ -16,16 +16,15 @@
 
 package com.jaxio.celerio.factory.conventions;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.ArrayList;
-
-import lombok.Getter;
-
 import com.jaxio.celerio.model.Attribute;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.support.AuditLogAttribute;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 @Slf4j
 public class AuditLogConvention {

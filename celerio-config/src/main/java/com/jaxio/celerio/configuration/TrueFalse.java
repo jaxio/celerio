@@ -18,6 +18,7 @@ package com.jaxio.celerio.configuration;
 
 public enum TrueFalse {
     TRUE, FALSE;
+
     public boolean toBoolean() {
         return TRUE == this;
     }

@@ -16,11 +16,11 @@
 
 package com.jaxio.celerio.util.support;
 
-import static com.google.common.collect.Lists.newArrayList;
+import com.jaxio.celerio.util.Hierarchical;
 
 import java.util.List;
 
-import com.jaxio.celerio.util.Hierarchical;
+import static com.google.common.collect.Lists.newArrayList;
 
 public class HierarchyUtil {
 

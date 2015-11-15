@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.configuration.support;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.jaxio.celerio.configuration.eclipse.Profiles;
+import com.jaxio.celerio.configuration.eclipse.Setting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.oxm.jibx.JibxMarshaller;
 import org.springframework.stereotype.Service;
 
-import com.jaxio.celerio.configuration.eclipse.Profiles;
-import com.jaxio.celerio.configuration.eclipse.Setting;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class EclipseProfilesLoader extends AbstractJibxLoader<Profiles> {

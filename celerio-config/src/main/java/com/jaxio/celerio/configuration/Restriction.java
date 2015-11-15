@@ -16,16 +16,15 @@
 
 package com.jaxio.celerio.configuration;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.jaxio.celerio.configuration.Util.nonNull;
-
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.convention.WellKnownFolder;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.nonNull;
 
 public class Restriction {
     @NotNull

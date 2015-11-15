@@ -22,7 +22,7 @@ import com.jaxio.celerio.spi.AttributeSpi;
 public class ExampleAttribute implements AttributeSpi {
 
     private Attribute attribute;
-    
+
     public void init(Attribute attribute) {
         this.attribute = attribute;
     }

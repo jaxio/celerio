@@ -16,52 +16,6 @@
 
 package com.jaxio.celerio.model;
 
-import static com.google.common.base.Predicates.and;
-import static com.google.common.collect.Iterables.find;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.jaxio.celerio.configuration.Module.CHAR_PADDING;
-import static com.jaxio.celerio.configuration.database.JdbcType.CHAR;
-import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
-import static com.jaxio.celerio.model.support.AttributePredicates.BLOB;
-import static com.jaxio.celerio.model.support.AttributePredicates.NUMERIC;
-import static com.jaxio.celerio.model.support.AttributePredicates.STRING;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.CONTAINS_HTML;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.HAS_FILE_ATTRIBUTES;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_BINARY_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_CONTENT_TYPE_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_EMAIL_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_FILE_NAME_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_FILE_SIZE_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_LABEL;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_LANGUAGE_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_LOCALE_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_PASSWORD_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_URL_SUFFIX;
-import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_VERSION_SUFFIX;
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
-import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
-import static org.apache.commons.lang.BooleanUtils.toBoolean;
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-
-import lombok.Getter;
-import lombok.Setter;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
-import org.apache.commons.lang.math.NumberUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.jaxio.celerio.Config;
@@ -75,13 +29,40 @@ import com.jaxio.celerio.convention.CommentStyle;
 import com.jaxio.celerio.factory.RelationCollisionUtil;
 import com.jaxio.celerio.model.support.AttributeSetup;
 import com.jaxio.celerio.model.support.EnumNamer;
-import com.jaxio.celerio.model.support.SuffixPrefixPredicates.AttributeShareSameSuffix;
+import com.jaxio.celerio.model.support.SuffixPrefixPredicates.*;
 import com.jaxio.celerio.model.support.jpa.JpaAttribute;
 import com.jaxio.celerio.support.AbstractNamer;
 import com.jaxio.celerio.util.Labels;
 import com.jaxio.celerio.util.MappedType;
 import com.jaxio.celerio.util.Named;
 import com.jaxio.celerio.util.StringUtil;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang.math.NumberUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
+
+import java.util.*;
+
+import static com.google.common.base.Predicates.and;
+import static com.google.common.collect.Iterables.find;
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+import static com.jaxio.celerio.configuration.Module.CHAR_PADDING;
+import static com.jaxio.celerio.configuration.database.JdbcType.CHAR;
+import static com.jaxio.celerio.configuration.database.support.SqlUtil.escapeSql;
+import static com.jaxio.celerio.model.support.AttributePredicates.*;
+import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.*;
+import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_LABEL;
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
+import static org.apache.commons.lang.BooleanUtils.toBoolean;
+import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
 /**
  * JPA Attribute meta information.
@@ -781,6 +762,7 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
 
     /**
      * Whether this attribute is numeric and is neither an enum nor a version.
+     *
      * @return
      */
     final public boolean hasDigits() {
@@ -886,9 +868,10 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
     final public boolean isIntegralNumber() {
         return isInteger() || isLong() || isBigInteger();
     }
-    
+
     /**
      * Is the corresponding column a LOB, BLOB or CLOB.
+     *
      * @return
      */
     final public boolean isBinary() {
@@ -896,7 +879,8 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
     }
 
     /**
-     * Whether this attribute has a non null {@link IndexedField} configuration element. 
+     * Whether this attribute has a non null {@link IndexedField} configuration element.
+     *
      * @see ColumnConfig#getIndexedField
      */
     public boolean isIndexed() {
@@ -1084,7 +1068,7 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
     public static Predicate<Attribute> IS_FILE_CONTENT_TYPE = and(STRING, and(IS_CONTENT_TYPE_SUFFIX, HAS_FILE_ATTRIBUTES));
     public static Predicate<Attribute> IS_EMAIL = and(STRING, IS_EMAIL_SUFFIX);
     public static Predicate<Attribute> IS_PASSWORD = and(STRING, IS_PASSWORD_SUFFIX);
-    
+
     // ------------------------------------
     // SPI are put in a Map so we can access
     // from velocity templates as if we had getter.

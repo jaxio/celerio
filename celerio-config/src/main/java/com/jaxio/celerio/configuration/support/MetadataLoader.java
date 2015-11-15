@@ -16,12 +16,11 @@
 
 package com.jaxio.celerio.configuration.support;
 
+import com.jaxio.celerio.configuration.database.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.oxm.jibx.JibxMarshaller;
 import org.springframework.stereotype.Service;
-
-import com.jaxio.celerio.configuration.database.Metadata;
 
 @Service
 public class MetadataLoader extends AbstractJibxLoader<Metadata> {

@@ -16,14 +16,14 @@
 
 package com.jaxio.celerio.model;
 
-import java.util.List;
-
 import com.jaxio.celerio.configuration.entity.CascadeGetter;
 import com.jaxio.celerio.configuration.entity.FetchTypeGetter;
 import com.jaxio.celerio.configuration.entity.OrderByGetter;
 import com.jaxio.celerio.support.Namer;
 import com.jaxio.celerio.util.Labels;
 import com.jaxio.celerio.util.Named;
+
+import java.util.List;
 
 /**
  * JPA Relation meta-information.
@@ -79,18 +79,19 @@ public interface Relation extends Named {
 
     /**
      * A simple relation is neither composite nor intermediate.
+     *
      * @return
      */
     boolean isSimple();
 
     /**
      * A composite relation involves more than 1 foreign key.
-     */    
+     */
     boolean isComposite();
 
     /**
      * An intermediate relation is a relation involving an intermediate table.
-     */    
+     */
     boolean isIntermediate();
 
     List<Relation> getRelations();
@@ -108,7 +109,7 @@ public interface Relation extends Named {
     /**
      * For intermediate relation only. An helper 'invisible' relation.
      */
-    Relation getMiddleToRight();    
+    Relation getMiddleToRight();
 
     boolean isOneToOne();
 
