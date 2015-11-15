@@ -32,6 +32,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.StringInputStream;
@@ -51,13 +54,11 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * The core Celerio Engine is invoked by this plugin. This plugin can either connect directly to a database and extract the metadata information or use the
- * metadata.xml file produced by the dbmetadata-maven-plugin:extract-metadata goal. Please refer to <div class="xref" linkend="dbmetadata.extract-metadata"/>.
+ * metadata.xml file produced by the dbmetadata-maven-plugin:extract-metadata goal. Please refer to dbmetadata.extract-metadata.
  *
- * @goal generate
- * @phase generate-sources
- * @requiresProject false
  * @since 1.0.0
  */
+@Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES, requiresProject = false)
 public class GenerateMojo extends AbstractMojo {
     private static String DEFAULT_XML_CONFIGURATION = normalize("src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml");
     private static String DEFAULT_XML_METADATA = normalize("src/main/config/celerio-maven-plugin/metadata.xml");
@@ -65,23 +66,18 @@ public class GenerateMojo extends AbstractMojo {
 
     /**
      * Maven project, this is by default the current maven project.
-     *
-     * @parameter property="project"
-     * @parameter required
      */
+    @Parameter(property = "project", required = true)
     protected MavenProject project;
 
     /**
      * The current folder
-     *
-     * @parameter property="basedir"
      */
+    @Parameter(property = "basedir")
     protected String baseDir;
 
     /**
      * The output folder.
-     *
-     * @parameter property="celerio-maven-plugin.outputDir" default-value="${basedir}"
      */
     protected String outputDirectory;
 
@@ -89,9 +85,8 @@ public class GenerateMojo extends AbstractMojo {
      * The relative path to the Maven Celerio configuration file.
      * <p>
      * The default value is <div class="filename">src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml</div>
-     *
-     * @parameter property="celerio-maven-plugin.configuration" default-value="${basedir}/src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml"
      */
+    @Parameter(property = "celerio-maven-plugin.configuration", defaultValue = "${basedir}/src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml")
     protected String xmlConfiguration;
 
     /**
@@ -100,10 +95,8 @@ public class GenerateMojo extends AbstractMojo {
      * used. Keep in mind that only the template packs definition will be extracted from this file.
      * <p>
      * The default value is <div class="filename">src/main/config/celerio-maven-plugin/celerio-template-packs.xml</div>
-     *
-     * @parameter property="celerio-maven-plugin.packs.configuration"
-     * default-value="${basedir}/src/main/config/celerio-maven-plugin/celerio-template-packs.xml"
      */
+    @Parameter(property = "celerio-maven-plugin.packs.configuration", defaultValue = "${basedir}/src/main/config/celerio-maven-plugin/celerio-template-packs.xml")
     protected String xmlTemplatePacksOverride;
 
     /**
@@ -113,85 +106,74 @@ public class GenerateMojo extends AbstractMojo {
      * <p>
      * The main purpose of this file is to speed-up the generation process, as for large database schema the reverse engineering takes time. An other very
      * important benefit of this feature is to store the file in your source control, thus having a reproducible build.
-     *
-     * @parameter property=celerio-maven-plugin.xml.metadata" default-value="${basedir}/src/main/config/celerio-maven-plugin/metadata.xml"
      */
+    @Parameter(property = "celerio-maven-plugin.xml.metadata", defaultValue = "${basedir}/src/main/config/celerio-maven-plugin/metadata.xml")
     protected String xmlMetadata;
 
     /**
      * Should the source code generation be skipped ?
      * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
-     *
-     * @parameter property="celerio-maven-plugin.skip" default-value="false"
      */
+    @Parameter(property = "celerio-maven-plugin.skip", defaultValue = "false")
     protected boolean skip;
 
     /**
      * Specify the JDBC driver.
      * <p>
      * Example: <code>org.postgresql.Driver</code>
-     *
-     * @parameter property="jdbc.driver"
      */
+    @Parameter(property = "jdbc.driver")
     protected String jdbcDriver;
 
     /**
      * Specify the JDBC url.
      * <p>
      * Example: <code>jdbc:h2:~/.h2/sampledatabase</code>
-     *
-     * @parameter property="jdbc.url"
      */
+    @Parameter(property = "jdbc.url")
     protected String jdbcUrl;
 
     /**
      * Specify the JDBC user, this user needs to have the privilege to access the database metadata.
-     *
-     * @parameter property="jdbc.user"
      */
+    @Parameter(property = "jdbc.user")
     protected String jdbcUser;
 
     /**
      * Specify the JDBC password.
-     *
-     * @parameter property="jdbc.password"
      */
+    @Parameter(property = "jdbc.password")
     protected String jdbcPassword;
 
     /**
      * Specify the JDBC catalog.
-     *
-     * @parameter property="jdbc.catalog"
      */
+    @Parameter(property = "jdbc.catalog")
     protected String jdbcCatalog;
 
     /**
      * Should the Oracle remarks be retrieved ? Please note that this will impact the speed of the reverse engineering of your database.
-     *
-     * @parameter property="jdbc.oracleRetrieveRemarks" default-value="false"
      */
+    @Parameter(property = "jdbc.oracleRetrieveRemarks", defaultValue = "false")
     protected boolean jdbcOracleRetrieveRemarks;
 
     /**
      * Should the synonyms be retrieved ?
-     *
-     * @parameter property="jdbc.oracleRetrieveSynonyms" default-value="true"
      */
+    @Parameter(property = "jdbc.oracleRetrieveSynonyms", defaultValue = "true")
     protected boolean jdbcOracleRetrieveSynonyms;
 
     /**
      * Specify the JDBC schema.
-     *
-     * @parameter property="jdbc.schema"
      */
+    @Parameter(property = "jdbc.schema")
     protected String jdbcSchema;
 
     /**
      * Run celerio in 'springfuse' mode.
-     *
-     * @parameter property="springfuseMode" default-value="false"
      */
+    @Parameter(property = "springfuseMode", defaultValue = "false")
     protected boolean springfuseMode;
 
     public String getPluginPackage() {
@@ -206,7 +188,7 @@ public class GenerateMojo extends AbstractMojo {
         return "generate";
     }
 
-    /**
+    /*
      * There are few hacks that we must apply when running springfuse (for example, Module settings)
      */
     public boolean getSpringfuseMode() {

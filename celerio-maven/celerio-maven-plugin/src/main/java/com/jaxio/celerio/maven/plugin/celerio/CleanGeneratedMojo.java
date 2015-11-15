@@ -19,6 +19,9 @@ package com.jaxio.celerio.maven.plugin.celerio;
 import com.jaxio.celerio.output.FileTracker;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -33,32 +36,26 @@ import static org.apache.commons.io.FilenameUtils.normalize;
  * Generated files that have been manually modified (file size has changed or date of last modification has
  * changed) or files that are excluded by configuration (using the excludedFiles parameter) won't be deleted.
  *
- * @goal cleanGenerated
- * @phase clean
- * @requiresProject false
  * @since 1.0.0
  */
+@Mojo(name = "cleanGenerated", defaultPhase = LifecyclePhase.CLEAN,requiresProject = false)
 public class CleanGeneratedMojo extends AbstractMojo {
     /**
      * Maven project, this is by default the current maven project.
-     *
-     * @parameter property="project"
-     * @parameter required
      */
+    @Parameter(property = "project",required = true)
     protected MavenProject project;
     /**
      * The current folder.
-     *
-     * @parameter property="basedir"
      */
+    @Parameter(property = "basedir")
     protected String baseDir;
     /**
      * Should the clean goal be skipped ?
      * <p>
      * This is a common pattern in Maven, where you can skip plugins using profiles to fully adapt your build.
-     *
-     * @parameter property="celerio-maven-plugin.cleanGenerated.skip" default-value="false"
      */
+    @Parameter(property = "celerio-maven-plugin.cleanGenerated.skip",defaultValue = "false")
     protected boolean skip;
 
     /**
@@ -72,8 +69,8 @@ public class CleanGeneratedMojo extends AbstractMojo {
      * <li>** matches zero or more directories in a path</li>
      * </ul>
      *
-     * @parameter
      */
+    @Parameter
     protected List<String> excludedFiles;
     private ApplicationContext context;
 

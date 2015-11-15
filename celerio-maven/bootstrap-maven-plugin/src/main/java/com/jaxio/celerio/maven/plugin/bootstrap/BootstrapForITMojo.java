@@ -18,6 +18,9 @@ package com.jaxio.celerio.maven.plugin.bootstrap;
 
 import com.jaxio.celerio.template.pack.TemplatePackInfo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,11 +34,9 @@ import static org.apache.commons.io.FileUtils.writeStringToFile;
  * <p>
  * These files represent the minimum required files to produce a project using Celerio.
  *
- * @goal bootstrap-it
- * @phase initialize
- * @requiresProject false
  * @since 3.0.0
  */
+@Mojo(name = "bootstrap-it", defaultPhase = LifecyclePhase.INITIALIZE, requiresProject = false)
 public class BootstrapForITMojo extends BootstrapMojo {
     private String currentAppName;
     private String currentBootstrapPack;
@@ -44,9 +45,8 @@ public class BootstrapForITMojo extends BootstrapMojo {
 
     /**
      * The current folder
-     *
-     * @parameter property="basedir"
      */
+    @Parameter(property = "basedir")
     protected String baseDir;
 
     @Override

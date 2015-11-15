@@ -32,6 +32,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
@@ -56,32 +59,27 @@ import static org.apache.commons.lang.StringUtils.substringAfter;
  * <p>
  * These files represent the minimum required files to produce a project using Celerio.
  *
- * @goal bootstrap
- * @phase initialize
- * @requiresProject false
  * @since 3.0.0
  */
+@Mojo(name = "bootstrap", defaultPhase = LifecyclePhase.INITIALIZE, requiresProject = false)
 public class BootstrapMojo extends AbstractMojo {
 
     /**
      * Whether the bootstrap ask interactively for appName, rootPackage etc.?
-     *
-     * @parameter property="bootstrap-maven-plugin.interactive" default-value="true"
      */
+    @Parameter(property = "bootstrap-maven-plugin.interactive", defaultValue = "true")
     protected String interactive = "true";
 
     /**
      * The bootstrap pack to use by default if none is specified or if running in non-interactive mode.
-     *
-     * @parameter property="bootstrap-maven-plugin.defaultBootstrapPackName" default-value="pack-backend-jpa"
      */
+    @Parameter(property = "bootstrap-maven-plugin.defaultBootstrapPackName", defaultValue = "pack-backend-jpa")
     protected String defaultBootstrapPackName = "pack-backend-jpa";
 
     /**
      * The sql conf to use by default if none is specified or if running in non-interactive mode.
-     *
-     * @parameter property="bootstrap-maven-plugin.defaultSqlConfName" default-value="books"
      */
+    @Parameter(property = "bootstrap-maven-plugin.defaultSqlConfName", defaultValue = "books")
     protected String defaultSqlConfName = "books";
 
 
