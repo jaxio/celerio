@@ -14,13 +14,12 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.jaxio.celerio</groupId>
         <artifactId>celerio-parent</artifactId>
-        <version>4.0.2-SNAPSHOT</version>
+        <version>4.0.1</version>
     </parent>
     <artifactId>celerio-config</artifactId>
     <packaging>jar</packaging>
@@ -190,21 +189,21 @@
                             <tasks>
                                 <java fork="true" failonerror="true" classname="org.jibx.binding.generator.BindGen">
                                     <classpath>
-                                        <path refid="maven.dependency.classpath"/>
-                                        <path refid="maven.compile.classpath"/>
-                                        <path refid="maven.runtime.classpath"/>
-                                        <path refid="maven.test.classpath"/>
-                                        <path refid="maven.plugin.classpath"/>
+                                        <path refid="maven.dependency.classpath" />
+                                        <path refid="maven.compile.classpath" />
+                                        <path refid="maven.runtime.classpath" />
+                                        <path refid="maven.test.classpath" />
+                                        <path refid="maven.plugin.classpath" />
                                     </classpath>
-                                    <arg value="-t"/>
-                                    <arg value="${project.build.directory}/jibx"/>
-                                    <arg value="-c"/>
-                                    <arg value="${basedir}/src/main/config/customization.xml"/>
-                                    <arg value="-s"/>
-                                    <arg value="${basedir}/src/main/java/"/>
-                                    <arg value="com.jaxio.celerio.configuration.Celerio"/>
-                                    <arg value="com.jaxio.celerio.configuration.database.Metadata"/>
-                                    <arg value="com.jaxio.celerio.configuration.eclipse.Profiles"/>
+                                    <arg value="-t" />
+                                    <arg value="${project.build.directory}/jibx" />
+                                    <arg value="-c" />
+                                    <arg value="${basedir}/src/main/config/customization.xml" />
+                                    <arg value="-s" />
+                                    <arg value="${basedir}/src/main/java/" />
+                                    <arg value="com.jaxio.celerio.configuration.Celerio" />
+                                    <arg value="com.jaxio.celerio.configuration.database.Metadata" />
+                                    <arg value="com.jaxio.celerio.configuration.eclipse.Profiles" />
                                 </java>
                                 <echo file="${project.build.outputDirectory}/release.properties"><![CDATA[release.info=${buildNumber}
 relase.by=${user.name}]]></echo>

@@ -14,8 +14,7 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <prerequisites>
@@ -25,7 +24,7 @@
     <groupId>com.jaxio.celerio</groupId>
     <artifactId>celerio-parent</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.2-SNAPSHOT</version>
+    <version>4.0.1</version>
 
     <url>https://github.com/jaxio/celerio</url>
     <description>Celerio is a code generator tool for data-driven application.</description>
@@ -69,7 +68,7 @@
         <connection>scm:git:git://github.com/jaxio/celerio.git</connection>
         <developerConnection>scm:git:git@github.com:jaxio/celerio.git</developerConnection>
         <url>http://github.com/jaxio/celerio/</url>
-        <tag>HEAD</tag>
+        <tag>celerio-parent-4.0.1</tag>
     </scm>
 
     <issueManagement>
