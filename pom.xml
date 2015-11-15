@@ -397,6 +397,12 @@
                 <artifactId>maven-project</artifactId>
                 <version>2.2.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugin-tools</groupId>
+                <artifactId>maven-plugin-annotations</artifactId>
+                <version>3.4</version>
+                <scope>provided</scope>
+            </dependency>
             <!-- jibx -->
             <dependency>
                 <groupId>org.jibx</groupId>
