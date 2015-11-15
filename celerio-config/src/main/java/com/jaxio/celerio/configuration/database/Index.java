@@ -21,7 +21,7 @@ import lombok.Setter;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-/**
+/*
  * Description of the given table's indices and statistics
  */
 public class Index {
@@ -32,21 +32,21 @@ public class Index {
     @Setter
     protected boolean nonUnique;
 
-    /**
+    /*
      * Column name
      */
     public String getColumnName() {
         return columnName;
     }
 
-    /**
+    /*
      * Index name
      */
     public String getIndexName() {
         return indexName;
     }
 
-    /**
+    /*
      * Can index values be non-unique
      */
     public boolean isNonUnique() {

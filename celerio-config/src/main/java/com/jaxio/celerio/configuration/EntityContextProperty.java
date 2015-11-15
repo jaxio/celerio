@@ -31,35 +31,35 @@ public class EntityContextProperty {
     private String prefix;
     private String suffix;
 
-    /**
+    /*
      * The property name.
      */
     public String getProperty() {
         return property;
     }
 
-    /**
+    /*
      * The root package. Defaults to the globally defined root package.
      */
     public String getRootPackage() {
         return rootPackage;
     }
 
-    /**
+    /*
      * The sub package. For example: "security", "web.security". No defaults.
      */
     public String getSubPackage() {
         return subPackage;
     }
 
-    /**
+    /*
      * Prefix prepended to the entity name.
      */
     public String getPrefix() {
         return prefix;
     }
 
-    /**
+    /*
      * Prefix appended to the entity name.
      */
     public String getSuffix() {

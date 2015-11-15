@@ -16,9 +16,8 @@
 
 package com.jaxio.celerio.configuration.convention;
 
-import lombok.Setter;
-
 import com.jaxio.celerio.convention.MethodConvention;
+import lombok.Setter;
 
 /**
  * change the prefix/suffix conventions for a given method
@@ -31,7 +30,7 @@ public class MethodConventionOverride {
     @Setter
     private String suffix;
 
-    /**
+    /*
      * Method type to override<br>
      * Example: GET_LOCALIZED
      */
@@ -39,7 +38,7 @@ public class MethodConventionOverride {
         return methodConvention;
     }
 
-    /**
+    /*
      * Override the prefix for this methodConvention<br>
      * Example: get
      */
@@ -47,7 +46,7 @@ public class MethodConventionOverride {
         return prefix;
     }
 
-    /**
+    /*
      * Override the suffix for this methodConvention<br>
      * Example: Localized
      */

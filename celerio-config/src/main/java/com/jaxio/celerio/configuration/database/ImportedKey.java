@@ -18,7 +18,7 @@ package com.jaxio.celerio.configuration.database;
 
 import lombok.Setter;
 
-/**
+/*
  * Description of the primary key columns that are referenced by a table's foreign key columns (the primary keys imported by a table).
  */
 public class ImportedKey {
@@ -31,28 +31,28 @@ public class ImportedKey {
     @Setter
     protected String pkTableName;
 
-    /**
+    /*
      * Foreign key column name
      */
     public String getFkColumnName() {
         return fkColumnName;
     }
 
-    /**
+    /*
      * Foreign key name
      */
     public String getFkName() {
         return fkName;
     }
 
-    /**
+    /*
      * Primary key column name being imported
      */
     public String getPkColumnName() {
         return pkColumnName;
     }
 
-    /**
+    /*
      * Primary key table name being imported
      */
     public String getPkTableName() {

@@ -20,7 +20,7 @@ import lombok.Setter;
 
 import com.jaxio.celerio.convention.WellKnownFolder;
 
-/**
+/*
  * change the convention for a given well known folder
  */
 public class WellKnownFolderOverride {
@@ -31,21 +31,21 @@ public class WellKnownFolderOverride {
     @Setter
     private String generatedFolder;
 
-    /**
+    /*
      * WellKnownFolder to override
      */
     public WellKnownFolder getWellKnownFolder() {
         return wellKnownFolder;
     }
 
-    /**
+    /*
      * Override the folder for this WellKnownFolder
      */
     public String getFolder() {
         return folder;
     }
 
-    /**
+    /*
      * Override the generated folder for this WellKnownFolder
      */
     public String getGeneratedFolder() {

@@ -31,7 +31,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 
-/**
+/*
  * Describes all the metadata for a given table
  */
 @Slf4j
@@ -84,7 +84,7 @@ public class Table {
         this.foreignKeysByName = foreignKeysByName;
     }
 
-    /**
+    /*
      * This table name<br>
      * Example: USER
      */
@@ -96,7 +96,7 @@ public class Table {
         return escapeSql(getName());
     }
 
-    /**
+    /*
      * Documentation for this table<br>
      * Example: Table containing all the user related information
      */
@@ -104,7 +104,7 @@ public class Table {
         return remarks;
     }
 
-    /**
+    /*
      * Type of the table
      */
     public TableType getType() {
@@ -115,7 +115,7 @@ public class Table {
     // Columns
     // --------------------------------
 
-    /**
+    /*
      * Describes all the columns metadata for this table
      */
     public List<Column> getColumns() {
@@ -164,7 +164,7 @@ public class Table {
     // --------------------------------
     // Index
     // --------------------------------
-    /**
+    /*
      * Describes all the indexes for this table
      */
     public List<Index> getIndexes() {
@@ -204,7 +204,7 @@ public class Table {
         ih.addIndex(i);
     }
 
-    /**
+    /*
      * Returns the Index List that represent unique constraints.
      */
     public List<IndexHolder> getUniqueIndexHolders() {
@@ -223,7 +223,7 @@ public class Table {
         return indexHoldersByName.get(indexName.toUpperCase());
     }
 
-    /**
+    /*
      * Determine if the passed column is part of a unique index that has only 1 element, the passed column.
      */
     public boolean isUnique(String columnName) {
@@ -245,7 +245,7 @@ public class Table {
     // --------------------------------
     // Imported keys
     // --------------------------------
-    /**
+    /*
      * Describes all the imported keys for this table
      */
     public List<ImportedKey> getImportedKeys() {
@@ -261,7 +261,7 @@ public class Table {
         }
     }
 
-    /**
+    /*
      * Add real constraints, coming from the database.
      */
     public void addImportedKey(ImportedKey importedKey) {
@@ -269,7 +269,7 @@ public class Table {
         putImportedKeyInForeignKeyByName(importedKey);
     }
 
-    /**
+    /*
      * Check if the passed importedKey is already present or not in a existing ForeignKey of size 1.
      */
     public boolean alreadyPresent(ImportedKey importedKey) {
@@ -318,7 +318,7 @@ public class Table {
     // Primary keys
     // --------------------------------
 
-    /**
+    /*
      * Describes all the primary keys for this table
      */
     public List<String> getPrimaryKeys() {
@@ -333,7 +333,7 @@ public class Table {
         primaryKeys.add(columnName);
     }
 
-    /**
+    /*
      * Should the PK be created with IDENTITY?
      */
     public boolean hasH2IdentityPk() {

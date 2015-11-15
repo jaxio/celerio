@@ -21,7 +21,7 @@ import lombok.Setter;
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.convention.GeneratedPackage;
 
-/**
+/*
  * Override the class conventions such as GeneratedPackage, suffix and prefixes
  */
 public class ClassTypeOverride {
@@ -34,28 +34,28 @@ public class ClassTypeOverride {
     @Setter
     private GeneratedPackage generatedPackage;
 
-    /**
+    /*
      * The ClassType to override
      */
     public ClassType getClassType() {
         return classType;
     }
 
-    /**
+    /*
      * Override the prefix for this ClassType
      */
     public String getPrefix() {
         return prefix;
     }
 
-    /**
+    /*
      * Override the suffix for this ClassType
      */
     public String getSuffix() {
         return suffix;
     }
 
-    /**
+    /*
      * Override the GeneratedPackage for this ClassType
      */
     public GeneratedPackage getGeneratedPackage() {

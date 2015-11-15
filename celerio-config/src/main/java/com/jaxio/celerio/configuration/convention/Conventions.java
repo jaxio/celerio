@@ -28,7 +28,7 @@ import lombok.Setter;
 import com.jaxio.celerio.configuration.EclipseFormatter;
 import com.jaxio.celerio.configuration.TrueFalse;
 
-/**
+/*
  * Change the default Celerio conventions to your own needs.
  */
 public class Conventions {
@@ -45,14 +45,14 @@ public class Conventions {
     private List<Renamer> tableRenamers = newArrayList();
     private List<Renamer> columnRenamers = newArrayList();
 
-    /**
+    /*
      * You can override the default collection type for this entity
      */
     public CollectionType getCollectionType() {
         return firstNonNull(collectionType, CollectionType.ArrayList);
     }
 
-    /**
+    /*
      * The property name used in the Identifiable interface. Defaults to 'id'. If all your primary key are mapped to the same property name, you should change
      * the identifiable property here to limit redundancy.
      */
@@ -64,7 +64,7 @@ public class Conventions {
         this.identifiableProperty = firstNotEmpty(identifiableProperty, this.identifiableProperty);
     }
 
-    /**
+    /*
      * Defines the formatting option of the generated Java files.
      */
     public EclipseFormatter getEclipseFormatter() {
@@ -75,7 +75,7 @@ public class Conventions {
         this.eclipseFormatter = firstNonNull(eclipseFormatter, this.eclipseFormatter);
     }
 
-    /**
+    /*
      * Defines the formatting options of the generated XML/XHTML files.
      */
     public XmlFormatter getXmlFormatter() {
@@ -86,7 +86,7 @@ public class Conventions {
         this.xmlFormatter = firstNonNull(xmlFormatter, this.xmlFormatter);
     }
 
-    /**
+    /*
      * Override the conventions for classes
      */
     public List<ClassTypeOverride> getClassTypes() {
@@ -97,7 +97,7 @@ public class Conventions {
         this.classTypes = nonNull(classTypes);
     }
 
-    /**
+    /*
      * Override the conventions for packages
      */
     public List<GeneratedPackageOverride> getGeneratedPackages() {
@@ -108,7 +108,7 @@ public class Conventions {
         this.generatedPackages = nonNull(generatedPackages);
     }
 
-    /**
+    /*
      * Override the conventions for methods
      */
     public List<MethodConventionOverride> getMethodConventions() {
@@ -119,7 +119,7 @@ public class Conventions {
         this.methodConventions = nonNull(methodConventions);
     }
 
-    /**
+    /*
      * Override the conventions for folders
      */
     public List<WellKnownFolderOverride> getWellKnownFolders() {
@@ -134,7 +134,7 @@ public class Conventions {
         this.entitySubPackagePreprended = firstNonNull(entitySubPackagePreprended, this.entitySubPackagePreprended);
     }
 
-    /**
+    /*
      * When constructing the package name of a class constructed using a GeneratedPackage, tell if the GeneratedPackage subPackage should be appended. For
      * example given the entity 'MyEntity' with subpackage 'mysubpackage', and the generated package ManagerImpl with subpackage 'impl' then the packageName of
      * all classes for MyEntity constructed using ManagerImpl will have the subpackage 'impl.mysubpackage'
@@ -147,7 +147,7 @@ public class Conventions {
         return getEntitySubPackagePreprended().toBoolean();
     }
 
-    /**
+    /*
      * Add renamers for tables
      */
     public List<Renamer> getTableRenamers() {
@@ -158,7 +158,7 @@ public class Conventions {
         this.tableRenamers = nonNull(tableRenamers);
     }
 
-    /**
+    /*
      * Add renamers for columns
      */
     public List<Renamer> getColumnRenamers() {

@@ -34,7 +34,7 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
     private CacheConfig cacheConfig;
     private AssociationAction associationAction;
 
-    /**
+    /*
      * The variable name for the collection. It should be plural, for example: 'children'. Please configure also the elementVar as the singular of this var.
      */
     public String getVar() {
@@ -45,7 +45,7 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return hasLength(getVar());
     }
 
-    /**
+    /*
      * The variable name for an element of the collection. For example, if the variable name for the collection is 'children', the elementVar should be child.
      * This elementVar will be used to generate convenient methods for the collection, such as an adder method addChild(YourType child).
      */
@@ -57,21 +57,21 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return hasLength(elementVar);
     }
 
-    /**
+    /*
      * The JPA orphanRemoval for this association.
      */
     public Boolean getOrphanRemoval() {
         return orphanRemoval;
     }
 
-    /**
+    /*
      * The JPA fetch type for this association. Use NONE if you do not want any fetchType to be set.
      */
     public FetchType getFetch() {
         return fetch;
     }
 
-    /**
+    /*
      * Specifies the ordering of the elements. If not null, the JPA <code>@OrderBy</code> annotation is used.
      * Example: orderBy="birthdate DESC" will generate <code>@OrderBy("birthdate DESC")</code>
      */
@@ -79,21 +79,21 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return orderBy;
     }
 
-    /**
+    /*
      * The labels for this association.
      */
     public List<Label> getLabels() {
         return labels;
     }
 
-    /**
+    /*
      * The list of JPA cascade types for the this association.
      */
     public List<Cascade> getCascades() {
         return cascades;
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceCascadesToNullIfEmpty() {
@@ -102,14 +102,14 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
         }
     }
 
-    /**
+    /*
      * The 2d level cache configuration for this association.
      */
     public CacheConfig getCacheConfig() {
         return cacheConfig;
     }
 
-    /**
+    /*
      * Configure which actions should be generated for this association in the front end layer.
      */
     public AssociationAction getAssociationAction() {

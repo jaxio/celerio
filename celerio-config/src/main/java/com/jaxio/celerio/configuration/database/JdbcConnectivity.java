@@ -67,7 +67,7 @@ public class JdbcConnectivity {
         add(tableType);
     }
 
-    /**
+    /*
      * Jdbc driver name<br>
      * Example: org.h2.Driver
      */
@@ -75,7 +75,7 @@ public class JdbcConnectivity {
         return driver;
     }
 
-    /**
+    /*
      * Jdbc driver group id<br>
      * Example:
      */
@@ -83,7 +83,7 @@ public class JdbcConnectivity {
         return driverGroupId;
     }
 
-    /**
+    /*
      * Jdbc driver artifact id<br>
      * Example:
      */
@@ -91,7 +91,7 @@ public class JdbcConnectivity {
         return driverArtifactId;
     }
 
-    /**
+    /*
      * Jdbc driver artifact id version<br>
      * Example:
      */
@@ -99,7 +99,7 @@ public class JdbcConnectivity {
         return driverArtifactIdVersion;
     }
 
-    /**
+    /*
      * Jdbc hibernate dialect<br>
      * Example:
      */
@@ -107,7 +107,7 @@ public class JdbcConnectivity {
         return hibernateDialect;
     }
 
-    /**
+    /*
      * SQL delimiter<br>
      * Example: ; or /
      */
@@ -116,7 +116,7 @@ public class JdbcConnectivity {
     }
 
 
-    /**
+    /*
      * Jdbc url connection<br>
      * Example: Jdbc:h2:~/mydatabase
      */
@@ -124,7 +124,7 @@ public class JdbcConnectivity {
         return url;
     }
 
-    /**
+    /*
      * Jdbc user<br>
      * Example: myuser
      */
@@ -132,7 +132,7 @@ public class JdbcConnectivity {
         return user;
     }
 
-    /**
+    /*
      * Jdbc password<br>
      * Example: mypassword
      */
@@ -144,7 +144,7 @@ public class JdbcConnectivity {
         return schemaName;
     }
 
-    /**
+    /*
      * you can restrict table extraction using a pattern<br>
      * Example: PROJECT_%
      */
@@ -152,28 +152,28 @@ public class JdbcConnectivity {
         return tableNamePattern;
     }
 
-    /**
+    /*
      * Table types to retrieve
      */
     public List<TableType> getTableTypes() {
         return tableTypes;
     }
 
-    /**
+    /*
      * Should Celerio retrieve remarks on oracle, beware this is a very time consuming operation
      */
     public boolean isOracleRetrieveRemarks() {
         return oracleRetrieveRemarks;
     }
 
-    /**
+    /*
      * Should Celerio retrieve synonyms on oracle
      */
     public boolean isOracleRetrieveSynonyms() {
         return oracleRetrieveSynonyms;
     }
 
-    /**
+    /*
      * When false, no indexes is reversed at all.
      * @return
      */
@@ -186,7 +186,7 @@ public class JdbcConnectivity {
         return reverseIndexes == null || reverseIndexes;
     }
     
-    /**
+    /*
      * when true, reverse only indexes for unique values; when false, reverse indexes regardless of whether unique or not.
      */
     public Boolean getReverseOnlyUniqueIndexes() {
@@ -198,7 +198,7 @@ public class JdbcConnectivity {
         return shouldReverseIndexes() && (reverseOnlyUniqueIndexes == null || reverseOnlyUniqueIndexes);
     }
     
-    /**
+    /*
      * Catalog name; must match the catalog name as it is stored in the database.<br>
      * "" retrieves those without a catalog<br>
      * empty means that the catalog name should not be used to narrow the search

@@ -16,18 +16,18 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.springframework.util.StringUtils.hasLength;
+import lombok.Setter;
 
 import javax.persistence.GenerationType;
 
-import lombok.Setter;
+import static org.springframework.util.StringUtils.hasLength;
 
 @Setter
 public class GeneratedValue {
     protected String generator;
     protected GenerationType strategy;
 
-    /**
+    /*
      * The name of the primary key generator to use
      */
     public String getGenerator() {
@@ -38,7 +38,7 @@ public class GeneratedValue {
         return hasLength(generator);
     }
 
-    /**
+    /*
      * The primary key generation strategy that the persistence provider must use to generate the annotated entity primary key.
      */
     public GenerationType getStrategy() {

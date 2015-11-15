@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.configuration.entity;
 
+import com.jaxio.celerio.configuration.Util;
+import lombok.Setter;
+
+import java.util.List;
+
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.convention.CommentStyle.JAVA;
 import static org.springframework.util.StringUtils.hasLength;
 
-import java.util.List;
-
-import lombok.Setter;
-
-import com.jaxio.celerio.configuration.Util;
-
-/**
+/*
  * Entry point to configure an enum generation.
  */
 @Setter
@@ -40,7 +39,7 @@ public class EnumConfig {
     private List<EnumValue> enumValues = newArrayList();
     private List<String> comments = newArrayList();
 
-    /**
+    /*
      * Set the name of the generated enum.<br>
      * Example: name="CreditCardEnum"
      */
@@ -52,7 +51,7 @@ public class EnumConfig {
         return hasLength(name);
     }
 
-    /**
+    /*
      * Allows you to override the default root package.<br>
      * Example: com.yourcompany
      */
@@ -64,7 +63,7 @@ public class EnumConfig {
         return hasLength(rootPackage);
     }
 
-    /**
+    /*
      * When you define a sub-package, the resulting enum's package becomes <code>rootPackage.domain.subPackage</code> instead of <code>rootPackage.domain</code>.
      * Same applies for other enum related classes. There is no sub-package by default.
      */
@@ -76,7 +75,7 @@ public class EnumConfig {
         return hasLength(subPackage);
     }
 
-    /**
+    /*
      * The JPA enum type. The CUSTOM type (not a JPA type) allows you to do advanced enum mapping with Jadira or a custom user type.
      */
     public EnumType getType() {
@@ -87,7 +86,7 @@ public class EnumConfig {
         return type != null;
     }
 
-    /**
+    /*
      * Specify the enum constants.
      */
     public List<EnumValue> getEnumValues() {
@@ -110,7 +109,7 @@ public class EnumConfig {
         return hasValues();
     }
 
-    /**
+    /*
      * Set comments for this enumeration.
      */
     public List<String> getComments() {
@@ -125,7 +124,7 @@ public class EnumConfig {
         return getJavadoc("");
     }
 
-    /**
+    /*
      * Specify the user type implementation to use to be given to hibernate <br>
      * Example: name="com.yourcompany.hibernate.support.CustomDateUserType"
      */

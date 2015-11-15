@@ -35,7 +35,7 @@ public class Restriction {
     @NotNull
     private List<GeneratedPackage> generatedPackages = newArrayList();
 
-    /**
+    /*
      * Restrict the generation to the following classTypes
      */
     public List<ClassType> getClassTypes() {
@@ -50,7 +50,7 @@ public class Restriction {
         return classTypes.isEmpty() || classTypes.contains(classType);
     }
 
-    /**
+    /*
      * Restrict the generation to the following wellKnownFolders
      */
     public List<WellKnownFolder> getWellKnownFolders() {
@@ -65,7 +65,7 @@ public class Restriction {
         return wellKnownFolders.isEmpty() || wellKnownFolders.contains(classType);
     }
 
-    /**
+    /*
      * Restrict the generation to the following generatedPackages
      */
     public List<GeneratedPackage> getGeneratedPackages() {

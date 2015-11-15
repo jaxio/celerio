@@ -31,7 +31,7 @@ public class Celerio {
     private List<EntityConfig> entityConfigs = newArrayList();
     private List<EnumConfig> sharedEnumConfigs = newArrayList();
 
-    /**
+    /*
      * For large projects, you can split the content of the entityConfigs tag into multiple files and 'include' the files here.
      */
     public List<Include> getIncludes() {
@@ -42,7 +42,7 @@ public class Celerio {
         this.includes = nonNull(includes);
     }
 
-    /**
+    /*
      * Configure the celerio generator, such as conventions, jdbc connectivity, and other
      */
     public Configuration getConfiguration() {
@@ -57,7 +57,7 @@ public class Celerio {
     // EntityConfig
     // ------------------
 
-    /**
+    /*
      * Configure the generated entities.
      */
     public List<EntityConfig> getEntityConfigs() {
@@ -95,7 +95,7 @@ public class Celerio {
     // EnumConfig
     // ------------------
 
-    /**
+    /*
      * Configure enums that will be used in multiple entities, and referenced by their name in ColumnConfig
      */
     public List<EnumConfig> getSharedEnumConfigs() {

@@ -16,15 +16,15 @@
 
 package com.jaxio.celerio.configuration;
 
+import java.util.Calendar;
+import java.util.List;
+
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.configuration.Util.firstNonNull;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static java.util.Calendar.YEAR;
 
-import java.util.Calendar;
-import java.util.List;
-
-/**
+/*
  * Specify your own file header comments
  */
 public class HeaderComment {
@@ -40,7 +40,7 @@ public class HeaderComment {
     protected Boolean showTemplateName = true;
     protected List<String> lines = newArrayList();
 
-    /**
+    /*
      * Set each line to be added to the header files.
      */
     public List<String> getLines() {
@@ -51,7 +51,7 @@ public class HeaderComment {
         this.lines = nonNull(lines);
     }
 
-    /**
+    /*
      * Should the header be present in the generated files ?
      */
     public Boolean getInclude() {
@@ -62,7 +62,7 @@ public class HeaderComment {
         this.include = firstNonNull(include, this.include);
     }
 
-    /**
+    /*
      * Should the template name be present in the header. This is useful when dealing with large amount of templates and packs for debugging purposes or support
      * information.
      */

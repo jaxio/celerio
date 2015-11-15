@@ -47,7 +47,7 @@ public class EnumValue {
         this.value = value;
     }
 
-    /**
+    /*
      * The enum constant that defines an instance of the enum type. Example: For a Civility enum, this could be MISS or MISTER.
      */
     public String getName() {
@@ -58,7 +58,7 @@ public class EnumValue {
         return hasLength(name);
     }
 
-    /**
+    /*
      * The value really stored in the database. Only applies if the enumConfig's type is CUSTOM. Note that the mapping leverages Jadira as it is not supported
      * natively by JPA.
      */
@@ -70,14 +70,14 @@ public class EnumValue {
         return hasLength(value);
     }
 
-    /**
+    /*
      * The base label for this enum value. You may either set it here or in a nested labels/label.
      */
     public String getLabel() {
         return label;
     }
 
-    /**
+    /*
      * Set comments for this enum value.
      */
     public List<String> getComments() {
@@ -96,7 +96,7 @@ public class EnumValue {
         return JAVA.decorate(comments, prepend);
     }
 
-    /**
+    /*
      * The labels for this enum value. They appear in the enum properties file located under 'src/main/resources/localization/domain'.
      */
     public List<Label> getLabels() {

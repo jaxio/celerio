@@ -16,9 +16,9 @@
 
 package com.jaxio.celerio.configuration.convention;
 
-import java.util.regex.Pattern;
-
 import lombok.Setter;
+
+import java.util.regex.Pattern;
 
 /**
  * By default Celerio calculates Java field name based on the underlying column name. <br>
@@ -33,7 +33,7 @@ public class Renamer {
     @Setter
     private String replace;
 
-    /**
+    /*
      * The regular expression to apply on the column name. For example, assuming you want to remove from all column names the prefix string that consists of 3
      * chars and a '_', you can use 'regexp="^.{3}_" replace=""' or 'regexp="^qrtz_" replace="Quartz_"'
      */
@@ -41,7 +41,7 @@ public class Renamer {
         return regexp;
     }
 
-    /**
+    /*
      * The replacement String. For example, assuming you want to remove from all column names the prefix string that consists of 3 chars and a '_', you can use
      * 'regexp="^.{3}_" replace=""' or 'regexp="^qrtz_" replace="Quartz_"'
      */

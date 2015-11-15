@@ -24,7 +24,7 @@ import repackaged.org.hibernate.search.annotations.TermVector;
 
 import static org.springframework.util.StringUtils.hasLength;
 
-/**
+/*
  * Allows you to configure Hibernate Search Field annotation.
  */
 @Data
@@ -38,7 +38,7 @@ public class IndexedField {
     public TermVector termVector;
     public String bridgeImpl;
 
-    /**
+    /*
      * The full type of the field bridge implementation to use. When not null it is used by the @FieldBridge annotation.
      */
     public String getBridgeImpl() {

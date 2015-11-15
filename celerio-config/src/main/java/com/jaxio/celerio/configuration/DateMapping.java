@@ -21,7 +21,7 @@ import lombok.Setter;
 import com.jaxio.celerio.configuration.database.JdbcType;
 import com.jaxio.celerio.util.MappedType;
 
-/**
+/*
  * Global rule to map columns whose JDBC TYPE is DATE, TIME or TIMESTAMP to a Java type.
  */
 @Setter
@@ -30,14 +30,14 @@ public class DateMapping {
     private JdbcType columnJdbcType;
     private String columnNameRegExp;
 
-    /**
+    /*
      * The mapped type to use when both the jdbcType and the columnNamePattern matches what is expected.
      */
     public MappedType getMappedType() {
         return mappedType;
     }
 
-    /**
+    /*
      * Only column with this JdbcType are concerned by this mapping. Accepted JdbcType are DATE, TIME, TIMESTAMP. When set to null, we assume the column
      * JdbcType may be DATE, TIME, or TIMESTAMP.
      */
@@ -45,7 +45,7 @@ public class DateMapping {
         return columnJdbcType;
     }
 
-    /**
+    /*
      * An optional regular expression to restrict the mapping by column name. The matching is case insensitive.
      */
     public String getColumnNameRegExp() {

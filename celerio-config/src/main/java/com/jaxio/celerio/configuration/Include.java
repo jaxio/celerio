@@ -25,7 +25,7 @@ public class Include {
     @Setter
     private String filename;
 
-    /**
+    /*
      * The path to a configuration file whose entityConfigs tag will be loaded. The path must be relative to the folder containing the main configuration file.
      * Beware, only the entityConfigs tag will be loaded from this file. For example: includes/ref/country.xml
      */

@@ -93,14 +93,14 @@ public class ColumnConfig {
     protected String targetTableName;
     protected String targetColumnName;
 
-    /**
+    /*
      * The labels for this attribute. They appear in the entity properties file located under 'src/main/resources/localization/domain'.
      */
     public List<Label> getLabels() {
         return labels;
     }
 
-    /**
+    /*
      * For future uses
      */
     public List<String> getUsages() {
@@ -111,7 +111,7 @@ public class ColumnConfig {
         this.usages = nonNull(usages);
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceUsagesToNullIfEmpty() {
@@ -120,7 +120,7 @@ public class ColumnConfig {
         }
     }
 
-    /**
+    /*
      * Specify the enum config to map this column to a Java enum. If this enum is used by other columns, you must declare instead a shared enum and reference it
      * using the sharedEnumName attribute.
      */
@@ -144,14 +144,14 @@ public class ColumnConfig {
         return enumConfig != null && enumConfig.hasEnum();
     }
 
-    /**
+    /*
      * References a shared enum name by its name. You cannot have both an enum configuration, and a shared enum name.
      */
     public String getSharedEnumName() {
         return sharedEnumName;
     }
 
-    /**
+    /*
      * When this element is present, the SafeHtml annotation is added on this field.
      */
     public SafeHtml getSafeHtml() {
@@ -162,14 +162,14 @@ public class ColumnConfig {
         return safeHtml != null;
     }
 
-    /**
+    /*
      * The base label for this column. You may either set it here or in a nested labels/label.
      */
     public String getLabel() {
         return label;
     }
 
-    /**
+    /*
      * When the column represents a single primary key, you can configure the GeneratedValue JPA annotation here.
      */
     public GeneratedValue getGeneratedValue() {
@@ -180,7 +180,7 @@ public class ColumnConfig {
         return generatedValue != null;
     }
 
-    /**
+    /*
      * When the column represents a single primary key, you can configure the GenericGenerator JPA annotation here.
      */
     public GenericGenerator getGenericGenerator() {
@@ -191,7 +191,7 @@ public class ColumnConfig {
         return genericGenerator != null;
     }
 
-    /**
+    /*
      * Configure the Hibernate search Field annotation. If present, the field is annotated, if absent it is not.
      */
     public IndexedField getIndexedField() {
@@ -202,7 +202,7 @@ public class ColumnConfig {
         return indexedField != null;
     }
 
-    /**
+    /*
      * List of custom annotations to apply on this property.
      */
     public List<CustomAnnotation> getCustomAnnotations() {
@@ -213,7 +213,7 @@ public class ColumnConfig {
         this.customAnnotations = nonNull(customAnnotations);
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceCustomAnnotationsToNullIfEmpty() {
@@ -222,7 +222,7 @@ public class ColumnConfig {
         }
     }
 
-    /**
+    /*
      * If set to true, the column will be ignored. Make sure you do not ignore not null columns.
      */
     public Boolean getIgnore() {
@@ -233,21 +233,21 @@ public class ColumnConfig {
         return getIgnore() == Boolean.TRUE;
     }
 
-    /**
+    /*
      * Override the default JdbcType.
      */
     public JdbcType getType() {
         return type;
     }
 
-    /**
+    /*
      * Force the Java mapped type for this column instead of relying on Celerio's conventions.
      */
     public MappedType getMappedType() {
         return mappedType;
     }
 
-    /**
+    /*
      * Should the mapped property be lazy loaded ? If yes, the annotation <code>@Basic(fetch = FetchType.LAZY)</code> is used. Defaults to 'true' for CLOB, BLOB
      * or BYTES mapped types.
      */
@@ -259,7 +259,7 @@ public class ColumnConfig {
         return lazy != null;
     }
 
-    /**
+    /*
      * The corresponding variable name in the Java world. By default, the field name is deduced from the column name.<br>
      * For primary key the field name is always forced to Example: 'first_name' will become 'firstName';
      */
@@ -267,7 +267,7 @@ public class ColumnConfig {
         return fieldName;
     }
 
-    /**
+    /*
      * Allows you to use JPA secondary table if you set a table name that is different from the entity table name. Default to the entity table name.
      */
     public String getTableName() {
@@ -282,7 +282,7 @@ public class ColumnConfig {
         return escapeSql(getTableName());
     }
 
-    /**
+    /*
      * The mandatory column name.
      */
     public String getColumnName() {
@@ -293,7 +293,7 @@ public class ColumnConfig {
         return isNotBlank(columnName);
     }
 
-    /**
+    /*
      * Override the column size defined in the Metadata. Defaults to the size found when reversing the database schema.
      */
     public Integer getSize() {
@@ -304,35 +304,35 @@ public class ColumnConfig {
         return getMin() != null;
     }
 
-    /**
+    /*
      * Minimum length for String. When present it is used in the @Size validation annotation. No default value.
      */
     public Integer getMin() {
         return min;
     }
 
-    /**
+    /*
      * Override the column ordinal position defined in the Metadata. Defaults to the ordinal position found when reversing the database schema.
      */
     public Integer getOrdinalPosition() {
         return ordinalPosition;
     }
 
-    /**
+    /*
      * The order of appearance of this column in forms, from top to bottom and in search results, from left to right. It defaults to the ordinal position.
      */
     public Integer getDisplayOrder() {
         return displayOrder;
     }
 
-    /**
+    /*
      * Sets the 'type' attribute passed to the 'org.hibernate.annotations.Type' annotation. By default, no Type annotation is used.
      */
     public String getTypeConverter() {
         return typeConverter;
     }
 
-    /**
+    /*
      * Indicates if this property is part of the entity business key. You may set it on several properties at the same time if your business key involves more
      * than one column. If set to true, the property will be used in equals/hashCode methods. As soon as you declare this attribute on a property, convention no
      * longer applies for the entity.
@@ -345,7 +345,7 @@ public class ColumnConfig {
         return TRUE == businessKey;
     }
 
-    /**
+    /*
      * Allows you to override the getter in a sub-class that extends the base entity. <br>
      * If set to true, all the annotations for the corresponding getter will be commented and a @Transient annotation will be set.
      */
@@ -357,7 +357,7 @@ public class ColumnConfig {
         return asTransient != null ? asTransient : false;
     }
 
-    /**
+    /*
      * Override the comment defined in the Metadata. The comment that will be inserted as JavaDoc in the corresponding getter method. Defaults to the comment
      * found when reversing the database schema.
      */
@@ -369,14 +369,14 @@ public class ColumnConfig {
         return isNotBlank(comment);
     }
 
-    /**
+    /*
      * Override the column decimal digits defined in the Metadata. Defaults to the decimal digits found when reversing the database schema.
      */
     public Integer getDecimalDigits() {
         return decimalDigits;
     }
 
-    /**
+    /*
      * Override the default value defined in the Metadata. Defaults to the default value found when reversing the database schema.
      */
     public String getDefaultValue() {
@@ -387,14 +387,14 @@ public class ColumnConfig {
         return getDefaultValue() != null;
     }
 
-    /**
+    /*
      * Indicates whether the possible values held by this column are used as keys to resolve the associated localized values.
      */
     public Boolean getMessageKey() {
         return messageKey;
     }
 
-    /**
+    /*
      * Does this column contain html? When true, some special escaping on the front is performed.
      */
     public Boolean getHtml() {
@@ -405,7 +405,7 @@ public class ColumnConfig {
         return html != null;
     }
 
-    /**
+    /*
      * If this column represents a foreign key that points to the target of a ManyToMany association it can be set to true to change the default inverse side of
      * the ManyToMany association. By convention, the column with the highest ordinal position refers to the inverse side.
      */
@@ -413,21 +413,21 @@ public class ColumnConfig {
         return inverse;
     }
 
-    /**
+    /*
      * If this column represents an importedKey, should it be bidirectionnal or unidirectionnal
      */
     public AssociationDirection getAssociationDirection() {
         return associationDirection;
     }
 
-    /**
+    /*
      * If this column represents an importedKey, and the column is unique, should the one to one be handled via a collection ?
      */
     public Boolean getEnableOneToVirtualOne() {
         return enableOneToVirtualOne;
     }
 
-    /**
+    /*
      * Override the autoIncrement value defined in the Metadata. You should use it only in case your driver is unable to determine whether the primary key is
      * auto incremented or not.
      */
@@ -435,14 +435,14 @@ public class ColumnConfig {
         return autoIncrement;
     }
 
-    /**
+    /*
      * Override the nullable value defined in the Metadata. Defaults to the nullable value found when reversing the database schema.
      */
     public Boolean getNullable() {
         return nullable;
     }
 
-    /**
+    /*
      * Should this column appear in edit form? By default, most columns appear in the edit form. Note that this configuration is taken into account only if at
      * least one of the entity's columnConfig formField attribute (could be this one) is set to true.
      */
@@ -454,7 +454,7 @@ public class ColumnConfig {
         return formField == TRUE;
     }
 
-    /**
+    /*
      * Should this column appear in search form?
      */
     public Boolean getSearchField() {
@@ -465,7 +465,7 @@ public class ColumnConfig {
         return searchField == TRUE;
     }
 
-    /**
+    /*
      * Should this column appear in search results?
      */
     public Boolean getSearchResult() {
@@ -476,28 +476,28 @@ public class ColumnConfig {
         return searchResult == TRUE;
     }
 
-    /**
+    /*
      * Should this column be part of the label representation
      */
     public Boolean getSelectLabel() {
         return selectLabel;
     }
 
-    /**
+    /*
      * Override the uniqueness defined in the indexes from the metadata.
      */
     public Boolean getUnique() {
         return unique;
     }
 
-    /**
+    /*
      * Should this column be visible to the users ?
      */
     public Boolean getVisible() {
         return visible;
     }
 
-    /**
+    /*
      * Should this column be used to provide optimistic locking? If true, this column will be mapped with a @Version annotation providing the mapped type is
      * compatible with @Version expected type. Defaults to true if the fieldName is "version" and if the mapped type is compatible with @Version.
      */
@@ -505,7 +505,7 @@ public class ColumnConfig {
         return version;
     }
 
-    /**
+    /*
      * If you use a legacy database schema that does not declare foreign keys, you can manually set the target table name. If you do, you may also need to set
      * the targetColumnName. This attribute is not taken into account if a foreign key is already declared in your schema.
      */
@@ -517,7 +517,7 @@ public class ColumnConfig {
         return isNotBlank(targetTableName);
     }
 
-    /**
+    /*
      * Once you have set the targetTableName, you can adjust the targetColumnName if it is different from the primaryKey column. Defaults to the
      * targetTableName's primary key column.
      */
@@ -571,7 +571,7 @@ public class ColumnConfig {
         }
     }
 
-    /**
+    /*
      * Should this column be considered as storing a password ? This will impact input types attribute on the web tier.
      */
     public Boolean getPassword() {

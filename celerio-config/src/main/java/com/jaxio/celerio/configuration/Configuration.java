@@ -16,6 +16,13 @@
 
 package com.jaxio.celerio.configuration;
 
+import com.jaxio.celerio.configuration.convention.Conventions;
+import com.jaxio.celerio.configuration.entity.*;
+import lombok.Setter;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
+
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.configuration.Module.COPYABLE;
 import static com.jaxio.celerio.configuration.Module.SPRING_MVC_3;
@@ -24,20 +31,6 @@ import static com.jaxio.celerio.configuration.Util.firstNonNull;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.configuration.entity.AssociationDirection.UNIDIRECTIONAL;
 import static org.apache.commons.lang.WordUtils.capitalize;
-
-import java.util.List;
-
-import lombok.Setter;
-
-import org.springframework.util.StringUtils;
-
-import com.jaxio.celerio.configuration.convention.Conventions;
-import com.jaxio.celerio.configuration.entity.AssociationDirection;
-import com.jaxio.celerio.configuration.entity.CacheConfig;
-import com.jaxio.celerio.configuration.entity.ManyToManyConfig;
-import com.jaxio.celerio.configuration.entity.ManyToOneConfig;
-import com.jaxio.celerio.configuration.entity.OneToManyConfig;
-import com.jaxio.celerio.configuration.entity.OneToOneConfig;
 
 public class Configuration {
     protected CelerioTemplateContext celerioTemplateContext = new CelerioTemplateContext();
@@ -72,14 +65,14 @@ public class Configuration {
         this.celerioTemplateContext = velocityContext;
     }
 
-    /**
+    /*
      * Entry point to extend Celerio engine's Velocity context. Only needed if you develop new Celerio templates.
      */
     public CelerioTemplateContext getCelerioTemplateContext() {
         return celerioTemplateContext;
     }
 
-    /**
+    /*
      * List of template packs to execute during the generation. Defaults to the template packs found in the classpath.
      */
     public List<Pack> getPacks() {
@@ -116,7 +109,7 @@ public class Configuration {
         return getPackByName(name) != null;
     }
 
-    /**
+    /*
      * List of modules enabled during the generation. Modules are cross cutting functionalities that span across packs.
      */
     public List<Module> getModules() {
@@ -139,7 +132,7 @@ public class Configuration {
         return hasModule(Module.valueOf(moduleName));
     }
 
-    /**
+    /*
      * List of custom modules enabled during the generation. Modules are cross cutting functionalities that span across packs.
      */
     public List<String> getCustomModules() {
@@ -150,7 +143,7 @@ public class Configuration {
         this.customModules = nonNull(customModules);
     }
 
-    /**
+    /*
      * Control the generation output by filtering the generated files based on their filename.
      */
     public List<Pattern> getFilenames() {
@@ -180,7 +173,7 @@ public class Configuration {
         }
     }
 
-    /**
+    /*
      * Control the generation output by filtering the execution of the generation templates based on their filename.
      */
     public List<Pattern> getTemplates() {
@@ -217,7 +210,7 @@ public class Configuration {
         }
     }
 
-    /**
+    /*
      * Filter the tables you want to be generated
      */
     public List<Pattern> getTables() {
@@ -232,7 +225,7 @@ public class Configuration {
         return hasPattern(getTables(), value);
     }
 
-    /**
+    /*
      * Defines sequence names based on table name
      */
     public List<SequencePattern> getSequences() {
@@ -243,7 +236,7 @@ public class Configuration {
         this.sequences = nonNull(sequences);
     }
 
-    /**
+    /*
      * The list of number mappings. The first match is used. If no match is found, convention applies.
      */
     public List<NumberMapping> getNumberMappings() {
@@ -254,7 +247,7 @@ public class Configuration {
         this.numberMappings = nonNull(numberMappings);
     }
 
-    /**
+    /*
      * The list of date mappings. The first match is used. If no match is found, convention applies.
      */
     public List<DateMapping> getDateMappings() {
@@ -274,7 +267,7 @@ public class Configuration {
         this.defaultEntityCacheConfig = defaultEntityCacheConfig;
     }
 
-    /**
+    /*
      * Default Entity 2d level cache configuration. Uses ehcache. To disable default cache annotation generation for entity having no CacheConfig element,
      * simply remove this element.
      */
@@ -288,7 +281,7 @@ public class Configuration {
         this.defaultManyToOneConfig = defaultManyToOneConfig;
     }
 
-    /**
+    /*
      * Default many-to-one configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public ManyToOneConfig getDefaultManyToOneConfig() {
@@ -301,7 +294,7 @@ public class Configuration {
         this.defaultOneToManyConfig = defaultOneToManyConfig;
     }
 
-    /**
+    /*
      * Default one-to-many configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public OneToManyConfig getDefaultOneToManyConfig() {
@@ -314,7 +307,7 @@ public class Configuration {
         this.defaultOneToOneConfig = defaultOneToOneConfig;
     }
 
-    /**
+    /*
      * Default one-to-one configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public OneToOneConfig getDefaultOneToOneConfig() {
@@ -327,7 +320,7 @@ public class Configuration {
         this.defaultInverseOneToOneConfig = defaultInverseOneToOneConfig;
     }
 
-    /**
+    /*
      * Default inverse one-to-one configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public OneToOneConfig getDefaultInverseOneToOneConfig() {
@@ -340,7 +333,7 @@ public class Configuration {
         this.defaultManyToManyConfig = defaultManyToManyConfig;
     }
 
-    /**
+    /*
      * Default many-to-many configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public ManyToManyConfig getDefaultManyToManyConfig() {
@@ -353,14 +346,14 @@ public class Configuration {
         this.defaultInverseManyToManyConfig = defaultInverseManyToManyConfig;
     }
 
-    /**
+    /*
      * Default inverse many-to-many configuration allowing you to configure FetchType, Cascade and Cache globally.
      */
     public ManyToManyConfig getDefaultInverseManyToManyConfig() {
         return defaultInverseManyToManyConfig;
     }
 
-    /**
+    /*
      * Configure the java convention such as classnames, packages, methods
      */
     public Conventions getConventions() {
@@ -371,7 +364,7 @@ public class Configuration {
         this.conventions = firstNonNull(conventions, this.conventions);
     }
 
-    /**
+    /*
      * For future use
      */
     public List<MetaAttribute> getMetaAttributes() {
@@ -382,7 +375,7 @@ public class Configuration {
         this.metaAttributes = nonNull(metaAttributes);
     }
 
-    /**
+    /*
      * Miscellaneous generation configuration
      */
     public Generation getGeneration() {
@@ -393,7 +386,7 @@ public class Configuration {
         this.generation = firstNonNull(generation, this.generation);
     }
 
-    /**
+    /*
      * Choose the default association direction
      */
     public AssociationDirection getAssociationDirection() {
@@ -404,14 +397,14 @@ public class Configuration {
         this.associationDirection = firstNonNull(associationDirection, this.associationDirection);
     }
 
-    /**
+    /*
      * Enable one to virtual one, which is a one to one that uses a Collection. This method allows for performance enhancement in hibernate using lazy loading.
      */
     public Boolean getEnableOneToVirtualOne() {
         return enableOneToVirtualOne;
     }
 
-    /**
+    /*
      * Specify the default application name that is used in the generated pom.xml. It should be one word, no space.<br>
      * Example: casino
      */
@@ -425,7 +418,7 @@ public class Configuration {
         }
     }
 
-    /**
+    /*
      * Specify the default root package for all the generated java code<br>
      * Example: com.mycompany
      */
@@ -437,7 +430,7 @@ public class Configuration {
         return hasModule(module);
     }
 
-    /**
+    /*
      * The JDBC settings enabling Celerio to retrieve your database meta data.
      */
     public HeaderComment getHeaderComment() {
@@ -448,7 +441,7 @@ public class Configuration {
         this.headerComment = firstNonNull(headerComment, this.headerComment);
     }
 
-    /**
+    /*
      * Restrict the generation to the given elements
      */
     public Restriction getRestriction() {

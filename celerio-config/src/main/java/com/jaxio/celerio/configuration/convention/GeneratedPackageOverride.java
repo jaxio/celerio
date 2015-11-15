@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.configuration.convention;
 
+import com.jaxio.celerio.convention.GeneratedPackage;
 import lombok.Setter;
 
-import com.jaxio.celerio.convention.GeneratedPackage;
-
-/**
+/*
  * Override the convention for a given GeneratedPackage
  */
 public class GeneratedPackageOverride {
@@ -31,14 +30,14 @@ public class GeneratedPackageOverride {
     @Setter
     private String subPackage;
 
-    /**
+    /*
      * The GeneratedPackage to override
      */
     public GeneratedPackage getGeneratedPackage() {
         return generatedPackage;
     }
 
-    /**
+    /*
      * Override the root package<br>
      * Example: com.yourcompany
      */
@@ -46,7 +45,7 @@ public class GeneratedPackageOverride {
         return rootPackage;
     }
 
-    /**
+    /*
      * Override the sub package, if rootPackage is also specified they will be merged.<br>
      * Example: my.subpackage
      */

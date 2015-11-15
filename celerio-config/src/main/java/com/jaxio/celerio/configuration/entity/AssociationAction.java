@@ -27,35 +27,35 @@ public class AssociationAction {
     private Boolean autoComplete;
     private Boolean remove;
 
-    /**
+    /*
      * Generate code in order to create a new target entity from the source entity main edit page.
      */
     public Boolean getCreate() {
         return create;
     }
 
-    /**
+    /*
      * Generate code in order to edit a target entity from the source entity main edit page.
      */
     public Boolean getEdit() {
         return edit;
     }
 
-    /**
+    /*
      * Generate code in order to view a target entity from the source entity main edit page.
      */
     public Boolean getView() {
         return view;
     }
 
-    /**
+    /*
      * Generate code in order to select an existing target entity from the source entity main edit page. Note: it does not apply to one-to-many association.
      */
     public Boolean getSelect() {
         return select;
     }
 
-    /**
+    /*
      * Generate code in order to select an existing target entity, using an autoComplete component, from the source entity main edit page. Note: it does not
      * apply to one-to-many association.
      */
@@ -63,7 +63,7 @@ public class AssociationAction {
         return autoComplete;
     }
 
-    /**
+    /*
      * Generate code in order to remove a target entity from the source entity main edit page.
      */
     public Boolean getRemove() {

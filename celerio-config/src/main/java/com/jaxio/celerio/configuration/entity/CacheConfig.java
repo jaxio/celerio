@@ -16,8 +16,9 @@
 
 package com.jaxio.celerio.configuration.entity;
 
-import static org.springframework.util.StringUtils.hasLength;
 import lombok.Setter;
+
+import static org.springframework.util.StringUtils.hasLength;
 
 /**
  * Configuration element for Hibernate/EhCache 2d level cache.
@@ -28,7 +29,7 @@ public class CacheConfig {
     private String include;
     private String region;
 
-    /**
+    /*
      * Hibernate/EhCache CacheConcurrencyStrategy. Use NONE if you do not want any Cache annotation to be set.
      */
     public CacheConcurrencyStrategy getUsage() {

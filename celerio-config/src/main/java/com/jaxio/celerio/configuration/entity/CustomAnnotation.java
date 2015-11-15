@@ -25,7 +25,7 @@ public class CustomAnnotation {
     @Setter
     private String annotation;
 
-    /**
+    /*
      * The full qualified custom annotation to apply to this property. For example: @com.mycompany.MyAnnotation(debug = true)
      */
     public String getAnnotation() {

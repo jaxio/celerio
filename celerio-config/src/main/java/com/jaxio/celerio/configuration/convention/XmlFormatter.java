@@ -31,7 +31,7 @@ public class XmlFormatter {
     @Getter
     private Integer indent = 4;
 
-    /**
+    /*
      * Enable Formatter for all XML generated file. Default to false. Note: currently formatting sort attributes in alphabetical order. This is not convenient
      * for certain tags.
      */

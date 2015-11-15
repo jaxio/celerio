@@ -33,7 +33,7 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
     private CacheConfig cacheConfig;
     private AssociationAction associationAction;
 
-    /**
+    /*
      * The variable name for association. It should be singular, for example: 'parent'.
      */
     public String getVar() {
@@ -44,14 +44,14 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return hasLength(getVar());
     }
 
-    /**
+    /*
      * The JPA fetch type for this association. Use NONE if you do not want any fetchType to be set.
      */
     public FetchType getFetch() {
         return fetch;
     }
 
-    /**
+    /*
      * If the target entity is part of a SINGLE_TABLE inheritance hierarchy, you must set name of the target entity as Celerio cannot guess it.
      */
     public String getTargetEntityName() {
@@ -62,21 +62,21 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return isNotBlank(targetEntityName);
     }
 
-    /**
+    /*
      * The labels for this association.
      */
     public List<Label> getLabels() {
         return labels;
     }
 
-    /**
+    /*
      * The list of JPA cascade types for the this association.
      */
     public List<Cascade> getCascades() {
         return cascades;
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceCascadesToNullIfEmpty() {
@@ -85,14 +85,14 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
         }
     }
 
-    /**
+    /*
      * The 2d level cache configuration for this association.
      */
     public CacheConfig getCacheConfig() {
         return cacheConfig;
     }
 
-    /**
+    /*
      * Configure which actions should or should not be generated for this association in the front end layer.
      */
     public AssociationAction getAssociationAction() {

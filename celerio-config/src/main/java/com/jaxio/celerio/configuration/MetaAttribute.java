@@ -30,14 +30,14 @@ public class MetaAttribute {
     private String name;
     private String value;
 
-    /**
+    /*
      * name of you meta attribute
      */
     public String getName() {
         return name;
     }
 
-    /**
+    /*
      * value for this attribute
      */
     public String getValue() {

@@ -23,7 +23,7 @@ import java.util.List;
 
 import lombok.Setter;
 
-/**
+/*
  * The ManyToManyConfig allows you to fine tune your @ManyToMany association. The ManyToManyConfig element must be a child of a columnConfig element referencing
  * (i.e foreignkey) the entity that is the target of this @ManyToMany association. The columnConfig necessarily belongs to a 'join entity'.
  */
@@ -39,7 +39,7 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
     private CacheConfig cacheConfig;
     private AssociationAction associationAction;
 
-    /**
+    /*
      * The variable name for the collection. It should be plural, for example: 'children'. Please configure also the elementVar as the singular of this var.
      */
     public String getVar() {
@@ -50,7 +50,7 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
         return hasLength(getVar());
     }
 
-    /**
+    /*
      * The variable name for an element of the collection. For example, if the variable name for the collection is 'children', the elementVar should be child.
      * This elementVar will be used to generate convenient methods for the collection, such as an adder method addChild(YourType child).
      */
@@ -62,14 +62,14 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
         return hasLength(elementVar);
     }
 
-    /**
+    /*
      * The JPA fetch type for this association. Use NONE if you do not want any fetchType to be set.
      */
     public FetchType getFetch() {
         return fetch;
     }
 
-    /**
+    /*
      * Specifies the ordering of the elements. If not null, the JPA <code>@OrderBy</code> annotation is used.
      * Example: orderBy="birthdate DESC" will generate <code>@OrderBy("birthdate DESC")</code>.
      */
@@ -77,7 +77,7 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
         return orderBy;
     }
 
-    /**
+    /*
      * If the target entity is part of a SINGLE_TABLE inheritance hierarchy, you must set name of the target entity as Celerio cannot guess it.
      */
     public String getTargetEntityName() {
@@ -88,21 +88,21 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
         return isNotBlank(targetEntityName);
     }
 
-    /**
+    /*
      * The labels for this association.
      */
     public List<Label> getLabels() {
         return labels;
     }
 
-    /**
+    /*
      * The list of JPA cascade types for the this association.
      */
     public List<Cascade> getCascades() {
         return cascades;
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceCascadesToNullIfEmpty() {
@@ -111,14 +111,14 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
         }
     }
 
-    /**
+    /*
      * The 2d level cache configuration for this association.
      */
     public CacheConfig getCacheConfig() {
         return cacheConfig;
     }
 
-    /**
+    /*
      * Configure which actions should or should not be generated for this association in the front end layer.
      */
     public AssociationAction getAssociationAction() {

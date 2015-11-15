@@ -23,7 +23,7 @@ import lombok.Setter;
 
 import org.springframework.util.AntPathMatcher;
 
-/**
+/*
  * A pattern is a structure to help handling inclusion and exclusion of resources
  */
 public class Pattern {
@@ -41,7 +41,7 @@ public class Pattern {
         this.include = include;
     }
 
-    /**
+    /*
      * if the pattern contains '?', '*', '**' the matching will be done using an ant matcher, otherwise it will do a equalsIgnoreCase
      * <ul>
      * <li>? matches one character</li>
@@ -51,14 +51,14 @@ public class Pattern {
      * Some examples:
      * <ul>
      * <li>com/t?st.jsp - matches com/test.jsp but also com/tast.jsp or com/txst.jsp</li>
-     * <li>com/yourcompany/**\/*.jsp - matches all .jsp files in the com/yourcompany directory</li>
+     * <li>com/yourcompany/*\/*.jsp - matches all .jsp files in the com/yourcompany directory</li>
      * </ul>
      */
     public String getPattern() {
         return pattern;
     }
 
-    /**
+    /*
      * True is is an inclusion pattern, false for an exclusion ?
      */
     public boolean isInclude() {

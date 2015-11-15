@@ -24,7 +24,7 @@ public class ImplementsInterface {
     @Setter
     private String fullType;
 
-    /**
+    /*
      * The full interface name that this entity implements. For example 'com.mycompany.MyInterface'
      */
     public String getFullType() {

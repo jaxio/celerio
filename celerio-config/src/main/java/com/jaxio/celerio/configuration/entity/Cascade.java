@@ -29,7 +29,7 @@ public class Cascade {
         this.type = type;
     }
 
-    /**
+    /*
      * JPA cascade type. Use NONE if you do not want any CascadeType to be set.
      */
     public CascadeType getType() {

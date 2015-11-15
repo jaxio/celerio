@@ -16,12 +16,12 @@
 
 package com.jaxio.celerio.convention;
 
+import lombok.Getter;
+import org.apache.commons.lang.Validate;
+
 import static com.jaxio.celerio.convention.GeneratedPackage.Model;
 import static org.apache.commons.io.FilenameUtils.normalize;
 import static org.apache.commons.lang.StringUtils.replace;
-import lombok.Getter;
-
-import org.apache.commons.lang.Validate;
 
 @Getter
 public enum WellKnownFolder {
@@ -84,7 +84,7 @@ public enum WellKnownFolder {
         return unixNormalize(getGeneratedFolder());
     }
 
-    /**
+    /*
      * Beware1: this method does not take into account the outputDirectory/baseDir Beware2: must be called after initialization (so override are taken into
      * account)
      */

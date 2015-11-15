@@ -24,14 +24,14 @@ import java.util.List;
 import java.util.Set;
 
 public class SqlUtil {
-    /**
+    /*
      * select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA != 'PUBLIC'
      */
     private static List<String> h2SchemaTables = newArrayList("HELP", "VIEWS", "CONSTRAINTS", "RIGHTS", "FUNCTION_COLUMNS", "SETTINGS", "TABLE_TYPES",
             "SCHEMATA", "INDEXES", "IN_DOUBT", "CROSS_REFERENCES", "USERS", "SESSIONS", "TABLE_PRIVILEGES", "CONSTANTS", "DOMAINS", "TABLES", "COLUMNS",
             "COLLATIONS", "ROLES", "SESSION_STATE", "SEQUENCES", "FUNCTION_ALIASES", "TYPE_INFO", "TRIGGERS", "LOCKS", "COLUMN_PRIVILEGES", "CATALOGS");
 
-    /**
+    /*
      * from http://www.h2database.com/html/grammar.html
      */
     private static List<String> h2Grammar = newArrayList("ADD", "ADMIN", "AGGREGATE", "ALIAS", "ALL", "ALLOW_LITERALS", "ALTER", "ANALYZE", "AUTOCOMMIT",
@@ -46,7 +46,7 @@ public class SqlUtil {
             "TABLES", "THROTTLE", "TRACE_LEVEL", "TRACE_MAX_FILE_SIZE", "TRANSACTION", "TRIGGER", "TRIGGERS", "TRUNCATE", "TYPE_INFO", "UNDO_LOG", "UPDATE",
             "USER", "USERS", "VIEW", "VIEWS", "WRITE_DELAY");
 
-    /**
+    /*
      * http://www.h2database.com/html/functions.html
      */
     private static List<String> h2Functions = newArrayList("ABS", "ACOS", "ARRAY_GET", "ARRAY_LENGTH", "ASCII", "ASIN", "ATAN", "ATAN2", "AUTOCOMMIT", "AVG",
@@ -62,7 +62,7 @@ public class SqlUtil {
             "TRANSACTION_ID", "TRIM", "TRUNCATE", "UPPER", "USER", "UTF8TOSTRING", "VAR_POP", "VAR_SAMP", "WEEK", "XMLATTR", "XMLCDATA", "XMLCOMMENT",
             "XMLNODE", "XMLSTARTDOC", "XMLTEXT", "YEAR", "ZERO");
 
-    /**
+    /*
      * http://www.h2database.com/html/datatypes.html
      */
     private static List<String> h2Types = newArrayList("INT", "BOOLEAN", "TINYINT", "SMALLINT", "BIGINT", "IDENTITY", "DECIMAL", "DOUBLE", "REAL", "TIME",
@@ -70,7 +70,7 @@ public class SqlUtil {
 
     private static Iterable<String> h2ReservedWords = concat(h2SchemaTables, h2Grammar, h2Functions, h2Types);
 
-    /**
+    /*
      * http://msdn.microsoft.com/en-us/library/aa238507(SQL.80).aspx
      */
     private static List<String> transactSqlReservedWords = newArrayList("ABSOLUTE", "FOUND", "PRESERVE", "ACTION", "FREE", "PRIOR", "ADMIN", "GENERAL",
@@ -89,7 +89,7 @@ public class SqlUtil {
             "VARCHAR", "END-EXEC", "PARAMETER", "VARIABLE", "EQUALS", "PARAMETERS", "WHENEVER", "EVERY", "PARTIAL", "WITHOUT", "EXCEPTION", "PATH", "WORK",
             "EXTERNAL", "POSTFIX", "WRITE", "FALSE", "PREFIX", "YEAR", "FIRST", "PREORDER", "ZONE", "FLOAT", "PREPARE");
 
-    /**
+    /*
      * http://download.oracle.com/docs/cd/A58617_01/server.804/a58225/ap_keywd.htm
      */
     private static List<String> oracleReservedWords = newArrayList("ACCESS", "ELSE", "MODIFY", "START", "ADD", "EXCLUSIVE", "NOAUDIT", "SELECT", "ALL",
@@ -128,7 +128,7 @@ public class SqlUtil {
             "WITH", "MLSLABEL", "RAISE", "START", "WORK", "MOD", "RANGE", "STATEMENT", "XOR", "MODE", "REAL", "STDDEV", "", "NATURAL", "RECORD", "SUBTYPE");
     private static Iterable<String> oracleSqlReservedWords = concat(oracleReservedWords, oracleReservedKeywords, oracleReservedPlSQL);
 
-    /**
+    /*
      * http://dev.mysql.com/doc/refman/5.1/en/reserved-words.html
      */
     private static List<String> mysqlReservedWords = newArrayList("ACCESSIBLE", "ADD", "ALL", "ALTER", "ANALYZE", "AND", "AS", "ASC", "ASENSITIVE", "BEFORE",
@@ -158,7 +158,7 @@ public class SqlUtil {
         return sqlReservedWordsSet.contains(s.toUpperCase());
     }
 
-    /**
+    /*
      * If the given value collides with sql reserved words, add '
      */
     public static String escapeSql(String s) {

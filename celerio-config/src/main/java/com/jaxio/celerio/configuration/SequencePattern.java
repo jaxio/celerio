@@ -20,7 +20,7 @@ import lombok.Setter;
 
 import org.springframework.util.AntPathMatcher;
 
-/**
+/*
  * A pattern is a structure to help handling inclusion and exclusion of resources
  */
 public class SequencePattern {
@@ -42,7 +42,7 @@ public class SequencePattern {
         this.sequenceName = sequenceName;
     }
 
-    /**
+    /*
      * The table pattern. If the pattern contains '?', '*' the matching will be done using an ant matcher, otherwise it will do a equalsIgnoreCase
      * <ul>
      * <li>? matches one character</li>
@@ -58,7 +58,7 @@ public class SequencePattern {
         return tableNamePattern;
     }
 
-    /**
+    /*
      * The sequence name to use for the entity that is associated with the matching table. You can use the magic '{TABLE_NAME}' token which is replaced with the
      * corresponding table name. For example: SEQ_{TABLE_NAME}.
      */
@@ -66,7 +66,7 @@ public class SequencePattern {
         return sequenceName;
     }
 
-    /**
+    /*
      * (Optional) The value from which the sequence object
      * is to start generating. Defaults to 1.
      */
@@ -78,7 +78,7 @@ public class SequencePattern {
         return initialValue != null && initialValue != 1;
     }
 
-    /**
+    /*
      * (Optional) The amount to increment by when allocating
      * sequence numbers from the sequence. Defaults to 50.
      */

@@ -24,14 +24,14 @@ public class Label {
     private String lang;
     private String value;
 
-    /**
+    /*
      * The label's language, for example 'fr'. Leave it null for the base.
      */
     public String getLang() {
         return lang;
     }
 
-    /**
+    /*
      * The label. It is copied in properties file located in the folder 'src/main/resources/localization/domain'.
      */
     public String getValue() {

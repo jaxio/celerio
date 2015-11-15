@@ -34,7 +34,7 @@ import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.configuration.entity.ColumnConfig.*;
 import static org.springframework.util.StringUtils.hasLength;
 
-/**
+/*
  * Describes an entity config
  */
 @Setter
@@ -63,14 +63,14 @@ public class EntityConfig implements CacheConfigGetter {
     // Ignored by JIBX thanks to src/main/config/customization.xml
     private Map<String, ColumnConfig> columnConfigByColumnName = newHashMap();
 
-    /**
+    /*
      * The 2d level cache configuration for this entity.
      */
     public CacheConfig getCacheConfig() {
         return cacheConfig;
     }
 
-    /**
+    /*
      * Free parameters. Not used internally.
      */
     public List<String> getUsages() {
@@ -81,7 +81,7 @@ public class EntityConfig implements CacheConfigGetter {
         this.usages = nonNull(usages);
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceUsagesToNullIfEmpty() {
@@ -90,7 +90,7 @@ public class EntityConfig implements CacheConfigGetter {
         }
     }
 
-    /**
+    /*
      * Convenient for hbm2celerio to avoid dead tags.
      */
     public void forceImplementsInterfacesToNullIfEmpty() {
@@ -99,7 +99,7 @@ public class EntityConfig implements CacheConfigGetter {
         }
     }
 
-    /**
+    /*
      * The JPA entity's type. <br>
      * For example, entityName="BankAccount". <br>
      * By default, the entity name is deduced from the table name. <br>
@@ -113,7 +113,7 @@ public class EntityConfig implements CacheConfigGetter {
         return hasLength(entityName);
     }
 
-    /**
+    /*
      * Allows you to specify the sequence name to use in order to generate this entity pk value. When a sequence name is provided the corresponding @SequenceGenerator
      * and @GeneratedValue annotations are added to the primary key attribute.
      */
@@ -125,7 +125,7 @@ public class EntityConfig implements CacheConfigGetter {
         return hasLength(sequenceName);
     }
 
-    /**
+    /*
      * The underlying table name for the entity. If not set, inheritance must be configured.
      */
     public String getTableName() {
@@ -136,7 +136,7 @@ public class EntityConfig implements CacheConfigGetter {
         return hasLength(tableName);
     }
 
-    /**
+    /*
      * Should this entity be annotated with hibernate search @Indexed annotation? False by default, unless if one columnConfig is marked as indexed.
      */
     public Boolean getIndexed() {
@@ -147,7 +147,7 @@ public class EntityConfig implements CacheConfigGetter {
         return indexed != null && indexed;
     }
 
-    /**
+    /*
      * The labels for this entity. They appear in the entity properties file located under 'src/main/resources/localization/domain'.
      */
     public List<Label> getLabels() {
@@ -163,7 +163,7 @@ public class EntityConfig implements CacheConfigGetter {
         return false;
     }
 
-    /**
+    /*
      * By convention a table is considered as a many-to-many middle table if it has two foreign keys and no other regular columns. This attribute allows you to
      * consider this table as a middle table, even if it has other regular columns. A regular column is a column that is neither a primary key nor a version
      * (i.e. optimistic lock).
@@ -176,7 +176,7 @@ public class EntityConfig implements CacheConfigGetter {
         return middleTable != null;
     }
 
-    /**
+    /*
      * The comment that will be inserted in this entity's JavaDoc.
      */
     public String getComment() {
@@ -195,7 +195,7 @@ public class EntityConfig implements CacheConfigGetter {
         return hasLength(comment);
     }
 
-    /**
+    /*
      * Allows you to override the default root package.<br>
      * Example: com.yourcompany
      */
@@ -203,7 +203,7 @@ public class EntityConfig implements CacheConfigGetter {
         return rootPackage;
     }
 
-    /**
+    /*
      * When you define a sub-package, the resulting entity's package becomes <code>rootPackage.domain.subPackage</code>
      * instead of <code>rootPackage.domain</code>. There is no sub-package by default.
      */
@@ -211,14 +211,14 @@ public class EntityConfig implements CacheConfigGetter {
         return subPackage;
     }
 
-    /**
+    /*
      * The base label for this entity. You may either set it here or in a nested labels/label.
      */
     public String getLabel() {
         return label;
     }
 
-    /**
+    /*
      * It is pertinent only if this entity's table plays the role of a middle table in a many-to-many association.
      * In that case you can use this parameter to set the many-to-many association direction.
      */
@@ -226,7 +226,7 @@ public class EntityConfig implements CacheConfigGetter {
         return associationDirection;
     }
 
-    /**
+    /*
      * Inheritance configuration.
      */
     public Inheritance getInheritance() {
@@ -245,7 +245,7 @@ public class EntityConfig implements CacheConfigGetter {
         return inheritance.getParentEntityName();
     }
 
-    /**
+    /*
      * You can override the default collection type for this entity
      */
     public CollectionType getCollectionType() {
@@ -256,7 +256,7 @@ public class EntityConfig implements CacheConfigGetter {
         return getCollectionType() != null;
     }
 
-    /**
+    /*
      * Specify the base class that this entity should extends. Only for root entity.
      */
     public ExtendsClass getExtendsClass() {
@@ -267,7 +267,7 @@ public class EntityConfig implements CacheConfigGetter {
         return getExtendsClass() != null && getExtendsClass().hasFullType();
     }
 
-    /**
+    /*
      * Specify the extra interfaces that this entity should implement.
      */
     public List<ImplementsInterface> getImplementsInterfaces() {
@@ -278,14 +278,14 @@ public class EntityConfig implements CacheConfigGetter {
         return getImplementsInterfaces() != null && !getImplementsInterfaces().isEmpty();
     }
 
-    /**
+    /*
      * Meta attributes are free form key value pairs.
      */
     public List<MetaAttribute> getMetaAttributes() {
         return metaAttributes;
     }
 
-    /**
+    /*
      * This entity's columnConfigs. Note that for entities without inheritance or for entities with a JOIN inheritance strategy, if a column is present in the
      * table's meta data but has no corresponding entityConfig in this list, then an entityConfig is created by default and added automatically to this list.
      */
@@ -338,7 +338,7 @@ public class EntityConfig implements CacheConfigGetter {
         }
     }
 
-    /**
+    /*
      * List of custom annotations to apply on this entity.
      */
     public List<CustomAnnotation> getCustomAnnotations() {

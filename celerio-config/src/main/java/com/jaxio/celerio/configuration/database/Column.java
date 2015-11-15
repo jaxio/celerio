@@ -25,7 +25,7 @@ import lombok.Setter;
 
 import com.jaxio.celerio.configuration.MetaAttribute;
 
-/**
+/*
  * Configuration of a column, the data reflect the jdbc metadata
  */
 public class Column {
@@ -50,70 +50,70 @@ public class Column {
     protected Set<String> enumValues = newHashSet();
     protected Set<MetaAttribute> metaAttributes = newHashSet();
 
-    /**
+    /*
      * Default value
      */
     public String getColumnDef() {
         return getDefaultValue(columnDef);
     }
 
-    /**
+    /*
      * The number of fractional digits
      */
     public int getDecimalDigits() {
         return decimalDigits;
     }
 
-    /**
+    /*
      * Column name
      */
     public String getName() {
         return name;
     }
 
-    /**
+    /*
      * Is Auto Increment?
      */
     public Boolean getAutoIncrement() {
         return autoIncrement;
     }
 
-    /**
+    /*
      * Is NULL allowed ?
      */
     public boolean isNullable() {
         return nullable;
     }
 
-    /**
+    /*
      * Index of column in table (starting at 1)
      */
     public int getOrdinalPosition() {
         return ordinalPosition;
     }
 
-    /**
+    /*
      * Comment describing the column
      */
     public String getRemarks() {
         return remarks;
     }
 
-    /**
+    /*
      * Column size. For char or date types this is the maximum number of characters, for numeric or decimal types this is precision.
      */
     public int getSize() {
         return size;
     }
 
-    /**
+    /*
      * This column jdbc type
      */
     public JdbcType getType() {
         return type;
     }
 
-    /**
+    /*
      * Enum values if the column represents an enum
      */
     public Set<String> getEnumValues() {
@@ -136,7 +136,7 @@ public class Column {
         enumValues.add(value);
     }
 
-    /**
+    /*
      * Enum values if the column represents an enum
      */
     public Set<MetaAttribute> getMetaAttributes() {

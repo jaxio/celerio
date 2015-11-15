@@ -16,11 +16,10 @@
 
 package com.jaxio.celerio.configuration;
 
+import com.jaxio.celerio.util.MappedType;
 import lombok.Setter;
 
-import com.jaxio.celerio.util.MappedType;
-
-/**
+/*
  * Global rule to map columns whose JDBC TYPE correspond to a number to a Java type.
  */
 @Setter
@@ -31,35 +30,35 @@ public class NumberMapping {
     private Integer columnDecimalDigitsMin;
     private Integer columnDecimalDigitsMax;
 
-    /**
+    /*
      * The mapped type to use when both the column size and decimal digit value fall into the specified ranges.
      */
     public MappedType getMappedType() {
         return mappedType;
     }
 
-    /**
+    /*
      * The minimum (inclusive) column size to fall into this mapping range.
      */
     public Integer getColumnSizeMin() {
         return columnSizeMin;
     }
 
-    /**
+    /*
      * The maximum (exclusive) column size to fall into this mapping range.
      */
     public Integer getColumnSizeMax() {
         return columnSizeMax;
     }
 
-    /**
+    /*
      * The minimum (inclusive) column decimal digit value to fall into this mapping range.
      */
     public Integer getColumnDecimalDigitsMin() {
         return columnDecimalDigitsMin;
     }
 
-    /**
+    /*
      * The maximum (exclusive) column decimal digit value to fall into this mapping range.
      */
     public Integer getColumnDecimalDigitsMax() {

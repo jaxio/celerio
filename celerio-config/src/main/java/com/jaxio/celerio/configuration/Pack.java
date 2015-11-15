@@ -16,18 +16,17 @@
 
 package com.jaxio.celerio.configuration;
 
+import lombok.Setter;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.configuration.Pattern.hasPattern;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static org.springframework.util.StringUtils.hasLength;
 
-import java.util.List;
-
-import lombok.Setter;
-
-import org.springframework.util.Assert;
-
-/**
+/*
  * A pack is the aggregation of templates and static files that produces functionalities.
  */
 @Setter
@@ -47,7 +46,7 @@ public class Pack {
         this.name = name;
     }
 
-    /**
+    /*
      * Name of the pack
      */
     public String getName() {
@@ -58,7 +57,7 @@ public class Pack {
         return hasLength(name);
     }
 
-    /**
+    /*
      * Path of the pack, it should be relative to the project, or absolute.<br>
      * Example: src/main/packs/my-own-pack/
      */
@@ -70,14 +69,14 @@ public class Pack {
         return hasLength(path);
     }
 
-    /**
+    /*
      * Should this pack be used ?
      */
     public boolean isEnable() {
         return enable;
     }
 
-    /**
+    /*
      * Specify the pack order, its main interest is when two packs produce the same artifacts.
      */
     public Integer getOrder() {
@@ -88,7 +87,7 @@ public class Pack {
         return order != null;
     }
 
-    /**
+    /*
      * Control the generation output by filtering the generated files based on their filename.
      */
     public List<Pattern> getFilenames() {
@@ -107,7 +106,7 @@ public class Pack {
         return hasPattern(getFilenames(), value);
     }
 
-    /**
+    /*
      * Control the generation output by filtering the execution of the generation templates based on their filename.
      */
     public List<Pattern> getTemplates() {

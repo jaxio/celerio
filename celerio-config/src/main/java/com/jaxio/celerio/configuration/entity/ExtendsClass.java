@@ -24,7 +24,7 @@ public class ExtendsClass {
     @Setter
     private String fullType;
 
-    /**
+    /*
      * The full class name that this entity extends. For example 'com.mycompany.MyClass'. This is taken into account only if the entity is a root entity.
      */
     public String getFullType() {
