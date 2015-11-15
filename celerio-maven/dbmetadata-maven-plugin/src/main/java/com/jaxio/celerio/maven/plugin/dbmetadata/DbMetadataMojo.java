@@ -48,7 +48,7 @@ import static org.apache.commons.io.FilenameUtils.normalize;
  *
  * @since 3.0.0
  */
-@Mojo(name = "extract-metadata", defaultPhase = LifecyclePhase.GENERATE_RESOURCES, requiresProject = false)
+@Mojo(name = "extract-metadata", defaultPhase = LifecyclePhase.GENERATE_SOURCES, requiresProject = false)
 public class DbMetadataMojo extends AbstractMojo {
 
     /**
