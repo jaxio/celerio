@@ -26,7 +26,6 @@ import java.io.FileOutputStream;
 import java.util.Properties;
 
 public class Brand {
-    private final String celerioLicenseAgreement = "http://www.jaxio.com/documentation/celerio/celerio-license-agreement.html";
     private final String logoFilename = "logo.png";
     private final String logoPath;
     private final String brandingPath;
@@ -35,7 +34,6 @@ public class Brand {
     private String footer = "";
     private String rootPackage = "com.jaxio";
     private final String maintenanceEmail = "support@jaxio.com";
-    private boolean acceptEULA;
 
     public Brand() {
         brandingPath = System.getProperty("user.home") + "/.celerio/branding.properties";
@@ -50,9 +48,7 @@ public class Brand {
                 companyUrl = p.getProperty("company_url", companyUrl);
                 footer = p.getProperty("footer", footer);
                 rootPackage = p.getProperty("root_package", rootPackage);
-                acceptEULA = "yes".equalsIgnoreCase(p.getProperty("accept_license_agreement_for_celerio", "no").trim());
             } else {
-                p.setProperty("accept_license_agreement_for_celerio", "no");
                 p.setProperty("root_package", rootPackage);
                 p.setProperty("company_name", companyName);
                 p.setProperty("company_url", companyUrl);
@@ -60,11 +56,7 @@ public class Brand {
                 if (!f.getParentFile().exists()) {
                     f.getParentFile().mkdirs();
                 }
-                p.store(new FileOutputStream(f),
-                        "CELERIO BRANDING\n" + "" +
-                                "End User License Agreement (EULA) can be read here:\n" +
-                                celerioLicenseAgreement);
-                acceptEULA = false;
+                p.store(new FileOutputStream(f), "CELERIO BRANDING");
             }
 
             // copy logo if not present
@@ -78,26 +70,10 @@ public class Brand {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        if (!acceptEULA) {
-            System.out.println("");
-            System.out.println("==========================================================================================================");
-            System.out.println(" Before using Celerio, you must accept the License Agreement For Celerio");
-            System.out.println(" available here: " + celerioLicenseAgreement);
-            System.out.println(" To accept it, open " + brandingPath);
-            System.out.println(" and set the property accept_license_agreement_for_celerio to yes instead of no");
-            System.out.println(" Then try again...");
-            System.out.println("==========================================================================================================");
-            System.exit(1);
-        }
     }
 
     public String getBrandingPath() {
         return brandingPath;
-    }
-
-    public boolean isAcceptEULA() {
-        return acceptEULA;
     }
 
     public String getCompanyName() {
