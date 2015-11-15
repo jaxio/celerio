@@ -79,6 +79,7 @@ public class GenerateMojo extends AbstractMojo {
     /**
      * The output folder.
      */
+    @Parameter(property = "celerio-maven-plugin.outputDir", defaultValue = "${basedir}")
     protected String outputDirectory;
 
     /**
