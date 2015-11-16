@@ -2,9 +2,15 @@
 
 Celerio is a code generator tool for data-driven application.
 
-## Work in progress
+## Releases
 
-This version is not yet deployed on Maven Central.
+### 4.0.2
+
+### 4.0.1
+
+### 4.0.0
+
+### prior to 4.0.0
 
 ## License
 

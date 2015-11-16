@@ -291,8 +291,7 @@ relase.by=${user.name}]]></echo>
                     <directory>target/jibx</directory>
                 </configuration>
             </plugin>
-            <!-- copy jibx in jar so we can use it from bootstrap -->
-
+            <!-- copy jibx classes' path so it we can use it from bootstrap -->
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <executions>
@@ -310,42 +309,6 @@ relase.by=${user.name}]]></echo>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>wagon-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <id>upload-celerio-xsd</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>upload-single</goal>
-                        </goals>
-                        <configuration>
-                            <fromFile>${project.build.directory}/jibx/celerio.xsd</fromFile>
-                            <toFile>celerio.xsd</toFile>
-                            <url>scp://maven.jaxio.com/home/openrepo/public/xsd/${project.version}
-                            </url>
-                            <serverId>jaxio-scp-openrepo</serverId>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>upload-noname-xsd</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>upload-single</goal>
-                        </goals>
-                        <configuration>
-                            <fromFile>${project.build.directory}/jibx/nonamespace.xsd
-                            </fromFile>
-                            <toFile>nonamespace.xsd</toFile>
-                            <url>scp://maven.jaxio.com/home/openrepo/public/xsd/${project.version}
-                            </url>
-                            <serverId>jaxio-scp-openrepo</serverId>
                         </configuration>
                     </execution>
                 </executions>
