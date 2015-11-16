@@ -25,6 +25,8 @@ git clone git@github.com:jaxio/celerio.git
 
 ### Releasing
 
+***Make sure BootstrapMojo uses the right packs***
+
 **Make sure JavaDoc is OK**
 
 Until it works, run:
@@ -47,6 +49,16 @@ Then press the release button.
 
 Then check that it is present under:
 https://oss.sonatype.org/content/repositories/public/com/jaxio/
+
+
+### Post release
+
+Change the version manually in
+
+`celerio-maven/bootstrap-maven-plugin/src/it/pom.xml`
+
+(would be nice if it was updated during release...)
+
 
 That's all, your are done.
 
