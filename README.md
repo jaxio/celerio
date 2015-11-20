@@ -1,5 +1,7 @@
 ## Celerio Code Generator
 
+[![Build Status](https://travis-ci.org/jaxio/celerio.svg)](https://travis-ci.org/jaxio/celerio)
+
 Celerio is a code generator tool for data-driven application.
 
 It can reverse a database schema and generate advanced crud-based applications.
