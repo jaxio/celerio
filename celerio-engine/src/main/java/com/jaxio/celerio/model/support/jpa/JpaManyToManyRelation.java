@@ -43,6 +43,11 @@ public class JpaManyToManyRelation implements RelationSpi, PackageImportAdder {
     }
 
     @Override
+    public Object getTarget() {
+        return this;
+    }
+
+    @Override
     public void init(Relation relation) {
         this.relation = relation;
     }

@@ -38,6 +38,11 @@ public class H2Attribute implements AttributeSpi {
         return "h2";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public String getSqlType() {
         MappedType type = attribute.getMappedType();
         if (type.isBlob()) {

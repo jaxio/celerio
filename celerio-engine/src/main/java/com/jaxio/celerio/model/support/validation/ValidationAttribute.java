@@ -37,6 +37,11 @@ public class ValidationAttribute extends AbstractAttributeSpi {
         return "validation";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     // --------------------------------------------
     // Validation Annotations, used from templates
     // --------------------------------------------

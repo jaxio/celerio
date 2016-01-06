@@ -50,6 +50,11 @@ public class JpaEntity extends AbstractEntitySpi {
         return "jpa";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public List<String> getAnnotations() {
         AnnotationBuilder ab = new AnnotationBuilder();
         ab.add(getEntityAnnotation());

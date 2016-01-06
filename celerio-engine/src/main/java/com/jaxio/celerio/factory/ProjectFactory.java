@@ -496,9 +496,9 @@ public class ProjectFactory {
         try {
             ProjectSpi spi = spiClass.newInstance();
             spi.init(project);
-            project.put(spi.velocityVar(), spi);
+            project.put(spi.velocityVar(), spi.getTarget());
         } catch (Exception e) {
-            log.error("Could not instanciate ProjectSpi", e);
+            log.error("Could not instantiate ProjectSpi", e);
         }
     }
 
@@ -506,9 +506,9 @@ public class ProjectFactory {
         try {
             EntitySpi spi = spiClass.newInstance();
             spi.init(entity);
-            entity.put(spi.velocityVar(), spi);
+            entity.put(spi.velocityVar(), spi.getTarget());
         } catch (Exception e) {
-            log.error("Could not instanciate EntitySpi", e);
+            log.error("Could not instantiate EntitySpi", e);
         }
     }
 
@@ -516,9 +516,9 @@ public class ProjectFactory {
         try {
             AttributeSpi spi = spiClass.newInstance();
             spi.init(attribute);
-            attribute.put(spi.velocityVar(), spi);
+            attribute.put(spi.velocityVar(), spi.getTarget());
         } catch (Exception e) {
-            log.error("Could not instanciate AttributeSpi", e);
+            log.error("Could not instantiate AttributeSpi", e);
         }
     }
 
@@ -527,10 +527,10 @@ public class ProjectFactory {
             RelationSpi spi = spiClass.newInstance();
             if (spi.compatibleWith(relation)) {
                 spi.init(relation);
-                ((AbstractRelation) relation).put(spi.velocityVar(), spi);
+                ((AbstractRelation) relation).put(spi.velocityVar(), spi.getTarget());
             }
         } catch (Exception e) {
-            log.error("Could not instanciate RelationSpi", e);
+            log.error("Could not instantiate RelationSpi", e);
         }
     }
 }

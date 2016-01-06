@@ -32,6 +32,11 @@ public class SearchEntity extends AbstractEntitySpi {
         return "search";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public List<String> getAnnotations() {
         return newArrayList(getIndexedAnnotation());
     }

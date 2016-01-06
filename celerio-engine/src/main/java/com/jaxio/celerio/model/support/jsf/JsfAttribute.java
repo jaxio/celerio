@@ -37,6 +37,11 @@ public class JsfAttribute implements AttributeSpi {
         return "jsf";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     private String getRequired() {
         return !attribute.isRequired() ? "" : "required=\"true\" ";
     }

@@ -42,6 +42,11 @@ public class SpringMVCEntity implements EntitySpi {
     }
 
     @Override
+    public Object getTarget() {
+        return this;
+    }
+
+    @Override
     public void init(Entity entity) {
         this.entity = entity;
         this.formatter = new ClassNamer(entity, ClassType.formatter);

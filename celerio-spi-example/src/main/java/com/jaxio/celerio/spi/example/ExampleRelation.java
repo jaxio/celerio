@@ -27,12 +27,19 @@ public class ExampleRelation implements RelationSpi {
         return true;
     }
 
+    @Override
     public void init(Relation relation) {
         this.relation = relation;
     }
 
+    @Override
     public String velocityVar() {
         return "example";
+    }
+
+    @Override
+    public Object getTarget() {
+        return this;
     }
 
     public String getHello() {

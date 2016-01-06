@@ -23,12 +23,19 @@ public class ExampleAttribute implements AttributeSpi {
 
     private Attribute attribute;
 
+    @Override
     public void init(Attribute attribute) {
         this.attribute = attribute;
     }
 
+    @Override
     public String velocityVar() {
         return "example";
+    }
+
+    @Override
+    public Object getTarget() {
+        return this;
     }
 
     public String getHello() {

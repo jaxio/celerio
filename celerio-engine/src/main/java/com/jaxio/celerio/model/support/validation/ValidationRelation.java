@@ -41,6 +41,11 @@ public class ValidationRelation implements RelationSpi {
     }
 
     @Override
+    public Object getTarget() {
+        return this;
+    }
+
+    @Override
     public void init(Relation relation) {
         this.relation = relation;
     }

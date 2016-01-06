@@ -35,6 +35,11 @@ public class SpringMVCAttribute implements AttributeSpi {
         return "springMvc";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     // TODO : fix the isInFk for pureMany2Many
     public String getTagName() {
         if (attribute.isHidden() && !attribute.isFile()) {

@@ -23,12 +23,19 @@ public class ExampleProject implements ProjectSpi {
 
     private Project project;
 
+    @Override
     public void init(Project attribute) {
         this.project = attribute;
     }
 
+    @Override
     public String velocityVar() {
         return "example";
+    }
+
+    @Override
+    public Object getTarget() {
+        return this;
     }
 
     public String getHello() {

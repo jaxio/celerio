@@ -33,6 +33,11 @@ public class CustomEntity extends AbstractEntitySpi {
         return "custom";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public List<String> getAnnotations() {
         if (entity.getEntityConfig().getCustomAnnotations() == null) {
             return newArrayList();

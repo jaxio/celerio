@@ -40,9 +40,14 @@ public interface RelationSpi {
     void init(Relation relation);
 
     /**
-     * The var name under which this RelationSpi is available during template evaluation.<br>
+     * The var name under which the target is bound during template evaluation.<br>
      * For example if <code>velocityVar()</code> methods returns <code>myextension</code>, the corresponding RelationSpi implementation instance is given by
      * <code>$relation.myextension</code>.
      */
     String velocityVar();
+
+    /**
+     * The bound target.
+     */
+    Object getTarget();
 }

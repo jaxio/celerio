@@ -35,6 +35,11 @@ public class JQueryAttribute implements AttributeSpi {
         return "jQuery";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public String getConstraints() {
         StringBuffer ret = new StringBuffer();
         if (attribute.isEmail()) {

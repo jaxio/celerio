@@ -38,6 +38,11 @@ public class SearchAttribute extends AbstractAttributeSpi {
         return "search";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public boolean isIndexed() {
         return attribute.isIndexed();
     }

@@ -40,6 +40,11 @@ public class ValuesAttribute implements AttributeSpi {
         return "values";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public String getDummy() {
         if (attribute.isInPk() || attribute.isUnique()) {
             return getUnique();

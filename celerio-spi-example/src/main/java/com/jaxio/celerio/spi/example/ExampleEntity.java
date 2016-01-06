@@ -23,12 +23,19 @@ public class ExampleEntity implements EntitySpi {
 
     private Entity entity;
 
+    @Override
     public void init(Entity entity) {
         this.entity = entity;
     }
 
+    @Override
     public String velocityVar() {
         return "example";
+    }
+
+    @Override
+    public Object getTarget() {
+        return this;
     }
 
     public String getHello() {

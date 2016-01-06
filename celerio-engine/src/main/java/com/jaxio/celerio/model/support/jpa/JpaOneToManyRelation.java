@@ -38,6 +38,11 @@ public class JpaOneToManyRelation extends AbstractRelationSpi {
     }
 
     @Override
+    public Object getTarget() {
+        return this;
+    }
+
+    @Override
     public void init(Relation relation) {
         if (!(relation.isOneToMany() || relation.isOneToVirtualOne())) {
             throw new IllegalArgumentException("Expecting a oneToMany or oneToVirtualOne relation");

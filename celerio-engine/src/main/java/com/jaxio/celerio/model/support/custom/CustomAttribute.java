@@ -33,6 +33,11 @@ public class CustomAttribute extends AbstractAttributeSpi {
         return "custom";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     /**
      * Return the custom annotations declared in the configuration.
      */

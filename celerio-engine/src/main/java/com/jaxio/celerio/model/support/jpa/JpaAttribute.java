@@ -45,6 +45,11 @@ public class JpaAttribute extends AbstractAttributeSpi {
         return "jpa--NOT-YET-USED"; // TODO: use it
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public List<String> getAnnotations() {
         AnnotationBuilder ab = new AnnotationBuilder();
         ab.add(

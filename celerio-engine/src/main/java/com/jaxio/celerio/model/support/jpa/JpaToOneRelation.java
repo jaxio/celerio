@@ -44,6 +44,11 @@ public class JpaToOneRelation extends AbstractRelationSpi {
         return "jpa";
     }
 
+    @Override
+    public Object getTarget() {
+        return this;
+    }
+
     public List<String> getAnnotations() {
         if (relation.isComposite() && !relation.isManyToOne()) {
             return Arrays.asList("// TODO: composite one to one");

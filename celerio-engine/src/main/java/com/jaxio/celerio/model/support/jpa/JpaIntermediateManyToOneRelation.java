@@ -44,6 +44,11 @@ public class JpaIntermediateManyToOneRelation implements RelationSpi, PackageImp
     }
 
     @Override
+    public Object getTarget() {
+        return this;
+    }
+
+    @Override
     public void init(Relation relation) {
         this.relation = relation;
     }
