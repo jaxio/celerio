@@ -216,11 +216,6 @@
             <!-- celerio -->
             <dependency>
                 <groupId>com.jaxio.celerio</groupId>
-                <artifactId>celerio-config</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.jaxio.celerio</groupId>
                 <artifactId>celerio-engine</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -372,31 +367,6 @@
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>1.5.10</version>
             </dependency>
-            <!-- test scope -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.easytesting</groupId>
-                <artifactId>fest-assert</artifactId>
-                <version>1.4</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>1.8.1</version>
-                <scope>test</scope>
-            </dependency>
             <!-- mojo -->
             <dependency>
                 <groupId>org.apache.maven</groupId>
@@ -466,6 +436,32 @@
                 <artifactId>cglib-nodep</artifactId>
                 <version>3.1</version>
             </dependency>
+
+            <!-- test scope -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.easytesting</groupId>
+                <artifactId>fest-assert</artifactId>
+                <version>1.4</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>1.8.1</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -506,7 +502,6 @@
     </profiles>
 
     <modules>
-        <module>celerio-config</module>
         <module>celerio-engine</module>
         <module>celerio-maven</module>
         <module>celerio-spi-example</module>

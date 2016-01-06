@@ -18,55 +18,40 @@ package com.jaxio.celerio.template.pack;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 import static org.fest.assertions.Assertions.assertThat;
 
 public class LocalResourcePackFileTest {
 
-    @Test(expected = IllegalArgumentException.class)
-    public void nullFolder() {
-        new LocalResourcePackFile(null);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void unknownFolder() {
-        new LocalResourcePackFile("");
-    }
-
-    // @Test
-    // public void folderWithNoFile() {
-    // TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/0-file/");
-    // Assert.assertEquals(0, pack.getTemplateNames().size());
-    // }
-
     @Test
-    public void folderWithOneFile() {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/1-file/");
+    public void folderWithOneFile() throws IOException {
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/1-file"));
         assertThat(pack.getTemplateNames()).hasSize(1);
     }
 
     @Test
-    public void folderWithTwoFiles() {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/2-files/");
+    public void folderWithTwoFiles() throws IOException {
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/2-files"));
         assertThat(pack.getTemplateNames()).hasSize(2);
     }
 
     @Test
-    public void folderWithTwoFilesAndABakFile() {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/2-files-and-1-bak-file/");
+    public void folderWithTwoFilesAndABakFile() throws IOException {
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/2-files-and-1-bak-file"));
         assertThat(pack.getTemplateNames()).hasSize(2);
     }
 
     @Test
-    public void folderWithThreeFilesAndSubFolder() {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/3-files-subfolder/");
+    public void folderWithThreeFilesAndSubFolder() throws IOException {
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/3-files-subfolder"));
         assertThat(pack.getTemplateNames()).hasSize(3);
     }
 
     @Test
     public void copyResource() throws IOException {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/3-files-subfolder/");
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/3-files-subfolder"));
         assertThat(pack.getTemplateNames()).hasSize(3);
         assertThat(pack.getTemplateByName("two.txt").getTemplate()).isEqualTo("two-expected");
         assertThat(pack.getTemplateByName("subfolder/three.txt").getTemplate()).isEqualTo("three-expected");
@@ -74,7 +59,7 @@ public class LocalResourcePackFileTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void templateNotInFileList() throws IOException {
-        TemplatePack pack = new LocalResourcePackFile("src/test/resources/templates/3-files-subfolder/");
+        TemplatePack pack = new LocalResourcePackFile(new TemplatePackInfo("dummy"), new File("src/test/resources/templates/3-files-subfolder"));
         pack.getTemplateByName("unkown.txt");
     }
 }

@@ -22,9 +22,36 @@
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-    <context:component-scan base-package="com/jaxio/celerio">
-        <context:exclude-filter type="regex" expression="com/jaxio/celerio/configuration.*"/>
-    </context:component-scan>
+    <context:component-scan base-package="com.jaxio.celerio"/>
+    <context:property-placeholder location="classpath*:build.properties,classpath*:release.properties"/>
+
+    <bean id="buildInfo" class="com.jaxio.celerio.configuration.BuildInfo">
+        <property name="pomVersion" value="${pom.version}"/>
+        <property name="pomName" value="${pom.name}"/>
+        <property name="pomGroupId" value="${pom.groupId}"/>
+        <property name="pomArtifactId" value="${pom.artifactId}	"/>
+    </bean>
+
+    <bean id="celerioMarshaller" class="org.springframework.oxm.jibx.JibxMarshaller">
+        <property name="targetClass" value="com.jaxio.celerio.configuration.Celerio"/>
+        <property name="indent" value="2"/>
+    </bean>
+
+    <bean id="dbMetadataMarshaller" class="org.springframework.oxm.jibx.JibxMarshaller">
+        <property name="targetClass" value="com.jaxio.celerio.configuration.database.Metadata"/>
+        <property name="indent" value="2"/>
+    </bean>
+
+    <bean id="eclipseProfilesMarshaller" class="org.springframework.oxm.jibx.JibxMarshaller">
+        <property name="targetClass" value="com.jaxio.celerio.configuration.eclipse.Profiles"/>
+        <property name="indent" value="2"/>
+    </bean>
+
+    <bean id="celerioPackMarshaller" class="org.springframework.oxm.jibx.JibxMarshaller">
+        <property name="targetClass" value="com.jaxio.celerio.configuration.pack.CelerioPack"/>
+        <property name="indent" value="2"/>
+    </bean>
+
 
     <bean class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <description>

@@ -88,7 +88,7 @@ public class CleanGeneratedMojo extends AbstractMojo {
             getLog().info("skipping celerio-maven-plugin cleanGenerated");
             return;
         }
-        context = new ClassPathXmlApplicationContext("classpath:applicationContext-configuration.xml", "classpath:applicationContext-celerio.xml");
+        context = new ClassPathXmlApplicationContext("classpath:applicationContext-celerio.xml");
 
         FileTracker fileTracker = context.getBean(FileTracker.class);
         fileTracker.deleteGeneratedFileIfIdentical(new File(getProjectBaseDir()), excludedFiles);

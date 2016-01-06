@@ -17,7 +17,6 @@
 package com.jaxio.celerio.template.pack;
 
 import com.jaxio.celerio.util.IOUtil;
-import org.springframework.context.annotation.Scope;
 import org.springframework.util.Assert;
 
 import java.io.File;
@@ -30,20 +29,14 @@ import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.io.FilenameUtils.normalize;
 import static org.apache.commons.io.IOUtils.closeQuietly;
 import static org.apache.commons.io.IOUtils.toByteArray;
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
-@Scope(SCOPE_PROTOTYPE)
 public class LocalResourcePackFile implements TemplatePack {
-    private String packName;
     private String packAbsolutePath;
+    private TemplatePackInfo templatePackInfo;
 
-    public LocalResourcePackFile(String folder) {
-        this("local", folder);
-    }
-
-    public LocalResourcePackFile(String packName, String folder) {
-        this.packName = packName;
-        this.packAbsolutePath = normalize(convertToFile(folder).getAbsolutePath());
+    public LocalResourcePackFile(TemplatePackInfo templatePackInfo, File packRoot) throws IOException {
+        this.templatePackInfo = templatePackInfo;
+        this.packAbsolutePath = normalize(packRoot.getAbsolutePath());
     }
 
     // -----------------------------------------
@@ -52,7 +45,11 @@ public class LocalResourcePackFile implements TemplatePack {
 
     @Override
     public String getName() {
-        return packName;
+        return templatePackInfo.getName();
+    }
+
+    public TemplatePackInfo getTemplatePackInfo() {
+        return templatePackInfo;
     }
 
     @Override

@@ -169,7 +169,7 @@ public class DbMetadataMojo extends AbstractMojo {
     }
 
     private void initApplicationContext() {
-        context = new ClassPathXmlApplicationContext("classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml");
+        context = new ClassPathXmlApplicationContext("classpath*:applicationContext-celerio.xml");
     }
 
     private void extract(JdbcConnectivity configuration, String target) throws MojoExecutionException {

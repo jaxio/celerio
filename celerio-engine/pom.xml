@@ -28,11 +28,108 @@
     <name>celerio-engine</name>
     <description>Celerio Core Generation Engine</description>
 
+
     <dependencies>
         <dependency>
-            <groupId>com.jaxio.celerio</groupId>
-            <artifactId>celerio-config</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jibx</groupId>
+            <artifactId>jibx-run</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>joda-time</groupId>
+                    <artifactId>joda-time</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <!-- test scope -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>7.0.39</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- code formatting -->
         <!-- more or less same dependencies as in https://code.google.com/p/maven-java-formatter-plugin/source/browse/trunk/pom.xml -->
         <dependency>
@@ -157,20 +254,195 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
-    <repositories>
-        <repository>
-            <id>jaxio-repository</id>
-            <name>for eclipse</name>
-            <url>http://maven.jaxio.com/repository</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
+    </dependencies>
     <build>
+        <defaultGoal>install</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+                <excludes>
+                    <exclude>**/CVS</exclude>
+                    <exclude>**/*.svn</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/CVS</exclude>
+                    <exclude>**/*.svn</exclude>
+                </excludes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doUpdate>true</doUpdate>
+                    <shortRevisionLength>8</shortRevisionLength>
+                    <format>Celerio built on {0,date,yyyy-MM-dd} at {0,date,HH:mm:ss} using commit {1}</format>
+                    <items>
+                        <item>timestamp</item>
+                        <item>scmVersion</item>
+                    </items>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <id>Celerio creation</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <java fork="true" failonerror="true" classname="org.jibx.binding.generator.BindGen">
+                                    <classpath>
+                                        <path refid="maven.dependency.classpath" />
+                                        <path refid="maven.compile.classpath" />
+                                        <path refid="maven.runtime.classpath" />
+                                        <path refid="maven.test.classpath" />
+                                        <path refid="maven.plugin.classpath" />
+                                    </classpath>
+                                    <arg value="-t" />
+                                    <arg value="${project.build.directory}/jibx" />
+                                    <arg value="-c" />
+                                    <arg value="${basedir}/src/main/config/customization.xml" />
+                                    <arg value="-s" />
+                                    <arg value="${basedir}/src/main/java/" />
+                                    <arg value="com.jaxio.celerio.configuration.Celerio" />
+                                    <arg value="com.jaxio.celerio.configuration.database.Metadata" />
+                                    <arg value="com.jaxio.celerio.configuration.eclipse.Profiles" />
+                                    <arg value="com.jaxio.celerio.configuration.pack.CelerioPack" />
+                                </java>
+                                <echo file="${project.build.outputDirectory}/release.properties"><![CDATA[release.info=${buildNumber}
+relase.by=${user.name}]]></echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                        <version>1.2.13</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>jibx-bind</artifactId>
+                        <version>${jibx.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>bcel</groupId>
+                                <artifactId>bcel</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <!-- TODO: workaround while waiting for BCEL 6.0; -->
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>bcel-findbugs</artifactId>
+                        <version>6.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>jibx-tools</artifactId>
+                        <version>${jibx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>jibx-run</artifactId>
+                        <version>${jibx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>jibx-extras</artifactId>
+                        <version>${jibx.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.thoughtworks.qdox</groupId>
+                        <artifactId>qdox</artifactId>
+                        <version>1.10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>maven-jibx-plugin</artifactId>
+                <version>${jibx.version}</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>bind</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>jibx-bind</artifactId>
+                        <version>${jibx.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>bcel</groupId>
+                                <artifactId>bcel</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <!-- TODO: workaround while waiting for BCEL 6.0; -->
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>bcel-findbugs</artifactId>
+                        <version>6.0</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <directory>target/jibx</directory>
+                </configuration>
+            </plugin>
+            <!-- copy jibx classes' path so it we can use it from bootstrap -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/classes/jibx</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/jibx</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -179,6 +451,26 @@
                     <argLine>
                         <![CDATA[-Xmx512m "-javaagent:${settings.localRepository}/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar"]]></argLine>
                     <!--<useSystemClassloader>true</useSystemClassloader>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultImplementationEntries>true
+                            </addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true
+                            </addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Os>${os.name}</Build-Os>
+                            <Build-Os-Version>${os.version}</Build-Os-Version>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>

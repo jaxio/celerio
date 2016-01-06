@@ -211,7 +211,7 @@ public class GenerateMojo extends AbstractMojo {
             return;
         }
 
-        context = new ClassPathXmlApplicationContext("classpath:applicationContext-configuration.xml", "classpath:applicationContext-celerio.xml");
+        context = new ClassPathXmlApplicationContext("classpath:applicationContext-celerio.xml");
         CelerioProducer producer = context.getBean(CelerioProducer.class);
         Config config = setupConfig(producer.getConfig(), xmlMetadata, xmlConfiguration, baseDir, outputDirectory);
         config.setSpringfuseMode(getSpringfuseMode());

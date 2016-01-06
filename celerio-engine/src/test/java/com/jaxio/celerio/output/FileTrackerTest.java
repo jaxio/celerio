@@ -32,8 +32,7 @@ import java.util.HashSet;
 import static com.google.common.collect.Maps.newHashMap;
 import static org.fest.assertions.Assertions.assertThat;
 
-@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:CelerioProducerTest-applicationContext.xml"})
+@ContextConfiguration("classpath*:applicationContext-celerio.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class FileTrackerTest {
 

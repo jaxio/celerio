@@ -16,56 +16,52 @@
 
 package com.jaxio.celerio.template.pack;
 
+import com.jaxio.celerio.configuration.EntityContextProperty;
+import com.jaxio.celerio.configuration.pack.CelerioPack;
 import com.jaxio.celerio.util.StringUtil;
 import lombok.Getter;
-import org.springframework.core.io.Resource;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
-import static com.jaxio.celerio.util.FallBackUtil.fallBack;
 import static org.apache.commons.lang.StringUtils.substringAfterLast;
 import static org.apache.commons.lang.StringUtils.substringBeforeLast;
 
 @Getter
 public class TemplatePackInfo {
-    private String name;
-    private String version;
-    private String description;
-    private String description2;
-    private String command;
-    private String commandHelp = ""; // optional command help
-    private String projectLink = "";
+    final private String name;
+    final private String version;
+    final private String description;
+    final private String description2;
+    final private String command;
+    final private String commandHelp;
+    final private String projectLink;
+    final private List<EntityContextProperty> entityContextPropertyList;
 
-    public TemplatePackInfo(Resource packInfoAsResource) throws IOException {
-        Properties packInfoAsProperties = new Properties();
-        packInfoAsProperties.load(new InputStreamReader(packInfoAsResource.getInputStream(), "UTF-8"));
-        init(packInfoAsProperties);
+    public TemplatePackInfo(String name) {
+        this.name = name;
+        this.version = "";
+        this.description = "";
+        this.description2 = "";
+        this.command = "";
+        this.commandHelp = "";
+        this.projectLink = "";
+        this.entityContextPropertyList = new ArrayList<EntityContextProperty>();
     }
 
-    public TemplatePackInfo(String packName, Resource packInfoAsResource) throws IOException {
-        Properties packInfoAsProperties = new Properties();
-        packInfoAsProperties.load(new InputStreamReader(packInfoAsResource.getInputStream(), "UTF-8"));
-        init(packName, packInfoAsProperties);
-    }
-
-    public TemplatePackInfo(String packName, Properties packInfoAsProperties) {
-        init(packName, packInfoAsProperties);
-    }
-
-    private void init(Properties packInfoAsProperties) {
-        init(null, packInfoAsProperties);
-    }
-
-    private void init(String packName, Properties packInfoAsProperties) {
-        this.name = fallBack(packName, packInfoAsProperties.getProperty("packName"));
-        this.version = packInfoAsProperties.getProperty("packVersion");
-        this.description = packInfoAsProperties.getProperty("packDescription");
-        this.description2 = packInfoAsProperties.getProperty("packDescription2");
-        this.command = packInfoAsProperties.getProperty("packCommand");
-        this.commandHelp = packInfoAsProperties.getProperty("packCommandHelp");
-        this.projectLink = packInfoAsProperties.getProperty("projectLink");
+    public TemplatePackInfo(CelerioPack celerioPack) {
+        this.name = celerioPack.getPackName().getValue();
+        this.version = celerioPack.getPackVersion().getValue();
+        this.description = celerioPack.getPackDescription().getValue();
+        this.description2 = celerioPack.getPackDescription2().getValue();
+        this.command = celerioPack.getPackCommand().getValue();
+        this.commandHelp = celerioPack.getPackCommandHelp().getValue();
+        this.projectLink = celerioPack.getProjectLink().getValue();
+        if (celerioPack.getCelerioTemplateContext() != null && celerioPack.getCelerioTemplateContext().getEntityContextProperties() != null) {
+            this.entityContextPropertyList = celerioPack.getCelerioTemplateContext().getEntityContextProperties();
+        } else {
+            this.entityContextPropertyList = new ArrayList<EntityContextProperty>();
+        }
     }
 
     /**

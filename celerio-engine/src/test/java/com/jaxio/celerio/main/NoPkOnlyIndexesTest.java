@@ -33,8 +33,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:CelerioProducerTest-applicationContext.xml"})
+@ContextConfiguration("classpath:applicationContext-celerio.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Ignore
 public class NoPkOnlyIndexesTest {

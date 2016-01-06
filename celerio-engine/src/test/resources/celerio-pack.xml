@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<celerioPack xmlns="http://www.jaxio.com/schema/celerio">
+    <packName value="toto"/>
+    <packVersion value="toto version"/>
+    <packDescription value="toto description"/>
+    <packDescription2 value="toto description 2"/>
+    <packCommand value="toto cmd"/>
+    <packCommandHelp value="toto help"/>
+    <projectLink value="toto link"/>
+
+    <celerioTemplateContext>
+        <entityContextProperties>
+            <entityContextProperty property="rest" subPackage="rest" suffix="Resource"/>
+        </entityContextProperties>
+    </celerioTemplateContext>
+</celerioPack>

@@ -20,6 +20,7 @@ import com.jaxio.celerio.Brand;
 import com.jaxio.celerio.output.OutputResult;
 import com.jaxio.celerio.template.pack.Template;
 import com.jaxio.celerio.template.pack.TemplatePack;
+import com.jaxio.celerio.template.pack.TemplatePackInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,6 +55,11 @@ public class BrandUtil {
                 @Override
                 public String getName() {
                     return "brand";
+                }
+
+                @Override
+                public TemplatePackInfo getTemplatePackInfo() {
+                    throw new RuntimeException("not implemented");
                 }
 
                 @Override

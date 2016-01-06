@@ -43,8 +43,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Ignore
-@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:CelerioProducerTest-applicationContext.xml"})
+@ContextConfiguration("classpath:applicationContext-celerio.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class CelerioProducerTest {
 

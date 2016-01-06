@@ -16,6 +16,9 @@
 
 package com.jaxio.celerio.template.pack;
 
+import com.jaxio.celerio.configuration.pack.CelerioPack;
+import com.jaxio.celerio.configuration.support.CelerioPackConfigLoader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Service;
@@ -24,22 +27,26 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.Util.CLASSPATH_CELERIO_PACK;
 
 @Service
 public class ClasspathResourceUncryptedPackLoader {
 
-    public final static String CELERIO_PATH = "classpath*:META-INF/celerio.txt";
+    @Autowired
+    private CelerioPackConfigLoader celerioPackConfigLoader;
+
 
     public List<TemplatePack> getPacks() {
         List<TemplatePack> packs = newArrayList();
         try {
             PathMatchingResourcePatternResolver o = new PathMatchingResourcePatternResolver();
-            Resource infos[] = o.getResources(CELERIO_PATH);
+            Resource infos[] = o.getResources(CLASSPATH_CELERIO_PACK);
 
             for (Resource info : infos) {
-                TemplatePackInfo packInfo = new TemplatePackInfo(info);
-                Resource templatesAsResources[] = o.getResources("classpath*:/celerio/" + packInfo.getName() + "/**/*");
-                packs.add(new ClasspathResourceUncryptedPack(packInfo, templatesAsResources));
+                CelerioPack celerioPack = celerioPackConfigLoader.load(info.getInputStream());
+                TemplatePackInfo templatePackInfo = new TemplatePackInfo(celerioPack);
+                Resource templatesAsResources[] = o.getResources("classpath*:/celerio/" + templatePackInfo.getName() + "/**/*");
+                packs.add(new ClasspathResourceUncryptedPack(templatePackInfo, templatesAsResources));
             }
 
             return packs;

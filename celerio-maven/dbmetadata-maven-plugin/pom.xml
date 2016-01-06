@@ -31,7 +31,7 @@
     <dependencies>
         <dependency>
             <groupId>com.jaxio.celerio</groupId>
-            <artifactId>celerio-config</artifactId>
+            <artifactId>celerio-engine</artifactId>
         </dependency>
         <!-- mojos -->
         <dependency>

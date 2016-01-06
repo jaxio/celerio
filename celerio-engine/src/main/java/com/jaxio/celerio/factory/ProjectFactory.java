@@ -56,6 +56,8 @@ import com.jaxio.celerio.spi.EntitySpi;
 import com.jaxio.celerio.spi.ProjectSpi;
 import com.jaxio.celerio.spi.RelationSpi;
 import com.jaxio.celerio.template.pack.PackLoader;
+import com.jaxio.celerio.template.pack.TemplatePack;
+import com.jaxio.celerio.template.pack.TemplatePackInfo;
 import com.jaxio.celerio.util.FallBackUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.math.NumberUtils;
@@ -424,6 +426,14 @@ public class ProjectFactory {
 
         // 5- real binding on project, entities, attributes, relations.
         bindAllSpis();
+
+
+        // 6- now bind all namers found in various pack config
+
+        for (TemplatePack templatePack : packLoader.getTemplatePacks()) {
+            TemplatePackInfo templatePackInfo = templatePack.getTemplatePackInfo();
+        }
+
     }
 
     private void loadProjectSpis(Iterator<ProjectSpi> iterator) {

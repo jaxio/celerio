@@ -22,6 +22,11 @@ import java.util.List;
 public interface TemplatePack {
 
     /**
+     * Meta info for this pack.
+     */
+    TemplatePackInfo getTemplatePackInfo();
+
+    /**
      * Returns the template pack name. For example "pack-backend".
      */
     String getName();

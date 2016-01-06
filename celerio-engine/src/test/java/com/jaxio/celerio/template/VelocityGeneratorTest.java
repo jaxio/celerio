@@ -35,8 +35,7 @@ import static org.apache.commons.io.IOUtils.contentEquals;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 
-@ContextConfiguration({"classpath*:applicationContext-configuration.xml", "classpath*:applicationContext-celerio.xml",
-        "classpath*:VelocityGeneratorTest-applicationContext.xml"})
+@ContextConfiguration("classpath:applicationContext-celerio.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class VelocityGeneratorTest {
     @Autowired
@@ -47,17 +46,6 @@ public class VelocityGeneratorTest {
 
     @Autowired
     private OutputResultFactory outputResultFactory;
-
-    @Test
-    @Ignore
-    public void encodingTests() throws Exception {
-        config.setOutputResult(outputResultFactory.getOutputResult(".", "target/generated-output/"));
-        celerioProducer.produce();
-        // assertTrue(contentEquals(new StringReader("été hivers"), new FileReader("target/generated-output/cp1252.txt")));
-        // assertTrue(contentEquals(new StringReader("été hivers"), new FileReader("target/generated-output/iso-8859-1.txt")));
-        assertTrue(contentEquals(new StringReader("été hivers"), new FileReader("target/generated-output/utf-8.txt")));
-
-    }
 
     @Test
     public void testExtraction() {

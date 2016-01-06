@@ -475,7 +475,7 @@ public class BootstrapMojo extends AbstractMojo {
      */
     private ApplicationContext getCelerioApplicationContext() {
         if (context == null) {
-            context = new ClassPathXmlApplicationContext("classpath:applicationContext-configuration.xml", "classpath:applicationContext-celerio.xml");
+            context = new ClassPathXmlApplicationContext("classpath:applicationContext-celerio.xml");
         }
         return context;
     }

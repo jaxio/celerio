@@ -33,22 +33,22 @@ import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROT
 @Scope(SCOPE_PROTOTYPE)
 public class ClasspathResourceUncryptedPack implements TemplatePack {
 
-    private String packName;
+    private TemplatePackInfo templatePackInfo;
     private List<String> templateNames = newArrayList();
     private Map<String, Template> templates = newHashMap();
 
-    public ClasspathResourceUncryptedPack(TemplatePackInfo packInfo, Resource[] templatesAsResources) throws IOException {
-        this.packName = packInfo.getName();
+    public ClasspathResourceUncryptedPack(TemplatePackInfo templatePackInfo, Resource[] templatesAsResources) throws IOException {
+        this.templatePackInfo = templatePackInfo;
 
         for (Resource r : templatesAsResources) {
             if (!isFolder(r)) {
                 String templateName = r.getURI().toString();
-                String root = "celerio/" + packName + "/";
+                String root = "celerio/" + templatePackInfo.getName() + "/";
                 templateName = normalize(templateName.substring(templateName.indexOf(root) + root.length()));
 
                 templateNames.add(templateName);
 
-                Template template = new Template(templateName, packInfo, toByteArray(r.getInputStream()));
+                Template template = new Template(templateName, templatePackInfo, toByteArray(r.getInputStream()));
                 templates.put(templateName, template);
             }
         }
@@ -65,7 +65,12 @@ public class ClasspathResourceUncryptedPack implements TemplatePack {
 
     @Override
     public String getName() {
-        return packName;
+        return templatePackInfo.getName();
+    }
+
+    @Override
+    public TemplatePackInfo getTemplatePackInfo() {
+        return templatePackInfo;
     }
 
     @Override
