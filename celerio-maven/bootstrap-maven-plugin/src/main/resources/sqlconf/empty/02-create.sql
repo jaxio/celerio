@@ -1,5 +1,3 @@
-DROP ALL OBJECTS;
-
 CREATE SEQUENCE hibernate_sequence START WITH 1000;
 
 CREATE TABLE USER (
@@ -11,5 +9,3 @@ CREATE TABLE USER (
     constraint user_unique_1 unique (username),
     primary key (id)
 );
-
-INSERT INTO USER (username, password, is_enabled) VALUES ('admin', 'admin', true);

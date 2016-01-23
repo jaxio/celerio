@@ -277,7 +277,7 @@ public class BootstrapMojo extends AbstractMojo {
             printInstruction("Choose the type of application you want to generate:");
             for (int i = 0; i < getBootstrapPacksInfo().size(); i++) {
                 TemplatePackInfo templatePackInfo = getBootstrapPacksInfo().get(i);
-                System.out.println(" " + (i + 1) + ") " + templatePackInfo.getName() + " " + templatePackInfo.getVersion());
+                System.out.println(" " + (i + 1) + ") " + templatePackInfo.getName());
                 System.out.println("    " + templatePackInfo.getProjectLink());
                 System.out.println("    " + templatePackInfo.getDescription());
 
@@ -384,13 +384,13 @@ public class BootstrapMojo extends AbstractMojo {
     private void copySqlConf() throws IOException {
         PathMatchingResourcePatternResolver o = new PathMatchingResourcePatternResolver();
 
-        // copy sql
-        Resource sqlResource[] = o.getResources("classpath*:sqlconf/" + sqlConfName + "/01-create.sql");
         File sqlDir = new File(appName + "/src/main/sql/h2");
         sqlDir.mkdirs();
-        File sqlFile = new File(sqlDir, "01-create.sql");
-        getLog().info("Copy SQL file from '" + sqlConfName + "' resources: " + sqlFile.getName());
-        IOUtils.copy(sqlResource[0].getInputStream(), new FileOutputStream(sqlFile));
+
+        // copy sql
+        copySingleSqlFile(o, sqlDir, "01-drop.sql");
+        copySingleSqlFile(o, sqlDir, "02-create.sql");
+        copySingleSqlFile(o, sqlDir, "03-import.sql");
 
         // copy conf.
         Resource xmlResource[] = o.getResources("classpath*:sqlconf/" + sqlConfName + "/celerio-maven-plugin.xml");
@@ -404,6 +404,14 @@ public class BootstrapMojo extends AbstractMojo {
         File xmlFile = new File(xmlDir, "celerio-maven-plugin.xml");
         getLog().info("Copy configuration file from '" + sqlConfName + "' resources: " + xmlFile.getName());
         writeStringToFile(xmlFile, xmlConf, "UTF-8");
+    }
+
+    private void copySingleSqlFile(PathMatchingResourcePatternResolver o, File sqlDir, String filename) throws IOException {
+        Resource sqlResource[] = o.getResources("classpath*:sqlconf/" + sqlConfName + "/" + filename);
+        File sqlFile = new File(sqlDir, filename);
+        getLog().info("Copy SQL file from '" + sqlConfName + "' resources: " + sqlFile.getName());
+        IOUtils.copy(sqlResource[0].getInputStream(), new FileOutputStream(sqlFile));
+
     }
 
     // ----------------------------------------

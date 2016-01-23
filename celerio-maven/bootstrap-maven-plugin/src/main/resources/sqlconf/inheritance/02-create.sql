@@ -1,5 +1,3 @@
-DROP ALL OBJECTS;
-
 CREATE SEQUENCE hibernate_sequence START WITH 1000;
 
 CREATE TABLE USER (
@@ -44,5 +42,3 @@ CREATE TABLE ENTERPRISE_ACCOUNT (
 	is_ethical			bool not null default true,
     primary key (id)
 );
-
-INSERT INTO USER (username, password, is_enabled) VALUES ('admin', 'admin', true);

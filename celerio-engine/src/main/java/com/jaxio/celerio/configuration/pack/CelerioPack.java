@@ -22,7 +22,6 @@ import lombok.Data;
 @Data
 public class CelerioPack {
     private Value packName;
-    private Value packVersion;
     private Value packDescription;
     private Value packDescription2;
     private Value packCommand;

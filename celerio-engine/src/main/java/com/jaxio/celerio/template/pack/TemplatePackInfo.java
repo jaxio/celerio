@@ -30,7 +30,6 @@ import static org.apache.commons.lang.StringUtils.substringBeforeLast;
 @Getter
 public class TemplatePackInfo {
     final private String name;
-    final private String version;
     final private String description;
     final private String description2;
     final private String command;
@@ -40,7 +39,6 @@ public class TemplatePackInfo {
 
     public TemplatePackInfo(String name) {
         this.name = name;
-        this.version = "";
         this.description = "";
         this.description2 = "";
         this.command = "";
@@ -51,7 +49,6 @@ public class TemplatePackInfo {
 
     public TemplatePackInfo(CelerioPack celerioPack) {
         this.name = celerioPack.getPackName().getValue();
-        this.version = celerioPack.getPackVersion().getValue();
         this.description = celerioPack.getPackDescription().getValue();
         this.description2 = celerioPack.getPackDescription2().getValue();
         this.command = celerioPack.getPackCommand().getValue();

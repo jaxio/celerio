@@ -50,7 +50,6 @@ public class CelerioPackConfigLoaderTest {
         EntityContextProperty entityContextProperty = celerioPack.getCelerioTemplateContext().getEntityContextProperties().get(0);
 
         assertThat(celerioPack.getPackName().getValue()).isEqualTo("toto");
-        assertThat(celerioPack.getPackVersion().getValue()).isEqualTo("toto version");
         assertThat(celerioPack.getPackDescription().getValue()).isEqualTo("toto description");
         assertThat(celerioPack.getPackDescription2().getValue()).isEqualTo("toto description 2");
         assertThat(celerioPack.getPackCommand().getValue()).isEqualTo("toto cmd");
