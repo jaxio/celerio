@@ -14,7 +14,7 @@ Have already Maven 3.1.1 or above and Java 1.8 installed ?
 
 Simply execute:
 
-    mvn com.jaxio.celerio:bootstrap-maven-plugin:4.0.2:bootstrap
+    mvn com.jaxio.celerio:bootstrap-maven-plugin:4.0.4:bootstrap
 
 ## License
 
