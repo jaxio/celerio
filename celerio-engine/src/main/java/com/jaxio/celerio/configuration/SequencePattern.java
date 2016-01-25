@@ -16,8 +16,11 @@
 
 package com.jaxio.celerio.configuration;
 
+import com.jaxio.celerio.util.StringUtil;
 import lombok.Setter;
 import org.springframework.util.AntPathMatcher;
+
+import static com.jaxio.celerio.util.StringUtil.hasLength;
 
 /*
  * A pattern is a structure to help handling inclusion and exclusion of resources
@@ -27,6 +30,10 @@ public class SequencePattern {
     private String tableNamePattern;
     @Setter
     private String sequenceName;
+    @Setter
+    private String catalog;
+    @Setter
+    private String schema;
     @Setter
     private Integer initialValue;
     @Setter
@@ -65,6 +72,30 @@ public class SequencePattern {
         return sequenceName;
     }
 
+
+
+    /**
+     * (Optional) The catalog of the sequence generator.
+     */
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public boolean hasCatalog() {
+        return hasLength(catalog);
+    }
+
+    /**
+     *  (Optional) The schema of the sequence generator.
+     */
+    public String getSchema() {
+        return schema;
+    }
+
+    public boolean hasSchema() {
+        return hasLength(schema);
+    }
+
     /*
      * (Optional) The value from which the sequence object
      * is to start generating. Defaults to 1.
@@ -86,7 +117,7 @@ public class SequencePattern {
     }
 
     public boolean hasNonDefaultAllocationSize() {
-        return allocationSize != null && allocationSize != 1;
+        return allocationSize != null && allocationSize != 50;
     }
 
     public AntPathMatcher getAntPathMatcher() {

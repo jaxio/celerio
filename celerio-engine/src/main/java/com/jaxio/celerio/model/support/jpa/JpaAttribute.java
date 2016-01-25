@@ -487,6 +487,14 @@ public class JpaAttribute extends AbstractAttributeSpi {
         ab.addString("sequenceName", attribute.getEntity().getEntityConfig().getSequenceName());
 
         if (sequencePattern != null) {
+            if (sequencePattern.hasCatalog()) {
+                ab.addString("catalog", sequencePattern.getCatalog());
+            }
+
+            if (sequencePattern.hasSchema()) {
+                ab.addString("schema", sequencePattern.getSchema());
+            }
+
             if (sequencePattern.hasNonDefaultInitialValue()) {
                 ab.addInt("initialValue", sequencePattern.getInitialValue());
             }
