@@ -379,14 +379,21 @@ public class MetadataExtractor {
     }
 
     private boolean skipTable(Table table) {
-        String tableName = table.getName();
-        if ("HIBERNATE_UNIQUE_KEY".equalsIgnoreCase(tableName)) {
-            log.warn("    Table " + tableName + " found but is a hibernate specific table, skipping");
-            return true;
-        } else if (tableName.toUpperCase().startsWith("BIN$")) {
-            log.warn("    Table " + tableName + " found but is a recycle bin, skipping");
+        String tableNameUpper = table.getName().toUpperCase();
+
+        if ("HIBERNATE_UNIQUE_KEY".equals(tableNameUpper)) {
+            log.warn("    Table " + table.getName() + " found but it is a hibernate specific table, skipping");
             return true;
         }
+
+        if (tableNameUpper.startsWith("BIN$") ||
+            tableNameUpper.startsWith("DR$") ||
+            tableNameUpper.startsWith("RUPD$") ||
+            tableNameUpper.startsWith("MLOG$")) {
+            log.warn("    Table " + table.getName() + " found but is a special table, skipping");
+            return true;
+        }
+
         return false;
     }
 
