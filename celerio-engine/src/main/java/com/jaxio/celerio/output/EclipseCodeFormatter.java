@@ -87,9 +87,9 @@ public class EclipseCodeFormatter {
         } else {
             options = DefaultCodeFormatterConstants.getEclipseDefaultSettings();
 
-            options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_6);
-            options.put(JavaCore.COMPILER_CODEGEN_TARGET_PLATFORM, JavaCore.VERSION_1_6);
-            options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_6);
+            options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_8);
+            options.put(JavaCore.COMPILER_CODEGEN_TARGET_PLATFORM, JavaCore.VERSION_1_8);
+            options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_8);
 
             options.put(JavaCore.FORMATTER_LINE_SPLIT, "160");
             options.put(JavaCore.FORMATTER_TAB_CHAR, JavaCore.SPACE);
