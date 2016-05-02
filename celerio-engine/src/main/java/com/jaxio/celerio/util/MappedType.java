@@ -41,6 +41,7 @@ public enum MappedType {
     M_BYTE("Byte", "java.lang.Byte"), //
     M_LOCALDATE("LocalDate", "java.time.LocalDate"), //
     M_LOCALDATETIME("LocalDateTime", "java.time.LocalDateTime"), //
+    M_ZONEDDATETIME("ZonedDateTime", "java.time.ZonedDateTime"),
     M_SQLDATE("java.sql.Date", "java.sql.Date"), //
     M_UTILDATE("Date", "java.util.Date"), //
     M_TIME("java.sql.Time", "java.sql.Time"), //
@@ -131,7 +132,7 @@ public enum MappedType {
      * @return true if numeric, false otherwise
      */
     public boolean isEligibleForVersion() {
-        return isInteger() || isLong() || (isDate() && this != M_LOCALDATE && this != M_LOCALDATETIME);
+        return isInteger() || isLong() || (isDate() && this != M_LOCALDATE && this != M_LOCALDATETIME && this != M_ZONEDDATETIME);
     }
 
     public boolean isString() {
@@ -158,6 +159,7 @@ public enum MappedType {
             case M_TIMESTAMP:
             case M_LOCALDATE:
             case M_LOCALDATETIME:
+            case M_ZONEDDATETIME:
                 return true;
             default:
                 return false;
@@ -174,6 +176,10 @@ public enum MappedType {
 
     public boolean isLocalDateTime() {
         return this == M_LOCALDATETIME;
+    }
+
+    public boolean isZonedDateTime() {
+        return this == M_ZONEDDATETIME;
     }
 
     public boolean isByte() {
@@ -264,14 +270,21 @@ public enum MappedType {
             case M_LOCALDATE:
                 value = value.toUpperCase();
                 if (isCurrentDate(value)) {
-                    return "new LocalDate()";
+                    return "LocalDate.now()";
                 } else {
                     break;
                 }
             case M_LOCALDATETIME:
                 value = value.toUpperCase();
                 if (isCurrentDate(value)) {
-                    return "new LocalDateTime()";
+                    return "LocalDateTime.now()";
+                } else {
+                    break;
+                }
+            case M_ZONEDDATETIME:
+                value = value.toUpperCase();
+                if (isCurrentDate(value)) {
+                    return "ZonedDateTime.now()";
                 } else {
                     break;
                 }

@@ -116,7 +116,7 @@ public class EntityPredicates {
 
         @Override
         public boolean apply(Entity entity) {
-            return this.entity == entity;
+            return this.entity != entity;
         }
     }
 

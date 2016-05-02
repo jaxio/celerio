@@ -389,6 +389,10 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     // Config shortcuts
     // -----------------------------------------------------
 
+    public boolean isSkip() {
+        return entityConfig.shouldSkip();
+    }
+
     @Override
     public String getName() {
         return entityConfig.getEntityName();

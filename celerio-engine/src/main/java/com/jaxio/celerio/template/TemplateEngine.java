@@ -216,7 +216,7 @@ public class TemplateEngine {
     private void produceEntities(Project project, TemplatePack templatePack) throws Exception, IOException {
         for (String templateName : getTemplateNames(templatePack, TemplateType.entity)) {
             for (Entity entity : project.getCurrentEntities()) {
-                if (entity.isManyToManyJoinEntity()) {
+                if (entity.isManyToManyJoinEntity() || entity.isSkip()) {
                     continue;
                 }
                 Map<String, Object> context = getGlobalContext();
@@ -230,7 +230,7 @@ public class TemplateEngine {
     private void produceCompositePk(Project project, TemplatePack templatePack) throws Exception, IOException {
         for (String templateName : getTemplateNames(templatePack, TemplateType.compositePrimaryKey)) {
             for (Entity entity : project.getRootEntities().getList()) {
-                if (entity.hasCompositePk() && !entity.isManyToManyJoinEntity()) {
+                if (entity.hasCompositePk() && !entity.isManyToManyJoinEntity() && !entity.isSkip()) {
                     Map<String, Object> context = getGlobalContext();
                     context.put("entity", entity);
                     context.put("primaryKey", entity.getPrimaryKey());

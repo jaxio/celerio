@@ -414,10 +414,15 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
         } else if (isDate()) {
             List<String> isNow = newArrayList("now()", "sysdate", "current_time");
             if (isNow.contains(getColumnConfig().getDefaultValue().toLowerCase())) {
-                return "new " + getFullType() + "()";
-            } else {
-                return null;
+                if (isLocalDateOrTime() || isZonedDateTime()) {
+                    return getMappedType().getJavaType() + ".now()"; // TODO: nice import
+                } else if (getMappedType() == MappedType.M_UTILDATE) {
+                    return "new " + getMappedType().getJavaType() + "()";
+                } else if (getMappedType() == MappedType.M_TIMESTAMP) {
+                    return "new Timestamp(new Date().getTime())";
+                }
             }
+            return null;
         } else if (isNumeric()) {
             String defaultValue = getColumnConfig().getDefaultValue();
             if (NumberUtils.isNumber(defaultValue)) {
@@ -840,6 +845,8 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
     final public boolean isLocalDateTime() {
         return getMappedType().isLocalDateTime();
     }
+
+    final public boolean isZonedDateTime() { return  getMappedType().isZonedDateTime(); }
 
     final public boolean isLob() {
         return getMappedType().isLob();

@@ -52,7 +52,7 @@ public class ValuesAttribute implements AttributeSpi {
             return getDefaultEnum();
         } else if (attribute.isBoolean()) {
             return "true";
-        } else if (attribute.isLocalDateOrTime()) {
+        } else if (attribute.isLocalDateOrTime() || attribute.isZonedDateTime()) {
             return attribute.getMappedType().getFullJavaType() + ".now()"; // TODO: nice import
         } else if (attribute.getMappedType() == MappedType.M_UTILDATE) {
             return "new " + attribute.getMappedType().getJavaType() + "()";

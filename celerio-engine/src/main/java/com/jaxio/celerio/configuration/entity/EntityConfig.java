@@ -32,6 +32,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.configuration.entity.ColumnConfig.*;
+import static java.lang.Boolean.TRUE;
 import static org.springframework.util.StringUtils.hasLength;
 
 /*
@@ -40,6 +41,7 @@ import static org.springframework.util.StringUtils.hasLength;
 @Setter
 @Slf4j
 public class EntityConfig implements CacheConfigGetter {
+    private Boolean skip;
     private String entityName;
     private String tableName;
     private String sequenceName;
@@ -97,6 +99,14 @@ public class EntityConfig implements CacheConfigGetter {
         if (implementsInterfaces != null && implementsInterfaces.isEmpty()) {
             implementsInterfaces = null;
         }
+    }
+
+    public Boolean getSkip() {
+        return skip;
+    }
+
+    public boolean shouldSkip() {
+        return skip != null && skip == TRUE;
     }
 
     /*
