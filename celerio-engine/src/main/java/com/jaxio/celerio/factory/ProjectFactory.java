@@ -19,10 +19,7 @@ package com.jaxio.celerio.factory;
 import com.jaxio.celerio.Config;
 import com.jaxio.celerio.ConfigurationCheck;
 import com.jaxio.celerio.aspects.ForbiddenWhenBuildingAspect;
-import com.jaxio.celerio.configuration.BuildInfo;
-import com.jaxio.celerio.configuration.Celerio;
-import com.jaxio.celerio.configuration.Configuration;
-import com.jaxio.celerio.configuration.HeaderComment;
+import com.jaxio.celerio.configuration.*;
 import com.jaxio.celerio.configuration.convention.*;
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.EntityConfig;
@@ -37,6 +34,7 @@ import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Project;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.model.relation.AbstractRelation;
+import com.jaxio.celerio.model.support.ClassNamer2;
 import com.jaxio.celerio.model.support.ValuesAttribute;
 import com.jaxio.celerio.model.support.custom.CustomAttribute;
 import com.jaxio.celerio.model.support.custom.CustomEntity;
@@ -427,13 +425,21 @@ public class ProjectFactory {
         // 5- real binding on project, entities, attributes, relations.
         bindAllSpis();
 
-
         // 6- now bind all namers found in various pack config
-
+        // Note: namers found in main config are loaded/binded by the entityFactory.
         for (TemplatePack templatePack : packLoader.getTemplatePacks()) {
-            TemplatePackInfo templatePackInfo = templatePack.getTemplatePackInfo();
-        }
 
+            List<EntityContextProperty> entityContextPropertyList = templatePack.getTemplatePackInfo().getEntityContextPropertyList();
+            if (entityContextPropertyList == null || entityContextPropertyList.size() == 0) {
+                continue;
+            }
+
+            for (Entity entity : config.getProject().getCurrentEntities()) {
+                for (EntityContextProperty ecp : entityContextPropertyList) {
+                    entity.put(ecp.getProperty(), new ClassNamer2(entity, ecp.getRootPackage(), ecp.getSubPackage(), ecp.getPrefix(), ecp.getSuffix()));
+                }
+            }
+        }
     }
 
     private void loadProjectSpis(Iterator<ProjectSpi> iterator) {

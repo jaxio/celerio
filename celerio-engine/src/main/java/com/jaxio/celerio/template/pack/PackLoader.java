@@ -90,7 +90,7 @@ public class PackLoader {
                             CelerioPack celerioPack = celerioPackConfigLoader.load(celerioPackXml);
                             packs.add(new LocalResourcePackFile(new TemplatePackInfo(celerioPack), new File(packRoot, "celerio" + File.separatorChar + celerioPack.getPackName().getValue())));
                         } else {
-                            log.error("Skipping pack " + packInConfig + " the file " + LOCAL_CELERIO_PACK + " is missing");
+                            log.error("Skipping pack " + packInConfig + " the file " + celerioPackXml.getAbsolutePath() + " is missing");
                         }
                     } catch (IOException ioe) {
                         log.error("Could not load the pack " + packInConfig, ioe);
