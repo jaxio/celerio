@@ -19,9 +19,11 @@ package com.jaxio.celerio.configuration;
 import lombok.Setter;
 
 /**
- * Used to introduce a new 'namer' property on each Celerio's entity context instance. Entity namer properties are convenient when writing template for classes
- * that support entities, for example: Controller, Service, Dao, Validator etc... example: var name is obtained with ${entity.property.var} and has the value
- * "prefixEntityNameSuffix".
+ * Used to introduce a new 'namer' property on each Celerio's entity context instance.
+ * Entity namer properties are convenient when writing template for classes
+ * that support entities, for example: Controller, Service, Dao, Validator etc.
+ * Example: var name is obtained with ${entity.property.var} and has the value
+ * "prefixEntityNameSuffix". Similarly ${entity.property.getter} returns "getPrefixEntityNameSuffix".
  */
 @Setter
 public class EntityContextProperty {
@@ -31,36 +33,36 @@ public class EntityContextProperty {
     private String prefix;
     private String suffix;
 
-    /*
-     * The property name.
+    /**
+     * @return The mandatory property name.
      */
     public String getProperty() {
         return property;
     }
 
-    /*
-     * The root package. Defaults to the globally defined root package.
+    /**
+     * @return The root package. Defaults to the globally defined root package.
      */
     public String getRootPackage() {
         return rootPackage;
     }
 
-    /*
-     * The sub package. For example: "security", "web.security". No defaults.
+    /**
+     * @return The sub package. For example: "security", "web.security". No defaults.
      */
     public String getSubPackage() {
         return subPackage;
     }
 
-    /*
-     * Prefix prepended to the entity name.
+    /**
+     * @return The prefix prepended to the entity name. No defaults.
      */
     public String getPrefix() {
         return prefix;
     }
 
-    /*
-     * Prefix appended to the entity name.
+    /**
+     * @return The suffix appended to the entity name. No defaults.
      */
     public String getSuffix() {
         return suffix;
