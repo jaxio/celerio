@@ -74,7 +74,9 @@ public class TemplateEngine {
         Map<String, Object> context = newHashMap();
         // static values
         context.put("dollar", "$");
+        context.put("d", "$");
         context.put("pound", "#");
+        context.put("p", "#");
         context.put("serialVersionUID", "    static final private long serialVersionUID = " + 1 + "L;");
         // global context values
         context.put("brand", new Brand());
@@ -265,6 +267,7 @@ public class TemplateEngine {
 
     private void produce(Map<String, Object> context, TemplatePack templatePack, String templateName) throws Exception {
         Template template = templatePack.getTemplateByName(templateName);
+        context.put("pack", templatePack.getTemplatePackInfo());
         TemplateExecution execution = applicationContext.getBean("templateExecution", TemplateExecution.class);
         context.put("output", execution);
         execution.write(config.getOutputResult(), context, templatePack, template);
