@@ -17,12 +17,15 @@
 package com.jaxio.celerio.template.pack;
 
 import com.jaxio.celerio.configuration.EntityContextProperty;
+import com.jaxio.celerio.configuration.MetaAttribute;
 import com.jaxio.celerio.configuration.pack.CelerioPack;
 import com.jaxio.celerio.util.StringUtil;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.apache.commons.lang.StringUtils.substringAfterLast;
 import static org.apache.commons.lang.StringUtils.substringBeforeLast;
@@ -35,6 +38,7 @@ public class TemplatePackInfo {
     final private String command;
     final private String commandHelp;
     final private String projectLink;
+    final private Map<String, String> properties = new HashMap<String, String>();
     final private List<EntityContextProperty> entityContextPropertyList;
 
     public TemplatePackInfo(String name) {
@@ -54,11 +58,42 @@ public class TemplatePackInfo {
         this.command = celerioPack.getPackCommand().getValue();
         this.commandHelp = celerioPack.getPackCommandHelp().getValue();
         this.projectLink = celerioPack.getProjectLink().getValue();
+        if (celerioPack.getCelerioTemplateContext() != null && celerioPack.getCelerioTemplateContext().getProperties() != null) {
+            for (MetaAttribute ma : celerioPack.getCelerioTemplateContext().getProperties()) {
+                properties.put(ma.getName().toLowerCase(), ma.getValue().toLowerCase());
+            }
+        }
+
         if (celerioPack.getCelerioTemplateContext() != null && celerioPack.getCelerioTemplateContext().getEntityContextProperties() != null) {
             this.entityContextPropertyList = celerioPack.getCelerioTemplateContext().getEntityContextProperties();
         } else {
             this.entityContextPropertyList = new ArrayList<EntityContextProperty>();
         }
+    }
+
+    public void overrideProperties(List<MetaAttribute> userDefinedProperties) {
+        if (userDefinedProperties != null) {
+            for (MetaAttribute ma : userDefinedProperties) {
+                properties.put(ma.getName().toLowerCase(), ma.getValue().toLowerCase());
+            }
+        }
+    }
+
+    public String getProperty(String name) {
+        return properties.get(name.toLowerCase());
+    }
+
+    public boolean hasProperty(String name) {
+        return properties.get(name.toLowerCase()) != null;
+    }
+
+    public boolean propertyEquals(String name, String value) {
+        String v = properties.get(name.toLowerCase());
+        return v != null && v.toLowerCase().equals(value.toLowerCase());
+    }
+
+    public boolean propertyIsTrue(String name) {
+        return propertyEquals(name, "true");
     }
 
     /**

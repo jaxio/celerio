@@ -37,6 +37,7 @@ public class Pack {
     private String path;
     private boolean enable = true;
     private Integer order;
+    protected List<MetaAttribute> properties = newArrayList();
     protected List<Pattern> filenames = newArrayList();
     protected List<Pattern> templates = newArrayList();
 
@@ -89,6 +90,15 @@ public class Pack {
     public boolean hasPackOrder() {
         return order != null;
     }
+
+    public List<MetaAttribute> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<MetaAttribute> properties) {
+        this.properties = nonNull(properties);
+    }
+
 
     /*
      * Control the generation output by filtering the generated files based on their filename.

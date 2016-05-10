@@ -24,5 +24,6 @@ import static com.google.common.collect.Lists.newArrayList;
 
 @Data
 public class CelerioTemplateContext {
+    List<MetaAttribute> properties = newArrayList();
     List<EntityContextProperty> entityContextProperties = newArrayList();
 }

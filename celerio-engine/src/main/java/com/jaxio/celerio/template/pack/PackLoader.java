@@ -88,7 +88,9 @@ public class PackLoader {
                         File celerioPackXml = new File(packRoot, LOCAL_CELERIO_PACK);
                         if (celerioPackXml.exists()) {
                             CelerioPack celerioPack = celerioPackConfigLoader.load(celerioPackXml);
-                            packs.add(new LocalResourcePackFile(new TemplatePackInfo(celerioPack), new File(packRoot, "celerio" + File.separatorChar + celerioPack.getPackName().getValue())));
+                            TemplatePackInfo templatePackInfo = new TemplatePackInfo(celerioPack);
+                            templatePackInfo.overrideProperties(packInConfig.getProperties());
+                            packs.add(new LocalResourcePackFile(templatePackInfo, new File(packRoot, "celerio" + File.separatorChar + celerioPack.getPackName().getValue())));
                         } else {
                             log.error("Skipping pack " + packInConfig + " the file " + celerioPackXml.getAbsolutePath() + " is missing");
                         }
@@ -105,7 +107,7 @@ public class PackLoader {
             if (!packInConfig.hasPath() && packInConfig.hasName()) {
                 TemplatePack tp = null;
                 try {
-                    tp = getPackByName(packInConfig.getName());
+                    tp = getPackFromClassPath(packInConfig);
                     packs.add(tp);
                 } catch (TemplatePackNotFoundException tpnfe) {
                     // when working with multi maven projets with a single conf, the packs
@@ -143,12 +145,13 @@ public class PackLoader {
         return result;
     }
 
-    private TemplatePack getPackByName(String packName) {
+    private TemplatePack getPackFromClassPath(Pack packFromUserConfig) {
         for (TemplatePack p : getAllTemplatePacksFromClasspath()) {
-            if (p.getName().equals(packName)) {
+            if (p.getName().equals(packFromUserConfig.getName())) {
+                p.getTemplatePackInfo().overrideProperties(packFromUserConfig.getProperties());
                 return p;
             }
         }
-        throw new TemplatePackNotFoundException("Could not load the template pack " + packName);
+        throw new TemplatePackNotFoundException("Could not load the template pack " + packFromUserConfig.getName());
     }
 }
