@@ -97,6 +97,10 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
 
     private String cachedVar;
 
+    /**
+     * The variable/property name.
+     * @return the variable (aka property) name.
+     */
     @ForbiddenWhenBuilding
     @Override
     public String getVar() {
@@ -125,6 +129,9 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
     // Entity shortcuts
     // -----------------------------------------------------
 
+    /**
+     * @return the entity name + "."+ the variable name.
+     */
     public String getFullName() {
         return getEntity().getName() + "." + getVar();
     }
