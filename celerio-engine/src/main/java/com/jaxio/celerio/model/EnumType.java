@@ -58,10 +58,10 @@ public class EnumType implements Comparable<EnumType> {
         return enumItems;
     }
 
+    @Deprecated
     public Labels getLabelsByEnumValue(EnumValue ev) {
-        Labels labels = new Labels(ev.getLabels());
-        labels.setFallBack(fallBack(ev.getLabel(), toReadableLabel(fallBack(ev.getName(), ev.getValue()))));
-        return labels;
+        System.out.println("getLabelsByEnumValue is deprecated, please use EnumValue.labels() instead.");
+        return ev.labels();
     }
 
     public EnumNamer getConverter() {

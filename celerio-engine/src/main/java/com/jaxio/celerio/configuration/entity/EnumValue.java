@@ -17,6 +17,7 @@
 package com.jaxio.celerio.configuration.entity;
 
 import com.jaxio.celerio.configuration.Util;
+import com.jaxio.celerio.util.Labels;
 import lombok.Setter;
 
 import java.util.List;
@@ -24,6 +25,9 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.convention.CommentStyle.JAVA;
 import static org.springframework.util.StringUtils.hasLength;
+
+import static com.jaxio.celerio.util.FallBackUtil.fallBack;
+import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
 
 @Setter
 public class EnumValue {
@@ -99,6 +103,12 @@ public class EnumValue {
      * The labels for this enum value. They appear in the enum properties file located under 'src/main/resources/localization/domain'.
      */
     public List<Label> getLabels() {
+        return labels;
+    }
+
+    public Labels labels() {
+        Labels labels = new Labels(getLabels());
+        labels.setFallBack(fallBack(getLabel(), toReadableLabel(fallBack(getName(), getValue()))));
         return labels;
     }
 }
