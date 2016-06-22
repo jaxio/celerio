@@ -61,6 +61,7 @@ public class ColumnConfig {
     protected String columnName;
     protected Integer size;
     protected Integer min;
+    protected Integer max;
     protected Integer ordinalPosition;
     protected Integer displayOrder;
     protected String typeConverter;
@@ -304,10 +305,21 @@ public class ColumnConfig {
     }
 
     /*
-     * Minimum length for String. When present it is used in the @Size validation annotation. No default value.
+     * Minimum length for String or else. When present it is used in the @Size validation annotation. No default value.
      */
     public Integer getMin() {
         return min;
+    }
+
+    public boolean hasMax() {
+        return getMax() != null;
+    }
+
+    /*
+     * Maximum value for this attribute. No default value.
+     */
+    public Integer getMax() {
+        return max;
     }
 
     /*
