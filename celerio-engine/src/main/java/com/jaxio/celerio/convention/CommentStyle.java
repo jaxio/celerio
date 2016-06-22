@@ -35,7 +35,7 @@ public enum CommentStyle {
     DASH("#", "#", "#", "properties", "mime.types", "txt"), //
     DOUBLE_QUOTE("--", "--", "--", "sql"), //
     DOUBLE_TILDE("~~", "~~", "~~", "apt"), //
-    DOUBLE_SLASH("//", "//", "//", "js", "graphviz");
+    DOUBLE_SLASH("//", "//", "//", "js", "ts", "graphviz");
 
     @Getter
     @Setter
