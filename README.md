@@ -4,7 +4,7 @@
 
 Celerio is a code generator tool for data-driven application.
 
-It can reverse a database schema and generate advanced crud-based applications.
+It can reverse a database schema and generate advanced CRUD-based applications.
 
 For more info, please read [Celerio Documentation](http://www.jaxio.com/documentation/celerio)
 
@@ -14,7 +14,20 @@ Have already Maven 3.1.1 or above and Java 1.8 installed ?
 
 Simply execute:
 
-    mvn com.jaxio.celerio:bootstrap-maven-plugin:4.0.4:bootstrap
+    mvn com.jaxio.celerio:bootstrap-maven-plugin:4.0.6:bootstrap
+
+## Related projects
+
+### Code generation templates
+
+ * [Web App Angular 2 + PrimeNG + Spring Boot](https://github.com/jaxio/celerio-angular-quickstart)
+ * [Java EE 7 Web App frontend and backend: No Spring Inside](https://github.com/jaxio/javaee-lab)
+ * [backend: JPA 2 / Hibernate + Lucene + Spring](https://github.com/jaxio/pack-backend-jpa)
+ * [frontend: JSF 2 + Spring](https://github.com/jaxio/pack-jsf2-spring-conversation)
+
+### JPA Query By Example API
+
+ * [JPA Query By Example API](https://github.com/jaxio/jpa-query-by-example)
 
 ## License
 
