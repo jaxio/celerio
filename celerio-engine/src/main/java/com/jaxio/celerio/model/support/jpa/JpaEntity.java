@@ -129,9 +129,10 @@ public class JpaEntity extends AbstractEntitySpi {
             StringBuilder sb = new StringBuilder("@SecondaryTables({");
             boolean first = true;
             for (Table secondaryTable : secondaryTables) {
-                if (!first) {
-                    sb.append(", ");
+                if (first) {
                     first = false;
+                } else {
+                    sb.append(", ");
                 }
                 sb.append(getSecondaryTableAnnotation(secondaryTable.getName()));
             }
