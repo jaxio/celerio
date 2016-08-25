@@ -547,11 +547,12 @@ public class TemplateExecution {
             }
 
             for (String fullType : fullTypes) {
-                sb.append(dynamicAnnotationSupport(fullType, false, true));
+                sb.append("// ").append("@" + fullType).append("\n");
             }
         }
         return sb.toString();
     }
+
 
     // ----------------------------------------------------
     // Control generation

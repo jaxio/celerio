@@ -36,4 +36,28 @@ public class TemplateExecutionTest {
         Assertions.assertThat(result).isEqualTo("@Toto");
     }
 
+    @Test
+    public void dynamicAnnotationTakeOver1() {
+        ImportsContext.setIsExtendedByUser(true); // bad, need fix
+        ImportsHolder ih = new ImportsHolder("");
+        ImportsContext.setCurrentImportsHolder(ih);
+        TemplateExecution te = new TemplateExecution();
+
+        String result = te.dynamicAnnotationTakeOver("com.test.Toto(\"abc\")");
+        Assertions.assertThat(result).isEqualTo("// Make sure you use this annotation in your subclass\n// @com.test.Toto(\"abc\")\n");
+        Assertions.assertThat(ih.getList()).isEmpty();
+
+    }
+
+    @Test
+    public void dynamicAnnotationTakeOver2() {
+        ImportsContext.setIsExtendedByUser(false); // bad, need fix
+        ImportsHolder ih = new ImportsHolder("");
+        ImportsContext.setCurrentImportsHolder(ih);
+        TemplateExecution te = new TemplateExecution();
+
+        String result = te.dynamicAnnotationTakeOver("com.test.Toto(\"abc\")");
+        Assertions.assertThat(result).isEqualTo("@Toto(\"abc\")\n");
+        Assertions.assertThat(ih.getList().get(0).getPackageName()).isEqualTo("com.test.Toto");
+    }
 }
