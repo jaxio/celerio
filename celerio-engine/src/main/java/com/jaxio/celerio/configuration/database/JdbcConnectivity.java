@@ -16,6 +16,7 @@
 
 package com.jaxio.celerio.configuration.database;
 
+import com.jaxio.celerio.util.StringUtil;
 import lombok.Setter;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class JdbcConnectivity {
     @Setter
     private String schemaName;
     @Setter
-    private String tableNamePattern = "%";
+    private List<String> tableNamePatterns = newArrayList();
     @Setter
     private boolean oracleRetrieveRemarks;
     @Setter
@@ -148,8 +149,8 @@ public class JdbcConnectivity {
      * you can restrict table extraction using a pattern<br>
      * Example: PROJECT_%
      */
-    public String getTableNamePattern() {
-        return tableNamePattern;
+    public List<String> getTableNamePatterns() {
+        return tableNamePatterns;
     }
 
     /*

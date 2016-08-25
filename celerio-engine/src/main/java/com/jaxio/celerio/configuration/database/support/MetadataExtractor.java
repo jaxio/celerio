@@ -23,8 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.util.EncodingUtil.fixIso;
@@ -324,32 +323,47 @@ public class MetadataExtractor {
     }
 
     private void loadTables(JdbcConnectivity configuration, DatabaseMetaData databaseMetaData, Metadata metaData) throws SQLException {
-        if (log.isInfoEnabled()) {
-            log.info("Loading with catalog=[" + configuration.getCatalog() + "] schemaPattern=[" + configuration.getSchemaName() + "] tableNamePattern=["
-                    + configuration.getTableNamePattern() + "] types=[" + Joiner.on(",").join(configuration.getTableTypes()) + "]");
+
+        Set<String> tableNamePatterns = new HashSet<String>();
+
+        if (configuration.getTableNamePatterns() == null || configuration.getTableNamePatterns().isEmpty()) {
+            log.info("No table name pattern defined, using '%'");
+            tableNamePatterns.add("%");
+        } else {
+            log.info("Custom table pattern defined");
+            tableNamePatterns.addAll(configuration.getTableNamePatterns());
         }
-        ResultSet resultSet = databaseMetaData.getTables(configuration.getCatalog(), configuration.getSchemaName(), configuration.getTableNamePattern(),
-                getTableTypesAsStringArray(configuration.getTableTypes()));
-        ResultSetWrapper rsw = new ResultSetTables(resultSet, useLabel);
 
-        while (resultSet.next()) {
-            Table table = new Table();
+        log.info("Working with " + tableNamePatterns.size() +  " table name pattern(s)");
 
-            table.setName(getString(rsw, "TABLE_NAME"));
-            table.setType(TableType.valueOf(getString(rsw, "TABLE_TYPE")));
-            String remarks = getString(rsw, "REMARKS");
-            if (notEmpty(remarks)) {
-                table.setRemarks(remarks);
+        for (String tableNamePattern : tableNamePatterns) {
+
+            if (log.isInfoEnabled()) {
+                log.info("Loading with catalog=[" + configuration.getCatalog() + "] schemaPattern=[" + configuration.getSchemaName() + "] tableNamePattern=["
+                    + tableNamePattern + "] types=[" + Joiner.on(",").join(configuration.getTableTypes()) + "]");
             }
+            ResultSet resultSet = databaseMetaData.getTables(configuration.getCatalog(), configuration.getSchemaName(),tableNamePattern, getTableTypesAsStringArray(configuration.getTableTypes()));
+            ResultSetWrapper rsw = new ResultSetTables(resultSet, useLabel);
 
-            if (!skipTable(table)) {
-                if (log.isInfoEnabled()) {
-                    log.info("Table reversed: " + table.getName());
+            while (resultSet.next()) {
+                Table table = new Table();
+
+                table.setName(getString(rsw, "TABLE_NAME"));
+                table.setType(TableType.valueOf(getString(rsw, "TABLE_TYPE")));
+                String remarks = getString(rsw, "REMARKS");
+                if (notEmpty(remarks)) {
+                    table.setRemarks(remarks);
                 }
-                metaData.add(table);
-            } else {
-                if (log.isInfoEnabled()) {
-                    log.info("Table ignored : " + table.getName());
+
+                if (!skipTable(table)) {
+                    if (log.isInfoEnabled()) {
+                        log.info("Table reversed: " + table.getName());
+                    }
+                    metaData.add(table);
+                } else {
+                    if (log.isInfoEnabled()) {
+                        log.info("Table ignored : " + table.getName());
+                    }
                 }
             }
         }

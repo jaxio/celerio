@@ -35,6 +35,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.apache.commons.io.FilenameUtils.normalize;
 
@@ -139,8 +141,8 @@ public class DbMetadataMojo extends AbstractMojo {
     /**
      * Specify the tableNamePattern passed to java.sql.DatabaseMetaData#getTables
      */
-    @Parameter(property = "jdbc.tableNamePattern", defaultValue = "%")
-    protected String jdbcTableNamePattern;
+    @Parameter(property = "jdbcTableNamePatterns")
+    protected List<String> jdbcTableNamePatterns = new ArrayList<String>();
 
     /**
      * The fully qualified name of the XML file created by this plugin.
@@ -224,7 +226,7 @@ public class DbMetadataMojo extends AbstractMojo {
         jdbcConnectivity.setReverseIndexes(reverseIndexes);
         jdbcConnectivity.setReverseOnlyUniqueIndexes(reverseOnlyUniqueIndexes);
         jdbcConnectivity.add(TableType.TABLE);
-        jdbcConnectivity.setTableNamePattern(jdbcTableNamePattern);
+        jdbcConnectivity.setTableNamePatterns(jdbcTableNamePatterns);
         if (jdbcReverseViews) {
             getLog().info("Reverse VIEWS is enabled");
             jdbcConnectivity.add(TableType.VIEW);
