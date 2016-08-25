@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.jaxio.celerio.maven.plugin.dbmetadata;
 
 import com.jaxio.celerio.configuration.database.JdbcConnectivity;
@@ -138,6 +137,12 @@ public class DbMetadataMojo extends AbstractMojo {
     protected String jdbcSchema;
 
     /**
+     * Specify the tableNamePattern passed to java.sql.DatabaseMetaData#getTables
+     */
+    @Parameter(property = "jdbc.tableNamePattern", defaultValue = "%")
+    protected String jdbcTableNamePattern;
+
+    /**
      * The fully qualified name of the XML file created by this plugin.
      */
     @Parameter(property = "maven-metadata-plugin.targetFilename", defaultValue = "${basedir}/src/main/config/celerio-maven-plugin/metadata.xml")
@@ -219,6 +224,7 @@ public class DbMetadataMojo extends AbstractMojo {
         jdbcConnectivity.setReverseIndexes(reverseIndexes);
         jdbcConnectivity.setReverseOnlyUniqueIndexes(reverseOnlyUniqueIndexes);
         jdbcConnectivity.add(TableType.TABLE);
+        jdbcConnectivity.setTableNamePattern(jdbcTableNamePattern);
         if (jdbcReverseViews) {
             getLog().info("Reverse VIEWS is enabled");
             jdbcConnectivity.add(TableType.VIEW);
