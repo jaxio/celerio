@@ -16,6 +16,7 @@
 
 package com.jaxio.celerio.configuration.entity;
 
+import com.jaxio.celerio.configuration.MetaAttribute;
 import lombok.Setter;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
     private List<Cascade> cascades;
     private CacheConfig cacheConfig;
     private AssociationAction associationAction;
+    private List<MetaAttribute> metaAttributes;
 
     /*
      * The variable name for the collection. It should be plural, for example: 'children'. Please configure also the elementVar as the singular of this var.
@@ -114,5 +116,16 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
      */
     public AssociationAction getAssociationAction() {
         return associationAction;
+    }
+
+    /**
+     * Meta attributes are free form key value pairs.
+     */
+    public List<MetaAttribute> getMetaAttributes() {
+        return metaAttributes;
+    }
+
+    public boolean hasMetaAttributes() {
+        return metaAttributes != null && !metaAttributes.isEmpty();
     }
 }

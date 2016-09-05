@@ -16,10 +16,13 @@
 
 package com.jaxio.celerio.configuration.entity;
 
+import com.jaxio.celerio.configuration.MetaAttribute;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.springframework.util.StringUtils.hasLength;
 
@@ -32,6 +35,7 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
     private List<Cascade> cascades;
     private CacheConfig cacheConfig;
     private AssociationAction associationAction;
+    private List<MetaAttribute> metaAttributes;
 
     /*
      * The variable name for association. It should be singular, for example: 'parent'.
@@ -97,5 +101,16 @@ public class ManyToOneConfig implements CascadeGetter, CacheConfigGetter, FetchT
      */
     public AssociationAction getAssociationAction() {
         return associationAction;
+    }
+
+    /**
+     * Meta attributes are free form key value pairs.
+     */
+    public List<MetaAttribute> getMetaAttributes() {
+        return metaAttributes;
+    }
+
+    public boolean hasMetaAttributes() {
+        return metaAttributes != null && !metaAttributes.isEmpty();
     }
 }

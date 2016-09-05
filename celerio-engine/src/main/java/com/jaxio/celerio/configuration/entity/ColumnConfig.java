@@ -17,6 +17,7 @@
 package com.jaxio.celerio.configuration.entity;
 
 import com.google.common.base.Predicate;
+import com.jaxio.celerio.configuration.MetaAttribute;
 import com.jaxio.celerio.configuration.database.JdbcType;
 import com.jaxio.celerio.util.MappedType;
 import lombok.Getter;
@@ -92,6 +93,9 @@ public class ColumnConfig {
     // relation
     protected String targetTableName;
     protected String targetColumnName;
+
+    protected List<MetaAttribute> metaAttributes;
+
 
     /*
      * The labels for this attribute. They appear in the entity properties file located under 'src/main/resources/localization/domain'.
@@ -613,4 +617,16 @@ public class ColumnConfig {
             return columnConfig.hasTrueFormField();
         }
     };
+
+
+    /**
+     * Meta attributes are free form key value pairs.
+     */
+    public List<MetaAttribute> getMetaAttributes() {
+        return metaAttributes;
+    }
+
+    public boolean hasMetaAttributes() {
+        return metaAttributes != null && !metaAttributes.isEmpty();
+    }
 }
