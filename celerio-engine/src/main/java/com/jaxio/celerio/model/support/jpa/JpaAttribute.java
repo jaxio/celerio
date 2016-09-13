@@ -101,19 +101,17 @@ public class JpaAttribute extends AbstractAttributeSpi {
 
             EnumConfig enumConfig = attribute.getColumnConfig().getEnumConfig();
 
-            addImport("org.hibernate.annotations.Type");
-            addImport("org.hibernate.annotations.Parameter");
 
             if (enumConfig.hasUserType()) {
+                addImport("org.hibernate.annotations.Type");
+                addImport("org.hibernate.annotations.Parameter");
                 addImport(enumConfig.getUserType());
                 annotation.append("@Type(type = " + enumConfig.getUserType() + ", parameters = { @Parameter(name = \"class\", value = \""
                         + attribute.getEntity().getModel().getFullType() + "\"), @Parameter(name = \"attribute\", value = \"" + attribute.getVar() + "\") })");
             } else {
-                annotation.append("@Type(type=\"org.jadira.usertype.corejava.PersistentEnum\", parameters={ //\n");
-                annotation.append("@Parameter(name=\"enumClass\", value=\"" + attribute.getFullType() + "\"), //\n");
-                annotation.append("@Parameter(name=\"valueOfMethod\", value=\"fromValue\"), //\n");
-                annotation.append("@Parameter(name=\"identifierMethod\", value=\"getValue\") //\n");
-                annotation.append("})");
+                addImport("javax.persistence.Convert");
+                addImport("" + attribute.getFullType() + "Converter");
+                annotation.append("@Convert(converter=" + attribute.getType() + "Converter.class" + ")");
             }
             return annotation.toString();
 /*

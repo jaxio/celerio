@@ -47,12 +47,12 @@
         <dependency>
             <groupId>com.jaxio.celerio.packs</groupId>
             <artifactId>pack-jsf2-spring-conversation</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>com.jaxio.celerio.packs</groupId>
             <artifactId>pack-backend-jpa</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
