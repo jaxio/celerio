@@ -181,7 +181,11 @@ public class FolderOutputResult implements OutputResult {
 
         FileMetaData oldFmd = generatedFiles.get(pathToFile);
         if (oldFmd == null) {
-            return false;
+            boolean res = generatedSource.fileExists(pathToFile); // no risk
+            if (res && log.isInfoEnabled()) {
+                log.info("MANUAL MODIFICATION (1) detected for: " + pathToFile);
+            }
+            return res;
         }
 
         if (!generatedSource.fileExists(pathToFile)) {
@@ -194,7 +198,7 @@ public class FolderOutputResult implements OutputResult {
         boolean areNotEqual = !oldFmd.equals(recentFmd);
 
         if (areNotEqual && log.isInfoEnabled()) {
-            log.info("MANUAL MODIFICATION detected for: " + pathToFile);
+            log.info("MANUAL MODIFICATION (2) detected for: " + pathToFile);
         }
 
         return areNotEqual;
