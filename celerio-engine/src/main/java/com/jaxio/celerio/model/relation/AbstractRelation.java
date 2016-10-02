@@ -274,6 +274,10 @@ public abstract class AbstractRelation implements Relation, Map<String, Object> 
     @Setter
     private Labels labels;
 
+    @Getter
+    @Setter
+    private String displayOrderAsString;
+
     // ---------------------
     /**
      * Whether source code to create a new target entity should be generated.

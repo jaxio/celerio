@@ -61,6 +61,7 @@ import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.*;
 import static com.jaxio.celerio.model.support.SuffixPrefixPredicates.IS_LABEL;
 import static com.jaxio.celerio.util.FallBackUtil.fallBack;
 import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
+import static com.jaxio.celerio.util.StringUtil.orderToString;
 import static org.apache.commons.lang.BooleanUtils.toBoolean;
 import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
 
@@ -461,16 +462,48 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
      */
     public String getDisplayOrderAsString() {
         if (displayOrderAsString == null) {
-            if (getColumnConfig().getDisplayOrder() < 10) {
-                displayOrderAsString = "00" + getColumnConfig().getDisplayOrder();
-            } else if (getColumnConfig().getDisplayOrder() < 100) {
-                displayOrderAsString = "0" + getColumnConfig().getDisplayOrder();
-            } else {
-                displayOrderAsString = "" + getColumnConfig().getDisplayOrder();
-            }
+            displayOrderAsString = orderToString(getColumnConfig().getDisplayOrder());
         }
         return displayOrderAsString;
     }
+
+
+    private String formFieldOrderAsString;
+
+    /**
+     * Used to sort columns in abstract list holder. Must be a String.
+     */
+    public String getFormFieldOrderAsString() {
+        if (formFieldOrderAsString == null) {
+            formFieldOrderAsString = orderToString(getColumnConfig().getFormFieldOrder());
+        }
+        return formFieldOrderAsString;
+    }
+
+    private String searchFieldOrderAsString;
+
+    /**
+     * Used to sort columns in abstract list holder. Must be a String.
+     */
+    public String getSearchFieldOrderAsString() {
+        if (searchFieldOrderAsString == null) {
+            searchFieldOrderAsString = orderToString(getColumnConfig().getSearchFieldOrder());
+        }
+        return searchFieldOrderAsString;
+    }
+
+    private String searchResultOrderAsString;
+
+    /**
+     * Used to sort columns in abstract list holder. Must be a String.
+     */
+    public String getSearchResultOrderAsString() {
+        if (searchResultOrderAsString == null) {
+            searchResultOrderAsString = orderToString(getColumnConfig().getSearchResultOrder());
+        }
+        return searchResultOrderAsString;
+    }
+
 
     // -----------------------------------------------------
     // Column defaulting to MappedType

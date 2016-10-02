@@ -183,7 +183,7 @@ public class FolderOutputResult implements OutputResult {
         if (oldFmd == null) {
             boolean res = generatedSource.fileExists(pathToFile); // no risk
             if (res && log.isInfoEnabled()) {
-                log.info("MANUAL MODIFICATION (1) detected for: " + pathToFile);
+                log.info("FILE ALREADY PRESENT and not tracked: " + pathToFile);
             }
             return res;
         }
@@ -198,7 +198,7 @@ public class FolderOutputResult implements OutputResult {
         boolean areNotEqual = !oldFmd.equals(recentFmd);
 
         if (areNotEqual && log.isInfoEnabled()) {
-            log.info("MANUAL MODIFICATION (2) detected for: " + pathToFile);
+            log.info("MANUAL MODIFICATION detected for: " + pathToFile);
         }
 
         return areNotEqual;

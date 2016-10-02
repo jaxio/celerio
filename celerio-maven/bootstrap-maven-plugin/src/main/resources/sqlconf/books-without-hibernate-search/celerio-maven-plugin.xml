@@ -138,30 +138,30 @@
             </columnConfigs>
         </entityConfig>
 
-        <!-- Book demonstrates one-to-many relation -->
+        <!-- Book demonstrates one-to-many relation and usage of formFieldOrder, searchFieldOrder and searchResultOrder -->
         <entityConfig tableName="BOOK">
             <labels>
                 <label value="Livre" lang="fr"/>
             </labels>
             <columnConfigs>
-                <columnConfig columnName="title" fieldName="bookTitle">
+                <columnConfig columnName="title" fieldName="bookTitle" formFieldOrder="1" searchFieldOrder="2" searchResultOrder="3">
                     <labels>
                         <label value="Titre" lang="fr"/>
                     </labels>
                 </columnConfig>
-                <columnConfig columnName="number_of_pages">
+                <columnConfig columnName="number_of_pages" formFieldOrder="2" searchFieldOrder="1" searchResultOrder="2">
                     <labels>
                         <label value="Nombre de pages" lang="fr"/>
                     </labels>
                 </columnConfig>
-                <columnConfig columnName="account_id">
+                <columnConfig columnName="account_id" formFieldOrder="3" searchFieldOrder="3" searchResultOrder="1">
                     <manyToOneConfig var="owner">
                         <labels>
                             <label value="Propriétaire" lang="fr"/>
                         </labels>
                     </manyToOneConfig>
                     <oneToManyConfig var="coolBooks"
-                                     elementVar="book"><!-- orderBy="bookTitle" does not work on jboss EAS 7.1 -->
+                                     elementVar="book" displayOrder="3"><!-- orderBy="bookTitle" does not work on jboss EAS 7.1 -->
                         <labels>
                             <label value="Livres intéressants" lang="fr"/>
                         </labels>
@@ -179,7 +179,7 @@
                             <label value="Propriétaire" lang="fr"/>
                         </labels>
                     </manyToOneConfig>
-                    <oneToManyConfig var="edocs" elementVar="edoc">
+                    <oneToManyConfig var="edocs" elementVar="edoc" displayOrder="1">
                         <labels>
                             <label value="Attached docs"/>
                             <label value="Documents attachés" lang="fr"/>
@@ -239,7 +239,7 @@
                     <!-- <manyToManyConfig var="accounts" elementVar="account" /> -->
                 </columnConfig>
                 <columnConfig columnName="role_id" inverse="true">
-                    <manyToManyConfig var="securityRoles" elementVar="securityRole">
+                    <manyToManyConfig var="securityRoles" elementVar="securityRole" displayOrder="2">
                         <labels>
                             <label value="Droits attribués" lang="fr"/>
                         </labels>

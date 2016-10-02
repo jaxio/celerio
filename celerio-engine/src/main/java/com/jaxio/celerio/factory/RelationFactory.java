@@ -28,6 +28,7 @@ import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.model.relation.*;
 import com.jaxio.celerio.support.Namer;
 import com.jaxio.celerio.util.Labels;
+import com.jaxio.celerio.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ import java.util.List;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
 import static com.jaxio.celerio.util.MiscUtil.toReadablePluralLabel;
+import static com.jaxio.celerio.util.StringUtil.orderToString;
 import static java.lang.Boolean.TRUE;
 
 @Service
@@ -277,6 +279,7 @@ public class RelationFactory {
         m2m.setOrderByGetter(m2mConfig);
 
         setLabelPlural(m2mConfig, m2m);
+        initDisplayOrderAsString(m2mConfig, m2m);
         configureActions(m2m, cfg().getDefaultManyToManyConfig(), m2mConfig);
         middleToLeft.getToEntity().addRelation(m2m);
 
@@ -288,6 +291,7 @@ public class RelationFactory {
             inverseM2m.setFetchTypeGetter(inverseM2mConfig);
             inverseM2m.setOrderByGetter(inverseM2mConfig);
             setLabelPlural(inverseM2mConfig, inverseM2m);
+            initDisplayOrderAsString(inverseM2mConfig, inverseM2m);
             configureActions(inverseM2m, cfg().getDefaultInverseManyToManyConfig(), inverseM2mConfig);
             middleToRight.getToEntity().addRelation(inverseM2m);
         }
@@ -323,6 +327,7 @@ public class RelationFactory {
             o2m.setOrderByGetter(o2mConfig);
 
             setLabelPlural(o2mConfig, o2m);
+            initDisplayOrderAsString(o2mConfig, o2m);
 
             configureActions(o2m, cfg().getDefaultOneToManyConfig(), o2mConfig);
             middleToRight.getToEntity().addRelation(o2m);
@@ -457,6 +462,7 @@ public class RelationFactory {
                 AbstractRelation o2m = new SimpleOneToMany(getTo(), getFrom(), getToAttribute(), getToEntity(), getFromEntity(), getFromAttribute());
                 OneToManyConfig o2mConfig = fromAttribute.getColumnConfig().getOneToManyConfig();
                 setLabelPlural(o2mConfig, o2m);
+                initDisplayOrderAsString(o2mConfig, o2m);
                 configureActions(o2m, cfg().getDefaultOneToManyConfig(), o2mConfig);
                 return o2m;
             }
@@ -513,6 +519,7 @@ public class RelationFactory {
                 CompositeOneToMany co2m2 = new CompositeOneToMany(getTo(), getFrom(), getToAttributes(), getToEntity(), getFromEntity(), getFromAttributes());
                 OneToManyConfig o2mConfig = fromAttributes.get(0).getColumnConfig().getOneToManyConfig();
                 setLabelPlural(o2mConfig, co2m2);
+                initDisplayOrderAsString(o2mConfig, co2m2);
                 configureActions(co2m2, cfg().getDefaultOneToManyConfig(), o2mConfig);
                 return co2m2;
             }
@@ -634,5 +641,12 @@ public class RelationFactory {
         Labels labels = lg != null ? new Labels(lg.getLabels()) : new Labels();
         labels.setFallBack(toReadablePluralLabel(ar.getTo().getVars()));
         ar.setLabels(labels);
+    }
+
+    private void initDisplayOrderAsString(OneToManyConfig o2mConfig, AbstractRelation ar) {
+        ar.setDisplayOrderAsString(orderToString(o2mConfig.getDisplayOrder(), o2mConfig.getVar()));
+    }
+    private void initDisplayOrderAsString(ManyToManyConfig m2mConfig, AbstractRelation ar) {
+        ar.setDisplayOrderAsString(orderToString(m2mConfig.getDisplayOrder(), m2mConfig.getVar()));
     }
 }

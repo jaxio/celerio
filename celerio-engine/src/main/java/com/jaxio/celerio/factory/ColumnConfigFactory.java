@@ -73,6 +73,10 @@ public class ColumnConfigFactory {
         columnConfig.setSize(fallBack(columnConfig.getSize(), column.getSize()));
         columnConfig.setOrdinalPosition(fallBack(columnConfig.getOrdinalPosition(), column.getOrdinalPosition()));
         columnConfig.setDisplayOrder(fallBack(columnConfig.getDisplayOrder(), columnConfig.getOrdinalPosition(), column.getOrdinalPosition()));
+        columnConfig.setFormFieldOrder(fallBack(columnConfig.getFormFieldOrder(), columnConfig.getDisplayOrder(), columnConfig.getOrdinalPosition(), column.getOrdinalPosition()));
+        columnConfig.setSearchFieldOrder(fallBack(columnConfig.getSearchFieldOrder(), columnConfig.getDisplayOrder(), columnConfig.getOrdinalPosition(), column.getOrdinalPosition()));
+        columnConfig.setSearchResultOrder(fallBack(columnConfig.getSearchResultOrder(), columnConfig.getDisplayOrder(), columnConfig.getOrdinalPosition(), column.getOrdinalPosition()));
+
         // typeConverter: no fallback
         // pointsTo: no fallback (TODO ?)
         columnConfig.setComment(fallBack(columnConfig.getComment(), column.getRemarks()));

@@ -17,6 +17,7 @@
 package com.jaxio.celerio.model.support;
 
 import com.google.common.base.Predicate;
+import com.jaxio.celerio.model.AttributeOrder;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.util.support.CurrentAndFlatListHolder;
@@ -37,5 +38,6 @@ public class EntityRelations extends CurrentAndFlatListHolder<Relation, Entity> 
 
     public EntityRelations(Entity entity, ListGetter<Relation, Entity> listGetter, Predicate<Relation> predicate) {
         super(entity, listGetter, predicate);
+        setSortProperty(AttributeOrder.DISPLAY.attributeSortProperty());
     }
 }

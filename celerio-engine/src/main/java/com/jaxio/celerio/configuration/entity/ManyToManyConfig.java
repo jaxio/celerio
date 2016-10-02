@@ -34,6 +34,7 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
     private String elementVar;
     private FetchType fetch;
     private String orderBy;
+    private Integer displayOrder;
     private String targetEntityName;
     private List<Label> labels;
     private List<Cascade> cascades;
@@ -77,6 +78,13 @@ public class ManyToManyConfig implements CascadeGetter, CacheConfigGetter, Fetch
      */
     public String getOrderBy() {
         return orderBy;
+    }
+
+    /*
+     * The order of appearance of this many to many in forms, from top to bottom or from left to right. It defaults to alphabetical order.
+     */
+    public Integer getDisplayOrder() {
+        return displayOrder;
     }
 
     /*

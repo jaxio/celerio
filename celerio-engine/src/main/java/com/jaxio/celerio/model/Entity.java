@@ -228,14 +228,15 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     private EntityAttributes versionAttributes = newEntityAttributes(VERSION);
 
     // search
-    private EntityAttributes searchAttributes = newEntityAttributes(SEARCH_FIELD);
-    private EntityAttributes rangeableSearchAttributes = newEntityAttributes(SEARCH_FIELD, RANGEABLE_FIELD);
-    private EntityAttributes multiSelectableSearchAttributes = newEntityAttributes(SEARCH_FIELD, MULTI_SELECTABLE_FIELD);
+    private EntityAttributes searchAttributes = newEntityAttributes(SEARCH_FIELD, AttributeOrder.SEARCH_FIELD);
+    private EntityAttributes rangeableSearchAttributes = newEntityAttributes(SEARCH_FIELD, RANGEABLE_FIELD, AttributeOrder.SEARCH_FIELD);
+    private EntityAttributes multiSelectableSearchAttributes = newEntityAttributes(SEARCH_FIELD, MULTI_SELECTABLE_FIELD, AttributeOrder.SEARCH_FIELD);
     private EntityAttributes hibernateSearchAttributes = newEntityAttributes(HIBERNATE_SEARCH_FIELD);
 
-    private EntityAttributes searchResultAttributesConvention = newEntityAttributes(SEARCH_RESULT_CONVENTION);
-    private EntityAttributes searchResultAttributesManual = newEntityAttributes(SEARCH_RESULT_FIELD_DEFINED_MANUALLY);
-    private EntityAttributes searchResultAttributes = new EntityAttributes(this, SEARCH_RESULTS);
+    private EntityAttributes searchResultAttributesConvention = newEntityAttributes(SEARCH_RESULT_CONVENTION, AttributeOrder.SEARCH_RESULT);
+    private EntityAttributes searchResultAttributesManual = newEntityAttributes(SEARCH_RESULT_FIELD_DEFINED_MANUALLY, AttributeOrder.SEARCH_RESULT);
+    private EntityAttributes searchResultAttributes = new EntityAttributes(this, SEARCH_RESULTS, AttributeOrder.SEARCH_RESULT);
+
     private EntityAttributes patternSearchableAttributes = newEntityAttributes(IS_PATTERN_SEARCHABLE);
     private EntityAttributes patternSearchableCpkAttributes = new EntityAttributes(this, CPK_ATTRIBUTES, IS_CPK_PATTERN_SEARCHABLE);
     private EntityAttributes withPublicSetterAccessibilityAttributes = newEntityAttributes(WITH_PUBLIC_SETTER_ACCESSIBILITY);
@@ -244,9 +245,10 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     private EntityAttributes visibleAttributes = newEntityAttributes(VISIBLE);
     private EntityAttributes sortableAttributes = newEntityAttributes(SORTABLE);
     private EntityAttributes defaultSortAttributes = newEntityAttributes(DEFAULT_SORT);
-    private EntityAttributes formAttributes = newEntityAttributes(FORM_FIELD);
-    private EntityAttributes visibleFormAttributes = newEntityAttributes(FORM_FIELD, VISIBLE);
-    private EntityAttributes hiddenFormAttributes = newEntityAttributes(FORM_FIELD, HIDDEN);
+
+    private EntityAttributes formAttributes = newEntityAttributes(FORM_FIELD, AttributeOrder.FORM_FIELD);
+    private EntityAttributes visibleFormAttributes = newEntityAttributes(FORM_FIELD, VISIBLE, AttributeOrder.FORM_FIELD);
+    private EntityAttributes hiddenFormAttributes = newEntityAttributes(FORM_FIELD, HIDDEN, AttributeOrder.FORM_FIELD);
 
     // -----------------------------------
     // Entities
@@ -912,8 +914,16 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
         return new EntityAttributes(this, ATTRIBUTES, predicate);
     }
 
+    private EntityAttributes newEntityAttributes(Predicate<Attribute> predicate, AttributeOrder attributeOrder) {
+        return new EntityAttributes(this, ATTRIBUTES, predicate, attributeOrder);
+    }
+
     private EntityAttributes newEntityAttributes(Predicate<Attribute> p1, Predicate<Attribute> p2) {
         return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute>and(p1, p2)); // using static import breaks compilation
+    }
+
+    private EntityAttributes newEntityAttributes(Predicate<Attribute> p1, Predicate<Attribute> p2, AttributeOrder attributeOrder) {
+        return new EntityAttributes(this, ATTRIBUTES, Predicates.<Attribute>and(p1, p2), attributeOrder); // using static import breaks compilation
     }
 
     @SuppressWarnings("unchecked")

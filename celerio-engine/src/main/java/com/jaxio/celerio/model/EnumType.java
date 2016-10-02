@@ -22,6 +22,8 @@ import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.model.support.EnumNamer;
 import com.jaxio.celerio.util.Labels;
 
+import java.util.List;
+
 import static com.jaxio.celerio.util.FallBackUtil.fallBack;
 import static com.jaxio.celerio.util.MiscUtil.toReadableLabel;
 
@@ -42,6 +44,10 @@ public class EnumType implements Comparable<EnumType> {
 
     public EnumConfig getConfig() {
         return enumConfig;
+    }
+
+    public List<EnumValue> getEnumValues() {
+        return enumConfig.getEnumValues();
     }
 
     public EnumNamer getModel() {

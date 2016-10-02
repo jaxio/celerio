@@ -65,6 +65,9 @@ public class ColumnConfig {
     protected Integer max;
     protected Integer ordinalPosition;
     protected Integer displayOrder;
+    protected Integer formFieldOrder;
+    protected Integer searchFieldOrder;
+    protected Integer searchResultOrder;
     protected String typeConverter;
     protected String comment;
     protected Integer decimalDigits;
@@ -338,6 +341,30 @@ public class ColumnConfig {
      */
     public Integer getDisplayOrder() {
         return displayOrder;
+    }
+
+    /*
+     * The order of appearance of this column in edit forms, from top to bottom, from left to right.
+     * It defaults to the display order, or in last resort to the ordinal position.
+     */
+    public Integer getFormFieldOrder() {
+        return formFieldOrder;
+    }
+
+    /*
+     * The order of appearance of this column in search forms, from top to bottom, from left to right.
+     * It defaults to the display order, or in last resort to the ordinal position.
+     */
+    public Integer getSearchFieldOrder() {
+        return searchFieldOrder;
+    }
+
+    /*
+     * The order of appearance of this column in tables (search results or one to many), from left to right.
+     * It defaults to the display order, or in last resort to the ordinal position.
+     */
+    public Integer getSearchResultOrder() {
+        return searchResultOrder;
     }
 
     /*

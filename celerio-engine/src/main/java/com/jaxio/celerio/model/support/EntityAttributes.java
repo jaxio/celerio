@@ -18,6 +18,7 @@ package com.jaxio.celerio.model.support;
 
 import com.google.common.base.Predicate;
 import com.jaxio.celerio.model.Attribute;
+import com.jaxio.celerio.model.AttributeOrder;
 import com.jaxio.celerio.model.Entity;
 import com.jaxio.celerio.util.support.CurrentAndFlatListHolder;
 import com.jaxio.celerio.util.support.ListGetter;
@@ -32,13 +33,21 @@ import com.jaxio.celerio.util.support.ListGetter;
 public class EntityAttributes extends CurrentAndFlatListHolder<Attribute, Entity> {
 
     public EntityAttributes(Entity entity, ListGetter<Attribute, Entity> listGetter) {
+        this(entity, listGetter, AttributeOrder.DISPLAY);
+    }
+
+    public EntityAttributes(Entity entity, ListGetter<Attribute, Entity> listGetter, AttributeOrder attributeOrder) {
         super(entity, listGetter);
         // watch out: the target property must be a String.
-        setSortProperty("displayOrderAsString");
+        setSortProperty(attributeOrder.attributeSortProperty());
     }
 
     public EntityAttributes(Entity entity, ListGetter<Attribute, Entity> listGetter, Predicate<Attribute> predicate) {
+        this(entity, listGetter, predicate, AttributeOrder.DISPLAY);
+    }
+
+    public EntityAttributes(Entity entity, ListGetter<Attribute, Entity> listGetter, Predicate<Attribute> predicate,  AttributeOrder attributeOrder) {
         super(entity, listGetter, predicate);
-        setSortProperty("displayOrderAsString");
+        setSortProperty(attributeOrder.attributeSortProperty());
     }
 }

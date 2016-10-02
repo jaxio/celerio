@@ -30,6 +30,7 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
     private Boolean orphanRemoval;
     private FetchType fetch;
     private String orderBy;
+    private Integer displayOrder;
     private List<Label> labels;
     private List<Cascade> cascades;
     private CacheConfig cacheConfig;
@@ -81,6 +82,13 @@ public class OneToManyConfig implements CascadeGetter, CacheConfigGetter, FetchT
         return orderBy;
     }
 
+
+    /*
+     * The order of appearance of this one to many in forms, from top to bottom or from left to right. It defaults to alphabetical order.
+     */
+    public Integer getDisplayOrder() {
+        return displayOrder;
+    }
     /*
      * The labels for this association.
      */

@@ -127,6 +127,8 @@ public interface Relation extends Named {
 
     Labels getLabels();
 
+    String getDisplayOrderAsString();
+
     String getOneLineComment();
 
     CascadeGetter getCascadeGetter();

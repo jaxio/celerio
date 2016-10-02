@@ -22,6 +22,7 @@ import com.jaxio.celerio.configuration.Configuration;
 import com.jaxio.celerio.configuration.EntityContextProperty;
 import com.jaxio.celerio.configuration.database.Column;
 import com.jaxio.celerio.configuration.database.Table;
+import com.jaxio.celerio.configuration.database.TableType;
 import com.jaxio.celerio.configuration.entity.ColumnConfig;
 import com.jaxio.celerio.configuration.entity.EntityConfig;
 import com.jaxio.celerio.model.Attribute;
@@ -60,6 +61,12 @@ public class EntityFactory {
         Entity entity = applicationContext.getBean(Entity.class);
         entityConfigFactory.applyFallBacks(entityConfig);
         entity.setEntityConfig(entityConfig);
+
+        Table table = getTableStrict(entityConfig);
+        if (table.getType() == TableType.VIEW) {
+            entity.setView(true);
+        }
+
         namerDefault(entity);
         namerExtension(entity, config.getCelerio().getConfiguration());
 

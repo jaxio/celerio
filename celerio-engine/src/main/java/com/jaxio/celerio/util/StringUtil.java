@@ -81,4 +81,16 @@ public class StringUtil {
         return String.valueOf(Character.toUpperCase(buffer.charAt(0)));
     }
 
+    public static String orderToString(Integer order, String fallback) {
+        return order == null ? fallback : orderToString(order);
+    }
+
+    public static String orderToString(int order) {
+        if (order < 10) {
+            return "00" + order;
+        } else if (order < 100) {
+            return "0" + order;
+        }
+        return "" + order;
+    }
 }
