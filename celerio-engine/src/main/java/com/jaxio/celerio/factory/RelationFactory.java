@@ -644,9 +644,13 @@ public class RelationFactory {
     }
 
     private void initDisplayOrderAsString(OneToManyConfig o2mConfig, AbstractRelation ar) {
-        ar.setDisplayOrderAsString(orderToString(o2mConfig.getDisplayOrder(), o2mConfig.getVar()));
+        if (o2mConfig != null) {
+            ar.setDisplayOrderAsString(orderToString(o2mConfig.getDisplayOrder(), o2mConfig.getVar()));
+        }
     }
     private void initDisplayOrderAsString(ManyToManyConfig m2mConfig, AbstractRelation ar) {
-        ar.setDisplayOrderAsString(orderToString(m2mConfig.getDisplayOrder(), m2mConfig.getVar()));
+        if (m2mConfig != null) {
+            ar.setDisplayOrderAsString(orderToString(m2mConfig.getDisplayOrder(), m2mConfig.getVar()));
+        }
     }
 }
