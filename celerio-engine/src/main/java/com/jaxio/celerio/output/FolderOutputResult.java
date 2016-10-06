@@ -26,6 +26,7 @@ import java.util.HashMap;
 import static com.google.common.collect.Maps.newHashMap;
 import static com.jaxio.celerio.convention.WellKnownFolder.JAVA;
 import static com.jaxio.celerio.convention.WellKnownFolder.JAVA_TEST;
+import static com.jaxio.celerio.output.FileUtil.getPathRelativeToBase;
 import static org.apache.commons.io.FilenameUtils.normalize;
 import static org.apache.commons.io.IOUtils.*;
 
@@ -40,6 +41,7 @@ public class FolderOutputResult implements OutputResult {
     private boolean fileMetaDataSavedOk;
 
     private HashMap<String, FileMetaData> generatedFiles = newHashMap();
+    private SCMStatus scmStatus = new SCMStatus(null);
 
     public FolderOutputResult(SourceFile userSource, SourceFile generatedSource) {
         this(userSource, generatedSource, null);
@@ -84,6 +86,7 @@ public class FolderOutputResult implements OutputResult {
             // several times in a raw before cleaning... indeed, the second time he generates
             // the files is not written to disk, as it is identical...
             generatedFiles = fileTracker.loadFromProjectDir(new File(userSource.getDirectory()));
+            scmStatus = fileTracker.getSCMStatus(new File(userSource.getDirectory()));
         }
         isOpen = true;
     }
@@ -138,18 +141,6 @@ public class FolderOutputResult implements OutputResult {
         }
     }
 
-    private String getPathRelativeToBase(File targetFile, String basePath) {
-        String absoluteBasePath = new File(basePath).getAbsolutePath();
-        String absolutePath = targetFile.getAbsolutePath();
-        if (absolutePath.startsWith(absoluteBasePath)) {
-            String result = absolutePath.substring(absoluteBasePath.length());
-            if (result.charAt(0) == File.separatorChar) {
-                result = result.substring(1);
-            }
-            return result;
-        }
-        throw new IllegalStateException("File is not under absoluteBasePath path!: " + absolutePath + " absoluteBasePath: " + absoluteBasePath);
-    }
 
     @Override
     public void addContent(InputStream contentStream, String targetFilename, TemplatePack pack, Template template) throws IOException {
@@ -209,6 +200,10 @@ public class FolderOutputResult implements OutputResult {
      */
     @Override
     public boolean hasCollision(String pathToFile) {
+        if (scmStatus.isUnderSCM(pathToFile)) {
+            log.info("FILE UNDER SCM: {}", pathToFile);
+            return true;
+        }
         if (sameDirectory()) {
             return isImportantUserFile(pathToFile) || manualModificationSinceLastGeneration(pathToFile);
         } else {

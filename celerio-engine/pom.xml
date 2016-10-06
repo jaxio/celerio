@@ -31,6 +31,26 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.tmatesoft.svnkit</groupId>
+            <artifactId>svnkit</artifactId>
+            <version>1.8.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tmatesoft.sqljet</groupId>
+            <artifactId>sqljet</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>de.regnis.q.sequence</groupId>
+            <artifactId>sequence-library</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>4.5.0.201609210915-r</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>

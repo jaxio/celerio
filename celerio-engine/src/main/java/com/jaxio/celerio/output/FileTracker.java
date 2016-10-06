@@ -52,6 +52,16 @@ public class FileTracker {
         return generatedFileLocation + File.separatorChar + "generated.xml";
     }
 
+    public SCMStatus getSCMStatus(File projectDir) {
+        if (GITStatusCrawler.isProjectUnderGit(projectDir)) {
+            return GITStatusCrawler.doStatus(projectDir);
+        } else if (SVNStatusCrawler.isProjectUnderSvn(projectDir)) {
+            return SVNStatusCrawler.doStatus(projectDir);
+        } else {
+            return new SCMStatus(null);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     public HashMap<String, FileMetaData> loadFromProjectDir(File projectDir) throws IOException {
         File xmlFileMetaDatas = new File(projectDir, getFilename());
@@ -83,6 +93,9 @@ public class FileTracker {
     }
 
     public HashSet<FileMetaData> deleteGeneratedFileIfIdentical(File projectDir, List<String> excludedPatterns) throws IOException {
+        SCMStatus scmStatus = getSCMStatus(projectDir);
+
+        HashSet<FileMetaData> scmFiles = newHashSet();
         HashSet<FileMetaData> deletedFiles = newHashSet();
         HashSet<FileMetaData> notFoundFiles = newHashSet();
 
@@ -101,6 +114,12 @@ public class FileTracker {
             File oldFile = new File(projectDir, relativePath);
 
             if (oldFile.exists()) {
+                if (scmStatus.isUnderSCM(relativePath)) {
+                    info("skip delete (file now under SCM): " + entry.getKey());
+                    scmFiles.add(oldFmd);
+                    continue;
+                }
+
                 if (oldFmd.isBootstrapFile()) {
                     info("skip file generated during bootstrap: " + entry.getKey());
                     continue;
@@ -128,6 +147,9 @@ public class FileTracker {
             }
         }
 
+        for (FileMetaData fmd : scmFiles) {
+            filesToScan.remove(fmd.getFileRelativePath());
+        }
         for (FileMetaData fmd : deletedFiles) {
             filesToScan.remove(fmd.getFileRelativePath());
         }
