@@ -32,3 +32,7 @@ Simply execute:
 Celerio is released under version 2.0 of the [Apache License][].
 
 [Apache License]: http://www.apache.org/licenses/LICENSE-2.0
+
+## Thanks
+
+EJ Technologies has offered us a free open source project license for JProfiler, a must have [Java Profiler](http://www.ej-technologies.com/products/jprofiler/overview.html).
