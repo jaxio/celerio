@@ -46,7 +46,16 @@ public enum CascadeType {
     /**
      * Cascade refresh operation
      */
-    REFRESH;
+    REFRESH,
+
+
+    /**
+     * Cascade detach operation
+     *
+     * @since Java Persistence 2.0
+     *
+     */
+    DETACH;
 
     public boolean isJpaType() {
         return this != NONE;
@@ -64,6 +73,8 @@ public enum CascadeType {
                 return javax.persistence.CascadeType.REMOVE;
             case REFRESH:
                 return javax.persistence.CascadeType.REFRESH;
+            case DETACH:
+                return javax.persistence.CascadeType.DETACH;
             default:
                 throw new IllegalStateException("There is no JPA equivalent");
         }
