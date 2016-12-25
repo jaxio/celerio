@@ -336,6 +336,10 @@ public enum MappedType {
             case M_TIME:
             case M_TIMESTAMP:
                 return "new " + this.getFullJavaType() + "(Long.parseLong(" + value + "))";
+            case M_LOCALDATETIME:
+            case M_LOCALDATE:
+            case M_ZONEDDATETIME:
+                return this.getFullJavaType() + ".parse(" + value + ")";
             case M_ARRAY:
             case M_REF:
             case M_URL:
