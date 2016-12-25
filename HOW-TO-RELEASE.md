@@ -43,7 +43,7 @@ Then execute:
 
 Go to https://oss.sonatype.org/ and select staging repositories
 
-Find the jaxio's one (most likely at the end), select it and press the close button
+Find the Jaxio's one (most likely at the end), select it and press the close button
 
 Then press the release button.
 
@@ -53,7 +53,7 @@ https://oss.sonatype.org/content/repositories/public/com/jaxio/
 
 ### Post release
 
-Change the version manually in
+Increment the version manually in
 
 `celerio-maven/bootstrap-maven-plugin/src/it/pom.xml`
 
