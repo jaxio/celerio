@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jaxio.celerio</groupId>
         <artifactId>celerio-maven</artifactId>
-        <version>4.0.14</version>
+        <version>4.0.15-SNAPSHOT</version>
     </parent>
 
     <artifactId>dbmetadata-maven-plugin</artifactId>
