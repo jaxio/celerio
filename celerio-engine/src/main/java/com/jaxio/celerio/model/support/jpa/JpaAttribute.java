@@ -353,7 +353,8 @@ public class JpaAttribute extends AbstractAttributeSpi {
             // the jdbc driver supports IS_AUTOINCREMENT metadata, great!
             // if it is an fk, we do not want @GeneratedValue because we use instead @MapsId on the association...
             addImport("javax.persistence.GeneratedValue");
-            return "@GeneratedValue";
+            addImport("static javax.persistence.GenerationType.IDENTITY");
+            return "@GeneratedValue(strategy = IDENTITY)";
         } else if (attribute.getAutoIncrement() == FALSE && /* 32 length string are special for us */!attribute.isString()) {
             // the jdbc driver supports IS_AUTOINCREMENT metadata, great!
             return "";
