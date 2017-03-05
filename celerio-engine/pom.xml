@@ -19,7 +19,7 @@
     <parent>
         <groupId>com.jaxio.celerio</groupId>
         <artifactId>celerio-parent</artifactId>
-        <version>4.0.16</version>
+        <version>4.0.17-SNAPSHOT</version>
     </parent>
 
     <artifactId>celerio-engine</artifactId>
