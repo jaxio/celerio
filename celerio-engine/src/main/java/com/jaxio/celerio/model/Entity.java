@@ -163,6 +163,7 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     private EntityRelations oneToVirtualOne = newEntityRelations(ONE_TO_VIRTUAL_ONE);
     private EntityRelations manyToOne = newEntityRelations(MANY_TO_ONE);
     private EntityRelations xToOne = newEntityRelations(X_TO_ONE);
+    private EntityRelations forwardXToOne = newEntityRelations(FORWARD_X_TO_ONE);
     private EntityRelations nonSimpleXToOne = newEntityRelations(NON_SIMPLE_X_TO_ONE);
     private EntityRelations compositeXToOne = newEntityRelations(COMPOSITE_X_TO_ONE);
     private EntityRelations unidirectionalXToOne = newEntityRelations(UNIDIRECTIONAL_X_TO_ONE);

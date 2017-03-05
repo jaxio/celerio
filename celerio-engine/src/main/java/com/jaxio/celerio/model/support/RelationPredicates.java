@@ -123,6 +123,7 @@ public class RelationPredicates {
     };
 
     public static Predicate<Relation> X_TO_ONE = or(ONE_TO_ONE, MANY_TO_ONE);
+    public static Predicate<Relation> FORWARD_X_TO_ONE = and(X_TO_ONE, not(RELATION_IS_INVERSE));
     public static Predicate<Relation> NON_SIMPLE_X_TO_ONE = and(X_TO_ONE, not(SIMPLE));
     public static Predicate<Relation> COMPOSITE_X_TO_ONE = and(COMPOSITE, X_TO_ONE);
     public static Predicate<Relation> INTERMEDIATE_X_TO_ONE = and(INTERMEDIATE, X_TO_ONE);
