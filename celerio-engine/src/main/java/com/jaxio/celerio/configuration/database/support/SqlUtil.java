@@ -159,10 +159,9 @@ public class SqlUtil {
     }
 
     /*
-     * If the given value collides with sql reserved words, add '
+     * If the given value collides with sql reserved words, add \"
      */
     public static String escapeSql(String s) {
-        // TODO: it seems that for JPA2 escape is standardized differently
-        return isSqlReserved(s) ? ("`" + s + "`") : s;
+        return isSqlReserved(s) ? ("\\\"" + s + "\\\"") : s;
     }
 }
