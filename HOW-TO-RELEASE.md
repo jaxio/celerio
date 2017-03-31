@@ -29,9 +29,11 @@ git clone git@github.com:jaxio/celerio.git
 
 **Make sure JavaDoc is OK**
 
-Until it works, run:
-
     mvn javadoc:javadoc
+    
+**Make sure integration tests pass**
+
+    mvn integration-test -Pit
 
 **Make sure all is committed**
 
