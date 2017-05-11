@@ -888,6 +888,8 @@ public class Attribute extends AbstractNamer implements Named, Map<String, Objec
 
     final public boolean isZonedDateTime() { return  getMappedType().isZonedDateTime(); }
 
+    final public boolean isInstant() { return  getMappedType().isInstant(); }
+
     final public boolean isLob() {
         return getMappedType().isLob();
     }

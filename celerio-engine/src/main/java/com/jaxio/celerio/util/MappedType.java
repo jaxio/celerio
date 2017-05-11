@@ -44,6 +44,7 @@ public enum MappedType {
     M_ZONEDDATETIME("ZonedDateTime", "java.time.ZonedDateTime"),
     M_SQLDATE("java.sql.Date", "java.sql.Date"), //
     M_UTILDATE("Date", "java.util.Date"), //
+    M_INSTANT("Instant", "java.time.Instant"),
     M_TIME("java.sql.Time", "java.sql.Time"), //
     M_TIMESTAMP("java.sql.Timestamp", "java.sql.Timestamp"), //
     M_URL("java.net.URL", "java.net.URL"), //
@@ -160,6 +161,7 @@ public enum MappedType {
             case M_LOCALDATE:
             case M_LOCALDATETIME:
             case M_ZONEDDATETIME:
+            case M_INSTANT:
                 return true;
             default:
                 return false;
@@ -180,6 +182,10 @@ public enum MappedType {
 
     public boolean isZonedDateTime() {
         return this == M_ZONEDDATETIME;
+    }
+
+    public boolean isInstant() {
+        return this == M_INSTANT;
     }
 
     public boolean isByte() {
@@ -213,6 +219,7 @@ public enum MappedType {
             case M_BYTE:
             case M_SQLDATE:
             case M_UTILDATE:
+            case M_INSTANT:
                 return true;
             case M_TIME:
             case M_REF:
@@ -288,6 +295,13 @@ public enum MappedType {
                 } else {
                     break;
                 }
+            case M_INSTANT:
+                value = value.toUpperCase();
+                if (isCurrentDate(value)) {
+                    return "Instant.now()";
+                } else {
+                    break;
+                }
             case M_ARRAY:
             case M_BIGDECIMAL:
             case M_BYTES:
@@ -339,6 +353,7 @@ public enum MappedType {
             case M_LOCALDATETIME:
             case M_LOCALDATE:
             case M_ZONEDDATETIME:
+            case M_INSTANT:
                 return this.getFullJavaType() + ".parse(" + value + ")";
             case M_ARRAY:
             case M_REF:

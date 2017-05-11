@@ -29,6 +29,7 @@ import static com.jaxio.celerio.configuration.Util.*;
  * Change the default Celerio conventions to your own needs.
  */
 public class Conventions {
+    private TrueFalse renamePkToIdentifiableProperty = TrueFalse.TRUE;
     private String identifiableProperty = "id";
     private EclipseFormatter eclipseFormatter = new EclipseFormatter();
     @Setter
@@ -47,6 +48,17 @@ public class Conventions {
      */
     public CollectionType getCollectionType() {
         return firstNonNull(collectionType, CollectionType.ArrayList);
+    }
+
+    /**
+     * Whether to rename the pk property to the common identifiableProperty. Defaults to TRUE.
+     */
+    public TrueFalse getRenamePkToIdentifiableProperty() {
+        return renamePkToIdentifiableProperty;
+    }
+
+    public void setRenamePkToIdentifiableProperty(TrueFalse renamePkToIdentifiableProperty) {
+        this.renamePkToIdentifiableProperty = firstNonNull(renamePkToIdentifiableProperty, this.renamePkToIdentifiableProperty);
     }
 
     /*
@@ -165,4 +177,5 @@ public class Conventions {
     public void setColumnRenamers(List<Renamer> columnRenamers) {
         this.columnRenamers = nonNull(columnRenamers);
     }
+
 }

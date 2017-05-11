@@ -35,6 +35,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static com.jaxio.celerio.configuration.TrueFalse.TRUE;
 
 @Service
 @Slf4j
@@ -71,7 +72,9 @@ public class PrimaryKeyFactory {
         Table table = config.getMetadata().getTableByName(entity.getTableName());
         Attribute pkAttribute = entity.getAttributeByTableAndColumnName(table.getName(), table.getPrimaryKey());
         pkAttribute.setSimplePk(true);
-        overridePkFieldName(pkAttribute);
+        if (config.getCelerio().getConfiguration().getConventions().getRenamePkToIdentifiableProperty() == TRUE) {
+            overridePkFieldName(pkAttribute);
+        }
         return new SimplePrimaryKey(entity, pkAttribute);
     }
 
@@ -115,7 +118,9 @@ public class PrimaryKeyFactory {
         }
 
         attribute.setSimplePk(true);
-        overridePkFieldName(attribute);
+        if (config.getCelerio().getConfiguration().getConventions().getRenamePkToIdentifiableProperty() == TRUE) {
+            overridePkFieldName(attribute);
+        }
         return new SimplePrimaryKey(entity, attribute);
     }
 
