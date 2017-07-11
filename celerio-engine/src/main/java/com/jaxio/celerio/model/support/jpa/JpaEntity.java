@@ -26,7 +26,6 @@ import com.jaxio.celerio.model.unique.CompositeUnique;
 import com.jaxio.celerio.spi.support.AbstractEntitySpi;
 import com.jaxio.celerio.util.AnnotationBuilder;
 import com.jaxio.celerio.util.AttributeBuilder;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -256,12 +255,24 @@ public class JpaEntity extends AbstractEntitySpi {
     public String getTableAnnotation() {
         if (entity.isRoot() || (entity.hasInheritance() && entity.getParent().is(JOINED))) {
             StringBuffer annotation = new StringBuffer("");
+            appendAttribute(annotation, getCatalog());
+            appendAttribute(annotation, getSchema());
             appendAttribute(annotation, getName());
             appendAttribute(annotation, getUniqueConstraints());
             addImport("javax.persistence.Table");
             return appendComment("@Table(" + annotation + ")");
         }
         return "";
+    }
+
+    private String getCatalog() {
+        String catalog = entity.getConfig().getMetadata().getJdbcConnectivity().getCatalog();
+        return isNotBlank(catalog) ? "catalog = \"" + catalog + "\"" : "";
+    }
+
+    private String getSchema() {
+        String schema = entity.getConfig().getMetadata().getJdbcConnectivity().getSchemaName();
+        return isNotBlank(schema) ? "schema = \"" + schema + "\"" : "";
     }
 
     private String getName() {
@@ -300,7 +311,7 @@ public class JpaEntity extends AbstractEntitySpi {
     private String buildConstraint(CompositeUnique compositeUnique) {
         addImport("javax.persistence.UniqueConstraint");
         String ret = "@UniqueConstraint(";
-        if (StringUtils.isNotBlank(compositeUnique.getName())) {
+        if (isNotBlank(compositeUnique.getName())) {
             ret += "name=\"" + compositeUnique.getName() + "\", ";
         }
         ret += "columnNames = {";
