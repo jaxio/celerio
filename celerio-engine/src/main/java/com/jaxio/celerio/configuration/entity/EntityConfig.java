@@ -20,6 +20,7 @@ import com.jaxio.celerio.configuration.MetaAttribute;
 import com.jaxio.celerio.configuration.Util;
 import com.jaxio.celerio.configuration.convention.CollectionType;
 import com.jaxio.celerio.convention.CommentStyle;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +34,7 @@ import static com.google.common.collect.Maps.newHashMap;
 import static com.jaxio.celerio.configuration.Util.nonNull;
 import static com.jaxio.celerio.configuration.entity.ColumnConfig.*;
 import static java.lang.Boolean.TRUE;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.springframework.util.StringUtils.hasLength;
 
 /*
@@ -43,6 +45,10 @@ import static org.springframework.util.StringUtils.hasLength;
 public class EntityConfig implements CacheConfigGetter {
     private Boolean skip;
     private String entityName;
+    @Getter
+    private String catalog;
+    @Getter
+    private String schemaName;
     private String tableName;
     private String sequenceName;
     private Boolean indexed;
@@ -133,6 +139,14 @@ public class EntityConfig implements CacheConfigGetter {
 
     public boolean hasSequenceName() {
         return hasLength(sequenceName);
+    }
+
+    public boolean hasCatalog() {
+        return isNotBlank(catalog);
+    }
+
+    public boolean hasSchemaName() {
+        return isNotBlank(schemaName);
     }
 
     /*

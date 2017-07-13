@@ -16,6 +16,7 @@
 
 package com.jaxio.celerio.model.support.jpa;
 
+import com.jaxio.celerio.configuration.TrueFalse;
 import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.CacheConfig;
 import com.jaxio.celerio.configuration.entity.CacheConfigGetter;
@@ -266,13 +267,19 @@ public class JpaEntity extends AbstractEntitySpi {
     }
 
     private String getCatalog() {
-        String catalog = entity.getConfig().getMetadata().getJdbcConnectivity().getCatalog();
-        return isNotBlank(catalog) ? "catalog = \"" + catalog + "\"" : "";
+        if (entity.getConfig().getCelerio().getConfiguration().getJpaUseCatalog() == TrueFalse.TRUE) {
+            String catalog = entity.getEntityConfig().getCatalog();
+            return isNotBlank(catalog) ? "catalog = \"" + catalog + "\"" : "";
+        }
+        return "";
     }
 
     private String getSchema() {
-        String schema = entity.getConfig().getMetadata().getJdbcConnectivity().getSchemaName();
-        return isNotBlank(schema) ? "schema = \"" + schema + "\"" : "";
+        if (entity.getConfig().getCelerio().getConfiguration().getJpaUseSchema() == TrueFalse.TRUE) {
+            String schema = entity.getEntityConfig().getSchemaName();
+            return isNotBlank(schema) && !schema.contains("%") ? "schema = \"" + schema + "\"" : "";
+        }
+        return "";
     }
 
     private String getName() {

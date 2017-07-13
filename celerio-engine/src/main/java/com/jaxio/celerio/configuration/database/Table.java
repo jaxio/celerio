@@ -16,6 +16,7 @@
 
 package com.jaxio.celerio.configuration.database;
 
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
@@ -58,6 +59,13 @@ public class Table {
     protected String remarks;
     @Setter
     protected TableType type;
+
+    @Getter
+    @Setter
+    protected String schemaName;
+    @Getter
+    @Setter
+    protected String catalog;
 
     public Map<String, Column> getColumnsByName() {
         return columnsByName;

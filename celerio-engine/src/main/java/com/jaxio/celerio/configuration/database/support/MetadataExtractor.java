@@ -348,6 +348,8 @@ public class MetadataExtractor {
             while (resultSet.next()) {
                 Table table = new Table();
 
+                table.setCatalog(getString(rsw, "TABLE_CAT"));
+                table.setSchemaName(getString(rsw, "TABLE_SCHEM"));
                 table.setName(getString(rsw, "TABLE_NAME"));
                 table.setType(TableType.valueOf(getString(rsw, "TABLE_TYPE")));
                 String remarks = getString(rsw, "REMARKS");

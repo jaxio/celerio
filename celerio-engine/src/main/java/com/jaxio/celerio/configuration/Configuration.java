@@ -18,6 +18,7 @@ package com.jaxio.celerio.configuration;
 
 import com.jaxio.celerio.configuration.convention.Conventions;
 import com.jaxio.celerio.configuration.entity.*;
+import lombok.Getter;
 import lombok.Setter;
 import org.springframework.util.StringUtils;
 
@@ -55,6 +56,14 @@ public class Configuration {
     protected Restriction restriction = new Restriction();
     protected AssociationDirection associationDirection = UNIDIRECTIONAL;
     private Boolean enableOneToVirtualOne = false;
+
+    @Getter
+    @Setter
+    private TrueFalse jpaUseCatalog = TrueFalse.FALSE;
+    @Getter
+    @Setter
+    private TrueFalse jpaUseSchema = TrueFalse.FALSE;
+
     protected String applicationName = "application";
     @Setter
     protected String rootPackage;

@@ -100,6 +100,8 @@ public class EntityConfigFactory {
                 current = entityConfigsByEntityName.get(current.getParentEntityName().toUpperCase());
                 Assert.notNull(current, "The parent entity " + current.getParentEntityName() + " could not be found in the configuration.");
             }
+            entityConfig.setCatalog(current.getCatalog());
+            entityConfig.setSchemaName(current.getSchemaName());
             entityConfig.setTableName(current.getTableName());
         }
     }
@@ -136,6 +138,8 @@ public class EntityConfigFactory {
 
     public EntityConfig buildEntityConfig(Table table) {
         EntityConfig entityConfig = new EntityConfig();
+        entityConfig.setCatalog(table.getCatalog());
+        entityConfig.setSchemaName(table.getSchemaName());
         entityConfig.setTableName(table.getName());
         applyFallBacks(entityConfig);
         return entityConfig;
@@ -161,6 +165,8 @@ public class EntityConfigFactory {
         Assert.notNull(table, "The table named " + entityConfig.getTableName() + " could not be found");
 
         applyEntityNameFallBack(entityConfig);
+        entityConfig.setCatalog(fallBack(entityConfig.getCatalog(), table.getCatalog()));
+        entityConfig.setSchemaName(fallBack(entityConfig.getSchemaName(), table.getSchemaName()));
         entityConfig.setComment(fallBack(entityConfig.getComment(), table.getRemarks()));
         entityConfig.setRootPackage(fallBack(entityConfig.getRootPackage(), conf.getRootPackage(), DEFAULT_ENTITY_ROOTPACKAGE));
         entityConfig.setAssociationDirection(fallBack(entityConfig.getAssociationDirection(), conf.getAssociationDirection(), DEFAULT_ASSOCIATION_DIRECTION));
