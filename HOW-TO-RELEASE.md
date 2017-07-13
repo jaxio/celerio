@@ -39,7 +39,7 @@ git clone git@github.com:jaxio/celerio.git
 
 Then execute:
 
-    mvn release:prepare release:perform
+    mvn -Dgpg.passphrase=* release:prepare release:perform
 
 ### On OSS site
 
