@@ -74,9 +74,9 @@ public class MetadataExtractor {
         loadTables(jdbcConnectivity, databaseMetadata, metadata);
 
         for (Table table : metadata.getTables()) {
-            loadColumns(jdbcConnectivity, databaseMetadata, table);
-            loadPrimaryKeys(jdbcConnectivity, databaseMetadata, table);
-            loadImportedKeys(jdbcConnectivity, databaseMetadata, table, metadata);
+            loadColumns(databaseMetadata, table);
+            loadPrimaryKeys(databaseMetadata, table);
+            loadImportedKeys(databaseMetadata, table, metadata);
             loadIndexes(jdbcConnectivity, databaseMetadata, table);
         }
 
@@ -137,9 +137,9 @@ public class MetadataExtractor {
         }
     }
 
-    private void loadColumns(JdbcConnectivity configuration, DatabaseMetaData databaseMetaData, Table table) throws SQLException {
+    private void loadColumns(DatabaseMetaData databaseMetaData, Table table) throws SQLException {
         log.info("Extracting columns for table: " + table.getName());
-        ResultSet resultSet = databaseMetaData.getColumns(configuration.getCatalog(), configuration.getSchemaName(), table.getName(), "%");
+        ResultSet resultSet = databaseMetaData.getColumns(table.getCatalog(), table.getSchemaName(), table.getName(), "%");
         ResultSetWrapper rsw = new ResultSetColumns(resultSet, useLabel);
 
         while (resultSet.next()) {
@@ -182,20 +182,23 @@ public class MetadataExtractor {
         resultSet.close();
     }
 
-    private void loadImportedKeys(JdbcConnectivity configuration, DatabaseMetaData databaseMetaData, Table table, Metadata metaData) throws SQLException {
+    private void loadImportedKeys(DatabaseMetaData databaseMetaData, Table table, Metadata metaData) throws SQLException {
         log.info("Extracting imported keys for table: " + table.getName());
 
-        ResultSet resultSet = databaseMetaData.getImportedKeys(configuration.getCatalog(), configuration.getSchemaName(), table.getName());
+        ResultSet resultSet = databaseMetaData.getImportedKeys(table.getCatalog(), table.getSchemaName(), table.getName());
         ResultSetWrapper rsw = new ResultSetImportedKeys(resultSet, useLabel);
 
         while (resultSet.next()) {
             ImportedKey importedKey = new ImportedKey();
 
             // fill it
+            importedKey.setPkTableCatalog(getString(rsw, "PKTABLE_CAT"));
+            importedKey.setPkTableSchema(getString(rsw, "PKTABLE_SCHEM"));
             importedKey.setPkTableName(getString(rsw, "PKTABLE_NAME"));
-            importedKey.setFkColumnName(getString(rsw, "FKCOLUMN_NAME"));
             importedKey.setPkColumnName(getString(rsw, "PKCOLUMN_NAME"));
+
             importedKey.setFkName(getString(rsw, "FK_NAME"));
+            importedKey.setFkColumnName(getString(rsw, "FKCOLUMN_NAME"));
 
             // With DB2 we observed some duplicate in FK due to presence of table alias. Here is an example:
             // <importedKey fkColumnName="ADMRDEPT" fkName="ROD" pkColumnName="DEPTNO" pkTableName="DEPARTMENT"/>
@@ -203,7 +206,7 @@ public class MetadataExtractor {
             // DEPT is in fact a table alias!
             // to circumvent the issue, we make sure the imported key points to a table reversed.
 
-            if (metaData.getTableByName(importedKey.getPkTableName()) != null) {
+            if (metaData.getTableBySchemaAndName(importedKey.getPkTableSchema(), importedKey.getPkTableName()) != null) {
                 // add it
                 table.addImportedKey(importedKey);
             } else {
@@ -235,7 +238,7 @@ public class MetadataExtractor {
         // unique or not
         boolean useApproximation = true; // / when true, result is allowed to reflect approximate or out of data values; when false, results are requested to be
         // accurate
-        ResultSet resultSet = databaseMetaData.getIndexInfo(configuration.getCatalog(), configuration.getSchemaName(), table.getName(), retreiveOnlyUniques,
+        ResultSet resultSet = databaseMetaData.getIndexInfo(table.getCatalog(), table.getSchemaName(), table.getName(), retreiveOnlyUniques,
                 useApproximation);
         ResultSetWrapper rsw = new ResultSetIndexInfo(resultSet, useLabel);
 
@@ -261,10 +264,10 @@ public class MetadataExtractor {
         }
     }
 
-    private void loadPrimaryKeys(JdbcConnectivity configuration, DatabaseMetaData databaseMetaData, Table table) throws SQLException {
+    private void loadPrimaryKeys(DatabaseMetaData databaseMetaData, Table table) throws SQLException {
         log.info("Extracting primary key for table: " + table.getName());
 
-        ResultSet resultSet = databaseMetaData.getPrimaryKeys(configuration.getCatalog(), configuration.getSchemaName(), table.getName());
+        ResultSet resultSet = databaseMetaData.getPrimaryKeys(table.getCatalog(), table.getSchemaName(), table.getName());
         ResultSetWrapper rsw = new ResultSetPrimaryKeys(resultSet, useLabel);
 
         while (resultSet.next()) {

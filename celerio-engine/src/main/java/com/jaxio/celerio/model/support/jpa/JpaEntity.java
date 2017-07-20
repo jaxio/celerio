@@ -102,8 +102,8 @@ public class JpaEntity extends AbstractEntitySpi {
             return "";
         }
 
-        Table rootTable = entity.getConfig().getMetadata().getTableByName(entity.getRoot().getTableName());
-        Table entityTable = entity.getConfig().getMetadata().getTableByName(entity.getTableName());
+        Table rootTable = entity.getRoot().getTable();
+        Table entityTable = entity.getTable();
 
         Assert.isTrue(rootTable.getPrimaryKeys().size() == 1, "Composite PK are not supported with JOIN inheritance strategy");
         Assert.isTrue(entityTable.getPrimaryKeys().size() == 1, "Composite PK are not supported with JOIN inheritance strategy");
@@ -123,7 +123,7 @@ public class JpaEntity extends AbstractEntitySpi {
         if (secondaryTables.size() == 0) {
             return "";
         } else if (secondaryTables.size() == 1) {
-            return appendComment(getSecondaryTableAnnotation(secondaryTables.iterator().next().getName()));
+            return appendComment(getSecondaryTableAnnotation(secondaryTables.iterator().next()));
         } else {
             addImport("javax.persistence.SecondaryTables");
             StringBuilder sb = new StringBuilder("@SecondaryTables({");
@@ -134,7 +134,7 @@ public class JpaEntity extends AbstractEntitySpi {
                 } else {
                     sb.append(", ");
                 }
-                sb.append(getSecondaryTableAnnotation(secondaryTable.getName()));
+                sb.append(getSecondaryTableAnnotation(secondaryTable));
             }
             sb.append("})");
             return appendComment(sb.toString());
@@ -197,9 +197,8 @@ public class JpaEntity extends AbstractEntitySpi {
         return result;
     }
 
-    private String getSecondaryTableAnnotation(String secondaryTableName) {
-        Table table = entity.getConfig().getMetadata().getTableByName(entity.getTableName());
-        Table secondaryTable = entity.getConfig().getMetadata().getTableByName(secondaryTableName);
+    private String getSecondaryTableAnnotation(Table secondaryTable) {
+        Table table = entity.getTable();
 
         Assert.isTrue(table.getPrimaryKeys().size() == 1, "The table '" + table.getName() + "' is expected to have a one-column primary key. "
                 + "It has instead " + table.getPrimaryKeys().size());

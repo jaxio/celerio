@@ -28,7 +28,6 @@ import com.jaxio.celerio.model.Relation;
 import com.jaxio.celerio.model.relation.*;
 import com.jaxio.celerio.support.Namer;
 import com.jaxio.celerio.util.Labels;
-import com.jaxio.celerio.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -539,7 +538,7 @@ public class RelationFactory {
         if (cc.hasTargetEntityName()) {
             return topLevelCfg.getProject().getEntityByName(cc.lookupTargetEntityName());
         } else {
-            return topLevelCfg.getProject().getEntityByTableName(importedKey.getPkTableName());
+            return topLevelCfg.getProject().getEntityBySchemaAndTableName(importedKey.getPkTableSchema(), importedKey.getPkTableName());
         }
     }
 

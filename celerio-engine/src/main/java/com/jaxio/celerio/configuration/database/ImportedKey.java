@@ -16,6 +16,7 @@
 
 package com.jaxio.celerio.configuration.database;
 
+import lombok.Getter;
 import lombok.Setter;
 
 /*
@@ -26,10 +27,19 @@ public class ImportedKey {
     protected String fkColumnName;
     @Setter
     protected String fkName;
+
     @Setter
     protected String pkColumnName;
     @Setter
     protected String pkTableName;
+    @Setter
+    @Getter
+    protected String pkTableSchema;
+    @Setter
+    @Getter
+    protected String pkTableCatalog;
+
+
 
     /*
      * Foreign key column name

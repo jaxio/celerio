@@ -25,6 +25,8 @@
         </package>
         <package name="database">
             <class name="Metadata" excludes="tableByName"/>
+            <class name="Metadata" excludes="tablesInMultipleSchema"/>
+            <class name="Metadata" excludes="tableBySchemaAndName"/>
             <class name="Table" excludes="columnsByName indexHoldersByName foreignKeysByName"
                    requireds="columns name type"/>
             <class name="Column" requireds="name"/>

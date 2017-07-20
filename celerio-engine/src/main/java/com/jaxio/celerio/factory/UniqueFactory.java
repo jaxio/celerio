@@ -40,7 +40,7 @@ public class UniqueFactory {
     private Config config;
 
     public void setupUniques(Entity entity) {
-        Table table = config.getMetadata().getTableByName(entity.getTableName());
+        Table table = entity.getTable();
         if (table == null) {
             return;
         }

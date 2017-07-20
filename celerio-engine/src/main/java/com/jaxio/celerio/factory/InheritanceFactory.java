@@ -52,15 +52,15 @@ public class InheritanceFactory {
         for (EntityConfig entityConfig : config.getCelerio().getEntityConfigs()) {
             Entity entity = config.getProject().getEntityByName(entityConfig.getEntityName());
 
-            if (entity.hasInheritance() && !config.getProject().hasEntityByTableName(entity.getTableName())) {
+            if (entity.hasInheritance() && !config.getProject().hasEntityBySchemaAndTableName(entity.getTable().getSchemaName(), entity.getTable().getName())) {
                 InheritanceType inheritanceType = entity.getInheritance().getStrategy();
 
                 if (inheritanceType == InheritanceType.SINGLE_TABLE) {
                     if (entity.isRoot()) {
-                        config.getProject().putEntityByTableName(entity);
+                        config.getProject().putEntity(entity);
                     }
                 } else if (inheritanceType == InheritanceType.JOINED || inheritanceType == InheritanceType.TABLE_PER_CLASS) {
-                    config.getProject().putEntityByTableName(entity);
+                    config.getProject().putEntity(entity);
                 } else {
                     log.warning("Invalid case, there should be an inheritance type");
                 }

@@ -19,6 +19,7 @@ package com.jaxio.celerio.configuration.database;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.util.Assert;
 
 import java.util.Collection;
@@ -383,5 +384,16 @@ public class Table {
                 column.removeMetaAttributes();
             }
         }
+    }
+
+    public static String keyForMap(String schemaName, String tableName) {
+        if (StringUtils.isNotBlank(schemaName)) {
+            return schemaName.toUpperCase() + "." + tableName.toUpperCase();
+        }
+        return tableName.toUpperCase();
+    }
+
+    public String asKeyForMap() {
+        return keyForMap(schemaName, name);
     }
 }

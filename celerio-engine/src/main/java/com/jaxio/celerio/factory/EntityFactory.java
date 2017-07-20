@@ -66,6 +66,7 @@ public class EntityFactory {
         if (table.getType() == TableType.VIEW) {
             entity.setView(true);
         }
+        entity.setTable(table);
 
         namerDefault(entity);
         namerExtension(entity, config.getCelerio().getConfiguration());
@@ -100,11 +101,11 @@ public class EntityFactory {
      * Build simple entity using user configuration
      */
     private void buildSimpleEntity(EntityConfig entityConfig, Entity entity) {
-        Table table = getTableStrict(entityConfig);
+        Table table = entity.getTable();
 
         // 1st phase: process all column and look for corresponding columnConfig
         for (Column column : table.getColumns()) {
-            boolean processed = processColumnUsingColumnConfigIfAny(entityConfig, entity, table, column);
+            boolean processed = processColumnUsingColumnConfigIfAny(entityConfig, entity, column);
 
             // no columnConfig, we just use defaults
             if (!processed) {
@@ -117,7 +118,7 @@ public class EntityFactory {
     }
 
     private void buildEntityInvolvedWithJoinedInheritance(EntityConfig entityConfig, Entity entity) {
-        Table table = getTableStrict(entityConfig);
+        Table table = entity.getTable();
         String pk = table.getPrimaryKey();
 
         // 1st phase: process all column and look for corresponding columnConfig
@@ -128,7 +129,7 @@ public class EntityFactory {
                 continue;
             }
 
-            boolean processed = processColumnUsingColumnConfigIfAny(entityConfig, entity, table, column);
+            boolean processed = processColumnUsingColumnConfigIfAny(entityConfig, entity, column);
             // no columnConfig, we just use defaults
             if (!processed) {
                 entity.addAttribute(attributeFactory.build(entity, table, column));
@@ -140,11 +141,11 @@ public class EntityFactory {
     }
 
     private void buildEntityInvolvedWithSingleTableInheritance(EntityConfig entityConfig, Entity entity) {
-        Table table = getTableStrict(entityConfig);
+        Table table = entity.getTable();
 
         // 1st phase: process all column and look for corresponding columnConfig
         for (Column column : table.getColumns()) {
-            processColumnUsingColumnConfigIfAny(entityConfig, entity, table, column);
+            processColumnUsingColumnConfigIfAny(entityConfig, entity, column);
             // if processColumnUsingColumnConfigIfAny returned false, we do not
             // do anything as the column is certainly part of another entity, but we cannot guess which one.
         }
@@ -154,7 +155,7 @@ public class EntityFactory {
     }
 
     private void buildEntityInvolvedWithTablePerClassInheritance(EntityConfig entityConfig, Entity entity) {
-        Table table = getTableStrict(entityConfig);
+        Table table = entity.getTable();
         String pk = table.getPrimaryKey();
 
         // 1st phase: process all column and look for corresponding columnConfig
@@ -165,7 +166,7 @@ public class EntityFactory {
                 continue;
             }
 
-            processColumnUsingColumnConfigIfAny(entityConfig, entity, table, column);
+            processColumnUsingColumnConfigIfAny(entityConfig, entity, column);
             // if processColumnUsingColumnConfigIfAny returned false, we do not
             // do anything as the column is certainly part of another entity.
         }
@@ -180,19 +181,19 @@ public class EntityFactory {
 
     private Table getTableStrict(EntityConfig entityConfig) {
         Assert.isTrue(entityConfig.hasTableName(), "A tableName is expected for the entityConfig " + entityConfig.getEntityName());
-        Table table = config.getMetadata().getTableByName(entityConfig.getTableName());
+        Table table = config.getMetadata().getTableBySchemaAndName(entityConfig.getSchemaName(), entityConfig.getTableName());
         Assert.notNull(table, "Could not find table named " + entityConfig.getTableName());
         return table;
     }
 
-    private boolean processColumnUsingColumnConfigIfAny(EntityConfig entityConfig, Entity entity, Table table, Column column) {
+    private boolean processColumnUsingColumnConfigIfAny(EntityConfig entityConfig, Entity entity, Column column) {
         ColumnConfig columnConfig = entityConfig.getColumnConfigByColumnName(column.getName());
         if (columnConfig != null) {
             if (columnConfig.hasTrueIgnore()) {
                 // just skip it
                 return true;
             } else {
-                columnConfigFactory.applyFallBacks(columnConfig, table, column);
+                columnConfigFactory.applyFallBacks(columnConfig, entity.getTable(), column);
                 columnConfigFactory.buildEnum(entity, columnConfig, column);
                 entity.addAttribute(attributeFactory.build(entity, columnConfig));
                 return true;

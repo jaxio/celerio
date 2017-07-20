@@ -61,9 +61,10 @@ public class ConfigurationCheck {
         Metadata metadata = config.getMetadata();
 
         for (EntityConfig ec : celerio.getEntityConfigs()) {
+            String schemaName = ec.getSchemaName();
             String tableName = ec.getTableName();
 
-            if (checkTablePresence(ec.getEntityName(), errors, metadata, tableName)) {
+            if (checkTablePresence(ec.getEntityName(), errors, metadata, schemaName, tableName)) {
                 for (ColumnConfig cc : ec.getColumnConfigs()) {
                     if (!cc.hasTrueIgnore()) {
                         checkColumnPresence(ec.getEntityName(), errors, metadata, cc);
@@ -134,8 +135,8 @@ public class ConfigurationCheck {
         }
     }
 
-    private boolean checkTablePresence(String entityName, List<String> errors, Metadata metadata, String tableName) {
-        Table table = metadata.getTableByName(tableName);
+    private boolean checkTablePresence(String entityName, List<String> errors, Metadata metadata, String schemaName, String tableName) {
+        Table table = metadata.getTableBySchemaAndName(schemaName, tableName);
         if (table == null) {
             String errorMsg = "Entity '"
                     + entityName

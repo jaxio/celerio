@@ -48,7 +48,7 @@ public class PrimaryKeyFactory {
         PrimaryKey pk = null;
 
         if (entity.isRoot()) {
-            Table table = config.getMetadata().getTableByName(entity.getTableName());
+            Table table = entity.getTable();
 
             if (table.hasSimplePrimaryKey()) {
                 pk = buildSimplePrimaryKey(entity);
@@ -69,7 +69,7 @@ public class PrimaryKeyFactory {
     private PrimaryKey buildSimplePrimaryKey(Entity entity) {
         Assert.isTrue(entity.isRoot());
 
-        Table table = config.getMetadata().getTableByName(entity.getTableName());
+        Table table = entity.getTable();
         Attribute pkAttribute = entity.getAttributeByTableAndColumnName(table.getName(), table.getPrimaryKey());
         pkAttribute.setSimplePk(true);
         if (config.getCelerio().getConfiguration().getConventions().getRenamePkToIdentifiableProperty() == TRUE) {
@@ -87,7 +87,7 @@ public class PrimaryKeyFactory {
     private PrimaryKey buildCompositePrimaryKey(Entity entity) {
         Assert.isTrue(entity.isRoot());
 
-        Table table = config.getMetadata().getTableByName(entity.getTableName());
+        Table table = entity.getTable();
         List<String> pkColumns = table.getPrimaryKeys();
 
         List<Attribute> attributes = newArrayList();

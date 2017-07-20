@@ -20,6 +20,7 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
+import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.convention.ClassType;
 import com.jaxio.celerio.convention.GeneratedPackage;
 import com.jaxio.celerio.model.support.EntityPredicates;
@@ -51,6 +52,8 @@ public class Project implements Map<String, Object> {
     @Getter(value = AccessLevel.PRIVATE)
     private Map<String, Entity> currentEntitiesByTableName = newHashMap();
     @Getter(value = AccessLevel.PRIVATE)
+    private Map<String, Entity> currentEntitiesBySchemaAndTableName = newHashMap();
+    @Getter(value = AccessLevel.PRIVATE)
     private Map<String, Entity> currentEntitiesByName = newHashMap();
     private SimpleListHolder<Entity> entities = newEntityHolder();
     private SimpleListHolder<Entity> rootEntities = newEntityHolder(ROOT);
@@ -80,6 +83,7 @@ public class Project implements Map<String, Object> {
     public void reset() {
         currentEntities.clear();
         currentEntitiesByTableName.clear();
+        currentEntitiesBySchemaAndTableName.clear();
         currentEntitiesByName.clear();
         entities = new SimpleListHolder<Entity>(currentEntities);
     }
@@ -123,12 +127,16 @@ public class Project implements Map<String, Object> {
     /**
      * Store 1 entity per table name. In case of inheritance you must pass the root entity only.
      */
-    public void putEntityByTableName(Entity entity) {
+    public void putEntity(Entity entity) {
         Assert.isTrue(entity.hasTableName(), "Expecting a table name for the entity: " + entity.getName());
-        Assert.isTrue(!hasEntityByTableName(entity.getTableName()), "Entity was already added!: " + entity.getTableName());
-        currentEntitiesByTableName.put(entity.getTableName().toUpperCase(), entity);
+        Assert.isTrue(!hasEntityBySchemaAndTableName(entity.getTable().getSchemaName(), entity.getTable().getName()), "Entity was already added!: " + entity.getTableName());
+        currentEntitiesByTableName.put(entity.getTable().getName().toUpperCase(), entity);
+        currentEntitiesBySchemaAndTableName.put(entity.getTable().asKeyForMap(), entity);
     }
 
+    public boolean hasEntityBySchemaAndTableName(String schemaName, String tableName) {
+        return currentEntitiesBySchemaAndTableName.containsKey(Table.keyForMap(schemaName, tableName));
+    }
     public boolean hasEntityByTableName(String tableName) {
         return currentEntitiesByTableName.containsKey(tableName.toUpperCase());
     }
@@ -140,8 +148,8 @@ public class Project implements Map<String, Object> {
     /**
      * Return the entity corresponding to the passed table. In case of inheritance, the root entity is returned.
      */
-    public Entity getEntityByTableName(String tableName) {
-        return currentEntitiesByTableName.get(tableName.toUpperCase());
+    public Entity getEntityBySchemaAndTableName(String schemaName, String tableName) {
+        return currentEntitiesBySchemaAndTableName.get(Table.keyForMap(schemaName, tableName));
     }
 
     public boolean isAccountEntityPresent() {

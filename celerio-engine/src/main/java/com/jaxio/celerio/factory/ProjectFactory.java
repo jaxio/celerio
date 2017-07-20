@@ -55,7 +55,6 @@ import com.jaxio.celerio.spi.ProjectSpi;
 import com.jaxio.celerio.spi.RelationSpi;
 import com.jaxio.celerio.template.pack.PackLoader;
 import com.jaxio.celerio.template.pack.TemplatePack;
-import com.jaxio.celerio.template.pack.TemplatePackInfo;
 import com.jaxio.celerio.util.FallBackUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.math.NumberUtils;
@@ -254,7 +253,7 @@ public class ProjectFactory {
             Entity entity = entityFactory.buildEntity(entityConfig);
             log.info("Adding entity " + entity.getName());
             project.addEntity(entity);
-            project.putEntityByTableName(entity);
+            project.putEntity(entity);
             tableProcessed.add(table.getName().toUpperCase()); // not really needed but to be consistent...
         }
     }
@@ -272,7 +271,7 @@ public class ProjectFactory {
             project.addEntity(entity);
 
             if (!entity.hasInheritance()) {
-                project.putEntityByTableName(entity);
+                project.putEntity(entity);
             }
 
             // note: we may add a table twice, this is OK, this code is just here to

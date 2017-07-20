@@ -22,6 +22,7 @@ import com.google.common.base.Predicates;
 import com.jaxio.celerio.Config;
 import com.jaxio.celerio.configuration.Module;
 import com.jaxio.celerio.configuration.convention.CollectionType;
+import com.jaxio.celerio.configuration.database.Table;
 import com.jaxio.celerio.configuration.entity.EntityConfig;
 import com.jaxio.celerio.configuration.entity.ImplementsInterface;
 import com.jaxio.celerio.configuration.entity.Inheritance;
@@ -102,6 +103,11 @@ public class Entity implements Hierarchical<Entity>, Named, Map<String, Object> 
     private AccountAttributes accountAttributes;
     @Setter
     private RoleAttributes roleAttributes;
+
+    // metadata
+    @Setter
+    @Getter
+    private Table table;
 
     // -----------------------------------
     // Namers

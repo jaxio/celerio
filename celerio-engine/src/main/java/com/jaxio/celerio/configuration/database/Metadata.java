@@ -17,13 +17,17 @@
 package com.jaxio.celerio.configuration.database;
 
 import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static com.jaxio.celerio.configuration.Util.nonNull;
+import static com.jaxio.celerio.configuration.database.Table.keyForMap;
 
 public class Metadata {
     @Setter
@@ -32,14 +36,16 @@ public class Metadata {
     private DatabaseInfo databaseInfo = new DatabaseInfo();
     private List<Table> tables = newArrayList();
     // Ignored by JIBX thanks to src/main/config/customization.xml
+    private Set<String> tablesInMultipleSchema = new HashSet<String>();
     private Map<String, Table> tablesByName = newHashMap();
+    private Map<String, Table> tablesBySchemaAndName = newHashMap();
 
     public void setTables(List<Table> tables) {
         this.tables = nonNull(tables);
         tablesByName = newHashMap();
 
         for (Table table : this.tables) {
-            putTableByName(table);
+            putTable(table);
         }
     }
 
@@ -61,18 +67,41 @@ public class Metadata {
 
     public void add(Table table) {
         tables.add(table);
-        putTableByName(table);
+        putTable(table);
     }
 
     public Table getTableByName(String tableName) {
         if (tableName == null) {
             return null;
         }
+
+        if (tablesInMultipleSchema.contains(tableName.toUpperCase())) {
+            return null;
+        }
+
         return tablesByName.get(tableName.toUpperCase());
     }
 
-    private void putTableByName(Table table) {
-        tablesByName.put(table.getName().toUpperCase(), table);
+    public Table getTableBySchemaAndName(String schemaName, String tableName) {
+        if (tableName == null) {
+            return null;
+        }
+
+        if (StringUtils.isBlank(schemaName)) {
+            return getTableByName(tableName);
+        }
+
+        return tablesBySchemaAndName.get(keyForMap(schemaName, tableName));
+    }
+
+    private void putTable(Table table) {
+        if (tablesByName.containsKey(table.getName().toUpperCase())) {
+            tablesInMultipleSchema.add(table.getName().toUpperCase());
+        } else {
+            tablesByName.put(table.getName().toUpperCase(), table);
+        }
+
+        tablesBySchemaAndName.put(keyForMap(table.schemaName, table.name), table);
     }
 
     public void cleanMetadata() {

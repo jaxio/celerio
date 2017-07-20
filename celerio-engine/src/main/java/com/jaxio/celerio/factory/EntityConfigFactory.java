@@ -77,8 +77,8 @@ public class EntityConfigFactory {
 
     private void assertEntityConfigIsValid(EntityConfig entityConfig) {
         if (entityConfig.hasTableName()) {
-            Table table = config.getMetadata().getTableByName(entityConfig.getTableName());
-            Assert.notNull(table, "The table named " + entityConfig.getTableName() + " could not be found");
+            Table table = config.getMetadata().getTableBySchemaAndName(entityConfig.getSchemaName(), entityConfig.getTableName());
+            Assert.notNull(table, "The table named " + entityConfig.getTableName() + " could not be found. Schema: " + entityConfig.getSchemaName());
             // Important: preserve case sensitivity intact (JPA is case sensitive when dealing with TABLES)
             entityConfig.setTableName(table.getName());
         } else {
@@ -155,13 +155,13 @@ public class EntityConfigFactory {
     }
 
     private void applyEntityNameFallBack(EntityConfig entityConfig) {
-        Table table = config.getMetadata().getTableByName(entityConfig.getTableName());
+        Table table = config.getMetadata().getTableBySchemaAndName(entityConfig.getSchemaName(), entityConfig.getTableName());
         entityConfig.setEntityName(fallBack(entityConfig.getEntityName(), getDefaultEntityName(table)));
     }
 
     public void applyFallBacks(EntityConfig entityConfig) {
         Configuration conf = config.getCelerio().getConfiguration();
-        Table table = config.getMetadata().getTableByName(entityConfig.getTableName());
+        Table table = config.getMetadata().getTableBySchemaAndName(entityConfig.getSchemaName(), entityConfig.getTableName());
         Assert.notNull(table, "The table named " + entityConfig.getTableName() + " could not be found");
 
         applyEntityNameFallBack(entityConfig);

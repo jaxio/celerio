@@ -108,7 +108,7 @@ public class ForeignKeyHintsFactory {
             if (attribute.getColumnConfig().hasTargetEntityName()) {
                 targetEntity = config.getProject().getEntityByName(attribute.getColumnConfig().lookupTargetEntityName());
             } else {
-                targetEntity = config.getProject().getEntityByTableName(targetTableName);
+                targetEntity = config.getProject().getEntityBySchemaAndTableName(null, targetTableName);
                 Assert.notNull(targetEntity, "The target Entity could not be found based on the targetTableName: " + targetTableName
                         + ". Please specify a targetEntityName for " + attribute.getFullColumnName());
             }
