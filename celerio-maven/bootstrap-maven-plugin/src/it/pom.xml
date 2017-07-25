@@ -21,7 +21,7 @@
 
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <version>4.0.22-SNAPSHOT</version>
+    <version>4.0.23-SNAPSHOT</version>
 
     <build>
         <defaultGoal>bootstrap:bootstrap-it</defaultGoal>
