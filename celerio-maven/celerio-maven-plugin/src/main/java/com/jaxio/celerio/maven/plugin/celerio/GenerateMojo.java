@@ -60,7 +60,6 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
  */
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES, requiresProject = false)
 public class GenerateMojo extends AbstractMojo {
-    private static String DEFAULT_XML_CONFIGURATION = normalize("src/main/config/celerio-maven-plugin/celerio-maven-plugin.xml");
     private static String DEFAULT_XML_METADATA = normalize("src/main/config/celerio-maven-plugin/metadata.xml");
     private ClassPathXmlApplicationContext context;
 
@@ -244,7 +243,7 @@ public class GenerateMojo extends AbstractMojo {
     }
 
     private Config setupConfig(Config config, String xmlMetadata, String xmlConfiguration, String baseDir, String outputDirectory) throws MojoExecutionException,
-            XmlMappingException, IOException, ClassNotFoundException, SQLException {
+        XmlMappingException, IOException, ClassNotFoundException, SQLException {
         config.setMetadata(getMetaData(xmlMetadata));
         config.setCelerio(getCelerio(xmlConfiguration));
         config.setOutputResult(getOutput(baseDir, outputDirectory));
@@ -313,14 +312,15 @@ public class GenerateMojo extends AbstractMojo {
     }
 
     private Celerio getCelerio(String xmlConfiguration) {
-        Celerio celerio = getCelerioConfigurationFromPlugin();
-        if (celerio == null) {
+        Celerio celerio;
+
+        if (FileUtils.fileExists(xmlConfiguration)) {
             celerio = getCelerioConfigurationFromFile(xmlConfiguration);
-        }
-        if (celerio == null) {
-            getLog().warn("The Celerio configuration file could not be found. Will use default configuration.");
+        } else {
+            getLog().warn("****** The Celerio configuration file [" + xmlConfiguration + "] could not be found. Will use default empty configuration ******");
             celerio = new Celerio();
         }
+
         overridePacksAndModules(celerio);
         return celerio;
     }
@@ -357,80 +357,20 @@ public class GenerateMojo extends AbstractMojo {
             if (newModules != null && !newModules.isEmpty()) {
                 celerio.getConfiguration().setModules(newModules);
             }
-        } catch (FileNotFoundException e) {
-            getLog().error("xml template packs override " + removeBaseDir(filename) + " does not exist");
-        } catch (IOException e) {
-            getLog().error("io exception " + removeBaseDir(filename) + " ");
-            throw new RuntimeException("error", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Could not do override: ["+ filename + "]", e);
         }
     }
 
     private Celerio getCelerioConfigurationFromFile(String filename) throws XmlMappingException {
-        if (!FileUtils.fileExists(filename)) {
-            if (!isDefaultXmlConfiguration(filename)) {
-                getLog().error("xml configuration " + removeBaseDir(filename) + " does not exist");
-            }
-            return null;
-        }
-
         CelerioLoader celerioLoader = context.getBean(CelerioLoader.class);
         try {
             return celerioLoader.load(filename);
-        } catch (FileNotFoundException e) {
-            getLog().error("xml configuration " + removeBaseDir(filename) + " does not exist");
-            return null;
-        } catch (IOException e) {
-            getLog().error("io exception " + removeBaseDir(filename) + " ");
-            throw new RuntimeException("error", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Error while loading Celerio with conf "+ filename, e);
         }
     }
 
-    private Celerio getCelerioConfigurationFromPlugin() {
-        Plugin plugin = lookupPlugin(getPluginPackage() + ":" + getPluginName());
-        if (plugin == null) {
-            return null;
-        }
-        String xmlConfiguration = getCelerioConfigurationAsXml(plugin);
-        if (xmlConfiguration.length() == 0) {
-            return null;
-        }
-        getLog().info("celerio configuration taken from plugin");
-        CelerioLoader celerioLoader = context.getBean(CelerioLoader.class);
-        try {
-            return celerioLoader.load(new StringInputStream(xmlConfiguration));
-        } catch (FileNotFoundException e) {
-            getLog().error("xml configuration in plugin does not exist");
-            return null;
-        } catch (XmlMappingException e) {
-            getLog().error("xml mapping error in plugin ");
-            return null;
-        } catch (IOException e) {
-            getLog().error("io exception in plugin ");
-            return null;
-        }
-    }
-
-    private String getCelerioConfigurationAsXml(Plugin plugin) {
-        Xpp3Dom pluginConfigurationAsDom = (Xpp3Dom) plugin.getConfiguration();
-        if (pluginConfigurationAsDom == null) {
-            return "";
-        }
-        String pluginConfigurationAsXml = pluginConfigurationAsDom.toString();
-        CelerioConfigurationExtractor extractor = new CelerioConfigurationExtractor(pluginConfigurationAsXml);
-        String celerioConfigAsXml = extractor.getCelerioConfig();
-        return celerioConfigAsXml == null ? "" : celerioConfigAsXml;
-    }
-
-    private Plugin lookupPlugin(String key) {
-        List<?> plugins = project.getBuildPlugins();
-        for (Iterator<?> iterator = plugins.iterator(); iterator.hasNext(); ) {
-            Plugin plugin = (Plugin) iterator.next();
-            if (key.equalsIgnoreCase(plugin.getKey())) {
-                return plugin;
-            }
-        }
-        return null;
-    }
 
     private static <T> boolean isNull(T... ts) {
         for (T t : ts) {
@@ -439,21 +379,5 @@ public class GenerateMojo extends AbstractMojo {
             }
         }
         return false;
-    }
-
-    private String removeBaseDir(String filename) {
-        String normalizedFilename = normalize(filename);
-        return normalizedFilename.replace(getProjectBaseDir(), "");
-    }
-
-    private String getProjectBaseDir() {
-        if (project.getBasedir() != null) {
-            return normalize(project.getBasedir().getAbsoluteFile().getAbsolutePath() + File.separatorChar);
-        }
-        return "";
-    }
-
-    private boolean isDefaultXmlConfiguration(String filename) {
-        return DEFAULT_XML_CONFIGURATION.equals(removeBaseDir(filename));
     }
 }
